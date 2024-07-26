@@ -2,6 +2,7 @@ import React from 'react';
 import './Main.css';
 import { PrimarySection } from './sections/PrimarySection';
 import { Separator } from './sections/Separator';
+import { DescriptionSection } from './sections/DescriptionSection';
 
 export function Main() {
     
@@ -9,6 +10,7 @@ export function Main() {
         <main>
             <PrimarySection />
             <Separator />
+            <DescriptionSection />
         </main>
       );
 }
