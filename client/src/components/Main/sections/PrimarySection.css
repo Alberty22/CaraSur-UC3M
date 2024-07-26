@@ -1,0 +1,72 @@
+.primary-section {
+    position: relative;
+    width: 100%;
+    height: 44vw;
+    max-height: 480px;
+    min-height: 125px;
+    background-size: 100% 100%; 
+  }
+  
+.primary-section img {
+    width: auto; 
+    height: 83%;
+    position: absolute;
+    top:-30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+.primary-section button {
+    width: 200px; 
+    height: 80px;
+    background-color: #235371;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 15px;
+    position: absolute;
+    bottom:50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.primary-section button:hover {
+    background-color: #1d4357; /* Un tono más oscuro para el efecto hover */
+  }
+  
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+
+  .primary-section button {
+    width: 200px; 
+    height: 80px;
+    bottom:20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .primary-section {
+    min-height: 125px;
+    height: 35vw;
+  }
+  .primary-section img {
+    height: 70%;
+    top: 0;
+  }
+
+  .primary-section button {
+    width: 100px; 
+    height: 40px;
+    font-size: 0.7rem;
+    bottom:20px;
+  }
+}

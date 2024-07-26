@@ -1,0 +1,44 @@
+.separator-section {
+    width: 100%;
+    max-height: 120px;
+    min-height: 120px;
+    height: 7vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+  }
+  
+.separator-section p {
+    color: #282828;
+    
+  }
+  
+.separator-section span {
+    color: #235371;
+}
+  
+
+
+
+  
+@media (max-width: 768px) {
+
+.separator-section {
+    min-height: 65px;
+    font-size: 0.8rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+.separator-section {
+    font-size: 1.5rem;
+    max-height: 80px;
+    }
+
+}

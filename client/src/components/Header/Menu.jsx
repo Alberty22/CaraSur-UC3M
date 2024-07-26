@@ -5,7 +5,7 @@ import useMobileQuery from "../../hooks/useMobileQuery";
 
 export function Menu({ toggleMenu }) {
 
-    const isMobile = useMobileQuery('(max-width: 1000px)')
+    const isMobile = useMobileQuery('(max-width: 1024px)')
 
     return(
       <nav className='navigation'>

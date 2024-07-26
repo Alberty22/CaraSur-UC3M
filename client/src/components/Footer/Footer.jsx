@@ -4,11 +4,11 @@ import instagram_logo from '../../assets/images/logos/instagram.webp'
 import x_logo from '../../assets/images/logos/x.webp'
 import facebook_logo from '../../assets/images/logos/facebook.webp'
 import youtube_logo from '../../assets/images/logos/youtube.webp'
-import mountains from '../../assets/images/visuals/mountains.webp'
+import mountains from '../../assets/images/visuals/mountains.png'
 import useMobileQuery from '../../hooks/useMobileQuery'
 
 export function Footer () {
-    const isMobile = useMobileQuery('(max-width: 1000px)')
+    const isMobile = useMobileQuery('(max-width: 1024px)')
 
     const FooterMenu = () => {
         return (
@@ -56,7 +56,7 @@ export function Footer () {
             </ul>
         )
     }
-    
+
     return (
         <footer>
             <div>
