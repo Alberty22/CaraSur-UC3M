@@ -105,7 +105,7 @@ a img {
 }
 
 .mountains {
-    height: 160px;
+    height: 200px;
     position: absolute;
     width: 100%;
     left: 0;
@@ -120,10 +120,6 @@ a img {
     width: 100%;
     object-fit:fill;
 }
-
-
-
-
 
   @media (max-width: 768px) {
 
@@ -141,11 +137,11 @@ a img {
     }
 
     .mountains {
-        height: 40px;
+        height: 80px;
     }
 
     .extra-links {
-        height: 20px;
+        height: 50px;
     }
 
     .extra-links li {
@@ -220,6 +216,6 @@ a img {
     }
 
     .mountains {
-        height: 160px;
+        height: 200px;
     }
   }

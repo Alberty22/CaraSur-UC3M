@@ -3,6 +3,7 @@ import './Main.css';
 import { PrimarySection } from './sections/PrimarySection';
 import { Separator } from './sections/Separator';
 import { DescriptionSection } from './sections/DescriptionSection';
+import { ActivitiesTitleSection } from './sections/ActivitiesTitleSection';
 
 export function Main() {
     
@@ -11,6 +12,7 @@ export function Main() {
             <PrimarySection />
             <Separator />
             <DescriptionSection />
+            <ActivitiesTitleSection />
         </main>
       );
 }
