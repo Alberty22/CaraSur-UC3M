@@ -1,0 +1,96 @@
+.privileges-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90vh;
+    background-color: #f7f7f7;
+  }
+
+.privileges-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.privileges-section h2 span {
+    color: #235371; /* Adjust color to match your design */
+  }
+
+  
+.membership-card {
+    max-width: 600px;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.membership-card div {
+    background: #235371;
+    color: white;
+    border-radius: 15px 15px 0 0;
+} 
+  
+.membership-card div h3 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0;
+    
+}
+  
+.membership-card div p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    
+}
+
+.membership-card div p span {
+    font-size: 1.2rem;
+    
+    
+}
+
+.membership-card div p span + span {
+    font-size: 1rem;
+    color: #969696;
+    
+}
+
+
+.membership-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .membership-card ul li {
+    margin: 0.5em 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .membership-cardul li::before {
+    content: '✔️';
+    margin-right: 0.5em;
+  }
+  
+  .join-button {
+    background: #007BFF; /* Adjust color to match your design */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1em;
+    font-size: 1em;
+  }
+  
+  .join-button:hover {
+    background: #0056b3;
+  }
+  

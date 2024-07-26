@@ -4,6 +4,7 @@ import { PrimarySection } from './sections/PrimarySection';
 import { Separator } from './sections/Separator';
 import { DescriptionSection } from './sections/DescriptionSection';
 import { ActivitiesTitleSection } from './sections/ActivitiesTitleSection';
+import { PrivilegesSection } from './sections/PrivilegesSection';
 
 export function Main() {
     
@@ -13,6 +14,7 @@ export function Main() {
             <Separator />
             <DescriptionSection />
             <ActivitiesTitleSection />
+            <PrivilegesSection />
         </main>
       );
 }
