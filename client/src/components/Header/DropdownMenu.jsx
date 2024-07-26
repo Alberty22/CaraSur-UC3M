@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import './DropdownMenu.css'
 
 export function DropdownMenu({ isOpen }) {
     const menuRef = useRef(null);
-    console.log(menuRef.current)
 
     useEffect (() =>{
         if (menuRef.current) {

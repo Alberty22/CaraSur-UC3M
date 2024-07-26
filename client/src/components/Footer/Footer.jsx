@@ -1,0 +1,84 @@
+import './Footer.css'
+import carasur_logo from '../../assets/images/logos/carasur.webp'
+import instagram_logo from '../../assets/images/logos/instagram.webp'
+import x_logo from '../../assets/images/logos/x.webp'
+import facebook_logo from '../../assets/images/logos/facebook.webp'
+import youtube_logo from '../../assets/images/logos/youtube.webp'
+import mountains from '../../assets/images/visuals/mountains.webp'
+import useMobileQuery from '../../hooks/useMobileQuery'
+
+export function Footer () {
+    const isMobile = useMobileQuery('(max-width: 1000px)')
+
+    const FooterMenu = () => {
+        return (
+            <>
+            { !isMobile &&
+                <ul>
+                    <li><h3>MENÚ</h3></li>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#actividades">Actividades</a></li>
+                    <li><a href="#material">Material</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#area-de-socios">Área de socios</a></li>
+                </ul> 
+            }
+            </>
+        )
+    }
+
+    const FooterSocials = () => {
+        return (
+            <ul>
+                { !isMobile &&
+                    <li><h3>REDES</h3></li>
+                }
+                <li>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                        <img src={instagram_logo} alt="Instagram" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.x.com" target="_blank" rel="noopener noreferrer">
+                        <img src={x_logo} alt="X" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                        <img src={facebook_logo} alt="Facebook" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+                        <img src={youtube_logo} alt="YouTube" />
+                    </a>
+                </li>
+            </ul>
+        )
+    }
+    
+    return (
+        <footer>
+            <div>
+                <FooterMenu />
+            </div>
+            <div>
+                <img src={carasur_logo} alt="CaraSur UC3M" className="logo" />
+            </div>
+            <div>
+                <FooterSocials />
+            </div>
+
+            <div className='extra-links'>
+                <ul>
+                    <li><a>Privacidad</a></li>
+                    <li><a>Normativa</a></li>
+                    <li><a>Cookies</a></li>
+                </ul>
+            </div>
+            <div className='mountains'>
+                <img src={mountains} alt="Mountains" />
+            </div>
+        </footer>
+    )
+}

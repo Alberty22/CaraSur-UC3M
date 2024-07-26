@@ -1,23 +1,11 @@
 import { useState, useEffect } from "react";
 import './Menu.css'
-import menu_icon from "../assets/images/icons/Menu.webp"
-
+import menu_icon from "../../assets/images/icons/Menu.webp"
+import useMobileQuery from "../../hooks/useMobileQuery";
 
 export function Menu({ toggleMenu }) {
 
-    const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 1000px)').matches);
-
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.matchMedia('(max-width: 1000px)').matches);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+    const isMobile = useMobileQuery('(max-width: 1000px)')
 
     return(
       <nav className='navigation'>
