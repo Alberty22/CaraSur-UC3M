@@ -19,18 +19,18 @@
   
   }
   
-  .navigation div{
+  .navigation ul li:last-child{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #235371;
     border-radius: 15px;
     height: 60px;
-    max-width: 120px;
+    min-width: 120px;
     font-size: 0.75rem;
     text-align: center;
     color: #ffffff;
-    margin-left: 80px;
+    margin-left: 60px;
     margin-right: 60px;
     
   }
@@ -63,6 +63,15 @@
     .navigation button img {
       width: 40px;
       height: 40px;
+      
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)  {
+
+    .navigation button img {
+      width: 70px;
+      height: 70px;
       
     }
   }

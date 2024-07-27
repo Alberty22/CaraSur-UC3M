@@ -5,7 +5,7 @@ import useMobileQuery from "../../hooks/useMobileQuery";
 
 export function Menu({ toggleMenu }) {
 
-    const isMobile = useMobileQuery('(max-width: 1024px)')
+    const isMobile = useMobileQuery('(max-width: 1023px)')
 
     return(
       <nav className='navigation'>
@@ -22,10 +22,8 @@ export function Menu({ toggleMenu }) {
               <li className='link'> <a href="#actividades">ACTIVIDADES</a> </li>
               <li className='link'> <a href="#material">MATERIAL</a> </li>
               <li className='link'> <a href="#contacto">CONTACTO</a> </li>
+              <li className='link'> <a href="#area-de-socios"><p>ÁREA DE <br /> SOCIOS</p></a> </li>
             </ul>
-            <div>
-              <a href="#area-de-socios"><p>ÁREA DE <br /> SOCIOS</p></a>
-            </div>
             </>
             
           )

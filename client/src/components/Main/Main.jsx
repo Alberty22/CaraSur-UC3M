@@ -5,6 +5,7 @@ import { Separator } from './sections/Separator';
 import { DescriptionSection } from './sections/DescriptionSection';
 import { ActivitiesTitleSection } from './sections/ActivitiesTitleSection';
 import { PrivilegesSection } from './sections/PrivilegesSection';
+import { ContactSection } from './sections/ContactSection';
 
 export function Main() {
     
@@ -15,6 +16,7 @@ export function Main() {
             <DescriptionSection />
             <ActivitiesTitleSection />
             <PrivilegesSection />
+            <ContactSection />
         </main>
       );
 }

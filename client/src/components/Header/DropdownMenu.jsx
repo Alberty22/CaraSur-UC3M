@@ -7,7 +7,7 @@ export function DropdownMenu({ isOpen }) {
     useEffect (() =>{
         if (menuRef.current) {
             // Cambia la altura máxima para animar el menú
-            menuRef.current.style.maxHeight = isOpen ? '310px' : '0';
+            menuRef.current.style.maxHeight = isOpen ? '350px' : '0';
           }
         }, [isOpen]
     )
@@ -19,9 +19,7 @@ export function DropdownMenu({ isOpen }) {
             <li className="link"><a href="#actividades">ACTIVIDADES</a></li>
             <li className="link"><a href="#material">MATERIAL</a></li>
             <li className="link"><a href="#contacto">CONTACTO</a></li>
-            <div>
-                <a href="#area-de-socios">ÁREA DE SOCIOS</a>
-            </div>
+            <li className="link"><a href="#area-de-socios">ÁREA DE SOCIOS</a></li>
         </ul>
         
         </nav>   
