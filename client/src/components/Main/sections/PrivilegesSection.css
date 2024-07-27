@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 90vh;
+    height: auto;
     background-color: #f7f7f7;
   }
 
@@ -26,13 +26,18 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
   
 .membership-card div {
     background: #235371;
     color: white;
+    width: 100%;
     border-radius: 15px 15px 0 0;
+    padding: 10px 0;
 } 
   
 .membership-card div h3 {
@@ -61,36 +66,162 @@
     
 }
 
-
 .membership-card ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap:10px;
     list-style: none;
-    padding: 0;
+    padding: 0 10px;
     text-align: left;
   }
   
   .membership-card ul li {
-    margin: 0.5em 0;
     display: flex;
     align-items: center;
+    flex:1 0 50%;
+    padding: 20px 20px;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+
+  .membership-card ul li img{
+    max-width: 30px;
+    max-width: auto;
+    padding-right: 10px;
   }
   
-  .membership-cardul li::before {
-    content: '✔️';
-    margin-right: 0.5em;
-  }
-  
-  .join-button {
-    background: #007BFF; /* Adjust color to match your design */
+  .membership-card button {
+    min-width: 200px;
+    width: 30%;
+    background: #235371; /* Adjust color to match your design */
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 20px 5px;
+    margin-bottom: 20px;
+    border-radius: 15px;
     cursor: pointer;
-    margin-top: 1em;
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 1rem;
   }
   
-  .join-button:hover {
+  .membership-card button:hover {
     background: #0056b3;
   }
   
+
+  @media (max-width: 768px) {
+    .privileges-section {
+      height: auto;
+      
+    }
+
+    .privileges-section h2 {
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 15px;
+  }
+
+    .membership-card {
+      width: 80vw;
+      margin-bottom: 20px;
+    }
+
+    .membership-card div h3 {
+      font-size: 0.7rem; 
+    }
+    
+    .membership-card div p {
+        font-size: 1rem;
+        
+    }
+
+    .membership-card div p span {
+        font-size: 0.7rem;
+    }
+
+    .membership-card div p span + span {
+        font-size: 0.5rem;   
+    }
+
+    .membership-card ul {
+      gap:10px;
+      padding: 0 10px;
+      
+    }
+    
+    .membership-card ul li {
+      padding: 0 5px;
+      font-size: 0.6rem;
+    }
+  
+    .membership-card ul li img{
+      max-width: 20px;
+    }
+    
+    .membership-card button {
+      min-width: 0;
+      width: 50%;
+      font-size: 0.7rem;
+      padding: 15px 5px;
+    }
+    
+  }
+  
+  
+  @media (min-width: 768px) and (max-width: 1024px)  {
+
+    .privileges-section h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 30px;
+  }
+
+    .membership-card {
+      width: 80vw;
+      margin-bottom: 30px;
+    }
+
+    .membership-card div h3 {
+      font-size: 1rem; 
+    }
+    
+    .membership-card div p {
+        font-size: 1.2rem;
+        
+    }
+
+    .membership-card div p span {
+        font-size: 1rem;
+    }
+
+    .membership-card div p span + span {
+        font-size: 0.9rem;   
+    }
+
+    .membership-card ul {
+      gap:10px;
+      padding: 0 10px;
+      
+    }
+    
+    .membership-card ul li {
+      padding: 0 5px;
+      font-size: 0.9rem;
+    }
+  
+    .membership-card ul li img{
+      max-width: 20px;
+    }
+    
+    .membership-card button {
+      min-width: 0;
+      width: 30%;
+      font-size: 0.9rem;
+      padding: 15px 5px;
+    }
+    
+
+  }

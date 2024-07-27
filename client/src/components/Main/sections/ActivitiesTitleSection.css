@@ -1,8 +1,4 @@
 .activities-title-section {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
     display: grid;
     grid-template-columns: 240px 1fr 240px;
     height: 65vh;
@@ -88,7 +84,7 @@
     }
 
     .grid-item {
-        font-size: 0.3rem;
+        font-size: 0.4rem;
         height: 14vw;
         width: 14vw;
         margin: auto;
@@ -96,7 +92,7 @@
     }
 
     .activities-title-section > div:last-child h2 {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
   }
   
@@ -127,7 +123,7 @@
     }
 
     .activities-title-section > div:last-child h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
   }
