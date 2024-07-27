@@ -1,5 +1,5 @@
 import './PrivilegesSection.css'
-import check_icon from '../../../assets/images/icons/Check.webp'
+import check_icon from '../../../../assets/images/icons/Check.webp'
 
 export function PrivilegesSection() {
     return (

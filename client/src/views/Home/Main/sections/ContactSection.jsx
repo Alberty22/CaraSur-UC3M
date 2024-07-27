@@ -1,5 +1,5 @@
 import './ContactSection.css';
-import useMobileQuery from '../../../hooks/useMobileQuery';
+import useMobileQuery from '../../../../hooks/useMobileQuery';
 
 export function ContactSection() {
     const isMobile = useMobileQuery('(max-width: 768px)')

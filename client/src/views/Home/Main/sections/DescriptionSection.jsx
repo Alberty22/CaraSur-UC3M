@@ -1,4 +1,4 @@
-import secondary_visual from '../../../assets/images/visuals/secondary.jpg'
+import secondary_visual from '../../../../assets/images/visuals/secondary.jpg'
 import './DescriptionSection.css'
 
 export function DescriptionSection() {

@@ -1,5 +1,5 @@
-import carasur_logo from '../../../assets/images/logos/carasur.webp'; 
-import primary_visual from '../../../assets/images/visuals/primary.jpg'
+import carasur_logo from '../../../../assets/images/logos/carasur.webp'; 
+import primary_visual from '../../../../assets/images/visuals/primary.jpg'
 import './PrimarySection.css'
 
 export function PrimarySection() {

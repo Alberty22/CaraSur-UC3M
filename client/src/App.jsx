@@ -1,16 +1,12 @@
 import './App.css'
-import { Footer } from './components/Footer/Footer.jsx';
-import { Header } from './components/Header/Header.jsx';
-import { Main } from './components/Main/Main.jsx';
-
+import { Home } from './views/Home/Home.jsx';
+import { Login } from './views/Login/Login.jsx';
 
 function App() {
 
   return (
     <>
-    <Header />
-    <Main />
-    <Footer />
+    <Home />
     </>
   )
 }
