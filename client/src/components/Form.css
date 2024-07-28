@@ -1,14 +1,51 @@
+.form-container {
+  overflow-y:auto;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+}
+
+.form-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.form-container::-webkit-scrollbar:vertical {
+  width:7px;
+}
+
+.form-container::-webkit-scrollbar-button:increment,.form-container::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.form-container::-webkit-scrollbar:horizontal {
+  height: 5px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
+
+
+
 .login-form {
-    width: 80%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    overflow-y:auto;
+    
   }
 
 
-  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+  .login-form input , .login-form select{
 
     width: 100%;
     padding: 20px 0;
@@ -19,16 +56,27 @@
     border-bottom: 2px solid #ffffff;
     font-size: 1.2rem;
     font-weight: normal;
+    appearance: none;
+    
   }
 
-  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:focus {
+  .login-form select option {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #ffffff;
+    background: #282828;
+    
+  }
+
+
+  .login-form input:focus , .login-form select:focus{
     outline: none;
     border-bottom: 2px solid initial;  
     box-shadow: none;
     background-color: initial;
   }
 
-  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:-internal-autofill-selected{
+  .login-form input:-internal-autofill-selected, .login-form select:-internal-autofill-selected{
     outline: none;
     border-bottom: 2px solid initial;  
     box-shadow: none;
@@ -47,7 +95,6 @@
   .login-form  .pass-container {
     margin: 0;
     display: flex;
-    align-items: flex-end;
     position: relative;
   }
 
@@ -57,7 +104,7 @@
     background-color: transparent;
     position: absolute;
     right: 0;
-    bottom: 0px;
+    bottom: 0;
     margin: 0;
   }
 
@@ -81,10 +128,27 @@
     color: #ffffff;
   }
 
+  .login-form .remember-me label {
+    font-size: 0.8rem;
+    
+  }
+
+  .login-form .remember-me-check {
+    appearance:auto;
+    width: auto;
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    border: 0;
+    background-color: #ffffff;
+  }
+
   .login-form .forgot-password {
     color: #ffffff;
   }
   
+  
+
   .login-form button, .other-login button {
     width: 100%;
     margin: 20px 0 10px 0;
@@ -101,9 +165,25 @@
     justify-content: center;
   }
 
+  .dropzone {
+    border-radius: 15px;
+    border: 2px dashed #ffffff;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin: 20px 0 20px 0;
+  }
+
+  .dropzone p{
+    color: #969696;
+    font-size: 1rem;
+    font-weight: normal;
+
+  }
+
   @media (max-width: 768px) {
 
-    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+    .login-form input , .login-form select{
         margin-bottom: 20px;
         font-size: 0.8rem;
         
@@ -145,7 +225,7 @@
 
   @media (min-width: 768px) and (max-width: 1024px)  {
 
-    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+    .login-form input, .login-form select {
         margin-bottom: 20px;
         font-size: 1.2rem;
         

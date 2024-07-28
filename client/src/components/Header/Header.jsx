@@ -3,11 +3,14 @@ import carasur_logo from "../../assets/images/logos/carasur.webp"
 import { Menu } from './Menu.jsx'
 import { DropdownMenu } from './DropdownMenu.jsx'
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth.js";
 import './Header.css'
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isMenu, setIsMenu] = useState(true)
+
+    const { isAuthenticated } = useAuth()
 
     const location = useLocation();
 

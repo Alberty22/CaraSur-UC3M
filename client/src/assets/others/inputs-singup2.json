@@ -49,7 +49,7 @@
     },
     {
         "inputKey": "singup-birthdate",
-        "inputType":"birthdate",
+        "inputType":"date",
         "placeholder":"Fecha de nacimiento (opcional)",
         "error":""
     },

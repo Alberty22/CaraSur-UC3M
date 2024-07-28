@@ -16,8 +16,8 @@ export function SingupPage() {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
-    const [inputsSingup, setInputsSingup] = useState(inputSingup1)
-    const [stepSingup, setStepSingup] = useState(false)
+    const [inputsSingup, setInputsSingup] = useState(inputSingup2)
+    const [stepSingup, setStepSingup] = useState(true)
 
     const onSubmit = data => {
         console.log(data);
@@ -39,7 +39,7 @@ export function SingupPage() {
                     <h2>SING UP</h2>
                     {isMobile && <p>Ya tienes cuenta. <Link to='/login' className="register-link">Inicia Sesión</Link></p>}
                 </div>
-
+                
                 <Form inputs={inputsSingup} onSubmit={onSubmit} type={'Sing Up'} group='right' />
                 
                 { !stepSingup &&
