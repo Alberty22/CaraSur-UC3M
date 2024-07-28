@@ -6,9 +6,23 @@ import { DescriptionSection } from './sections/DescriptionSection';
 import { ActivitiesTitleSection } from './sections/ActivitiesTitleSection';
 import { PrivilegesSection } from './sections/PrivilegesSection';
 import { ContactSection } from './sections/ContactSection';
+import { useLocation } from "react-router-dom";
+import { useEffect } from 'react';
 
 export function Main() {
     
+    const location = useLocation();
+
+    useEffect(() => {
+        const hash = location.hash;
+        if (hash) {
+          const element = document.getElementById(hash.substring(1));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, [location]);
+
     return (
         <main>
             <PrimarySection />

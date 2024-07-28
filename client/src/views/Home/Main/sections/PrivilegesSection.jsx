@@ -1,5 +1,6 @@
 import './PrivilegesSection.css'
 import check_icon from '../../../../assets/images/icons/Check.webp'
+import { Link } from 'react-router-dom';
 
 export function PrivilegesSection() {
     return (
@@ -17,7 +18,9 @@ export function PrivilegesSection() {
                     <li><img src={check_icon} alt='Checked Icon'/>Acceso a libros didácticos y guías de escalada.</li>
                     <li><img src={check_icon} alt='Checked Icon'/>Conocer gente con interés en deportes de montaña.</li>
                 </ul>
-                <button className="join-button">HAZTE SOCIO</button>
+                <Link to='/singup'>
+                    <button className="join-button">HAZTE SOCIO</button>
+                </Link>
             </div>
         </section>
       );

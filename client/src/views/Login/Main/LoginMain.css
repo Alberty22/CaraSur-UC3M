@@ -1,68 +1,289 @@
-.login-box {
+.login-main {
+    
+    width: 100vw;
+    height: calc(100vh - 100px);
+    overflow-x: hidden;
+    
+  }
+
+  .login-main > section {
+    background-color: #f7f7f7;
+    width: 100%;
+    height: calc(100vh + 100px);
+    position: absolute;
+    background-image: url('../../../assets/images/visuals/primary_fullsize.jpg');
+    background-size: cover;
+    top: -100px;
+    left: 0;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
   }
-  
-  .left, .right {
-    padding: 20px;
+
+  .login-main > section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 1;
+
   }
-  
-  .left {
-    flex: 1;
+
+  .login-main > section > div {
+    z-index: 2;
+    width: 35vw;
+    height: 65vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    border-radius: 15px;
+  }
+
+  .login-main > section > div:first-child {
+    border-radius: 15px 0 0 15px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+  
+  }
+
+  .login-main > section > div:last-child {
+    border-radius:  0 15px 15px 0;
+    background-color: #235371;
+  }
+
+  .login-main h2 {
+    color: #ffffff;
+    margin: 0;
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .login-form {
+    width: 80%;
+    height: 40%;
   }
   
-  .right {
-    background-color: #f0f0f0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  input[type="email"], input[type="password"] {
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .remember-me {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .login-button, .google-login-button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 20px 0;
+    padding-bottom: 10px;
+    color: #ffffff !important;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
+    border-bottom: 2px solid #ffffff;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:focus {
+    outline: none;
+    border-bottom: 2px solid initial;  
+    box-shadow: none;
+    background-color: initial;
+  }
+
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:-internal-autofill-selected{
+    outline: none;
+    border-bottom: 2px solid initial;  
+    box-shadow: none;
+    background-color: transparent !important;
+    appearance: initial;
+  }
+
+  .login-form  p {
+    margin: 0;
+    padding-top: 10px;
+    color: #ff3511;
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
+  
+  .login-form > div {
+    margin-top: 20px;
+    display: flex;
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+
+  .login-form .remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .login-form .forgot-password {
+    color: #ffffff;
+  }
+
+  .login-form  .pass-container {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+  }
+  .login-form .show-pass {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+  }
+
+  .login-form .show-pass img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .login-form button, .other-login button {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 15px;
     cursor: pointer;
-  }
-  
-  .login-button {
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .google-login-button {
-    background-color: #4285F4;
-    color: #fff;
-  }
-  
-  .forgot-password {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #fff;
     color: #000;
-    text
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .other-login {
+    margin-top: 30px;
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .other-login div {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .other-login div::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 45%;
+    height: 2px;
+    background-color: #fff;
+    transform: translateY(-50%);
+}
+
+  .other-login div::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 45%;
+      height: 2px;
+      background-color: #fff;
+      transform: translateY(-50%);
+  }
+
+  .other-login div span {
+    display: inline-block;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+  }
+
+  .other-login button {
+    margin-bottom: 30px;
+  }
+  .other-login button img {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+  }
+  
+
+  @media (max-width: 768px) {
+    .login-main {
+      width: 100vw;
+      height: calc(100vh - 70px);
+      
+    }
+
+    .login-main > section {
+      width: 100%;
+      height: 100%;
+      position: static;
+
+  
+    }
+
+    .login-main > section::before {
+      content: none;
+  
+    }
+
+    .login-main > section > div:last-child {
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+
+    
+    .login-main h2 {
+      font-size: 1.2rem;
+    }
+
+
+    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+
+      font-size: 0.8rem;
+      
+    }
+
+    .login-form  p {
+      font-size: 0.5rem;
+    }
+
+    .login-form > div {
+      font-size: 0.6rem;
+      
+    }
+  
+    .login-form .remember-me {
+      
+      font-size: 0.8rem;
+      
+    }
+
+    .login-form button, .other-login button {
+      font-size: 1rem;
+    }
+
+    .other-login div span {
+      font-size: 1rem;
+    }
+
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)  {
+
+    
+  }
+  

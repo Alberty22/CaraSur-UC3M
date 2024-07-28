@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import './DropdownMenu.css'
+import { Link } from "react-router-dom";
 
 export function DropdownMenu({ isOpen }) {
     const menuRef = useRef(null);
@@ -15,11 +16,11 @@ export function DropdownMenu({ isOpen }) {
     return (
         <nav className="dropdown-navigation" ref={menuRef}>
         <ul>
-            <li className="link"><a href="#inicio">INICIO</a></li>
-            <li className="link"><a href="#actividades">ACTIVIDADES</a></li>
-            <li className="link"><a href="#material">MATERIAL</a></li>
-            <li className="link"><a href="#contacto">CONTACTO</a></li>
-            <li className="link"><a href="#area-de-socios">ÁREA DE SOCIOS</a></li>
+            <li className="link"><Link to="/">INICIO</Link></li>
+            <li className="link"><Link to="/activities">ACTIVIDADES</Link></li>
+            <li className="link"><Link to="/equipment">MATERIAL</Link></li>
+            <li className="link"><Link to="/#contact">CONTACTO</Link></li>
+            <li className="link"><Link to="/home">ÁREA DE SOCIOS</Link></li>
         </ul>
         
         </nav>   

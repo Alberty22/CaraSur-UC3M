@@ -63,8 +63,8 @@ export function ActivitiesTitleSection() {
             <div></div>
             <div>
                 <div className="grid-container">
-                    {gridItems.map((item, index) => (
-                        <ActivityTitle key={index} color={item.color}  text={item.text} />
+                    {gridItems.map((item) => (
+                        <ActivityTitle key={item.text} color={item.color}  text={item.text} />
                     ))}
                 </div>
             </div>

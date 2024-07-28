@@ -5,7 +5,7 @@ export function ContactSection() {
     const isMobile = useMobileQuery('(max-width: 768px)')
 
     return (
-        <section className="contact-section">
+        <section id='contact' className="contact-section">
         <h2>Conoce <span>nuestro club</span></h2>
         <div className="contact-info">
             <div>

@@ -31,7 +31,6 @@
 }
 
 .activities-title-section > div:last-child h2 {
-    display: block;
     writing-mode: vertical-rl;
     transform: rotate(360deg);
     font-size: 2rem;

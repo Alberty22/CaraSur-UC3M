@@ -6,6 +6,7 @@ import facebook_logo from '../../assets/images/logos/facebook.webp'
 import youtube_logo from '../../assets/images/logos/youtube.webp'
 import mountains from '../../assets/images/visuals/mountains.png'
 import useMobileQuery from '../../hooks/useMobileQuery'
+import { Link } from 'react-router-dom'
 
 export function Footer () {
     const isMobile = useMobileQuery('(max-width: 1024px)')
@@ -16,11 +17,11 @@ export function Footer () {
             { !isMobile &&
                 <ul>
                     <li><h3>MENÚ</h3></li>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#actividades">Actividades</a></li>
-                    <li><a href="#material">Material</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                    <li><a href="#area-de-socios">Área de socios</a></li>
+                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/activities">Actividades</Link></li>
+                    <li><Link to="/equipment">Material</Link></li>
+                    <li><Link href="/#contact">Contacto</Link></li>
+                    <li><Link to="/login">Área de socios</Link></li>
                 </ul> 
             }
             </>

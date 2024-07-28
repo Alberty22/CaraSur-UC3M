@@ -161,8 +161,7 @@
     }
     
     .membership-card button {
-      min-width: 0;
-      width: 50%;
+      min-width: 100px;
       font-size: 0.7rem;
       padding: 15px 5px;
     }
@@ -217,8 +216,7 @@
     }
     
     .membership-card button {
-      min-width: 0;
-      width: 30%;
+      min-width: 150px;
       font-size: 0.9rem;
       padding: 15px 5px;
     }
