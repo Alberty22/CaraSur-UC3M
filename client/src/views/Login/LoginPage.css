@@ -1,0 +1,225 @@
+
+.background-img {
+  background-size: cover;
+  background-image: url('../../assets/images/visuals/primary_fullsize.jpg');
+  width: 100%;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  
+}
+
+.background-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 2;
+}
+
+.login-main {
+    
+    width: 100vw;
+    height: calc(100vh - 100px);
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .login-main .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-main .title h2 {
+    color: #ffffff;
+    margin: 0;
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .other-login {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .login-main .separator {
+    position: relative;
+    width: 80%;
+    
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .login-main .separator::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 45%;
+    height: 2px;
+    background-color: #fff;
+    transform: translateY(-50%);
+}
+
+  .login-main .separator::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 45%;
+      height: 2px;
+      background-color: #fff;
+      transform: translateY(-50%);
+  }
+
+  .login-main .separator span {
+    display: inline-block;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 1.5rem;
+  }
+
+  .other-login button {
+    margin-bottom: 20px;
+  }
+  .other-login button img {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+  }
+
+  .login-main .mountain-path{
+    width: 100%;
+    height: 80%;
+    background-size:cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .login-main .switch-form {
+    padding-top: 30px;
+  }
+
+  .login-main .switch-form a {
+    color: #fff;
+  }
+  
+  
+
+  @media (max-width: 768px) {
+    .login-main {
+      width: 100vw;
+      height: calc(100vh - 70px);
+      
+    }
+
+    .background-img {
+      width: 100%;
+      height: calc(100vh - 70px);
+      top:70px
+
+  
+    }
+
+    .background-img::before {
+      
+    }
+
+    .login-main > section:last-child {
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      margin-bottom: 0;
+    }
+
+    
+    
+    .login-main .title h2 {
+      font-size: 1.2rem;
+    }
+
+    .login-main .title p{
+      color: #fff;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    .login-main h2 + p a{
+      color: #fff;
+    }
+
+    .other-login div span {
+      font-size: 1rem;
+    }
+
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)  {
+
+    .login-main {
+      width: 100vw;
+      height: calc(100vh - 100px);
+      
+    }
+
+    .background-img {
+      width: 100%;
+      height: calc(100vh - 100px);
+      top:100px
+
+  
+    }
+
+    .background-img::before {
+      
+    }
+
+    .login-main > section:last-child {
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      margin-bottom: 0;
+    }
+
+    .login-main .title h2 {
+      font-size: 1.7rem;
+    }
+
+    .login-main .title p{
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .login-main h2 + p a{
+      color: #fff;
+      
+    }
+
+    .other-login div span {
+      font-size: 1.5rem;
+    }
+    
+  }
+  

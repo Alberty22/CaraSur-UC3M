@@ -1,0 +1,185 @@
+.login-form {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y:auto;
+  }
+
+
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+
+    width: 100%;
+    padding: 20px 0;
+    padding-bottom: 10px;
+    color: #ffffff !important;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:focus {
+    outline: none;
+    border-bottom: 2px solid initial;  
+    box-shadow: none;
+    background-color: initial;
+  }
+
+  .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"]:-internal-autofill-selected{
+    outline: none;
+    border-bottom: 2px solid initial;  
+    box-shadow: none;
+    background-color: transparent !important;
+    appearance: initial;
+  }
+
+  .login-form  p {
+    margin: 0;
+    padding-top: 10px;
+    color: #ff3511;
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
+
+  .login-form  .pass-container {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .login-form .show-pass {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    margin: 0;
+  }
+
+  .login-form .show-pass img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .login-form .login-extra {
+    margin-top: 20px;
+    display: flex;
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+
+  .login-form .remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .login-form .forgot-password {
+    color: #ffffff;
+  }
+  
+  .login-form button, .other-login button {
+    width: 100%;
+    margin: 20px 0 10px 0;
+    padding: 20px 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+
+    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+        margin-bottom: 20px;
+        font-size: 0.8rem;
+        
+      }
+  
+      .login-form .show-pass {
+  
+        bottom: 20px;
+      }
+  
+      .login-form  p {
+        font-size: 0.3rem;
+      }
+      
+  
+      .login-form > div {
+        font-size: 0.6rem;
+        
+      }
+
+      .login-form .login-extra {
+        
+        flex-direction: column;
+        
+      }
+    
+      .login-form .remember-me {
+        
+        font-size: 0.8rem;
+        
+      }
+  
+      .login-form button, .other-login button {
+        padding: 15px 0;
+        margin: 20px 0 20px 0;
+        font-size: 1rem;
+      }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)  {
+
+    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        
+      }
+  
+      .login-form .show-pass {
+  
+        bottom: 10px;
+      }
+  
+      .login-form  p {
+        font-size: 0.9rem;
+      }
+  
+      .login-form > div {
+        font-size: 1.2rem;
+        
+      }
+
+      .login-form .login-extra {
+        
+        flex-direction: row;
+        
+      }
+    
+      .login-form .remember-me {
+        
+        font-size: 1.2rem;
+        
+      }
+  
+      .login-form button, .other-login button {
+        margin-top: 50px;
+        font-size: 1.5rem;
+        padding: 30px 0;
+      }
+  }

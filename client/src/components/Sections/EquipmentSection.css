@@ -1,0 +1,66 @@
+.equipment-section {
+    width: 100%;
+    height: 20vh;
+    min-height: 250px;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    
+  }
+  
+  .equipment-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #282828;
+    margin: 0;
+    
+  }
+  
+  .equipment-section span {
+    color: #235371;
+}
+
+.equipment-section button {
+    border-radius: 15px;
+    border: none;
+    padding: 20px 20px;
+    background-color:#235371;
+    
+    cursor: pointer;
+
+}
+
+.equipment-section button a{
+    color: #f7f7f7;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+  
+
+
+
+  
+@media (max-width: 768px) {
+
+.separator-section {
+    min-height: 65px;
+    font-size: 0.8rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+.separator-section {
+    font-size: 1.5rem;
+    max-height: 80px;
+    }
+
+}
+

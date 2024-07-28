@@ -1,0 +1,20 @@
+[
+    {
+        "inputKey": "singup-email",
+        "inputType":"email",
+        "placeholder":"Introduce tu email",
+        "error":"Email is required"
+    },
+    {
+        "inputKey": "singup-password",
+        "inputType":"password",
+        "placeholder":"Introduce una contraseña",
+        "error":"Password is required"
+    },
+    {
+        "inputKey": "singp-password-repeat",
+        "inputType":"password",
+        "placeholder":"Introduce de nuevo contraseña",
+        "error":"Password is required"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "inputKey": "login-email",
+        "inputType":"email",
+        "placeholder":"Introduce tu email",
+        "error":"Email is required"
+    },
+    {
+        "inputKey": "login-password",
+        "inputType":"password",
+        "placeholder":"Introduce tu contraseña",
+        "error":"Password is required"
+    },
+    {
+        "inputKey": "login-remember",
+        "inputType":"checkbox",
+        "placeholder":"Recuérdame",
+        "error":"Password is required"
+    }
+]
