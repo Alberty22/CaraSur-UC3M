@@ -1,13 +1,16 @@
 import './LoginMain.css'
 import { useForm } from 'react-hook-form';
 import google_logo from '../../../assets/images/logos/google.webp'
-import show_icon from '../../../assets/images/icons/View_hide.webp'
+import hide_icon from '../../../assets/images/icons/View_hide.webp'
+import show_icon from '../../../assets/images/icons/View_show.webp'
+import mountain_path from '../../../assets/images/visuals/mountain-path.png'
 import { useState } from 'react';
 import useMobileQuery from '../../../hooks/useMobileQuery';
 
 export function LoginMain() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const [passIcon, setPassIcon] = useState(show_icon)
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
@@ -17,14 +20,19 @@ export function LoginMain() {
     };
 
     const handleClick = () => {
+        setPassIcon(showPassword ? show_icon : hide_icon)
         setShowPassword(!showPassword)
+        
     }
 
     return (
         <main className='login-main'>
             <section>
-                <div>
-                    <h2>LOGIN</h2>
+                <div className='left'>
+                    <div className='title'>
+                        <h2>LOGIN</h2>
+                        {isMobile && <p>No tienes cuenta todavía. <a href="/" className="register-link">Regístrate ahora</a></p>}
+                    </div>
                     <form className= 'login-form' onSubmit={handleSubmit(onSubmit)}>
                         <input
                         type="email"
@@ -38,7 +46,7 @@ export function LoginMain() {
                             placeholder="Introduce tu contraseña"
                             {...register('password', { required: 'Password is required' })}
                             />
-                            <button type="other" onClick={handleClick} className='show-pass'><img src={show_icon} alt="Mostrar contraseña" /></button>
+                            <button type="other" onClick={handleClick} className='show-pass'><img src={passIcon} alt="Mostrar contraseña" /></button>
                         </div>
                         
                         {errors.password && <p>{errors.password.message}</p>}
@@ -57,11 +65,10 @@ export function LoginMain() {
                         
                         <button type="submit">Log In</button>
                     </form>
-
+                    <div className='separator'>
+                        <span>o</span>
+                    </div>
                     <div className='other-login'>
-                        <div>
-                            <span>o</span>
-                        </div>
                         <button>
                             <img src={google_logo} alt='Google logo'></img>
                             Log In with Google
@@ -70,9 +77,9 @@ export function LoginMain() {
                     
                     
                 </div>
-                { !isMobile && <div className="right">
-                    {/* <p>No tienes cuenta todavía. <a href="/" className="register-link">Regístrate ahora</a></p>
-                    <img src={mountain_path} alt="Mountain" /> */}
+                { !isMobile && <div className='right'>
+                    <p>No tienes cuenta todavía. <a href="/" className="register-link">Regístrate ahora</a></p>
+                    <img src={mountain_path} alt="Mountain" />
                 </div>}
             </section>
             

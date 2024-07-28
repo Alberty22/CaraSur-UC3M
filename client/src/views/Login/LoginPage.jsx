@@ -28,8 +28,6 @@ export function LoginPage() {
         
 
     }
-
-    const isMobile = useMobileQuery('(max-width: 1023px)')
     
     return (
         <>

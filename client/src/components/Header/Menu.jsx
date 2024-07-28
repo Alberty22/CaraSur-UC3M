@@ -6,7 +6,7 @@ import { NavLink, Link } from "react-router-dom";
 
 export function Menu({ toggleMenu, isMenu }) {
 
-    const isMobile = useMobileQuery('(max-width: 1023px)')
+    const isMobile = useMobileQuery('(max-width: 1024px)')
 
     return(
       <nav className='navigation'>

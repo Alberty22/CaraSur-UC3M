@@ -38,27 +38,30 @@
     z-index: 2;
     width: 35vw;
     height: 65vh;
+    min-height: 530px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     border-radius: 15px;
   }
 
-  .login-main > section > div:first-child {
+  .login-main .left {
     border-radius: 15px 0 0 15px;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     overflow-y: auto;
+    justify-content: space-evenly;
   
   }
 
-  .login-main > section > div:last-child {
-    border-radius:  0 15px 15px 0;
-    background-color: #235371;
+  .login-main .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  .login-main h2 {
+  .login-main .title h2 {
     color: #ffffff;
     margin: 0;
     padding: 20px 0;
@@ -68,9 +71,12 @@
 
   .login-form {
     width: 80%;
-    height: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
-  
+
   .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
 
     width: 100%;
@@ -106,8 +112,30 @@
     font-weight: bold;
     font-size: 0.7rem;
   }
+
+  .login-form  .pass-container {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .login-form .show-pass {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    margin: 0;
+  }
+
+  .login-form .show-pass img {
+    width: 25px;
+    height: 25px;
+  }
   
-  .login-form > div {
+  .login-form > div{
     margin-top: 20px;
     display: flex;
     font-size: 0.8rem;
@@ -125,26 +153,11 @@
   .login-form .forgot-password {
     color: #ffffff;
   }
-
-  .login-form  .pass-container {
-    margin: 0;
-    display: flex;
-    align-items: flex-end;
-  }
-  .login-form .show-pass {
-    width: 25px;
-    height: 25px;
-    background-color: transparent;
-  }
-
-  .login-form .show-pass img {
-    width: 25px;
-    height: 25px;
-  }
   
   .login-form button, .other-login button {
     width: 100%;
-    padding: 10px 0;
+    margin: 10px 0 10px 0;
+    padding: 20px 0;
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -158,9 +171,8 @@
   }
 
   .other-login {
-    margin-top: 30px;
     width: 80%;
-    height: 40%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,16 +180,15 @@
     background-color: transparent;
   }
 
-  .other-login div {
+  .login-main .separator {
     position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 30px;
+    width: 80%;
+    
     text-align: center;
     background-color: transparent;
   }
 
-  .other-login div::before {
+  .login-main .separator::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -188,7 +199,7 @@
     transform: translateY(-50%);
 }
 
-  .other-login div::after {
+  .login-main .separator::after {
       content: "";
       position: absolute;
       top: 50%;
@@ -199,7 +210,7 @@
       transform: translateY(-50%);
   }
 
-  .other-login div span {
+  .login-main .separator span {
     display: inline-block;
     color: #fff;
     padding: 0 10px;
@@ -214,6 +225,32 @@
     height: 25px;
     margin-right: 20px;
   }
+
+
+  .login-main .right {
+    border-radius:  0 15px 15px 0;
+    background-color: #235371;
+    color: #fff;
+    position: relative;
+  }
+
+  .login-main .right img{
+    width: 100%;
+    height: 80%;
+    background-size:cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .login-main .right p {
+    padding-top: 30px;
+  }
+
+  .login-main .right a {
+    color: #fff;
+  }
+  
   
 
   @media (max-width: 768px) {
@@ -244,17 +281,32 @@
       backdrop-filter: blur(10px);
     }
 
-
     
-    .login-main h2 {
+    
+    .login-main .title h2 {
       font-size: 1.2rem;
+    }
+
+    .login-main .title p{
+      color: #fff;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    .login-main h2 + p a{
+      color: #fff;
     }
 
 
     .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
-
+      margin-bottom: 20px;
       font-size: 0.8rem;
       
+    }
+
+    .login-form .show-pass {
+
+      bottom: 20px;
     }
 
     .login-form  p {
@@ -273,6 +325,8 @@
     }
 
     .login-form button, .other-login button {
+      padding: 15px 0;
+      margin: 20px 0 20px 0;
       font-size: 1rem;
     }
 
@@ -284,6 +338,85 @@
 
   @media (min-width: 768px) and (max-width: 1024px)  {
 
+    .login-main {
+      width: 100vw;
+      height: calc(100vh - 100px);
+      
+    }
+
+    .login-main > section {
+      width: 100%;
+      height: 100%;
+      position: static;
+
+  
+    }
+
+    .login-main > section::before {
+      content: none;
+  
+    }
+
+    .login-main > section > div:last-child {
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    
+    
+    .login-main .title h2 {
+      font-size: 1.7rem;
+    }
+
+    .login-main .title p{
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .login-main h2 + p a{
+      color: #fff;
+    }
+
+
+    .login-form input[type="email"], .login-form input[type="password"], .login-form input[type="text"] {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      
+    }
+
+    .login-form .show-pass {
+
+      bottom: 10px;
+    }
+
+    .login-form  p {
+      font-size: 1.2rem;
+    }
+
+    .login-form > div {
+      font-size: 1.2rem;
+      
+    }
+  
+    .login-form .remember-me {
+      
+      font-size: 1.2rem;
+      
+    }
+
+    .login-form button, .other-login button {
+      margin-top: 50px;
+      font-size: 1.5rem;
+      padding: 30px 0;
+    }
+
+    .other-login div span {
+      font-size: 1.5rem;
+    }
     
   }
   

@@ -22,7 +22,9 @@ export function Header() {
         }
       }, [location.pathname]);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleMenu = () => setIsOpen(!isOpen)
+
+    const closeMenu = () => setIsOpen(false)
   
     return (
         <>
@@ -32,7 +34,7 @@ export function Header() {
             </div>
             <Menu toggleMenu={toggleMenu} isMenu={isMenu}/>
         </header>
-        <DropdownMenu isOpen={isOpen}/>
+        <DropdownMenu closeMenu={closeMenu} isOpen={isOpen}/>
         </>
     )
 }
