@@ -12,7 +12,7 @@
         "error":"Password is required"
     },
     {
-        "inputKey": "singp-password-repeat",
+        "inputKey": "singup-password-repeat",
         "inputType":"password",
         "placeholder":"Introduce de nuevo contraseña",
         "error":"Password is required"

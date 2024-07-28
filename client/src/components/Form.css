@@ -50,7 +50,7 @@
     width: 100%;
     padding: 20px 0;
     padding-bottom: 10px;
-    color: #ffffff !important;
+    color: #ffffff ;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #ffffff;
@@ -60,12 +60,24 @@
     
   }
 
+  .login-form select{
+    color: #969696;
+  }
+
+  .login-form .selected{
+    color: #ffffff;
+  }
+
   .login-form select option {
     font-size: 1.1rem;
     font-weight: normal;
     color: #ffffff;
     background: #282828;
     
+  }
+
+  .login-form select option:first-child {
+    color: #969696;
   }
 
 

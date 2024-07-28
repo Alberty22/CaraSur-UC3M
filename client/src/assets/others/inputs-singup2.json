@@ -38,7 +38,7 @@
     {
         "inputKey": "singup-uc3m-student",
         "inputType":"uc3m-student",
-        "placeholder":"Si",
+        "placeholder":"Estudiante UC3M",
         "error":"UC3M student is required"
     },
     {
