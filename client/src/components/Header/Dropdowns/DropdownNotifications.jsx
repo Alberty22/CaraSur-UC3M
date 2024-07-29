@@ -1,29 +1,23 @@
 import { useRef, useEffect } from "react";
 import './DropdownNotifications.css'
-import check_icon from "../../assets/images/icons/Check.webp"
-import useNotifications  from "../../hooks/useNotifications.js";
+import check_icon from "../../../assets/images/icons/Check.webp"
+import { useNotifications }  from "../../../hooks/useNotifications.js";
+import { usePopup } from "../../../hooks/usePopup.js";
 
-export function DropdownNotifications({ closeMenu, isOpen }) {
-    const notificationsRef = useRef(null);
+export function DropdownNotifications() {
 
     const {notifications, setNotifications} = useNotifications()
 
-    useEffect (() =>{
-        if (notificationsRef.current) {
-            notificationsRef.current.style.maxHeight = isOpen ? '400px' : '0';
-
-          }
-        }, [isOpen]
-    )
+    const { popupRef, handleClose } = usePopup({ id:'notifications', maxHeight:'500'});
 
     const handleClick = () => {
-        closeMenu();
+        handleClose();
         setNotifications({})
         //TODO Llamada al servidor de borrar
     }
 
     return (
-        <ul className="dropdown-notifications" ref={notificationsRef}>
+        <ul className="dropdown-notifications" ref={popupRef} id="notifications">
             <li>
                 <div>
                     Notificaciones

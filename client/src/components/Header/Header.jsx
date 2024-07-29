@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import carasur_logo from "../../assets/images/logos/carasur.webp"
-import { Menu } from './Menu.jsx'
-import { DropdownMenu } from './DropdownMenu.jsx'
+import { Menu } from './Menu/Menu.jsx'
+
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth.js";
 import './Header.css'
-import { DropdownNotifications } from "./DropdownNotifications.jsx";
+import { DropdownMenu } from './Dropdowns/DropdownMenu.jsx'
+import { DropdownNotifications } from "./Dropdowns/DropdownNotifications.jsx";
 import useMobileQuery from "../../hooks/useMobileQuery.js";
 
 export function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+    
     const [isMenu, setIsMenu] = useState(true)
 
     const { isAuthenticated } = useAuth()
@@ -31,11 +31,6 @@ export function Header() {
         }
       }, [location.pathname]);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-
-    const toggleNotifications = () => setIsNotificationsOpen(!isNotificationsOpen)
-
-    const closeMenu = () => {setIsMenuOpen(false); setIsNotificationsOpen(false)}
   
     return (
         <>
@@ -45,13 +40,13 @@ export function Header() {
                 <Link to="/"><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
             </div>
             }
-            <Menu toggleMenu={toggleMenu} isMenu={isMenu} toggleNotifications={toggleNotifications}/>
+            <Menu isMenu={isMenu} />
         </header>
-        <DropdownMenu closeMenu={closeMenu} isOpen={isMenuOpen}/>
+        <DropdownMenu />
         {
             isAuthenticated &&
             <>
-            <DropdownNotifications closeMenu={closeMenu} isOpen={isNotificationsOpen}/>
+            <DropdownNotifications />
             </>
         }
         </>

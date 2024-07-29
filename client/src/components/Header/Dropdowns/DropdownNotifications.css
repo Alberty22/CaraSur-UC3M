@@ -41,6 +41,11 @@
     justify-content: center;
 }
 
+.dropdown-notifications li:last-child {
+    margin-bottom: 10px;
+    border: none;
+}
+
 .dropdown-notifications li:first-child div {
     color: #235371;
     margin: 0;

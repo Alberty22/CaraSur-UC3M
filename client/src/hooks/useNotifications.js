@@ -6,5 +6,3 @@ export function useNotifications() {
   
   return {notifications, setNotifications}
 }
-
-export default useNotifications
