@@ -8,6 +8,7 @@ import './Header.css'
 import { DropdownMenu } from './Dropdowns/DropdownMenu.jsx'
 import { DropdownNotifications } from "./Dropdowns/DropdownNotifications.jsx";
 import useMobileQuery from "../../hooks/useMobileQuery.js";
+import { DropdownUser } from "./Dropdowns/DropdowUser.jsx";
 
 export function Header() {
     
@@ -46,6 +47,7 @@ export function Header() {
         {
             isAuthenticated &&
             <>
+            <DropdownUser />
             <DropdownNotifications />
             </>
         }

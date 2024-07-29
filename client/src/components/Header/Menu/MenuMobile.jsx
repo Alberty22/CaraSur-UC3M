@@ -10,7 +10,7 @@ export function MenuMobile() {
     const { isAuthenticated } = useAuth()
     const { notifications } = useNotifications()
 
-    const { activePopup, togglePopup:toggleMenuPopup } = usePopup({ id:'menu', maxHeight:'500'})
+    const { togglePopup:toggleMenuPopup } = usePopup({ id:'menu', maxHeight:'500'})
     const { togglePopup:toggleNotificationsPopup } = usePopup({ id:'notifications', maxHeight:'400'})
 
 

@@ -46,6 +46,7 @@ function App() {
           <Route path='details' element={<></>} />
         </Route>
         <Route path='/profile' element={<ProtectedRoute><></></ProtectedRoute>} />
+        <Route path='/loans' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/admin' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='*' element={<h1>404 - Ruta inexistente</h1>} />
       </Routes>

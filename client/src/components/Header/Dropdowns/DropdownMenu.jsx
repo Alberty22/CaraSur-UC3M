@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import './DropdownMenu.css'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.js";
