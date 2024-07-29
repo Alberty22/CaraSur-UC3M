@@ -10,6 +10,7 @@ import { Footer } from './components/Footer/Footer.jsx'
 import { Header } from './components/Header/Header.jsx'
 
 import { useAuth } from './hooks/useAuth.js';
+import { NotificationsProvider } from './context/notifications.jsx';
 
 
 function App() {
@@ -28,13 +29,15 @@ function App() {
 
   return (
     <>
-      <Header />
+      <NotificationsProvider>
+        <Header />
+      </NotificationsProvider>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/singup' element={<SingupPage />} />
         <Route path='/singup/next-step' element={<SingupPage />} />
-        <Route path='/home' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+        <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
         <Route path='/activities' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/new' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/:activityId' element={<></>} />

@@ -1,41 +1,48 @@
 .primary-section {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     width: 100%;
     height: 65vh;
     max-height: 600px;
     background-size: 100% 100%; 
+    flex-wrap: wrap;
+  }
+
+  .primary-section div {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
 .primary-section img {
     width: auto; 
-    height: 83%;
-    position: absolute;
-    top:-30px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    height: 70%;
   }
   
 .primary-section button {
-    width: 200px; 
-    height: 80px;
+    padding: 20px 20px;
     background-color: #235371;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
     font-family: inherit;
     cursor: pointer;
     border-radius: 15px;
-    position: absolute;
-    bottom:50px;
-    left: 0;
-    right: 0;
-    margin: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    
+  }
+
+  .primary-section button a{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
   }
   
 .primary-section button:hover {
@@ -48,14 +55,14 @@
   }
   .primary-section img {
     height: 70%;
-    top: 0;
   }
 
   .primary-section button {
-    width: 120px; 
-    height: 30px;
-    font-size: 0.6rem;
-    bottom:15px;
+    padding: 7px 10px;
+  }
+
+  .primary-section button a{
+    font-size: 0.5rem;
   }
 }
 
@@ -67,14 +74,14 @@
   }
 
   .primary-section img {
-    height: 83%;
-    top:-30px;
+    height: 70%;
   }
 
   .primary-section button {
-    width: 140px; 
-    height: 50px;
+    padding: 20px 20px;
+  }
+
+  .primary-section button a{
     font-size: 0.8rem;
-    bottom:50px;
   }
 }

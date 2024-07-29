@@ -20,7 +20,7 @@ export function LoginPage() {
     const onSubmit = data => {
         console.log(isAuthenticated)
         login()
-        navigate(state?.location?.pathname ?? '/home')
+        navigate(state?.location?.pathname ?? '/')
         console.log(data);
     };
 

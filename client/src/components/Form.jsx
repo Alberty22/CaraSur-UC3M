@@ -49,10 +49,10 @@ export const Form = ({ inputs, onSubmit, type }) => {
     //     accept: 'image/*',
     //   });
 
-    console.log(countryList().getData())
     return(
         <div className='form-container'>
-            <form className= 'login-form' onSubmit={handleSubmit(onSubmit)}>
+            {/* Poner handleSubmit(onSubmit) */}
+            <form className= 'login-form' onSubmit={onSubmit}>
                 {
                     inputs.map((input) => {
                         const { inputKey, inputType, placeholder, error } = input
@@ -60,7 +60,8 @@ export const Form = ({ inputs, onSubmit, type }) => {
                             return (
                                 <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                     <input type="email" placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}/>
+                                    {...register(inputKey, { required: error })}
+                                    />
                                     {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                 </div>   
                             )}

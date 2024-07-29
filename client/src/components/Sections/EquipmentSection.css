@@ -48,18 +48,47 @@
   
 @media (max-width: 768px) {
 
-.separator-section {
-    min-height: 65px;
-    font-size: 0.8rem;
+    .equipment-section {
+        min-height: 150px;
+        
+      }
+
+    .equipment-section h2 {
+        font-size: 0.8em;
+        
+      }
+
+    .equipment-section button {
+        padding: 15px 10px;
+    
+    }
+
+    .equipment-section button a{
+        font-size: 0.7em;
+    
     }
 
 }
 
 @media (min-width: 768px) and (max-width: 1024px)  {
 
-.separator-section {
-    font-size: 1.5rem;
-    max-height: 80px;
+    .equipment-section {
+        min-height: 150px;
+        
+      }
+
+    .equipment-section h2 {
+        font-size: 1.7em;
+        
+      }
+
+      .equipment-section button {
+        padding: 20px 20px;
+    
+    }
+
+    .equipment-section button a{ 
+        font-size: 1.2em;
     }
 
 }
