@@ -5,7 +5,6 @@ export function usePopup({ id, maxHeight, toggleRefs = [] }) {
     const { activePopup, openPopup, closePopup } = useContext(PopupContext);
     const isOpen = activePopup === id;
     const popupRef = useRef(null);
-    console.log(toggleRefs)
 
     useEffect(() => {
         if (popupRef.current) {
