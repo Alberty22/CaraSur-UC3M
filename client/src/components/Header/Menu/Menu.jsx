@@ -4,9 +4,10 @@ import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { MenuMobile } from "./MenuMobile";
 import { MenuAuthenticated } from "./MenuAuthenticated";
+import { forwardRef } from 'react';
 
 
-export function Menu({ isMenu }) {
+export const Menu = ({ isMenu, refList }) => {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
     const { isAuthenticated } = useAuth()
@@ -15,7 +16,7 @@ export function Menu({ isMenu }) {
       <nav className='navigation'>
         {
           isMobile 
-          ?  <MenuMobile />
+          ?  <MenuMobile refList={refList} />
           : ( isMenu &&
             <>
             <ul>
@@ -27,7 +28,7 @@ export function Menu({ isMenu }) {
                 <li className='link-area'> <Link to="/login"><p>ÁREA DE <br /> SOCIOS</p></Link> </li>
               }
             </ul>
-            { isAuthenticated && <MenuAuthenticated /> }
+            { isAuthenticated && <MenuAuthenticated refList={refList}/> }
             </>
             
           )

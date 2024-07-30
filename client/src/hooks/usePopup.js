@@ -23,6 +23,7 @@ export function usePopup({ id, maxHeight, toggleRefs = [] }) {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
+            console.log(toggleRefs)
             if (popupRef.current && popupRef.current.contains(event.target)) {
                 return;
             }

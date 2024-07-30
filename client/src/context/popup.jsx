@@ -7,18 +7,16 @@ export function PopupProvider ({ children }) {
 
     // Función para abrir un popup y cerrar todos los demás
     const openPopup = (popupId) => {
-        console.log(`se abre ${popupId}`)
         setActivePopup(popupId);
     };
 
     // Función para cerrar el popup actual
     const closePopup = () => {
-        console.log(`se cierra`)
         setActivePopup(null);
     };
 
     return (
-        <PopupContext.Provider value={{ activePopup, openPopup, closePopup }}>
+        <PopupContext.Provider value={{ activePopup, openPopup, closePopup}}>
             {children}
         </PopupContext.Provider>
     )

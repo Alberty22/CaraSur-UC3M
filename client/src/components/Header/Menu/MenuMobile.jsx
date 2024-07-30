@@ -5,19 +5,15 @@ import { useAuth } from "../../../hooks/useAuth"
 import { useNotifications } from "../../../hooks/useNotifications"
 import { useRef } from "react"
 import { usePopup } from "../../../hooks/usePopup"
+import { forwardRef } from 'react';
 
-export function MenuMobile() {
+export const MenuMobile = ({ refList }) => {
     const { isAuthenticated } = useAuth()
     const { notifications } = useNotifications()
 
-    const refNotifications = useRef(null);
-    const refMenu = useRef(null);
+    const refNotifications = refList.notifications;
+    const refMenu = refList.menu;
     
-    usePopup({ id:'notifications', maxHeight:'400', toggleRefs:[refNotifications]})
-
-    usePopup({ id:'menu', maxHeight:'500', toggleRefs:[refMenu]})
-
-
     return (
         <>
         { isAuthenticated &&
@@ -31,9 +27,10 @@ export function MenuMobile() {
         </div>
             
         }
-        <button>
-            <img src={menu_icon} alt="Menú" ref={refMenu}/>
+        <button ref={refMenu} className="burger-menu">
+            <img src={menu_icon} alt="Menú" />
         </button>
         </>
     )
 }
+

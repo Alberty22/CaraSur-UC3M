@@ -9,6 +9,7 @@ import { DropdownMenu } from './Dropdowns/DropdownMenu.jsx'
 import { DropdownNotifications } from "./Dropdowns/DropdownNotifications.jsx";
 import useMobileQuery from "../../hooks/useMobileQuery.js";
 import { DropdownUser } from "./Dropdowns/DropdownUser.jsx";
+import { useRef } from "react";
 
 export function Header() {
     
@@ -32,7 +33,11 @@ export function Header() {
         }
       }, [location.pathname]);
 
-  
+    
+    const menuRef = useRef(null)
+    const notificationsRef = useRef(null)
+    const userRef = useRef(null)
+
     return (
         <>
         <header>
@@ -41,14 +46,14 @@ export function Header() {
                 <Link to="/"><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
             </div>
             }
-            <Menu isMenu={isMenu} />
+            <Menu isMenu={isMenu} refList={{menu:menuRef, notifications:notificationsRef, user:userRef}}/>
         </header>
-        <DropdownMenu />
+        <DropdownMenu ref={menuRef}/>
         {
             isAuthenticated &&
             <>
-            <DropdownUser />
-            <DropdownNotifications />
+            <DropdownUser ref={userRef}/>
+            <DropdownNotifications ref={notificationsRef}/>
             </>
         }
         </>

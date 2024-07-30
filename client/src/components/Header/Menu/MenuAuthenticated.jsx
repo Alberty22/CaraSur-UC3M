@@ -4,16 +4,13 @@ import user_icon from "../../../assets/images/icons/User_white.webp"
 import { useRef } from "react"
 import { useNotifications } from "../../../hooks/useNotifications"
 import { usePopup } from "../../../hooks/usePopup"
+import { forwardRef } from 'react';
 
-export function MenuAuthenticated() {
+export const MenuAuthenticated = ({ refList }) => {
     const { notifications } = useNotifications()
 
-    const refNotifications = useRef(null);
-    const refUser = useRef(null);
-    
-    usePopup({ id:'notifications', maxHeight:'400', toggleRefs:[refNotifications]})
-
-    usePopup({ id:'user', maxHeight:'400', toggleRefs:[refUser]})
+    const refNotifications = refList.notifications;
+    const refUser = refList.user;
 
     return (
         <>

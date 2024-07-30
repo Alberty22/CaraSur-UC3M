@@ -3,12 +3,13 @@ import './DropdownNotifications.css'
 import check_icon from "../../../assets/images/icons/Check.webp"
 import { useNotifications }  from "../../../hooks/useNotifications.js";
 import { usePopup } from "../../../hooks/usePopup.js";
+import { forwardRef } from 'react';
 
-export function DropdownNotifications() {
+export const DropdownNotifications = forwardRef((props, ref) => {
 
     const {notifications, setNotifications} = useNotifications()
 
-    const { popupRef, handleClose } = usePopup({ id:'notifications', maxHeight:'500'});
+    const { popupRef, handleClose } = usePopup({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
 
     const handleClick = () => {
         handleClose();
@@ -46,4 +47,6 @@ export function DropdownNotifications() {
         
         </ul>   
     )
-  }
+  })
+
+DropdownNotifications.displayName = 'DropdownNotifications';

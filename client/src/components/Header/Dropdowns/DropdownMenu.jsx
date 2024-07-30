@@ -2,12 +2,13 @@ import './DropdownMenu.css'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.js";
 import { usePopup } from "../../../hooks/usePopup.js";
+import { forwardRef } from 'react';
 
-export function DropdownMenu() {
+export const DropdownMenu = forwardRef((props, ref) => {
     
     const { isAuthenticated, logout } = useAuth()
 
-    const { popupRef, handleClose } = usePopup({ id:'menu', maxHeight:'500'});
+    const { popupRef, handleClose } = usePopup({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
 
     return (
         <nav className="dropdown-navigation" ref={popupRef} id="menu">
@@ -29,4 +30,6 @@ export function DropdownMenu() {
         
         </nav>   
     )
-  }
+  })
+
+DropdownMenu.displayName = 'DropdownMenu';
