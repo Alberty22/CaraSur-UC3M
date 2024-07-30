@@ -4,7 +4,6 @@ import menu_icon from "../../../assets/images/icons/Menu.webp"
 import { useAuth } from "../../../hooks/useAuth"
 import { useNotifications } from "../../../hooks/useNotifications"
 import { useRef } from "react"
-import { usePopup } from "../../../hooks/usePopup"
 import { forwardRef } from 'react';
 
 export const MenuMobile = ({ refList }) => {

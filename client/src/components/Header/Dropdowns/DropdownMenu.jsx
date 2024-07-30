@@ -1,14 +1,14 @@
 import './DropdownMenu.css'
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.js";
-import { usePopup } from "../../../hooks/usePopup.js";
+import { useDropdown } from '../../../hooks/useDropdown.js';
 import { forwardRef } from 'react';
 
 export const DropdownMenu = forwardRef((props, ref) => {
     
     const { isAuthenticated, logout } = useAuth()
 
-    const { popupRef, handleClose } = usePopup({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
+    const { popupRef, handleClose } = useDropdown({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
 
     return (
         <nav className="dropdown-navigation" ref={popupRef} id="menu">

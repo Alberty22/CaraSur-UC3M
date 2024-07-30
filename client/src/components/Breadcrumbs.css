@@ -1,0 +1,31 @@
+.breadcrumbs-section {
+    width: 90vw;
+    margin-left: 10vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.breadcrumbs-section h3 {
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin: 15px 0 15px 0;
+}
+
+.breadcrumbs-section span:last-child{
+    color: #235371
+}
+
+.breadcrumbs-section a{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .breadcrumbs-section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}

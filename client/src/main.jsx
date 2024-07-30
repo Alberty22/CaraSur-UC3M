@@ -4,14 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/auth.jsx'
-import { PopupProvider } from './context/popup.jsx'
+import { DropdownProvider } from './context/dropdown.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <AuthProvider>
-      <PopupProvider>
+      <DropdownProvider>
         <App />
-      </PopupProvider>
+      </DropdownProvider>
     </AuthProvider>
   </BrowserRouter>
     

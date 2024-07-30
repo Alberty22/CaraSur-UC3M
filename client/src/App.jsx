@@ -5,6 +5,7 @@ import './App.css'
 import { HomePage } from './views/Home/HomePage.jsx';
 import { LoginPage } from './views/Login/LoginPage.jsx';
 import { SingupPage } from './views/Singup/SingupPage.jsx';
+import { ProfilePage } from './views/Profile/ProfilePage.jsx';
 
 import { Footer } from './components/Footer/Footer.jsx'
 import { Header } from './components/Header/Header.jsx'
@@ -45,7 +46,8 @@ function App() {
         <Route path='/equipment/:productId' element={<></>}>
           <Route path='details' element={<></>} />
         </Route>
-        <Route path='/profile' element={<ProtectedRoute><></></ProtectedRoute>} />
+        <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path='/profile/prueba' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path='/loans' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/admin' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='*' element={<h1>404 - Ruta inexistente</h1>} />

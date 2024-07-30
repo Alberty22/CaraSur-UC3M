@@ -3,7 +3,6 @@ import notifications_on_icon from "../../../assets/images/icons/Notifications_on
 import user_icon from "../../../assets/images/icons/User_white.webp"
 import { useRef } from "react"
 import { useNotifications } from "../../../hooks/useNotifications"
-import { usePopup } from "../../../hooks/usePopup"
 import { forwardRef } from 'react';
 
 export const MenuAuthenticated = ({ refList }) => {

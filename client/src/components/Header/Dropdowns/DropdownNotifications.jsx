@@ -2,14 +2,14 @@ import { useRef, useEffect } from "react";
 import './DropdownNotifications.css'
 import check_icon from "../../../assets/images/icons/Check.webp"
 import { useNotifications }  from "../../../hooks/useNotifications.js";
-import { usePopup } from "../../../hooks/usePopup.js";
 import { forwardRef } from 'react';
+import { useDropdown } from "../../../hooks/useDropdown.js";
 
 export const DropdownNotifications = forwardRef((props, ref) => {
 
     const {notifications, setNotifications} = useNotifications()
 
-    const { popupRef, handleClose } = usePopup({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
+    const { popupRef, handleClose } = useDropdown({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
 
     const handleClick = () => {
         handleClose();

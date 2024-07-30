@@ -1,0 +1,78 @@
+.profile-page {
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.profile-page > section:last-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+
+.profile-page .user-image {
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
+    border: solid 2px #235371;
+    border-radius: 150px;
+    justify-self: center;
+    margin-top: 30px;
+}
+
+.profile-page .user-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.profile-page .user-info {
+    width: 100%;
+    height: 75vh;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 30% 30% 30%;
+    gap: 20px;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .profile-page .user-info {
+        height: 90vh;
+        
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-page > section:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile-page .user-info {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .profile-page > section:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile-page .user-info {
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,8 +1,8 @@
 import { createContext, useState } from "react"
 
-export const PopupContext = createContext()
+export const DropdownContext = createContext()
 
-export function PopupProvider ({ children }) {
+export function DropdownProvider ({ children }) {
     const [activePopup, setActivePopup] = useState(null);
 
     // Función para abrir un popup y cerrar todos los demás
@@ -16,8 +16,8 @@ export function PopupProvider ({ children }) {
     };
 
     return (
-        <PopupContext.Provider value={{ activePopup, openPopup, closePopup}}>
+        <DropdownContext.Provider value={{ activePopup, openPopup, closePopup}}>
             {children}
-        </PopupContext.Provider>
+        </DropdownContext.Provider>
     )
 }
