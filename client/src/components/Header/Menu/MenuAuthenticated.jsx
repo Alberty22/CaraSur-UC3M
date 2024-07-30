@@ -8,24 +8,22 @@ import { usePopup } from "../../../hooks/usePopup"
 export function MenuAuthenticated() {
     const { notifications } = useNotifications()
 
-    const excludeRef1 = useRef(null);
-    const excludeRef2 = useRef(null);
+    const refNotifications = useRef(null);
+    const refUser = useRef(null);
     
-    const { togglePopup:toggleNotificationsPopup } = usePopup({ id:'notifications', maxHeight:'400', toggleRefs:[excludeRef1]})
+    usePopup({ id:'notifications', maxHeight:'400', toggleRefs:[refNotifications]})
 
-    const { togglePopup:toggleUserPopup } = usePopup({ id:'user', maxHeight:'400', toggleRefs:[excludeRef2]})
-
-    
+    usePopup({ id:'user', maxHeight:'400', toggleRefs:[refUser]})
 
     return (
         <>
-            <button className="notifications"  ref={excludeRef1} onClick={toggleNotificationsPopup}>
+            <button className="notifications"  ref={refNotifications}>
             { Object.keys(notifications).length === 0 
                 ? <img src={notifications_off_icon} alt='Notificaciones'></img>
                 : <img src={notifications_on_icon} alt='Notificaciones'></img>
             }
             </button>
-            <button className="profile" ref={excludeRef2} onClick={toggleUserPopup}>
+            <button className="profile" ref={refUser}>
                 <img src={user_icon} alt='Usuario'></img>
             </button>
         </>

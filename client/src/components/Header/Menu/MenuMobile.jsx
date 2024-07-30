@@ -3,22 +3,26 @@ import notifications_on_icon from "../../../assets/images/icons/Notifications_on
 import menu_icon from "../../../assets/images/icons/Menu.webp"
 import { useAuth } from "../../../hooks/useAuth"
 import { useNotifications } from "../../../hooks/useNotifications"
-import { useState } from "react"
+import { useRef } from "react"
 import { usePopup } from "../../../hooks/usePopup"
 
 export function MenuMobile() {
     const { isAuthenticated } = useAuth()
     const { notifications } = useNotifications()
 
-    const { togglePopup:toggleMenuPopup } = usePopup({ id:'menu', maxHeight:'500'})
-    const { togglePopup:toggleNotificationsPopup } = usePopup({ id:'notifications', maxHeight:'400'})
+    const refNotifications = useRef(null);
+    const refMenu = useRef(null);
+    
+    usePopup({ id:'notifications', maxHeight:'400', toggleRefs:[refNotifications]})
+
+    usePopup({ id:'menu', maxHeight:'500', toggleRefs:[refMenu]})
 
 
     return (
         <>
         { isAuthenticated &&
         <div>
-            <button className="notifications" onClick={toggleNotificationsPopup}>
+            <button className="notifications" ref={refNotifications}>
             { Object.keys(notifications).length === 0 
                 ? <img src={notifications_off_icon} alt='Notificaciones'></img>
                 : <img src={notifications_on_icon} alt='Notificaciones'></img>
@@ -28,7 +32,7 @@ export function MenuMobile() {
             
         }
         <button>
-            <img src={menu_icon} alt="Menú" onClick={toggleMenuPopup}/>
+            <img src={menu_icon} alt="Menú" ref={refMenu}/>
         </button>
         </>
     )

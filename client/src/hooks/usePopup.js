@@ -1,10 +1,19 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import { PopupContext } from "../context/popup";
 
 export function usePopup({ id, maxHeight, toggleRefs = [] }) {
     const { activePopup, openPopup, closePopup } = useContext(PopupContext);
     const isOpen = activePopup === id;
     const popupRef = useRef(null);
+
+    const togglePopup = useCallback(() => {
+        if (isOpen) {
+          closePopup();
+        } else {
+          openPopup(id);
+        }
+      }, [isOpen, openPopup, closePopup, id]);
+
 
     useEffect(() => {
         if (popupRef.current) {
@@ -14,11 +23,17 @@ export function usePopup({ id, maxHeight, toggleRefs = [] }) {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (popupRef.current && !popupRef.current.contains(event.target)) {
-                const clickedInsideToggleRef = toggleRefs.some(ref => ref.current && ref.current.contains(event.target));
-                if (!clickedInsideToggleRef) {
-                    closePopup();
-                }
+            if (popupRef.current && popupRef.current.contains(event.target)) {
+                return;
+            }
+
+            // Check if click is inside any of the toggle references
+            const clickedInsideToggleRef = toggleRefs.some(ref => ref.current && ref.current.contains(event.target));
+            if (!clickedInsideToggleRef) {
+                closePopup();
+            }
+            else {
+                togglePopup()
             }
         };
 
@@ -26,7 +41,7 @@ export function usePopup({ id, maxHeight, toggleRefs = [] }) {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [closePopup, toggleRefs]);
+    }, [closePopup, toggleRefs, togglePopup]);
 
     const handleOpen = () => {
         openPopup(id);
@@ -36,13 +51,5 @@ export function usePopup({ id, maxHeight, toggleRefs = [] }) {
         closePopup();
     };
 
-    const togglePopup = () => {
-        if (isOpen) {
-            closePopup();
-        } else {
-            openPopup(id);
-        }
-    };
-
-    return { activePopup, isOpen, popupRef, handleOpen, handleClose, togglePopup };
+    return { activePopup, isOpen, popupRef, handleOpen, handleClose};
 }
