@@ -2,39 +2,38 @@ import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import { DropdownContext } from "../context/dropdown.jsx";
 
 export function useDropdown({ id, maxHeight, toggleRefs = [] }) {
-    const { activePopup, openPopup, closePopup } = useContext(DropdownContext);
-    const isOpen = activePopup === id;
-    const popupRef = useRef(null);
+    const { activeDropdown, openDropdown, closeDropdown } = useContext(DropdownContext);
+    const isOpen = activeDropdown === id;
+    const dropdownRef = useRef(null);
 
-    const togglePopup = useCallback(() => {
+    const toggleDropdown = useCallback(() => {
         if (isOpen) {
-          closePopup();
+            closeDropdown();
         } else {
-          openPopup(id);
+            openDropdown(id);
         }
-      }, [isOpen, openPopup, closePopup, id]);
+      }, [isOpen, openDropdown, closeDropdown, id]);
 
 
     useEffect(() => {
-        if (popupRef.current) {
-            popupRef.current.style.maxHeight = isOpen ? `${maxHeight}px` : '0';
+        if (dropdownRef.current) {
+            dropdownRef.current.style.maxHeight = isOpen ? `${maxHeight}px` : '0';
         }
     }, [isOpen, maxHeight]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            console.log(toggleRefs)
-            if (popupRef.current && popupRef.current.contains(event.target)) {
+            if (dropdownRef.current && dropdownRef.current.contains(event.target)) {
                 return;
             }
 
             // Check if click is inside any of the toggle references
             const clickedInsideToggleRef = toggleRefs.some(ref => ref.current && ref.current.contains(event.target));
             if (!clickedInsideToggleRef) {
-                closePopup();
+                closeDropdown();
             }
             else {
-                togglePopup()
+                toggleDropdown()
             }
         };
 
@@ -42,15 +41,15 @@ export function useDropdown({ id, maxHeight, toggleRefs = [] }) {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [closePopup, toggleRefs, togglePopup]);
+    }, [closeDropdown, toggleRefs, toggleDropdown]);
 
     const handleOpen = () => {
-        openPopup(id);
+        openDropdown(id);
     };
 
     const handleClose = () => {
-        closePopup();
+        closeDropdown();
     };
 
-    return { activePopup, isOpen, popupRef, handleOpen, handleClose};
+    return { activeDropdown, isOpen, dropdownRef, handleOpen, handleClose};
 }

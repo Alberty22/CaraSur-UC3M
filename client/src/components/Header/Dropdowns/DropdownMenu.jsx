@@ -8,10 +8,10 @@ export const DropdownMenu = forwardRef((props, ref) => {
     
     const { isAuthenticated, logout } = useAuth()
 
-    const { popupRef, handleClose } = useDropdown({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
+    const { dropdownRef, handleClose } = useDropdown({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
 
     return (
-        <nav className="dropdown-navigation" ref={popupRef} id="menu">
+        <nav className="dropdown-navigation" ref={dropdownRef} id="menu">
         <ul>
             <li className="link"><Link to="/" onClick={handleClose}>INICIO</Link></li>
             <li className="link"><Link to="/activities" onClick={handleClose}>ACTIVIDADES</Link></li>

@@ -1,0 +1,116 @@
+{
+    "profile-account-popup": [
+        {
+            "inputKey": "profile-email",
+            "inputType":"email",
+            "placeholder":"Introduce tu email",
+            "error":"Email is required"
+        },
+        {
+            "inputKey": "profile-password",
+            "inputType":"password",
+            "placeholder":"Introduce una contraseña",
+            "error":"Password is required"
+        },
+        {
+            "inputKey": "profile-password-repeat",
+            "inputType":"password",
+            "placeholder":"Introduce de nuevo contraseña",
+            "error":"Password is required"
+        }
+    ],
+    "profile-user-popup": [
+        {
+            "inputKey": "profile-name",
+            "inputType":"text",
+            "placeholder":"Introduce tu nombre",
+            "error":"Name is required"
+        },
+        {
+            "inputKey": "profile-surname",
+            "inputType":"text",
+            "placeholder":"Introduce tus apellidos",
+            "error":"Surname is required"
+        },
+        {
+            "inputKey": "profile-id",
+            "inputType":"text",
+            "placeholder":"Introduce tu DNI/NIE",
+            "error":"DNI/NIE is required"
+        },
+        {
+            "inputKey": "profile-id-photo",
+            "inputType":"image",
+            "placeholder":"Introduce tu foto del DNI/NIE",
+            "error":"DNI/NIE is required"
+        },
+        {
+            "inputKey": "profile-postal",
+            "inputType":"number",
+            "placeholder":"Introduce tu dirección postal",
+            "error":"Dirección postal is required"
+        },
+        {
+            "inputKey": "profile-phone",
+            "inputType":"tel",
+            "placeholder":"Introduce tu teléfono",
+            "error":"Telephone is required"
+        },
+        {
+            "inputKey": "profile-uc3m-student",
+            "inputType":"uc3m-student",
+            "placeholder":"Estudiante UC3M",
+            "error":"UC3M student is required"
+        }
+
+    ],
+
+    "profile-optional-popup": [
+        {
+            "inputKey": "profile-gender",
+            "inputType":"gender",
+            "placeholder":"Género (opcional)",
+            "error":""
+        },
+        {
+            "inputKey": "profile-birthdate",
+            "inputType":"date",
+            "placeholder":"Fecha de nacimiento (opcional)",
+            "error":""
+        },
+        {
+            "inputKey": "profile-country",
+            "inputType":"country",
+            "placeholder":"País de origen (opcional)",
+            "error":""
+        },
+        {
+            "inputKey": "profile-student",
+            "inputType":"student",
+            "placeholder":"Eres estudiante (opcional)",
+            "error":""
+        },
+        {
+            "inputKey": "profile-sports",
+            "inputType":"sports",
+            "placeholder":"Deportes que te interesa (opcional)",
+            "error":""
+        }
+
+    ],
+
+    "profile-preferences-popup": [
+        {
+            "inputKey": "profile-language",
+            "inputType":"language",
+            "placeholder":"Idioma",
+            "error":""
+        },
+        {
+            "inputKey": "profile-theme",
+            "inputType":"theme",
+            "placeholder":"Tema",
+            "error":""
+        }
+    ]
+}

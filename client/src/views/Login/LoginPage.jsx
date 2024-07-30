@@ -18,10 +18,8 @@ export function LoginPage() {
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
     const onSubmit = data => {
-        console.log(isAuthenticated)
         login()
         navigate(state?.location?.pathname ?? '/')
-        console.log(data);
     };
 
     return (

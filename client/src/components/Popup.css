@@ -1,0 +1,65 @@
+.popup {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-y: auto;
+    z-index: 3;
+}
+
+.popup::-webkit-scrollbar-thumb {
+background-color: #f7f7f7;
+border-radius: 20px;
+}
+
+.popup > button {
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    
+}
+
+.popup > button img{
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
+}
+
+.popup > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+    .popup {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .popup {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        border-radius: 0;
+    }
+}

@@ -8,11 +8,17 @@ import countryList from 'react-select-country-list'
 
 
 export const Form = ({ inputs, onSubmit, type }) => {
-    const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({
-        defaultValues: {
-          image: null 
-        }
-      });
+    // const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({
+    //     defaultValues: {
+    //       image: null 
+    //     }
+    //   });
+
+    const { register, formState: { errors }, handleSubmit } = useForm({
+            defaultValues: {
+              image: null 
+            }
+          });
 
     const [showPassword, setShowPassword] = useState(false);
     const [passIcon, setPassIcon] = useState(show_icon)
@@ -52,7 +58,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
     return(
         <div className='form-container'>
             {/* Poner handleSubmit(onSubmit) */}
-            <form className= 'login-form' onSubmit={onSubmit}>
+            <form className= 'login-form' onSubmit={handleSubmit(onSubmit)}>
                 {
                     inputs.map((input) => {
                         const { inputKey, inputType, placeholder, error } = input
@@ -151,7 +157,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                             else if (inputType === 'gender') {
                                 return (
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''} id="isUc3mStudent"
+                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
                                             <option value="" disabled>{placeholder}</option>
                                             <option value="hombre">Hombre</option>
@@ -175,7 +181,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                             else if (inputType === 'country') {
                                 return (
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''} id="isUc3mStudent"
+                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
                                             <option value="" disabled>{placeholder}</option>
                                             {countryList().getData().map((country) => {
@@ -192,7 +198,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                             else if (inputType === 'student') {
                                 return (
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''} id="isUc3mStudent"
+                                        <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
                                             <option value="" disabled>{placeholder}</option>
                                             <option value="si">Sí</option>
@@ -202,6 +208,32 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                         {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                     </div>   
                                 )}
+
+                                else if (inputType === 'language') {
+                                    return (
+                                        <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                                            <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
+                                            {...register(inputKey, { required: 'Este campo es obligatorio' })}>
+                                                <option value="" disabled>{placeholder}</option>
+                                                <option value="es">ES</option>
+                                                <option value="eng">ENG</option>
+                                            </select>
+                                            {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                                        </div>   
+                                    )}
+                                
+                                    else if (inputType === 'theme') {
+                                        return (
+                                            <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                                                <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
+                                                {...register(inputKey, { required: 'Este campo es obligatorio' })}>
+                                                    <option value="" disabled>{placeholder}</option>
+                                                    <option value="light">Claro</option>
+                                                    <option value="dark">Oscuro</option>
+                                                </select>
+                                                {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                                            </div>   
+                                        )}
                             // else if (inputType === 'image') {
                             //     return (
                             //         <>

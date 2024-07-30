@@ -9,7 +9,7 @@ export const DropdownNotifications = forwardRef((props, ref) => {
 
     const {notifications, setNotifications} = useNotifications()
 
-    const { popupRef, handleClose } = useDropdown({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
+    const { dropdownRef, handleClose } = useDropdown({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
 
     const handleClick = () => {
         handleClose();
@@ -18,7 +18,7 @@ export const DropdownNotifications = forwardRef((props, ref) => {
     }
 
     return (
-        <ul className="dropdown-notifications" ref={popupRef} id="notifications">
+        <ul className="dropdown-notifications" ref={dropdownRef} id="notifications">
             <li>
                 <div>
                     Notificaciones
