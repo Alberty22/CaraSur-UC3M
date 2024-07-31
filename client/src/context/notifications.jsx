@@ -9,7 +9,7 @@ export function NotificationsProvider ({ children }) {
 
     const fetchNotifications = useCallback(async () => {
         try {
-        const response = await fetch('/notifications.json'); // Cambia esto según tu ruta
+        const response = await fetch('/notifications.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

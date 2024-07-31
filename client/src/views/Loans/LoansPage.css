@@ -1,0 +1,48 @@
+.loans-page {
+    width: 100%;
+    height: auto;
+    background-color: #f7f7f7;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.loans-page > section:last-child {
+    width: 80%;
+    height: 75vh;
+    margin-top: 30px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 230px;
+    gap: 20px;
+    
+    margin-bottom: 50px;
+}
+
+
+@media (max-width: 768px) {
+
+    .loans-page > section:last-child {
+        width: 90%;
+        margin-top: 20px;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+        margin-bottom: 30px;
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .loans-page > section:last-child {
+        width: 90%;
+        margin-top: 20px;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+        margin-bottom: 30px;
+    }
+
+}

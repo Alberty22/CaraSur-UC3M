@@ -58,7 +58,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
     return(
         <div className='form-container'>
             {/* Poner handleSubmit(onSubmit) */}
-            <form className= 'login-form' onSubmit={handleSubmit(onSubmit)}>
+            <form className= 'login-form' onSubmit={onSubmit}>
                 {
                     inputs.map((input) => {
                         const { inputKey, inputType, placeholder, error } = input
