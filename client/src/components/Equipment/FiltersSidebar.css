@@ -1,0 +1,39 @@
+
+.filters-sidebar {
+    position: sticky;
+    left: 0;
+    top:0;
+    height: 100vh;
+    width: 20%;
+    z-index: 2;
+    background-color: #fff;
+    
+    border-right: solid 2px #235371;
+    box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5); 
+}
+
+
+.filters-sidebar div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.filters-sidebar div button{
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: #235371;
+    top:calc(50% - 80px);
+    right: -25px;
+    margin: auto;
+    border-radius: 15px;
+    border: none;
+}
+
+.filters-sidebar div button img{
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1)
+}

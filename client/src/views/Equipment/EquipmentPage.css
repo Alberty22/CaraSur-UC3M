@@ -1,0 +1,130 @@
+.equipment-page {
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.equipment-page > header {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.equipment-page > header h2{
+    padding: 0;
+    width: 90vw;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #235371;
+
+}
+
+.equipment-page > header div{
+    width: 100%;
+    height: 80px;
+    flex: none;
+    background-color: #235371;
+
+}
+
+
+.equipment-page > .shop {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;    
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.equipment-page .shop aside {
+    position: sticky;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+}
+
+.equipment-page .shop > aside > button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    background-color: #235371;
+    border: none;
+}
+
+.equipment-page .shop > aside .filter-button {
+    left: 10px;
+}
+
+.equipment-page .shop > aside .cart-button {
+    right: 10px;
+}
+
+.equipment-page .shop > aside button img{
+    width: 95%;
+    height: 95%;
+}
+
+@media (max-width: 768px) {
+
+    .equipment-page > header div{
+        width: 100%;
+        height: 40px;
+        flex: none;
+        background-color: #235371;
+    
+    }
+
+    .equipment-page > header h2{
+        font-size: 1.5rem;
+    
+    }
+
+    .equipment-page .shop > button {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
+
+    .equipment-page .shop .cart-button {
+        top: 70px;
+        left: 10px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .equipment-page > header div{
+        width: 100%;
+        height: 80px;
+        flex: none;
+        background-color: #235371;
+    
+    }
+
+    .equipment-page > header h2{
+        font-size: 2rem;
+    
+    }
+
+    .equipment-page .shop > button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+
+    .equipment-page .shop > button:last-child {
+        top: 70px;
+        left: 10px;
+    }
+}

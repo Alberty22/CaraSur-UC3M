@@ -7,6 +7,7 @@ import { LoginPage } from './views/Login/LoginPage.jsx';
 import { SingupPage } from './views/Singup/SingupPage.jsx';
 import { ProfilePage } from './views/Profile/ProfilePage.jsx';
 import { LoansPage } from './views/Loans/LoansPage.jsx';
+import { EquipmentPage } from './views/Equipment/EquipmentPage.jsx';
 
 import { Footer } from './components/Footer/Footer.jsx'
 import { Header } from './components/Header/Header.jsx'
@@ -43,7 +44,7 @@ function App() {
         <Route path='/activities' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/new' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/:activityId' element={<></>} />
-        <Route path='/equipment' element={<ProtectedRoute><></></ProtectedRoute>} />
+        <Route path='/equipment' element={<ProtectedRoute><EquipmentPage /></ProtectedRoute>} />
         <Route path='/equipment/:productId' element={<></>}>
           <Route path='details' element={<></>} />
         </Route>

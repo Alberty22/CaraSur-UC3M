@@ -1,0 +1,36 @@
+
+.cart-sidebar {
+    position: sticky;
+    background-color: #fff;
+    height: 100%;
+    width: 20%;
+    z-index: 2;
+    right: 0;
+    top:0;
+    border-left: solid 2px #235371;
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.5); 
+}
+
+.cart-sidebar div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.cart-sidebar div button{
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    background-color: #235371;
+    top:calc(50% - 80px);
+    left: -25px;
+    margin: auto;
+    border-radius: 15px;
+    border: none;
+}
+
+.cart-sidebar div button img{
+    width: 100%;
+    height: 100%;
+}
