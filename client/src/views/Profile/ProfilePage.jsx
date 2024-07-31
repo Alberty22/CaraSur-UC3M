@@ -5,36 +5,33 @@ import { UserInformation } from '../../components/UserInformation.jsx'
 import Popup from '../../components/Popup.jsx'
 import inputs_profile from '../../assets/others/inputs-profile.json'
 import { Form } from '../../components/Form.jsx'
-import ErrorBoundary from '../../ErrorBoundary.jsx'
+import { useFetch } from '../../hooks/useFetch.js'
 
 export function ProfilePage () {
+
+    const { data } = useFetch({ url:'/user-data.json' })
+    const userData = data?.user
 
     const information = [
         {
             "id":"profile-account-popup",
             "titleSection": "Detalles de cuenta",
-            "information": [{"title": "Dirección de correo", "text": "a@a.com"}, {"title": "Contraseña","text": "********"}]
+            "information": userData?.account_details
         },
         {
             "id":"profile-user-popup",
             "titleSection": "Detalles del usuario",
-            "information": [{"title": "Nombre", "text": "a@a.com"}, {"title": "Apellidos","text": "********"},
-                            {"title": "DNI/NIE", "text": "a@a.com"}, {"title": "Teléfono","text": "********"},
-                            {"title": "Dirección postal", "text": "a@a.com"}, {"title": "Estudiante UC3M","text": "********"}
-                            ]
+            "information": userData?.user_details
         },
         {
             "id":"profile-optional-popup",
             "titleSection": "Detalles opcionales",
-            "information": [{"title": "Sexo", "text": "a@a.com"}, {"title": "Fecha de nacimiento","text": "********"},
-                            {"title": "País de origen", "text": "a@a.com"}, {"title": "Estudiante","text": "********"},
-                            {"title": "Deportes que te interesan", "text": "a@a.com"}
-                            ]
+            "information": userData?.user_optional_details
         },
         {
             "id":"profile-preferences-popup",
             "titleSection": "Preferencias",
-            "information": [{"title": "Idioma", "text": "ES"}, {"title": "Tema","text": "Claro"}]
+            "information": userData?.preferences
         }
         
         
@@ -55,7 +52,7 @@ export function ProfilePage () {
                     <img src={user_img} alt='Imagen de usuario'></img>
                 </div>
                 <section className='user-info'>
-                    {
+                    { userData !== undefined &&
                         information.map((section) => {
                             return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} id={section.id}/>
                         })

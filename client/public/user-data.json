@@ -1,0 +1,16 @@
+{
+    "user": {
+      "account_details": [{"title": "Dirección de correo", "text": "a@a.com"}, {"title": "Contraseña","text": "********"}],
+      "user_details": [
+        {"title": "Nombre", "text": "a@a.com"}, {"title": "Apellidos","text": "********"},
+        {"title": "DNI/NIE", "text": "a@a.com"}, {"title": "Teléfono","text": "********"},
+        {"title": "Dirección postal", "text": "a@a.com"}, {"title": "Estudiante UC3M","text": "********"}
+      ],
+      "user_optional_details": [
+        {"title": "Sexo", "text": "a@a.com"}, {"title": "Fecha de nacimiento","text": "********"},
+        {"title": "País de origen", "text": "a@a.com"}, {"title": "Estudiante","text": "********"},
+        {"title": "Deportes que te interesan", "text": "a@a.com"}
+      ],
+      "preferences": [{"title": "Idioma", "text": "ES"}, {"title": "Tema","text": "Claro"}]
+    }
+  }
