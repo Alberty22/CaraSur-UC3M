@@ -64,7 +64,7 @@ export function ProfilePage () {
             information.map((section) => {
                 return (
                     <Popup key={section.id} id={section.id}>
-                        <Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={'Change'} />
+                        <Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />
                     </Popup>
                 )
                 

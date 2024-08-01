@@ -39,6 +39,22 @@
         "image":"/arnes_1.png",
         "loan_date":"01/01/2002",
         "return_date": "07/01/2002"
+      },
+      "l6": {
+        "id": "6",
+        "name":"producto",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loan_date":"01/01/2002",
+        "return_date": "07/01/2002"
+      },
+      "l7": {
+        "id": "7",
+        "name":"producto",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loan_date":"01/01/2002",
+        "return_date": "07/01/2002"
       }
     }
   }

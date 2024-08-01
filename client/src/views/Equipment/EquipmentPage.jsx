@@ -40,22 +40,17 @@ export function EquipmentPage() {
                         <img src={filters_icon} alt='Filtros'/>
                 </button>
 
-                {openSidebars?.filtersSidebar &&
-                    <FiltersSidebar invetory_unique={inventory_unique}>
-                        <button onClick={() => handleCloseSidebar('filtersSidebar')}>
-                            <img src={swipe_icon} alt='cerrar' />
-                        </button>
-                    </FiltersSidebar>
-                }
-
-                {openSidebars?.cartSidebar &&
-                    <CartSidebar>
-                        <button onClick={() => handleCloseSidebar('cartSidebar')}>
-                            <img src={swipe_icon} alt='cerrar' />
-                        </button>
-                    </CartSidebar>
-                }
-
+                
+                    {openSidebars?.filtersSidebar &&
+                        <FiltersSidebar invetory_unique={inventory_unique}>
+                            <button onClick={() => handleCloseSidebar('filtersSidebar')}>
+                                <img src={swipe_icon} alt='cerrar' />
+                            </button>
+                        </FiltersSidebar>
+                    }
+                
+                
+                
                 {
                     inventory !== undefined &&
                     <Products products={filteredProducts} />
@@ -64,6 +59,18 @@ export function EquipmentPage() {
                 <button className='cart-button' onClick={() => handleOpenSidebar('cartSidebar')}>
                     <img src={cart_icon} alt='Carrito'/>
                 </button>
+
+                
+                
+                    {openSidebars?.cartSidebar &&
+                        <CartSidebar>
+                            <button onClick={() => handleCloseSidebar('cartSidebar')}>
+                                <img src={swipe_icon} alt='cerrar' />
+                            </button>
+                        </CartSidebar>
+                    }
+                
+                
 
                 
             </section>

@@ -1,4 +1,5 @@
 import './CartSidebar.css'
+import { Cart } from './Cart.jsx'
 
 export function CartSidebar({ children }) {
 
@@ -6,6 +7,7 @@ export function CartSidebar({ children }) {
         <aside className="cart-sidebar">
             <div>
                 {children}
+                <Cart />
             </div>
         </aside>
     )

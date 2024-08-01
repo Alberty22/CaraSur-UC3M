@@ -1,39 +1,29 @@
 import './Products.css'
 import addToCart_icon from "../../assets/images/icons/Add-toCart.webp"
-// import { useCart } from '../hooks/useCart.js'
+import { useCart } from '../../hooks/useCart'
 
 export function Products ({ products }) {
-    // const { addToCart, cart, removeFromCart} = useCart()
+    const { addToCart, cart } = useCart()
 
-    // const checkProductInCart = product => {
-    //     return cart.some(item=> item.id === product.id)
-    // }
+    const checkProductInCart = product => {
+        return cart.some(item=> item.id === product.id)
+    }
     return(
         <main className='products'>
             <ul>
                 {products.map(product => {
-                    // const isProductInCar = checkProductInCart(product)
+                    const isProductInCar = checkProductInCart(product)
                     return (
-                    <li key={`product${product.id}`} className={(product.available === 0) ? 'out-stock' : ''}>
+                    <li key={product.id} className={(product.available === 0) ? 'out-stock' : ''}>
                         <img src={product.photo} alt={product.object}></img>
                         <div>
                             <div>
                                 <strong>{product.Modelo}</strong>{product.Modelo ? ' - ' : ''}{product.object}
                                 <p>Disponibles: {product.available}</p>
                             </div>
-                            <button
-                            
-                                // onClick={() => {
-                                // isProductInCar 
-                                // ? removeFromCart(product) 
-                                // : addToCart(product)
-                                // }}>
-                                // {
-                                //     isProductInCar
-                                //     ? <RemoveFromCartIcon />
-                                //     : <AddToCartIcon />
-                                // }
-                            >
+                            <button onClick={ () => 
+                                {isProductInCar || addToCart({"id": product.id, "photo":product.photo, "object": product.object, "quantity":1, "available":product.available})} 
+                                }>
                                 <img src={addToCart_icon} />
                             </button>
                         </div>

@@ -1,15 +1,16 @@
 
 .filters-sidebar {
     position: -webkit-sticky;
-    position: sticky;
+    position: absolute;
     left: 0;
-    top:0;
-    height: 100vh;
-    width: 20%;
+    top: 0;
+    height: 80vh;
+    width: 25%;
     z-index: 2;
     background-color: #fff;
     
     border-right: solid 2px #235371;
+    border-bottom: solid 2px #235371;
     box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5); 
 }
 

@@ -1,5 +1,8 @@
 .equipment-page {
     width: 100%;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     background-color: #f7f7f7;
 }
 
@@ -33,10 +36,11 @@
 
 .equipment-page > .shop {
     width: 100vw;
-    height: 100vh;
+    height: auto;
     padding-bottom: 30px;
     position: relative;
-    overflow: auto;
+    overflow-y: hidden;
+    display: flex;
 }
 
 .equipment-page .shop > button {
@@ -48,6 +52,7 @@
     cursor: pointer;
     position: absolute;
     top: 10px;
+    z-index: 1;
     background-color: #235371;
     border: none;
 }
