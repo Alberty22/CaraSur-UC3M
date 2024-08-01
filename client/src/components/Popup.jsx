@@ -2,13 +2,13 @@ import { usePopup } from "../hooks/usePopups";
 import './Popup.css'
 import cross_icon from "../assets/images/icons/Cross.webp"
 
-const Popup = ({ id, children }) => {
-    const { isOpen, popupRef, handleClose } = usePopup({ id });
+const Popup = ({ children, className='popup'}) => {
+    const { isOpen, popupRef, handleClose } = usePopup();
 
     if (!isOpen) return null;
 
     return (
-        <div className="popup" ref={popupRef}>
+        <div className={className} ref={popupRef}>
             <button onClick={handleClose} style={{ marginTop: '10px' }}>
                 <img src={cross_icon} alt="X"></img>
             </button>

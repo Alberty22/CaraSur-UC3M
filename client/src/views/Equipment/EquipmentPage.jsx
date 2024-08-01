@@ -9,6 +9,8 @@ import { FiltersSidebar } from '../../components/Equipment/FiltersSidebar'
 import { CartSidebar } from '../../components/Equipment/CartSidebar'
 import swipe_icon from '../../assets/images/icons/Expand_left.webp'
 import { useFilters } from '../../hooks/useFilters'
+import { usePopup } from '../../hooks/usePopups'
+import Popup from '../../components/Popup'
 
 export function EquipmentPage() {
 
@@ -27,8 +29,10 @@ export function EquipmentPage() {
     const { filters, filterProducts, sortProducts } = useFilters()
     const filteredProducts = sortProducts(filterProducts(inventory ? Object.values(inventory) : []))
     
+    const { popupContent } = usePopup();
 
     return (
+        <>
         <main className='equipment-page'>
             <Breadcrumbs />
             <header>
@@ -69,11 +73,16 @@ export function EquipmentPage() {
                             </button>
                         </CartSidebar>
                     }
-                
-                
-
-                
+                    
             </section>
         </main>
+        
+        { popupContent &&
+            <Popup>
+                {popupContent}
+            </Popup>
+        }
+        </>
+        
     )
 }

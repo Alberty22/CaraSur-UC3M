@@ -1,6 +1,7 @@
 import './Products.css'
 import addToCart_icon from "../../assets/images/icons/Add-toCart.webp"
 import { useCart } from '../../hooks/useCart'
+import { usePopup } from '../../hooks/usePopups'
 
 export function Products ({ products }) {
     const { addToCart, cart } = useCart()
@@ -8,13 +9,21 @@ export function Products ({ products }) {
     const checkProductInCart = product => {
         return cart.some(item=> item.id === product.id)
     }
+
+    const { handleOpen } = usePopup();
+
+    const handleClick = () => {
+        handleOpen(<p>hola</p>)
+    }
+
+
     return(
         <main className='products'>
             <ul>
                 {products.map(product => {
                     const isProductInCar = checkProductInCart(product)
                     return (
-                    <li key={product.id} className={(product.available === 0) ? 'out-stock' : ''}>
+                    <li key={product.id} className={(product.available === 0) ? 'out-stock' : ''} onClick={handleClick}>
                         <img src={product.photo} alt={product.object}></img>
                         <div>
                             <div>

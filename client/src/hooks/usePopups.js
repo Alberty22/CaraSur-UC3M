@@ -1,9 +1,9 @@
-import { useContext, useState, useRef, useEffect } from "react";
-import { PopupContext } from "../context/popup.jsx"; // Asegúrate de definir este contexto en tu aplicación
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
+import { PopupContext } from "../context/popup.jsx";
 
-export function usePopup({ id }) {
-    const { activePopup, openPopup, closePopup } = useContext(PopupContext);
-    const isOpen = activePopup === id;
+export function usePopup() {
+    const { popupContent, openPopup, closePopup } = useContext(PopupContext);
+    const isOpen = popupContent !== null;
     const popupRef = useRef(null);
 
     useEffect(() => {
@@ -21,13 +21,15 @@ export function usePopup({ id }) {
         };
     }, [closePopup]);
 
-    const handleOpen = () => {
-        openPopup(id);
-    };
+    // Función para abrir el popup
+    const handleOpen = useCallback((content) => {
+        openPopup(content);
+    }, [openPopup]);
 
-    const handleClose = () => {
+    // Función para cerrar el popup
+    const handleClose = useCallback(() => {
         closePopup();
-    };
+    }, [closePopup]);
 
-    return { activePopup, isOpen, popupRef, handleOpen, handleClose };
+    return { popupContent, isOpen, popupRef, handleOpen, handleClose };
 }

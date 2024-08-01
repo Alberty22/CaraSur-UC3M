@@ -4,6 +4,7 @@ import { useCart } from "../../hooks/useCart";
 import add_icon from "../../assets/images/icons/Add.webp"
 import remove_icon from "../../assets/images/icons/Remove.webp"
 import trash_icon from "../../assets/images/icons/Trash.webp"
+import { usePopup } from "../../hooks/usePopups";
 
 
 function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
@@ -32,9 +33,16 @@ export function Cart() {
     const cartCheckboxId = useId()
     const { cart, clearCart, addToCart, removeOneFromCart } = useCart()
 
+    const { handleOpen } = usePopup();
+
     const handleCheckout = () => {
+        
         console.log(cart)
-        clearCart()
+        if (cart.length > 0) {
+            handleOpen(<p>Todo ha salido bien</p>)
+            clearCart()
+        }
+        
     }
 
     return(
@@ -60,7 +68,6 @@ export function Cart() {
             </div>
             
         </aside>
-
         </>
     )
 }

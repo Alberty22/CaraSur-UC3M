@@ -1,5 +1,5 @@
 .popup {
-    position: absolute;
+    position: fixed;
     width: 50vw;
     min-height: 50vh;
     height: fit-content;

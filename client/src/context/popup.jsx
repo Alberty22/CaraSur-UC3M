@@ -1,22 +1,22 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useCallback } from "react"
 
 export const PopupContext = createContext()
 
 export function PopupProvider ({ children }) {
-    const [activePopup, setActivePopup] = useState(null);
+    const [popupContent, setPopupContent] = useState(null);
 
     // Función para abrir un popup y cerrar todos los demás
-    const openPopup = (popupId) => {
-        setActivePopup(popupId);
-    };
+    const openPopup = useCallback((content) => {
+        setPopupContent(content);
+    }, []);
 
     // Función para cerrar el popup actual
-    const closePopup = () => {
-        setActivePopup(null);
-    };
+    const closePopup = useCallback(() => {
+        setPopupContent(null);
+    }, []);
 
     return (
-        <PopupContext.Provider value={{ activePopup, openPopup, closePopup }}>
+        <PopupContext.Provider value={{ popupContent, openPopup, closePopup }}>
             {children}
         </PopupContext.Provider>
     )

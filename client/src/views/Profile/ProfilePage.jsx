@@ -6,6 +6,7 @@ import Popup from '../../components/Popup.jsx'
 import inputs_profile from '../../assets/others/inputs-profile.json'
 import { Form } from '../../components/Form.jsx'
 import { useFetch } from '../../hooks/useFetch.js'
+import { usePopup } from '../../hooks/usePopups.js'
 
 export function ProfilePage () {
 
@@ -38,10 +39,7 @@ export function ProfilePage () {
 
     ]
 
-    
-    const onSubmit = data => {
-        
-    };
+    const { popupContent } = usePopup();
 
     return(
         <>
@@ -54,21 +52,18 @@ export function ProfilePage () {
                 <section className='user-info'>
                     { userData !== undefined &&
                         information.map((section) => {
-                            return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} id={section.id}/>
+                            return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} 
+                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />}
+                            />
                         })
                     } 
                 </section>
             </section>
         </main>
-        {
-            information.map((section) => {
-                return (
-                    <Popup key={section.id} id={section.id}>
-                        <Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />
-                    </Popup>
-                )
-                
-            })
+        { popupContent &&
+            <Popup>
+                {popupContent}
+            </Popup>
         }
         </>
     )
