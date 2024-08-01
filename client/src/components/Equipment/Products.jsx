@@ -2,6 +2,7 @@ import './Products.css'
 import addToCart_icon from "../../assets/images/icons/Add-toCart.webp"
 import { useCart } from '../../hooks/useCart'
 import { usePopup } from '../../hooks/usePopups'
+import { ProductDetails } from './ProductDetails'
 
 export function Products ({ products }) {
     const { addToCart, cart } = useCart()
@@ -12,8 +13,8 @@ export function Products ({ products }) {
 
     const { handleOpen } = usePopup();
 
-    const handleClick = () => {
-        handleOpen(<p>hola</p>)
+    const handleClick = (product) => {
+        handleOpen(<ProductDetails product={product} />)
     }
 
 
@@ -23,8 +24,8 @@ export function Products ({ products }) {
                 {products.map(product => {
                     const isProductInCar = checkProductInCart(product)
                     return (
-                    <li key={product.id} className={(product.available === 0) ? 'out-stock' : ''} onClick={handleClick}>
-                        <img src={product.photo} alt={product.object}></img>
+                    <li key={product.id} className={(product.available === 0) ? 'out-stock' : ''} >
+                        <img src={product.photo} alt={product.object} onClick={() => handleClick(product)}></img>
                         <div>
                             <div>
                                 <strong>{product.Modelo}</strong>{product.Modelo ? ' - ' : ''}{product.object}

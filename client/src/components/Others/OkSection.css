@@ -1,0 +1,20 @@
+.ok-section {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ok-section > img {
+    aspect-ratio: 1/1;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.ok-section p {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

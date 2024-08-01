@@ -76,9 +76,9 @@ export function EquipmentPage() {
                     
             </section>
         </main>
-        
+
         { popupContent &&
-            <Popup>
+            <Popup className='popup-product'>
                 {popupContent}
             </Popup>
         }

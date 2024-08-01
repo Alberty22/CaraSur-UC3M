@@ -5,6 +5,8 @@ import add_icon from "../../assets/images/icons/Add.webp"
 import remove_icon from "../../assets/images/icons/Remove.webp"
 import trash_icon from "../../assets/images/icons/Trash.webp"
 import { usePopup } from "../../hooks/usePopups";
+import { OkSection } from "../Others/OkSection";
+import { FailedSection } from "../Others/FailedSection";
 
 
 function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
@@ -39,7 +41,8 @@ export function Cart() {
         
         console.log(cart)
         if (cart.length > 0) {
-            handleOpen(<p>Todo ha salido bien</p>)
+            handleOpen(<OkSection message={"Todo ha salido correctamente"} />)
+            // handleOpen(<FailedSection message={"Se ha producido un error"} />)
             clearCart()
         }
         

@@ -1,0 +1,19 @@
+.failed-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.failed-section > img {
+    aspect-ratio: 1/1;
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+.failed-section p {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
