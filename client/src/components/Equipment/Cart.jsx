@@ -7,13 +7,14 @@ import trash_icon from "../../assets/images/icons/Trash.webp"
 import { usePopup } from "../../hooks/usePopups";
 import { OkSection } from "../Others/OkSection";
 import { FailedSection } from "../Others/FailedSection";
+import stock_icon from '../../assets/images/icons/Stock-product.webp'
 
 
 function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
     return (
       <li>
         <div>
-            <img src={photo} alt={object}/>
+            <img src={photo === null ? stock_icon : photo} alt={object}/>
             <strong>{object}</strong>
         </div>
   
