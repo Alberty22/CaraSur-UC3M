@@ -14,12 +14,12 @@ export function Products ({ products }) {
                 {products.map(product => {
                     // const isProductInCar = checkProductInCart(product)
                     return (
-                    <li key={product.Id}>
-                        <img src={product.Foto} alt={product.Objeto}></img>
+                    <li key={`product${product.id}`} className={(product.available === 0) ? 'out-stock' : ''}>
+                        <img src={product.photo} alt={product.object}></img>
                         <div>
                             <div>
-                                <strong>{product.Modelo}</strong>{product.Modelo ? ' - ' : ''}{product.Objeto}
-                                <p>Disponibles: </p>
+                                <strong>{product.Modelo}</strong>{product.Modelo ? ' - ' : ''}{product.object}
+                                <p>Disponibles: {product.available}</p>
                             </div>
                             <button
                             

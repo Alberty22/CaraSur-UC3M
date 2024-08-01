@@ -1,14 +1,16 @@
 
 .cart-sidebar {
+    position: -webkit-sticky;
     position: sticky;
-    background-color: #fff;
-    height: 100%;
+    left: 100vw;
+    top:0;
+    height: 100vh;
     width: 20%;
     z-index: 2;
-    right: 0;
-    top:0;
-    border-left: solid 2px #235371;
-    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.5); 
+    background-color: #fff;
+    
+    border-right: solid 2px #235371;
+    box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5); 
 }
 
 .cart-sidebar div{
@@ -20,11 +22,11 @@
 
 .cart-sidebar div button{
     position: absolute;
-    width: 50px;
-    height: 80px;
+    width: 40px;
+    height: 60px;
     background-color: #235371;
-    top:calc(50% - 80px);
-    left: -25px;
+    top:calc(50% - 60px);
+    left: -20px;
     margin: auto;
     border-radius: 15px;
     border: none;
@@ -33,4 +35,45 @@
 .cart-sidebar div button img{
     width: 100%;
     height: 100%;
+}
+
+
+@media (max-width: 768px) {
+
+    .cart-sidebar {
+        left: 0;
+        width: 90%;
+    }
+
+    .cart-sidebar div button{
+        width: 30px;
+        height: 40px;
+        right: -15px;
+        left: auto;
+    }
+
+    .cart-sidebar div button img{
+        transform: scaleX(-1)
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .cart-sidebar {
+        left: 0;
+        width: 90%;
+    }
+
+    .cart-sidebar div button{
+        width: 40px;
+        height: 60px;
+        right: -20px;
+        left: auto;
+    }
+
+    .cart-sidebar div button img{
+        transform: scaleX(-1)
+    }
+
 }

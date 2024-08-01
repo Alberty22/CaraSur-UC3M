@@ -34,21 +34,12 @@
 .equipment-page > .shop {
     width: 100vw;
     height: 100vh;
-    display: flex;
+    padding-bottom: 30px;
     position: relative;
-    justify-content: flex-start;    
-    align-items: flex-start;
     overflow: auto;
 }
 
-.equipment-page .shop aside {
-    position: sticky;
-    top: 0;
-    width: 20vw;
-    height: 100vh;
-}
-
-.equipment-page .shop > aside > button {
+.equipment-page .shop > button {
     width: 50px;
     height: 50px;
     border-radius: 50px;
@@ -61,15 +52,15 @@
     border: none;
 }
 
-.equipment-page .shop > aside .filter-button {
+.equipment-page .shop > .filter-button {
     left: 10px;
 }
 
-.equipment-page .shop > aside .cart-button {
+.equipment-page .shop > .cart-button {
     right: 10px;
 }
 
-.equipment-page .shop > aside button img{
+.equipment-page .shop > button img{
     width: 95%;
     height: 95%;
 }

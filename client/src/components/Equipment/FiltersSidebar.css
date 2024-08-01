@@ -1,5 +1,6 @@
 
 .filters-sidebar {
+    position: -webkit-sticky;
     position: sticky;
     left: 0;
     top:0;
@@ -13,27 +14,138 @@
 }
 
 
-.filters-sidebar div{
+.filters-sidebar > div{
     width: 100%;
     height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
-.filters-sidebar div button{
+.filters-sidebar > div button{
     position: absolute;
-    width: 50px;
-    height: 80px;
+    width: 40px;
+    height: 60px;
     background-color: #235371;
-    top:calc(50% - 80px);
-    right: -25px;
+    top:calc(50% - 60px);
+    right: -20px;
     margin: auto;
     border-radius: 15px;
     border: none;
 }
 
-.filters-sidebar div button img{
+.filters-sidebar > div button img{
     width: 100%;
     height: 100%;
     transform: scaleX(-1)
+}
+
+.filters-sidebar .search-bar {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 3px #235371;
+}
+
+.filters-sidebar .search-bar div{
+    position: relative;
+}
+.filters-sidebar .search-bar input {
+    width: 80%;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 35px;
+    border-radius: 15px;
+    border-width: 1px;
+    background-color: #f7f7f7;
+}
+
+.filters-sidebar .search-bar button {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: calc(50% - 12.5px);
+    right: 0;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.filters-sidebar .search-bar button img{
+    width: 100%;
+    height: 100%;
+}
+
+.filters-sidebar > div > div {
+    margin-top: 10px;
+    width: 80%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.filters-sidebar > div > div label{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #235371;
+}
+
+.filters-sidebar > div > div select{
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    border-width: 1px;
+    background-color: #f7f7f7;
+}
+
+.filters-sidebar > div > div select::-webkit-scrollbar {
+    width: 5px; /* Ancho de la barra de desplazamiento */
+}
+
+.filters-sidebar > div > div select::-webkit-scrollbar-track {
+    background: #fff; /* Color del área de la barra de desplazamiento */
+}
+
+.filters-sidebar > div > div select::-webkit-scrollbar-thumb:hover {
+    background: #235371 /* Color de la parte deslizable al pasar el ratón */
+}
+
+
+@media (max-width: 768px) {
+
+    .filters-sidebar {
+        width: 90%;
+
+    }
+
+    .filters-sidebar div button{
+        width: 30px;
+        height: 40px;
+        right: -15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .filters-sidebar {
+        width: 90%;
+
+    }
+
+    .filters-sidebar div button{
+        width: 40px;
+        height: 60px;
+        right: -20px;
+    }
+
 }

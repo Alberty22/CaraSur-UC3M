@@ -8,13 +8,25 @@ import { useSideBar } from '../../hooks/useSideBar'
 import { FiltersSidebar } from '../../components/Equipment/FiltersSidebar'
 import { CartSidebar } from '../../components/Equipment/CartSidebar'
 import swipe_icon from '../../assets/images/icons/Expand_left.webp'
+import { useFilters } from '../../hooks/useFilters'
 
 export function EquipmentPage() {
 
     const { data } = useFetch({ url:'/inventory.json' })
     const inventory = data?.inventory
 
+    const inventory_unique = {
+        "object": inventory ? [...new Set(Object.values(inventory).map(item => item?.object))] : [],
+        "size" : inventory ? [...new Set(Object.values(inventory).map(item => item?.size))] : [],
+        "condition": inventory ? [...new Set(Object.values(inventory).map(item => item?.condition))] : [],
+        "category": inventory ? [...new Set(Object.values(inventory).map(item => item?.category))] : [],
+    }
+
     const { openSidebars, handleOpenSidebar, handleCloseSidebar } = useSideBar()
+
+    const { filters, filterProducts, sortProducts } = useFilters()
+    const filteredProducts = sortProducts(filterProducts(inventory ? Object.values(inventory) : []))
+    
 
     return (
         <main className='equipment-page'>
@@ -24,39 +36,35 @@ export function EquipmentPage() {
                 <div></div>
             </header>
             <section className='shop'>
-                <aside>
-                    <button className='filter-button' onClick={() => handleOpenSidebar('filtersSidebar')}>
+                <button className='filter-button' onClick={() => handleOpenSidebar('filtersSidebar')}>
                         <img src={filters_icon} alt='Filtros'/>
-                    </button>
-                    {openSidebars?.filtersSidebar &&
-                        <FiltersSidebar>
-                            <button onClick={() => handleCloseSidebar('filtersSidebar')}>
-                                <img src={swipe_icon} alt='cerrar' />
-                            </button>
-                        </FiltersSidebar>
-                    }
-                </aside>
-                
+                </button>
+
+                {openSidebars?.filtersSidebar &&
+                    <FiltersSidebar invetory_unique={inventory_unique}>
+                        <button onClick={() => handleCloseSidebar('filtersSidebar')}>
+                            <img src={swipe_icon} alt='cerrar' />
+                        </button>
+                    </FiltersSidebar>
+                }
+
+                {openSidebars?.cartSidebar &&
+                    <CartSidebar>
+                        <button onClick={() => handleCloseSidebar('cartSidebar')}>
+                            <img src={swipe_icon} alt='cerrar' />
+                        </button>
+                    </CartSidebar>
+                }
 
                 {
                     inventory !== undefined &&
-                    <Products products={inventory} />
+                    <Products products={filteredProducts} />
                 }
                 
-                
-                
-                <aside>
-                    <button className='cart-button' onClick={() => handleOpenSidebar('cartSidebar')}>
-                        <img src={cart_icon} alt='Carrito'/>
-                    </button>
-                    {openSidebars?.cartSidebar &&
-                        <CartSidebar>
-                            <button onClick={() => handleCloseSidebar('cartSidebar')}>
-                                <img src={swipe_icon} alt='cerrar' />
-                            </button>
-                        </CartSidebar>
-                    }
-                </aside>
+                <button className='cart-button' onClick={() => handleOpenSidebar('cartSidebar')}>
+                    <img src={cart_icon} alt='Carrito'/>
+                </button>
+
                 
             </section>
         </main>

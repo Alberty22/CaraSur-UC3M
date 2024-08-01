@@ -14,6 +14,7 @@ import { Header } from './components/Header/Header.jsx'
 
 import { useAuth } from './hooks/useAuth.js';
 import { NotificationsProvider } from './context/notifications.jsx';
+import { FiltersProvider } from './context/filters.jsx';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         <Route path='/activities' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/new' element={<ProtectedRoute><></></ProtectedRoute>} />
         <Route path='/activities/:activityId' element={<></>} />
-        <Route path='/equipment' element={<ProtectedRoute><EquipmentPage /></ProtectedRoute>} />
+        <Route path='/equipment' element={<ProtectedRoute><FiltersProvider><EquipmentPage /></FiltersProvider></ProtectedRoute>} />
         <Route path='/equipment/:productId' element={<></>}>
           <Route path='details' element={<></>} />
         </Route>
