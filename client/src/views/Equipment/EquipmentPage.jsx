@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '../../components/Breadcrumbs'
+import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
 import filters_icon from '../../assets/images/icons/Filter.webp'
 import cart_icon from '../../assets/images/icons/Cart.webp'
 import './EquipmentPage.css'
@@ -10,7 +10,7 @@ import { CartSidebar } from '../../components/Equipment/CartSidebar'
 import swipe_icon from '../../assets/images/icons/Expand_left.webp'
 import { useEquipmentFilters } from '../../hooks/useEquipmentFilters'
 import { usePopup } from '../../hooks/usePopups'
-import Popup from '../../components/Popup'
+import Popup from '../../components/others/Popup'
 
 export function EquipmentPage() {
 

@@ -1,7 +1,7 @@
 import './LoansPage.css'
-import { Breadcrumbs } from '../../components/Breadcrumbs'
+import { Breadcrumbs } from '../../components/others/Breadcrumbs'
 import { useFetch } from '../../hooks/useFetch'
-import { LoanItem } from '../../components/LoanItem'
+import { LoanItem } from '../../components/others/LoanItem'
 
 export function LoansPage() {
     const { data } = useFetch({ url:'/loans.json' })

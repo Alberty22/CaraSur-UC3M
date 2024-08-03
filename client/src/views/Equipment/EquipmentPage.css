@@ -38,7 +38,7 @@
 .equipment-page > .shop {
     width: 100vw;
     height: auto;
-    min-height: 60vh;
+    min-height: 80vh;
     padding-bottom: 30px;
     position: relative;
     overflow-y: hidden;

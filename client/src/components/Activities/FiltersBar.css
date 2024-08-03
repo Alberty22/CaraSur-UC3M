@@ -111,3 +111,45 @@
     color: #969696;
     background-color: #f7f7f7;
 }
+
+
+@media (max-width: 768px) {
+
+    
+
+    .filters-bar{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2; 
+        grid-row-end: 3;
+    
+    }
+
+    .filters-bar .search-bar div{
+        width: 100%;
+    }
+
+    .filters-bar .search-bar button {
+        right: 5px;
+    }
+
+    .filters-bar .search-bar input {
+        width: calc(100% - 12px);
+        padding-left: 10px;
+        
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .filters-bar{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2; 
+        grid-row-end: 3;
+    
+    }
+
+}

@@ -7,7 +7,7 @@ export function useActivityFilters () {
 
     const filterActivities = (activities) => {
         return activities.filter(activity => {
-            const matchesSearch = filters.search === '' || activity.tittle.toLowerCase().includes(filters.search.toLowerCase());
+            const matchesSearch = filters.search === '' || activity.title.toLowerCase().includes(filters.search.toLowerCase());
             return(
                 matchesSearch &&
                 (

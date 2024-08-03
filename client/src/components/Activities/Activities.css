@@ -1,0 +1,146 @@
+.activities-page .activities {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+}
+
+.activities ul{
+    width: 80%;
+    height: auto;
+    background-color: #f7f7f7;
+    
+}
+
+.activities li {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #969696;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.activities .date {
+    text-align: center;
+    margin-right: 20px;
+}
+.activities .date div {
+    margin: 2px 0;
+}
+.activities .date .month {
+    color: #999;
+    font-size: 0.9rem;
+}
+.activities .date .day {
+    color: #235371;
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+.activities .date .year {
+    color: #999;
+    font-size: 0.9rem;
+}
+.activities .event {
+    flex-grow: 1;
+    font-size: 1.5rem;
+}
+
+.activities button {
+    background-color: #235371;
+    
+    border: none;
+    border-radius: 15px;
+    padding: 20px 20px;
+    cursor: pointer;
+    
+}
+
+.activities button a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.activities button a:visited{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+
+    .activities-page .activities {
+        width: 100%;
+        
+    }
+    
+    .activities ul{
+        width: 90%;
+        
+    }
+
+    .activities .date .month {
+        font-size: 0.7rem;
+    }
+    .activities .date .day {
+        font-size: 1.2rem;
+    }
+    .activities .date .year {
+        font-size: 0.7rem;
+    }
+
+    .activities .event {
+        font-size: 1rem;
+    }
+
+    .activities button {
+        padding: 15px 15px;
+
+        
+    }
+    
+    .activities button a{
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .activities-page .activities {
+        width: 100%;
+        align-items: center;
+        
+    }
+    
+    .activities ul{
+        width: 90%;
+        
+    }
+
+    .activities .date .month {
+        font-size: 1rem;
+    }
+    .activities .date .day {
+        font-size: 1.8rem;
+    }
+    .activities .date .year {
+        font-size: 1rem;
+    }
+
+    .activities .event {
+        font-size: 1.5rem;
+    }
+
+    .activities button {
+        padding: 20px 20px;
+
+        
+    }
+    
+    .activities button a{
+        font-size: 1rem;
+    }
+}

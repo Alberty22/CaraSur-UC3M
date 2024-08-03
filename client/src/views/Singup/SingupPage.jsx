@@ -3,7 +3,7 @@ import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 import useMobileQuery from '../../hooks/useMobileQuery.js';
 import { FormSection } from '../../components/Sections/FormSection.jsx';
-import { Form } from '../../components/Form.jsx';
+import { Form } from '../../components/others/Form.jsx';
 
 import inputSingup1 from '../../assets/others/inputs-singup1.json'
 import inputSingup2 from '../../assets/others/inputs-singup2.json'

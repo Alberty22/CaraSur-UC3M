@@ -2,8 +2,8 @@ import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import { useDropzone } from 'react-dropzone';
 import './Form.css'
-import hide_icon from '../assets/images/icons/View_hide.webp'
-import show_icon from '../assets/images/icons/View_show.webp'
+import hide_icon from '../../assets/images/icons/View_hide.webp'
+import show_icon from '../../assets/images/icons/View_show.webp'
 import countryList from 'react-select-country-list'
 
 

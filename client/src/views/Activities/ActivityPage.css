@@ -1,0 +1,301 @@
+.activity-page {
+    width: 100%;
+    height: auto;
+    min-height: 65vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: #f7f7f7;
+
+}
+
+.activity-page > section {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.activity-page .activity-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1; 
+    grid-row-end: 4;
+
+}
+
+.activity-page .activity-info > div{
+    width: 80%;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1; 
+    grid-row-end: 4;
+
+}
+
+.activity-page .activity-info > div:first-child{
+    display: flex;
+    align-items: center;
+    gap: 20px
+
+}
+
+.activity-page .activity-info > div:first-child h2{
+    
+    color: #235371;
+    font-weight: bold;
+    font-size: 2rem;
+
+}
+
+.activity-page .activity-info > div:first-child > div{
+    display: flex;
+    gap: 20px;
+
+}
+
+.activity-page .activity-info > div:first-child div > div{
+    padding: 10px 15px 10px 15px;
+    background-color: #235371;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: bold;
+
+}
+
+.activity-page .activity-info > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    gap: 10px
+
+}
+.activity-page .activity-info .star {
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    margin-right: 0;
+}
+
+.activity-page .activity-info > div:nth-child(4){
+    background-color: #fff;
+    margin-top: 20px;
+    width: fit-content;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 30px;
+
+}
+
+.activity-page .activity-info img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.activity-page .activity-info > button{
+    width: 300px;
+    margin-top: 30px;
+    background-color: #235371;
+    padding: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+    .activity-page .activity-info {
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+    
+    }
+
+    .activity-page > section:last-child {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .activity-page .activity-info > div{
+        width: 90%;
+    
+    }
+
+    .activity-page .activity-info > div:first-child{
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    
+    }
+    
+    .activity-page .activity-info > div:first-child h2{
+        font-size: 1.5rem;
+    
+    }
+
+    .activity-page .activity-info > div:first-child > div{
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    
+    }
+    
+    .activity-page .activity-info > div:first-child > div > div{
+        padding: 10px 10px 10px 10px;
+        font-size: 0.7rem;
+    
+    }
+
+    .activity-page .activity-info > div:nth-child(2){
+        font-size: 0.8rem;
+    
+    }
+    .activity-page .activity-info .star {
+        width: 35px;
+        height: 35px;
+    }
+
+    .activity-page .activity-info > div:nth-child(4){
+        font-size: 0.8rem;
+    
+    }
+    
+    .activity-page .activity-info img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        padding-top: 5px;
+    }
+    
+    .activity-page .activity-info > button{
+        width: 300px;
+        margin-top: 30px;
+        background-color: #235371;
+        padding: 20px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: 0;
+        border-radius: 15px;
+        cursor: pointer;
+    
+    }
+
+    .activity-page .activity-info > button{
+        width: 200px;
+        font-size: 1rem;
+        
+    
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .activity-page .activity-info {
+        align-content: center;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 30px;
+    
+    }
+
+    .activity-page > section:last-child {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .activity-page .activity-info > div{
+        width: 90%;
+    
+    }
+
+    .activity-page .activity-info > div:first-child{
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+    
+    }
+    
+    .activity-page .activity-info > div:first-child h2{
+        font-size: 2rem;
+    
+    }
+
+    .activity-page .activity-info > div:first-child > div{
+        width: 50%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 0;
+    
+    }
+    
+    .activity-page .activity-info > div:first-child > div > div{
+        padding: 10px 10px 10px 10px;
+        font-size: 1rem;
+    
+    }
+
+    .activity-page .activity-info > div:nth-child(2){
+        font-size: 1rem;
+    
+    }
+    .activity-page .activity-info .star {
+        width: 45px;
+        height: 45px;
+    }
+
+    .activity-page .activity-info > div:nth-child(4){
+        font-size: 1rem;
+    
+    }
+    
+    .activity-page .activity-info img {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        padding-top: 5px;
+    }
+    
+    .activity-page .activity-info > button{
+        width: 300px;
+        margin-top: 30px;
+        background-color: #235371;
+        padding: 20px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border: 0;
+        border-radius: 15px;
+        cursor: pointer;
+    
+    }
+
+    .activity-page .activity-info > button{
+        width: 300px;
+        font-size: 1.5rem;
+        
+    
+    }
+    
+}

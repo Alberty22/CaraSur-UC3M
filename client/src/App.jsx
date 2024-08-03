@@ -12,6 +12,7 @@ import { ProfilePage } from './views/Profile/ProfilePage.jsx';
 import { LoansPage } from './views/Loans/LoansPage.jsx';
 import { EquipmentPage } from './views/Equipment/EquipmentPage.jsx';
 import { ActivitiesPage } from './views/Activities/ActivitiesPage.jsx';
+import { ActivityPage } from './views/Activities/ActivityPage.jsx';
 
 
 
@@ -19,6 +20,7 @@ import { useAuth } from './hooks/useAuth.js';
 import { NotificationsProvider } from './context/notifications.jsx';
 import { EquipmentFiltersProvider } from './context/equipmentFilters.jsx';
 import { ActivityFiltersProvider } from './context/activityFilters.jsx';
+import { ActivityProvider } from './context/activity.jsx';
 import { CartProvider } from './context/cart.jsx';
 
 
@@ -47,9 +49,11 @@ function App() {
         <Route path='/singup' element={<SingupPage />} />
         <Route path='/singup/next-step' element={<SingupPage />} />
         <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
-        <Route path='/activities' element={<ProtectedRoute><ActivityFiltersProvider><ActivitiesPage /></ActivityFiltersProvider></ProtectedRoute>} />
+        <Route path='/activities' element={<ProtectedRoute><ActivityFiltersProvider>
+                                            <ActivitiesPage />
+                                          </ActivityFiltersProvider></ProtectedRoute>} />
         <Route path='/activities/new' element={<ProtectedRoute><></></ProtectedRoute>} />
-        <Route path='/activities/:activityId' element={<></>} />
+        <Route path='/activities/:activityId' element={<ProtectedRoute><ActivityProvider><ActivityPage /></ActivityProvider></ProtectedRoute>} />
         <Route path='/equipment' element={<ProtectedRoute><EquipmentFiltersProvider><CartProvider>
                                             <EquipmentPage />
                                           </CartProvider></EquipmentFiltersProvider></ProtectedRoute>} />

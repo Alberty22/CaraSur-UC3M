@@ -3,7 +3,7 @@ import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 import useMobileQuery from '../../hooks/useMobileQuery.js';
 import { FormSection } from '../../components/Sections/FormSection.jsx';
-import { Form } from '../../components/Form.jsx';
+import { Form } from '../../components/others/Form.jsx';
 import inputsLogin from '../../assets/others/inputs-login.json'
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';

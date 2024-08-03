@@ -1,0 +1,84 @@
+.aside-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+    margin-bottom: 30px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2; 
+    grid-row-end: 4;
+}
+
+.aside-section .activity-suggestion {
+    width: 60%;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.aside-section .activity-suggestion span {
+    color: #235371;
+}
+
+.aside-section .activity-suggestion button {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #235371;
+    border: none;
+    margin: 0;
+}
+
+.aside-section .activity-suggestion a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.aside-section .activity-suggestion a:visited {
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+
+    .aside-section {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1; 
+        grid-row-end: 2;
+    }
+
+    .aside-section .activity-suggestion {
+        width: 90%;
+        text-align: center;
+        
+    }
+
+    .aside-section .activity-suggestion h3 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .aside-section {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1; 
+        grid-row-end: 2;
+    }
+}

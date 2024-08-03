@@ -1,6 +1,6 @@
 import './UserInformation.css'
-import edit_icon from '../assets/images/icons/Edit.webp'
-import { usePopup } from '../hooks/usePopups';
+import edit_icon from '../../assets/images/icons/Edit.webp'
+import { usePopup } from '../../hooks/usePopups';
 import Popup from './Popup';
 
 export const UserInformation = ({ information, sectionTitle, popupContent }) => {

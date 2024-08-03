@@ -1,8 +1,8 @@
 .activities-page {
     width: 100%;
     height: auto;
-    min-height: 60vh;
-    overflow-y: auto;
+    min-height: 65vh;
+    overflow-y: hidden;
     overflow-x: hidden;
     background-color: #f7f7f7;
 }
@@ -28,58 +28,10 @@
 
 .activities-page main {
     display: grid;
-    height: 100%;
+    height: auto;
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 160px 700px;
-}
-
-.activities-page main > section {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2; 
-    grid-row-end: 4;
-}
-
-.activities-page .activity-suggestion {
-    width: 60%;
-    height: 250px;
-    background-color: #fff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.activities-page .activity-suggestion span {
-    color: #235371;
-}
-
-.activities-page .activity-suggestion button {
-    border-radius: 15px;
-    padding: 20px;
-    background-color: #235371;
-    border: none;
-    margin: 0;
-}
-
-.activities-page .activity-suggestion a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.activities-page .activity-suggestion a:visited {
-    color: #fff;
+    grid-template-rows: 160px auto;
 }
 
 
@@ -97,6 +49,12 @@
     
     }
 
+    .activities-page main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 160px auto;
+    
+    }
+
 }
 
 
@@ -111,6 +69,12 @@
 
     .equipment-page > header h2{
         font-size: 2rem;
+    
+    }
+
+    .activities-page main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 160px auto;
     
     }
 }

@@ -1,6 +1,6 @@
-import { usePopup } from "../hooks/usePopups";
+import { usePopup } from "../../hooks/usePopups";
 import './Popup.css'
-import cross_icon from "../assets/images/icons/Cross.webp"
+import cross_icon from "../../assets/images/icons/Cross.webp"
 
 const Popup = ({ children, className='popup'}) => {
     const { isOpen, popupRef, handleClose } = usePopup();

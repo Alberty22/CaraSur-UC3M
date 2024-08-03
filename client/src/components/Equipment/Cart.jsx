@@ -5,8 +5,8 @@ import add_icon from "../../assets/images/icons/Add.webp"
 import remove_icon from "../../assets/images/icons/Remove.webp"
 import trash_icon from "../../assets/images/icons/Trash.webp"
 import { usePopup } from "../../hooks/usePopups";
-import { OkSection } from "../Others/OkSection";
-import { FailedSection } from "../Others/FailedSection";
+import { OkSection } from "../others/OkSection";
+import { FailedSection } from "../others/FailedSection";
 import stock_icon from '../../assets/images/icons/Stock-product.webp'
 
 

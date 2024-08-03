@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameDay, isSameMonth, addMonths, subMonths } from 'date-fns';
 
 export function Calendar({ markedDates }) {
+    
     const [currentMonth, setCurrentMonth] = useState(new Date());
 
     const nextMonth = () => {
