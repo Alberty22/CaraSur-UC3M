@@ -1,11 +1,11 @@
 import './FiltersSidebar.css'
 import { useId, useState } from 'react'
-import { useFilters } from '../../hooks/useFilters'
+import { useEquipmentFilters } from '../../hooks/useEquipmentFilters'
 import search_icon from '../../assets/images/icons/Search.webp'
 
 export function FiltersSidebar({ children, invetory_unique }) {
 
-    const { setFilters } = useFilters()
+    const { setFilters } = useEquipmentFilters()
     const [searchQuery, setSearchQuery] = useState('');
 
     const typeFilterId = useId()
@@ -13,36 +13,13 @@ export function FiltersSidebar({ children, invetory_unique }) {
     const conditionFilterId = useId()
     const categoryFilterId = useId()
 
-
-    const handleChangeType = (event) => {
-        
+    const handleChange = (event) => {
+        const { name, value } = event.target;
         setFilters(prevState => ({
             ...prevState,
-            object: event.target.value
-        }))
-    }
-
-    const handleChangeSize = (event) => {
-        setFilters(prevState => ({
-            ...prevState,
-            size: event.target.value
-        }))
-    }
-
-    const handleChangeCondition = (event) => {
-        
-        setFilters(prevState => ({
-            ...prevState,
-            condition: event.target.value
-        }))
-    }
-
-    const handleChangeCategory = (event) => {
-        setFilters(prevState => ({
-            ...prevState,
-            category: event.target.value
-        }))
-    }
+            [name]: value
+        }));
+    };
 
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
@@ -77,7 +54,7 @@ export function FiltersSidebar({ children, invetory_unique }) {
                 </div>
                 <div>
                     <label htmlFor={typeFilterId}>Tipo de producto:</label>
-                    <select id={typeFilterId} onChange={handleChangeType}>
+                    <select name='object' id={typeFilterId} onChange={handleChange}>
                         <option value='all'>Todas</option>
                         {invetory_unique.object.map((object,index) => {
                             return object === null ? <></>
@@ -87,7 +64,7 @@ export function FiltersSidebar({ children, invetory_unique }) {
                 </div>
                 <div>
                     <label htmlFor={sizeFilterId}>Talla:</label>
-                    <select id={sizeFilterId} onChange={handleChangeSize}>
+                    <select name='size' id={sizeFilterId} onChange={handleChange}>
                         <option value='all'>Todas</option>
                         {invetory_unique.size.map((object,index) => {
                             return object === null ? <></>
@@ -97,7 +74,7 @@ export function FiltersSidebar({ children, invetory_unique }) {
                 </div>
                 <div>
                     <label htmlFor={conditionFilterId}>Estado del producto:</label>
-                    <select id={conditionFilterId} onChange={handleChangeCondition}>
+                    <select name='condition' id={conditionFilterId} onChange={handleChange}>
                         <option value='all'>Todas</option>
                         {invetory_unique.condition.map((object,index) => {
                             return object === null ? <></>
@@ -107,7 +84,7 @@ export function FiltersSidebar({ children, invetory_unique }) {
                 </div>
                 <div>
                     <label htmlFor={categoryFilterId}>Categoria:</label>
-                    <select id={categoryFilterId} onChange={handleChangeCategory}>
+                    <select name='category' id={categoryFilterId} onChange={handleChange}>
                         <option value='all'>Todas</option>
                         {invetory_unique.category.map((object,index) => {
                             return object === null ? <></>

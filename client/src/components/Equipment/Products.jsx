@@ -29,7 +29,7 @@ export function Products ({ products }) {
                         <img src={product.photo === null ? stock_icon : product.photo} alt={product.object} onClick={() => handleClick(product)}></img>
                         <div>
                             <div>
-                                <strong>{product.Modelo}</strong>{product.Modelo ? ' - ' : ''}{product.object}
+                                <strong>{product.model}</strong>{product.model ? ' - ' : ''}{product.object}
                                 <p>Disponibles: {product.available}</p>
                             </div>
                             <button onClick={ (product.available === 0) 

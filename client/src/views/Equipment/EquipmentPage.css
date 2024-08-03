@@ -1,6 +1,7 @@
 .equipment-page {
     width: 100%;
     height: auto;
+    min-height: 60vh;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #f7f7f7;
@@ -37,6 +38,7 @@
 .equipment-page > .shop {
     width: 100vw;
     height: auto;
+    min-height: 60vh;
     padding-bottom: 30px;
     position: relative;
     overflow-y: hidden;

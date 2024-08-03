@@ -1,0 +1,116 @@
+.activities-page {
+    width: 100%;
+    height: auto;
+    min-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #f7f7f7;
+}
+
+.activities-page > header {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.activities-page> header h2{
+    padding: 0;
+    width: 90vw;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #235371;
+
+}
+
+.activities-page main {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 700px;
+}
+
+.activities-page main > section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2; 
+    grid-row-end: 4;
+}
+
+.activities-page .activity-suggestion {
+    width: 60%;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.activities-page .activity-suggestion span {
+    color: #235371;
+}
+
+.activities-page .activity-suggestion button {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #235371;
+    border: none;
+    margin: 0;
+}
+
+.activities-page .activity-suggestion a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.activities-page .activity-suggestion a:visited {
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .equipment-page > header div{
+        width: 100%;
+        height: 40px;
+        flex: none;
+        background-color: #235371;
+    
+    }
+
+    .equipment-page > header h2{
+        font-size: 1.5rem;
+    
+    }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .equipment-page > header div{
+        width: 100%;
+        height: 80px;
+        flex: none;
+        background-color: #235371;
+    
+    }
+
+    .equipment-page > header h2{
+        font-size: 2rem;
+    
+    }
+}

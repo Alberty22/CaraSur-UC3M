@@ -57,6 +57,10 @@
     width: 100%;
 }
 
+.dropdown-navigation a:visited {
+    color: #235371;
+}
+
 .dropdown-navigation li:last-child a {
     color: #ffffff;
 }

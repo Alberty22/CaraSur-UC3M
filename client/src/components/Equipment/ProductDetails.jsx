@@ -1,4 +1,5 @@
 import './ProductDetails.css'
+import stock_icon from '../../assets/images/icons/Stock-product.webp'
 
 export function ProductDetails({ product }) {
 
@@ -12,7 +13,7 @@ export function ProductDetails({ product }) {
     return (
         <div className="product-details">
             <section className="product-photo">
-                <img src={product.photo} alt={product.object} />
+                <img src={product.photo === null ? stock_icon : product.photo} alt={product.object} />
             </section>
             <section className="product-info">
                 {
