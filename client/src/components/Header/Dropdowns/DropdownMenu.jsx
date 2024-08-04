@@ -6,9 +6,9 @@ import { forwardRef } from 'react';
 
 export const DropdownMenu = forwardRef((props, ref) => {
     
-    const { isAuthenticated, logout } = useAuth()
+    const { isAuthenticated, isAdmin, logout } = useAuth()
 
-    const { dropdownRef, handleClose } = useDropdown({ id:'menu', maxHeight:'500', toggleRefs:[ref]});
+    const { dropdownRef, handleClose } = useDropdown({ id:'menu', maxHeight:'600', toggleRefs:[ref]});
 
     return (
         <nav className="dropdown-navigation" ref={dropdownRef} id="menu">
@@ -22,6 +22,9 @@ export const DropdownMenu = forwardRef((props, ref) => {
                 ? <>
                 <li className="link"><Link to="/profile" onClick={handleClose}>PERFIL</Link></li>
                 <li className="link"><Link to="/loans" onClick={handleClose}>PRÉSTAMOS</Link></li>
+                {isAdmin &&
+                    <li className="link"><Link to="/admin" onClick={handleClose}>ADMINISTRADOR</Link></li>
+                }
                 <li className="link"><Link to="/" onClick={() => {handleClose(); logout();}}>CERRAR SESIÓN</Link></li>
                 </>
                 : <li className="link"><Link to="/login" onClick={handleClose}>ÁREA DE SOCIOS</Link></li>

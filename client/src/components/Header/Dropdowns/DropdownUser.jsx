@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 
 export const DropdownUser = forwardRef((props, ref) => {
 
-    const { logout } = useAuth()
+    const { logout, isAdmin } = useAuth()
     
     const { dropdownRef, handleClose } = useDropdown({ id:'user', maxHeight:'500', toggleRefs:[ref]});
 
@@ -15,6 +15,8 @@ export const DropdownUser = forwardRef((props, ref) => {
         <ul>
             <li className="link"><Link to="/profile" onClick={handleClose}>Perfil</Link></li>
             <li className="link"><Link to="/loans" onClick={handleClose}>Préstamo</Link></li>
+            {isAdmin &&
+                <li className="link"><Link to="/admin" onClick={handleClose}>Administrador</Link></li>}
             <li className="link"><Link to="/" onClick={() => {handleClose(), logout();}}>Cerrar sesión</Link></li>
             
         </ul>

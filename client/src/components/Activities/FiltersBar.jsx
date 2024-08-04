@@ -3,6 +3,7 @@ import search_icon from '../../assets/images/icons/Search.webp'
 import { useId } from 'react'
 import { useActivityFilters } from '../../hooks/useActivityFilters'
 import { useState } from 'react'
+import { Searchbar } from '../others/Searchbar'
 
 
 export function FiltersBar() {
@@ -41,14 +42,8 @@ export function FiltersBar() {
 
     return (
         <div className='filters-bar'>
-            <div className='search-bar'>
-                <div>
-                    <input name='query' placeholder='Introduzca una actividad' value={searchQuery} onChange={handleSearchChange}/>
-                    <button onClick={handleSearchClick}>
-                        <img src={search_icon} alt='buscar'/>
-                    </button>
-                </div> 
-            </div>
+            <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} 
+                searchQuery={searchQuery} placeholder='Introduzca una actividad' className='search-bar-activities'/>
             <div className='other-filters'>
                 <div>
                     <div>

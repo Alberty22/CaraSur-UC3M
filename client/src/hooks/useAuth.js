@@ -2,16 +2,18 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 
 export function useAuth () {
-    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext)
+    const { isAuthenticated, setIsAuthenticated, isAdmin, setIsAdmin } = useContext(AuthContext)
 
     const login = () => {
         setIsAuthenticated(true)
+        setIsAdmin(true)
     }
 
     const logout = () => {
         setIsAuthenticated(false)
+        setIsAdmin(false)
     }
 
-    return { isAuthenticated, login, logout }
+    return { isAuthenticated, isAdmin,  login, logout }
 }
 

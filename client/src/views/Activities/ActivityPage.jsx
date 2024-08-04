@@ -34,12 +34,16 @@ const formattedDate = (date) => {
 
 export function ActivityPage() {
     const location = useLocation();
-    const {id, title, description, date, time, difficulty, chat, drive } = location?.state || {};
+    const { activityId } = useParams()
     
     const { registeredActivities, toggleRegistration } = useActivity();
 
     const { data } = useFetch({ url:'/activities.json' })
     const activities = data?.activities
+
+    const {id, title, description, date, time, difficulty, chat, drive } = location?.state 
+                                                                            ? location.state
+                                                                            : ( activities ? activities[activityId.split('-')[0]] : {})
 
     const markedDates = activities 
         ? Object.values(activities).map(activity => ({
@@ -81,7 +85,7 @@ export function ActivityPage() {
                         <p><img src={whatsapp_logo} alt='whatsapp'/>Unete al <a href={chat}>chat</a> de la actividad</p>
                         <p><img src={drive_logo} alt='drive'/>Accede a las <a href={drive}>fotos</a> de la actividad</p>
                     </div>
-                    <button onClick={() => toggleRegistration(id)}>
+                    <button onClick={() => toggleRegistration(id)} className={registeredActivities.includes(id) ? 'unsuscribe': 'suscribe'}>
                         {registeredActivities.includes(id) ? 'Desinscribirse' : 'Inscribirse'}
                     </button>
                 </div>

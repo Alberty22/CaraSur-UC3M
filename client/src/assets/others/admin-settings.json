@@ -1,0 +1,20 @@
+{
+    "admin-account-popup": [
+        {
+            "inputKey": "admin-email",
+            "inputType":"email",
+            "placeholder":"Introduce tu email",
+            "error":"Email is required"
+        }
+    ],
+    "admin-billing-popup": [
+        {
+            "inputKey": "billing-account",
+            "inputType":"text",
+            "placeholder":"Introduce tu cuenta de facturación",
+            "error":"Billing is required"
+        }
+
+    ]
+    
+}

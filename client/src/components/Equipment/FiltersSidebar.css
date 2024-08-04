@@ -44,48 +44,6 @@
     transform: scaleX(-1)
 }
 
-.filters-sidebar .search-bar {
-    width: 80%;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border-bottom: solid 3px #235371;
-}
-
-.filters-sidebar .search-bar div{
-    width: calc(100% - 10px);
-    position: relative;
-}
-.filters-sidebar .search-bar input {
-    width: 100%;
-    height: 38px;
-    border-radius: 15px;
-    border-width: 1px;
-    background-color: #f7f7f7;
-    padding: 0;
-    padding-left: 10px;
-}
-
-.filters-sidebar .search-bar button {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: calc(50% - 12.5px);
-    right: 0;
-    border: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-.filters-sidebar .search-bar button img{
-    width: 100%;
-    height: 100%;
-}
-
 .filters-sidebar > div > div {
     margin-top: 10px;
     width: 80%;

@@ -65,6 +65,10 @@
     color: #969696;
   }
 
+  .login-form select:valid {
+    color: #fff; /* Color cuando se enfoca el select */
+  }
+
   .login-form .selected{
     color: #ffffff;
   }
@@ -74,6 +78,11 @@
     font-weight: normal;
     color: #ffffff;
     background: #282828;
+    
+  }
+
+  .login-form select option:disabled {
+    color: #969696;
     
   }
 

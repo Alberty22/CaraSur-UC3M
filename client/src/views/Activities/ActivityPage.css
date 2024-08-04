@@ -113,6 +113,11 @@
 
 }
 
+.activity-page .activity-info > .unsuscribe{
+    background-color: #BC0505;
+
+}
+
 @media (max-width: 768px) {
 
     .activity-page .activity-info {
@@ -197,6 +202,7 @@
     
     }
 
+
     .activity-page .activity-info > button{
         width: 200px;
         font-size: 1rem;
@@ -209,9 +215,19 @@
 
 @media (min-width: 768px) and (max-width: 1024px)  {
 
+    .activity-page {
+        width: 100%;
+        height: auto;
+        min-height: 45vh;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        background-color: #f7f7f7;
+    
+    }
+
     .activity-page .activity-info {
         align-content: center;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         margin-bottom: 30px;
     
@@ -290,6 +306,7 @@
         cursor: pointer;
     
     }
+
 
     .activity-page .activity-info > button{
         width: 300px;

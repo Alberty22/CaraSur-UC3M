@@ -2,6 +2,7 @@ import './FiltersSidebar.css'
 import { useId, useState } from 'react'
 import { useEquipmentFilters } from '../../hooks/useEquipmentFilters'
 import search_icon from '../../assets/images/icons/Search.webp'
+import { Searchbar } from '../others/Searchbar'
 
 export function FiltersSidebar({ children, invetory_unique }) {
 
@@ -43,15 +44,7 @@ export function FiltersSidebar({ children, invetory_unique }) {
         <aside className="filters-sidebar">
             <div>
                 {children}
-
-                <div className='search-bar'>
-                    <div>
-                        <input name='query' placeholder='Introduzca un producto' value={searchQuery} onChange={handleSearchChange}/>
-                        <button onClick={handleSearchClick}>
-                            <img src={search_icon} alt='buscar'/>
-                        </button>
-                    </div> 
-                </div>
+                <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} searchQuery={searchQuery} placeholder='Introduzca un producto'/>
                 <div>
                     <label htmlFor={typeFilterId}>Tipo de producto:</label>
                     <select name='object' id={typeFilterId} onChange={handleChange}>

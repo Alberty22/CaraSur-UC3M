@@ -7,7 +7,7 @@
 }
 
 .breadcrumbs-section h3 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: bold;
     margin: 15px 0 15px 0;
 }
@@ -27,5 +27,14 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+    }
+    .breadcrumbs-section h3 {
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .breadcrumbs-section h3 {
+        font-size: 0.9rem;
     }
 }

@@ -62,16 +62,8 @@ export const Form = ({ inputs, onSubmit, type }) => {
                 {
                     inputs.map((input) => {
                         const { inputKey, inputType, placeholder, error } = input
-                        if (inputType === 'email') {
-                            return (
-                                <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                    <input type="email" placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}
-                                    />
-                                    {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                </div>   
-                            )}
-                        else if (inputType === 'password') {
+                        
+                        if (inputType === 'password') {
                             return (
                                 <div key={inputKey} className='pass-container' style={{display:'flex', flexDirection:'column' }}>
                                     <input
@@ -85,19 +77,6 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                 
                             )}
 
-                        else if (inputType === 'password-repeat') {
-                            return (
-                                <div key={inputKey} className='pass-container' style={{display:'flex', flexDirection:'column' }}>
-                                    <input
-                                    type={showPassword ? "text" :"password"}
-                                    placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}
-                                    />
-                                    <button type="button" onClick={handleClick} className='show-pass'><img src={passIcon} alt="Mostrar contraseña" /></button>
-                                    {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                </div>
-                                
-                            )}
                         else if (inputType === 'checkbox') {
                             return (
                                 <div className="login-extra" key={inputKey}>
@@ -111,33 +90,6 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     </div>
                                     <a href="/" className="forgot-password">¿Has olvidado tu contraseña?</a>
                                 </div>
-                            )}
-
-                        else if (inputType === 'text') {
-                            return (
-                                <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                    <input type='text' placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}/>
-                                    {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                </div>   
-                            )}
-
-                        else if (inputType === 'number') {
-                            return (
-                                <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                    <input type='number' placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}/>
-                                    {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                </div>   
-                            )}
-
-                        else if (inputType === 'tel') {
-                            return (
-                                <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                    <input onChange={handleChange} type='tel' placeholder={placeholder}
-                                    {...register(inputKey, { required: error })}/>
-                                    {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                </div>   
                             )}
                         
                         else if (inputType === 'uc3m-student') {
@@ -169,15 +121,6 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     </div>   
                                 )}
 
-                            else if (inputType === 'date') {
-                                return (
-                                    <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                        <input type='date' placeholder={placeholder}
-                                        {...register(inputKey, { required: error })}/>
-                                        {errors[inputKey] && <p>{errors[inputKey].message}</p>}
-                                    </div>   
-                                )}
-
                             else if (inputType === 'country') {
                                 return (
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
@@ -200,7 +143,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                         <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                            <option value="" disabled>{placeholder}</option>
+                                            <option value=""  disabled>{placeholder}</option>
                                             <option value="si">Sí</option>
                                             <option value="no">No</option>
                                             <option value="">Prefiero no contestar</option>
@@ -234,6 +177,16 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                                 {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                             </div>   
                                         )}
+                                    
+                                    else {
+                                        return (
+                                            <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                                                <input type={inputType} placeholder={placeholder}
+                                                {...register(inputKey, { required: error })}/>
+                                                {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                                            </div>   
+                                        )
+                                    }
                             // else if (inputType === 'image') {
                             //     return (
                             //         <>
@@ -264,3 +217,50 @@ export const Form = ({ inputs, onSubmit, type }) => {
     )
 
 }
+
+
+    // if (inputType === 'email') {
+                        //     return (
+                        //         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                        //             <input type="email" placeholder={placeholder}
+                        //             {...register(inputKey, { required: error })}
+                        //             />
+                        //             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                        //         </div>   
+                        //     )}
+
+                        // else if (inputType === 'text') {
+                        //     return (
+                        //         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                        //             <input type='text' placeholder={placeholder}
+                        //             {...register(inputKey, { required: error })}/>
+                        //             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                        //         </div>   
+                        //     )}
+
+                        // else if (inputType === 'number') {
+                        //     return (
+                        //         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                        //             <input type='number' placeholder={placeholder}
+                        //             {...register(inputKey, { required: error })}/>
+                        //             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                        //         </div>   
+                        //     )}
+
+                        // else if (inputType === 'tel') {
+                        //     return (
+                        //         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                        //             <input onChange={handleChange} type='tel' placeholder={placeholder}
+                        //             {...register(inputKey, { required: error })}/>
+                        //             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                        //         </div>   
+                        //     )}
+
+                        // else if (inputType === 'date') {
+                            //     return (
+                            //         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
+                            //             <input type='date' placeholder={placeholder}
+                            //             {...register(inputKey, { required: error })}/>
+                            //             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
+                            //         </div>   
+                            //     )}

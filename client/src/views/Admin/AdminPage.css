@@ -1,0 +1,154 @@
+.admin-page {
+    width: 100%;
+    background-color: #f7f7f7;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-page > header {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.admin-page > header h2{
+    padding: 0;
+    width: 90vw;
+    font-weight: bold;
+    font-size: 2rem;
+    color: #235371;
+
+}
+
+.admin-page > header div{
+    width: 100%;
+    height: 80px;
+    flex: none;
+    background-color: #235371;
+
+}
+
+.admin-page > section:last-child {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 60%;
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+
+
+.admin-capability {
+    justify-self: center;
+    align-self: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    background-color: #235371;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.admin-capability a{
+    margin: 10px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.admin-capability a:visited{
+    color: #fff;
+}
+
+.admin-capability a img{
+    width: 100px;
+    height: 100px;
+}
+
+
+@media (max-width: 768px) {
+
+    .admin-page > header h2{
+        font-size: 1.5rem;
+    
+    }
+
+    .admin-page > header div{
+        height: 40px;
+    
+    }
+
+    .admin-page > section:last-child {
+        width: 100%;
+        margin-top: 20px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .admin-capability {
+        
+        width: 130px;
+        height: 130px;
+    }
+
+    .admin-capability a{
+        font-size: 0.7rem;
+    }
+    
+    .admin-capability a img{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .admin-page > header h2{
+        font-size: 2rem;
+    
+    }
+
+    .admin-page > header div{
+        height: 80px;
+    
+    }
+
+    .admin-page > section:last-child {
+        width: 100%;
+        margin-top: 50px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .admin-capability {
+        
+        width: 200px;
+        height: 200px;
+    }
+
+    .admin-capability a{
+        font-size: 1rem;
+    }
+    
+    .admin-capability a img{
+        width: 100px;
+        height: 100px;
+    }
+
+    
+}

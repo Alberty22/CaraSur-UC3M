@@ -1,0 +1,26 @@
+[
+    {
+        "inputKey": "activity-title",
+        "inputType":"text",
+        "placeholder":"Titulo de la actividad",
+        "error":"Title is required"
+    },
+    {
+        "inputKey": "activity-datetime",
+        "inputType":"datetime-local",
+        "placeholder":"",
+        "error":"Datetime is required"
+    },
+    {
+        "inputKey": "activity-description",
+        "inputType":"text",
+        "placeholder":"Descripción de la actividad",
+        "error":"Desc is required"
+    },
+    {
+        "inputKey": "activity-group",
+        "inputType":"text",
+        "placeholder":"Enlace grupo del whatsapp de la actividad",
+        "error":"Link is required"
+    }
+]

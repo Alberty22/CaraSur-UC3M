@@ -13,6 +13,9 @@ import { LoansPage } from './views/Loans/LoansPage.jsx';
 import { EquipmentPage } from './views/Equipment/EquipmentPage.jsx';
 import { ActivitiesPage } from './views/Activities/ActivitiesPage.jsx';
 import { ActivityPage } from './views/Activities/ActivityPage.jsx';
+import { NewActivity } from './views/Activities/NewActivity.jsx';
+import { AdminPage } from './views/Admin/AdminPage.jsx';
+import { AdminSettingsPage } from './views/Admin/Settings/AdminSettingsPage.jsx';
 
 
 
@@ -38,6 +41,16 @@ function App() {
     return children
   }
 
+  const AdminRoute = ({ children }) => {
+    const { isAuthenticated, isAdmin } = useAuth()
+  
+    if(!isAuthenticated || !isAdmin) {
+      return <Navigate to='/' state={{ location }}/>
+    }
+  
+    return children
+  }
+
   return (
     <>
       <NotificationsProvider>
@@ -48,18 +61,24 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/singup' element={<SingupPage />} />
         <Route path='/singup/next-step' element={<SingupPage />} />
-        <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+        {/* <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} /> */}
         <Route path='/activities' element={<ProtectedRoute><ActivityFiltersProvider>
                                             <ActivitiesPage />
                                           </ActivityFiltersProvider></ProtectedRoute>} />
-        <Route path='/activities/new' element={<ProtectedRoute><></></ProtectedRoute>} />
+        <Route path='/activities/new' element={<ProtectedRoute><NewActivity /></ProtectedRoute>} />
         <Route path='/activities/:activityId' element={<ProtectedRoute><ActivityProvider><ActivityPage /></ActivityProvider></ProtectedRoute>} />
         <Route path='/equipment' element={<ProtectedRoute><EquipmentFiltersProvider><CartProvider>
                                             <EquipmentPage />
                                           </CartProvider></EquipmentFiltersProvider></ProtectedRoute>} />
         <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path='/loans' element={<ProtectedRoute><LoansPage /></ProtectedRoute>} />
-        <Route path='/admin' element={<ProtectedRoute><></></ProtectedRoute>} />
+        <Route path='/admin' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/admin/settings' element={<AdminRoute><AdminSettingsPage /></AdminRoute>} />
+        <Route path='/admin/users' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/admin/equipment' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/admin/loans' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/admin/activities' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/admin/notifications' element={<AdminRoute><AdminPage /></AdminRoute>} />
         <Route path='*' element={<h1>404 - Ruta inexistente</h1>} />
       </Routes>
       <Footer />

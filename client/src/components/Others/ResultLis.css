@@ -1,0 +1,40 @@
+.result-list {
+    width: 80%;
+    height: auto;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.result-list .result-item {
+    margin-left: 10px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-list .result-item p {
+    font-size: 0.8rem;
+}
+
+.result-list .result-item button {
+    border: 0;
+    position: static;
+    padding: 0;
+    background-color: #235471;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .result-list {
+        width: 90%;
+    }
+
+    .result-list .result-item p {
+        font-size: 1rem;
+    }
+}

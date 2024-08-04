@@ -1,0 +1,76 @@
+.settings-page {
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.settings-page> section:last-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.settings-page> section:last-child > div {
+    align-self: flex-start;
+    justify-self: flex-end;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    margin-bottom: 50px;
+}
+
+.settings-page> section:last-child > div:last-child {
+    justify-self: flex-start;
+    margin-bottom: 50px;
+}
+
+.information-section > div {
+    width: 100%;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .settings-page> section:last-child {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .settings-page> section:last-child > div {
+        align-self: center;
+        justify-self: center;
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .settings-page> section:last-child > div:last-child {
+        justify-self: center;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .settings-page> section:last-child {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .settings-page> section:last-child > div {
+        align-self: center;
+        justify-self: center;
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .settings-page> section:last-child > div:last-child {
+        justify-self: center;
+    }
+}
