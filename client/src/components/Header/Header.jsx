@@ -23,9 +23,9 @@ export function Header() {
     const location = useLocation();
 
     useEffect(() => {
-        const path = location.pathname
+        const route = location.pathname.split('/');
     
-        if (path === '/login' || path === '/singup') {
+        if (route[route.length - 1] === 'login' || route[route.length - 1] === 'singup') {
             setIsMenu(false)
         }
         else {

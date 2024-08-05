@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './App.css'
 
 import { Footer } from './components/Footer/Footer.jsx'
@@ -26,30 +27,10 @@ import { ActivityFiltersProvider } from './context/activityFilters.jsx';
 import { ActivityProvider } from './context/activity.jsx';
 import { CartProvider } from './context/cart.jsx';
 
+import { ProtectedRoute } from './components/Routes/ProtectedRoute.jsx';
+import { AdminRoute } from './components/Routes/AdminRoute.jsx';
 
 function App() {
-  const [user, setUser] = useState(null)
-  const location = useLocation()
-
-  const ProtectedRoute = ({ children }) => {
-    const { isAuthenticated } = useAuth()
-  
-    if(!isAuthenticated) {
-      return <Navigate to='/login' state={{ location }}/>
-    }
-  
-    return children
-  }
-
-  const AdminRoute = ({ children }) => {
-    const { isAuthenticated, isAdmin } = useAuth()
-  
-    if(!isAuthenticated || !isAdmin) {
-      return <Navigate to='/' state={{ location }}/>
-    }
-  
-    return children
-  }
 
   return (
     <>
@@ -57,28 +38,29 @@ function App() {
         <Header />
       </NotificationsProvider>
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/singup' element={<SingupPage />} />
-        <Route path='/singup/next-step' element={<SingupPage />} />
+        <Route path='/:lng' element={<HomePage />} />
+        <Route path='/:lng/login' element={<LoginPage />} />
+        <Route path='/:lng/singup' element={<SingupPage />} />
+        <Route path='/:lng/singup/next-step' element={<SingupPage />} />
         {/* <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} /> */}
-        <Route path='/activities' element={<ProtectedRoute><ActivityFiltersProvider>
+        <Route path='/:lng/activities' element={<ProtectedRoute><ActivityFiltersProvider>
                                             <ActivitiesPage />
                                           </ActivityFiltersProvider></ProtectedRoute>} />
-        <Route path='/activities/new' element={<ProtectedRoute><NewActivity /></ProtectedRoute>} />
-        <Route path='/activities/:activityId' element={<ProtectedRoute><ActivityProvider><ActivityPage /></ActivityProvider></ProtectedRoute>} />
-        <Route path='/equipment' element={<ProtectedRoute><EquipmentFiltersProvider><CartProvider>
+        <Route path='/:lng/activities/new' element={<ProtectedRoute><NewActivity /></ProtectedRoute>} />
+        <Route path='/:lng/activities/:activityId' element={<ProtectedRoute><ActivityProvider><ActivityPage /></ActivityProvider></ProtectedRoute>} />
+        <Route path='/:lng/equipment' element={<ProtectedRoute><EquipmentFiltersProvider><CartProvider>
                                             <EquipmentPage />
                                           </CartProvider></EquipmentFiltersProvider></ProtectedRoute>} />
-        <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-        <Route path='/loans' element={<ProtectedRoute><LoansPage /></ProtectedRoute>} />
-        <Route path='/admin' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/admin/settings' element={<AdminRoute><AdminSettingsPage /></AdminRoute>} />
-        <Route path='/admin/users' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/admin/equipment' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/admin/loans' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/admin/activities' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/admin/notifications' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path='/:lng/loans' element={<ProtectedRoute><LoansPage /></ProtectedRoute>} />
+        <Route path='/:lng/admin' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/settings' element={<AdminRoute><AdminSettingsPage /></AdminRoute>} />
+        <Route path='/:lng/admin/users' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/equipment' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/loans' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/activities' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/notifications' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path="/" element={<Navigate to="/es/" />} />
         <Route path='*' element={<h1>404 - Ruta inexistente</h1>} />
       </Routes>
       <Footer />

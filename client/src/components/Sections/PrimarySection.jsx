@@ -3,10 +3,15 @@ import primary_visual from '../../assets/images/visuals/primary.jpg'
 import './PrimarySection.css'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function PrimarySection() {
 
     const { isAuthenticated } = useAuth()
+
+    const { t } = useTranslation();
+    const { lng } = useParams()
 
     return(
         <section className='primary-section' style={{ backgroundImage: `url(${primary_visual})` }}>
@@ -15,7 +20,7 @@ export function PrimarySection() {
                 { !isAuthenticated &&
                 
                 <button className="join-button">
-                    <Link to='/singup'>HAZTE SOCIO </Link>
+                    <Link to={`/${lng}/singup`}>{t('home.primarySection.partner')}</Link>
                 </button>
             
                 }

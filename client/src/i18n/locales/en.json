@@ -1,0 +1,95 @@
+{
+    "menu": {
+      "home": "HOME",
+      "activities": "ACTIVITIES",
+      "equipment": "EQUIPMENT",
+      "contact": "CONTACT",
+      "loginArea1": "MEMBERS ",
+      "loginArea2": "AREA",
+      "loginArea": "MEMBERS AREA"
+    },
+
+    "menuLogged" : {
+      "profile": "PROFILE",
+      "loans": "LOANS",
+      "admin": "ADMIN",
+      "logout": "LOG OUT"
+    },
+
+    "notifications": {
+      "title": "Notifications",
+      "text": "No notifications"
+    },
+
+    "footer": {
+      "menu": "MENU",
+      "home": "Home",
+      "activities": "Activities",
+      "equipment": "Equipment",
+      "contact": "Contact",
+      "loginArea": "Member Area",
+      "privacy": "Privacy",
+      "regulations": "Regulations",
+      "cookies": "Cookies",
+      "social": "SOCIAL MEDIA"
+    },
+
+    "home": {
+      "primarySection": {
+        "partner": "BECOME A MEMBER"
+      },
+      "separator": {
+        "text1": "Are you interested in",
+        "text2": "mountain sports?"
+      } ,
+      "descriptionSection": {
+        "title": "CaraSur UC3M Sports Association.",
+        "text1": "A meeting point and collaboration space for people who love",
+        "text2": "mountains and nature."
+      },
+      "activitiesTitleSection": {
+        "title": "ACTIVITIES",
+        "activity1": "Trekking",
+        "activity2": "Mountaineering",
+        "activity3": "Alpine Climbing",
+        "activity4": "Climbing",
+        "activity5": "Mountain Biking",
+        "activity6": "Hiking"
+      },
+      "privilegesSection": {
+        "title1": "Are you ready to become",
+        "title2": "a CaraSur member?",
+        "title3": "Standard Member",
+        "price1": "10",
+        "price2": "€",
+        "price3": "/year",
+        "privilege1": "Access to the members' portal.",
+        "privilege2": "Loan of club materials.",
+        "privilege3": "Participation in club activities.",
+        "privilege4": "Access to educational books and climbing guides.",
+        "privilege5": "Meet people interested in mountain sports.",
+        "partner": "BECOME A MEMBER"
+      },
+      "equipmentSection": {
+        "title1": "Equipment",
+        "title2": "Rental",
+        "button": "Access to the rental portal"
+      },
+      "contactSection": {
+        "title1": "Meet",
+        "title2": "our club",
+        "subtitle1": "Contact us:",
+        "subtitle2": "Visit us:",
+        "information": {
+          "title1": "Email:",
+          "text1": "carasur@uc3m.es",
+          "title2": "Address:",
+          "text2": "Escuela Politécnica Superior, Avda. de la Universidad, 30. 28911 Leganés (Madrid) Spain.",
+          "title3": "Building:",
+          "text3": "Sabatini.",
+          "title4": "Office:",
+          "text4": "2.3.D.02B."
+        }
+      }
+    }
+  }

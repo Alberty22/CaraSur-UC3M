@@ -1,25 +1,30 @@
 import './PrivilegesSection.css'
 import check_icon from '../../assets/images/icons/Check.webp'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function PrivilegesSection() {
+
+    const { t } = useTranslation();
+    const { lng } = useParams()
+
     return (
         <section className="privileges-section">
-            <h2>¿Te animas a ser <span>miembro de CaraSur?</span></h2>
+            <h2>{t('home.privilegesSection.title1')} <span>{t('home.privilegesSection.title2')}</span></h2>
             <div className="membership-card">
                 <div>
-                    <h3>Socio Estándar</h3>
-                    <p >10<span>€ </span><span>/año</span></p>
+                    <h3>{t('home.privilegesSection.title3')}</h3>
+                    <p >{t('home.privilegesSection.price1')}<span>{t('home.privilegesSection.price2')} </span><span>{t('home.privilegesSection.price3')}</span></p>
                 </div>
                 <ul>
-                    <li><img src={check_icon} alt='Checked Icon'/>Acceso a el portal de socio.</li>
-                    <li><img src={check_icon} alt='Checked Icon'/>Préstamo del material del club.</li>
-                    <li><img src={check_icon} alt='Checked Icon'/>Participación en actividades realizadas por el club.</li>
-                    <li><img src={check_icon} alt='Checked Icon'/>Acceso a libros didácticos y guías de escalada.</li>
-                    <li><img src={check_icon} alt='Checked Icon'/>Conocer gente con interés en deportes de montaña.</li>
+                    <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege1')}</li>
+                    <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege2')}</li>
+                    <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege3')}</li>
+                    <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege4')}</li>
+                    <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege5')}</li>
                 </ul>
-                <Link to='/singup'>
-                    <button className="join-button">HAZTE SOCIO</button>
+                <Link to={`/${lng}/singup`}>
+                    <button className="join-button">{t('home.privilegesSection.partner')}</button>
                 </Link>
             </div>
         </section>

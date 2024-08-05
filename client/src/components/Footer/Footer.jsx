@@ -6,24 +6,31 @@ import facebook_logo from '../../assets/images/logos/facebook.webp'
 import youtube_logo from '../../assets/images/logos/youtube.webp'
 import mountains from '../../assets/images/visuals/mountains.png'
 import useMobileQuery from '../../hooks/useMobileQuery'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+import { useTranslation } from 'react-i18next'
 
-export function Footer () {
+export function Footer () {    
     const isMobile = useMobileQuery('(max-width: 1024px)')
     const { isAuthenticated } = useAuth()
+
+    const { t } = useTranslation();
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const lng = pathSegments[1];
+
     const FooterMenu = () => {
         return (
             <>
             { !isMobile &&
                 <ul>
-                    <li><h3>MENÚ</h3></li>
-                    <li><Link to="/">Inicio</Link></li>
-                    <li><Link to="/activities">Actividades</Link></li>
-                    <li><Link to="/equipment">Material</Link></li>
-                    <li><Link href="/#contact">Contacto</Link></li>
+                    <li><h3>{t('footer.menu')}</h3></li>
+                    <li> <Link to={`/${lng}/`}>{t('footer.home')}</Link> </li>
+                    <li> <Link to={`/${lng}/activities`}>{t('footer.activities')}</Link> </li>
+                    <li> <Link to={`/${lng}/equipment`}>{t('footer.equipment')}</Link> </li>
+                    <li> <Link to={`/${lng}/#contact`}>{t('footer.contact')}</Link> </li>
                     { !isAuthenticated &&
-                        <li><Link to="/login">Área de socios</Link></li>
+                        <li> <Link to={`/${lng}/login`}>{t('footer.loginArea')}</Link> </li>
                     }
                 </ul> 
             }
@@ -35,7 +42,7 @@ export function Footer () {
         return (
             <ul>
                 { !isMobile &&
-                    <li><h3>REDES</h3></li>
+                    <li><h3>{t('footer.social')}</h3></li>
                 }
                 <li>
                     <a href="https://www.instagram.com/carasuruc3m/" target="_blank" rel="noopener noreferrer">
@@ -75,9 +82,9 @@ export function Footer () {
 
             <div className='extra-links'>
                 <ul>
-                    <li><a>Privacidad</a></li>
-                    <li><a>Normativa</a></li>
-                    <li><a>Cookies</a></li>
+                    <li><a>{t('footer.privacy')}</a></li>
+                    <li><a>{t('footer.regulations')}</a></li>
+                    <li><a>{t('footer.cookies')}</a></li>
                 </ul>
             </div>
             <div className='mountains'>

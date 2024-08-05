@@ -1,10 +1,13 @@
 import './ActivitiesTitleSection.css'
+import { useTranslation } from 'react-i18next';
+
+const ActivityTitle = ({ color, text }) => {
+    return <div className="grid-item" style={{ backgroundColor: color.primary, color: color.secondary, borderColor: color.border }}> {text} </div>;
+};
 
 export function ActivitiesTitleSection() {
 
-    const ActivityTitle = ({ color, text }) => {
-        return <div className="grid-item" style={{ backgroundColor: color.primary, color: color.secondary, borderColor: color.border }}> {text} </div>;
-    };
+    const { t } = useTranslation();
 
     const gridItems = [
         {
@@ -13,7 +16,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#235371',
                 border:'#235371',
             },
-            'text': 'Trekking'
+            'text': t('home.activitiesTitleSection.activity1')
         },
         {
             'color': {
@@ -21,7 +24,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#f7f7f7',
                 border:'#235371',
             },
-            'text': 'Montañismo'
+            'text': t('home.activitiesTitleSection.activity2')
         },
         {
             'color': {
@@ -29,7 +32,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#235371',
                 border:'#235371',
             },
-            'text': 'Alpinismo'
+            'text': t('home.activitiesTitleSection.activity3')
         },
         {
             'color': {
@@ -37,7 +40,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#235371',
                 border:'#235371',
             },
-            'text': 'Escalada'
+            'text': t('home.activitiesTitleSection.activity4')
         },
         {
             'color': {
@@ -45,7 +48,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#f7f7f7',
                 border:'#235371',
             },
-            'text': 'BTT'
+            'text': t('home.activitiesTitleSection.activity5')
         },
         {
             'color': {
@@ -53,7 +56,7 @@ export function ActivitiesTitleSection() {
                 secondary:'#235371',
                 border:'#235371',
             },
-            'text': 'Senderismo'
+            'text': t('home.activitiesTitleSection.activity6')
         },
 
     ];
@@ -69,7 +72,7 @@ export function ActivitiesTitleSection() {
                 </div>
             </div>
             <div>
-                <h2>ACTIVIDADES</h2>
+                <h2>{t('home.activitiesTitleSection.title')}</h2>
             </div>
         </section>
     )

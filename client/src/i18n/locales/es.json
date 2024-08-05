@@ -1,0 +1,98 @@
+{
+    "menu": {
+      "home": "INICIO",
+      "activities": "ACTIVIDADES",
+      "equipment": "MATERIAL",
+      "contact": "CONTACTO",
+      "loginArea1": "ÁREA DE ",
+      "loginArea2": "SOCIOS",
+      "loginArea": "ÁREA DE SOCIOS"
+    },
+
+    "menuLogged" : {
+      "profile": "PERFIL",
+      "loans": "PRÉSTAMOS",
+      "admin": "ADMINISTRADOR",
+      "logout": "CERRAR SESIÓN"
+    },
+
+    "notifications": {
+      "title": "Notificaciones",
+      "text": "No hay ninguna notificación"
+    },
+
+    "footer" : {
+      "menu": "MENÚ",
+      "home": "Inicio",
+      "activities": "Actividades",
+      "equipment": "Material",
+      "contact": "Contacto",
+      "loginArea": "Área de socios",
+      "privacy": "Privacidad",
+      "regulations": "Normativa",
+      "cookies": "Cookies",
+      "social": "REDES"
+
+    },
+
+    "home": {
+      "primarySection": {
+        "partner": "HAZTE SOCIO"
+      },
+      "separator": {
+        "text1":"¿Te interesan los",
+        "text2":"deportes de montaña?"
+      },
+      "descriptionSection":{
+        "title": "Asocición deportiva CaraSur UC3M.",
+        "text1": "Un punto de encuentro y colaboración de personas amantes de",
+        "text2": "la montaña y la naturaleza."
+      },
+      "activitiesTitleSection":{
+        "title": "ACTIVIDADES",
+        "activity1": "Trekking",
+        "activity2": "Montañismo",
+        "activity3": "Alpinismo",
+        "activity4": "Escalada",
+        "activity5": "BTT",
+        "activity6": "Senderismo"
+      },
+      "privilegesSection":{
+        "title1":"¿Te animas a ser",
+        "title2": "miembro de CaraSur?",
+        "title3": "Socio Estándar",
+        "price1": "10",
+        "price2": "€",
+        "price3": "/año",
+        "privilege1": "Acceso a el portal de socio.",
+        "privilege2": "Préstamo del material del club.",
+        "privilege3": "Participación en actividades realizadas por el club.",
+        "privilege4": "Acceso a libros didácticos y guías de escalada.",
+        "privilege5": "Conocer gente con interés en deportes de montaña.",
+        "partner": "HAZTE SOCIO"
+      },
+      "equipmentSection":{
+        "title1": "Alquiler de",
+        "title2": "material",
+        "button": "Acceso al portal de alquiler"
+      },
+      "contactSection":{
+        "title1":"Conoce",
+        "title2": "nuestro club",
+        "subtitle1": "Puedes contactar con nosotros:",
+        "subtitle2": "Puedes visitarnos:",
+        "information" : {
+          "title1": "Correo:",
+          "text1": "carasur@uc3m.es",
+          "title2": "Dirección:",
+          "text2": "Escuela Politécnica Superior, Avda. de la Universidad, 30. 28911 Leganés (Madrid) España.",
+          "title3": "Edificio:",
+          "text3": "Sabatini.",
+          "title4": "Despacho:",
+          "text4": "2.3.D.02B."
+        }
+      }
+    }
+
+
+}

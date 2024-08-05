@@ -21,15 +21,15 @@ export const FormSection = ({ children, divideBy }) => {
           [[], []]
     )
 
-
+    const route = location.pathname.split('/');
     return(
         <>
-        { (!isMobile || location.pathname === '/login') && 
-        <section className={location.pathname === '/login' ? 'left-login' : 'left-singup'}>
+        { (!isMobile || route[route.length - 1] === 'login') && 
+        <section className={route[route.length - 1] === 'login' ? 'left-login' : 'left-singup'}>
                 {firstGroup}
         </section>}
-        { (!isMobile || location.pathname === '/singup') && 
-        <section className={location.pathname === '/login' ? 'right-login' : 'right-singup'}>
+        { (!isMobile || route[route.length - 1] === 'singup') && 
+        <section className={route[route.length - 1]=== 'login' ? 'right-login' : 'right-singup'}>
                 {secondGroup}
         </section>}
         </>

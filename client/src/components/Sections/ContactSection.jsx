@@ -1,20 +1,23 @@
 import './ContactSection.css';
 import useMobileQuery from '../../hooks/useMobileQuery';
+import { useTranslation } from 'react-i18next';
 
 export function ContactSection() {
     const isMobile = useMobileQuery('(max-width: 768px)')
 
+    const { t } = useTranslation();
+
     return (
         <section id='contact' className="contact-section">
-        <h2>Conoce <span>nuestro club</span></h2>
+        <h2>{t('home.contactSection.title1')} <span>{t('home.contactSection.title2')}</span></h2>
         <div className="contact-info">
             <div>
-            <p><strong>Puedes contactar con nosotros:</strong></p>
-            <p><strong>Correo:</strong> <a href="mailto:carasur@uc3m.es">carasur@uc3m.es</a></p>
-            <p><strong>Puedes visitarnos:</strong></p>
-            <p><strong>Dirección:</strong> Escuela Politécnica Superior, Avda. de la Universidad, 30. 28911 Leganés (Madrid) España.</p>
-            <p><strong>Edificio:</strong> Sabatini</p>
-            <p><strong>Despacho:</strong> 2.3.D.02B</p>
+            <p><strong>{t('home.contactSection.subtitle1')}</strong></p>
+            <p><strong>{t('home.contactSection.information.title1')}</strong> <a href="mailto:carasur@uc3m.es">{t('home.contactSection.information.text1')}</a></p>
+            <p><strong>{t('home.contactSection.subtitle2')}</strong></p>
+            <p><strong>{t('home.contactSection.information.title2')}</strong> {t('home.contactSection.information.text2')}</p>
+            <p><strong>{t('home.contactSection.information.title3')}</strong> {t('home.contactSection.information.text3')}</p>
+            <p><strong>{t('home.contactSection.information.title4')}</strong> {t('home.contactSection.information.text4')}</p>
             </div>
             { !isMobile && 
             <div>

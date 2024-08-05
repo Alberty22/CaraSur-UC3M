@@ -4,6 +4,7 @@ import check_icon from "../../../assets/images/icons/Check.webp"
 import { useNotifications }  from "../../../hooks/useNotifications.js";
 import { forwardRef } from 'react';
 import { useDropdown } from "../../../hooks/useDropdown.js";
+import { useTranslation } from "react-i18next";
 
 export const DropdownNotifications = forwardRef((props, ref) => {
 
@@ -17,11 +18,13 @@ export const DropdownNotifications = forwardRef((props, ref) => {
         //TODO Llamada al servidor de borrar
     }
 
+    const { t } = useTranslation();
+
     return (
         <ul className="dropdown-notifications" ref={dropdownRef} id="notifications">
             <li>
                 <div>
-                    Notificaciones
+                    {t('notifications.title')}
                     <button onClick={handleClick}>
                         <img src={check_icon} alt="tick"></img>
                     </button>
@@ -29,7 +32,7 @@ export const DropdownNotifications = forwardRef((props, ref) => {
             </li>
             { Object.keys(notifications).length === 0 &&
             <li>
-                No hay ninguna notificación
+                {t('notifications.text')}
             </li>
 
             }
