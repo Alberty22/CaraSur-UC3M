@@ -92,7 +92,177 @@
           "text4": "2.3.D.02B."
         }
       }
+    },
+
+    "login": {
+      "title": "INICIO SESIÓN",
+      "signup1": "No tienes cuenta todavía.",
+      "signup2": "Regístrate ahora",
+      "google": "Iniciar sesión con Google",
+      "separator": "o",
+      "action": "Iniciar sesión",
+      "forgot": "¿Has olvidado tu contraseña?"
+    },
+
+    "signup": {
+      "title": "REGISTRO",
+      "login1": "Ya tienes cuenta.",
+      "login2": "Inicia Sesión",
+      "google": "Registrarse con Google",
+      "separator": "o",
+      "action": "Registrarse",
+      "forgot": "¿Has olvidado tu contraseña?"
+    },
+
+    "form": {
+      "uc3m-student": {
+        "yes": "Sí",
+        "no": "No"
+      },
+      "gender": {
+        "man": "Hombre",
+        "woman": "Mujer",
+        "other": "Otro",
+        "notAnswer": "Prefiero no contestar"
+      },
+      "student": {
+        "yes": "Sí",
+        "no": "No",
+        "notAnswer": "Prefiero no contestar"
+      },
+      "theme": {
+        "light": "Claro"
+      }
+    },
+
+    "breadcrums":{
+      "home": "Inicio",
+      "profile": "Perfil",
+      "activities": "Actividades",
+      "equipment": "Material",
+      "loans": "Préstamos",
+      "admin": "Administrador",
+      "new": "Nueva"
+    },
+
+    "profile": {
+      "action": "Cambiar",
+      "title1": "Detalles de cuenta",
+      "title2": "Detalles del usuario",
+      "title3": "Detalles opcionales",
+      "title4": "Preferencias",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "name": "Nombre",
+      "surname": "Apellidos",
+      "id": "DNI/NIE",
+      "telephone": "Teléfono",
+      "postal": "Dirección postal",
+      "UC3MStudent": "Estudiante UC3M",
+      "gender": "Sexo",
+      "birthdate": "Fecha de nacimiento",
+      "country": "País de origen",
+      "student": "Estudiante",
+      "sports": "Deportes que te interesan",
+      "language": "Idioma",
+      "theme": "Tema",
+      "adminEmail": "Correo de administrador",
+      "billing" : "Cuenta"
+      
+    },
+
+    "loans": {
+      "quantity": "Cantidad",
+      "date1": "Fecha del préstamo",
+      "date2": "Fecha de devolución"
+    },
+
+    "activities": {
+      "title": "ACTIVIDADES",
+      "filtersBar": {
+        "search": "Introduzca una actividad",
+        "date": "A partir de",
+        "difficulty":"Dificultad",
+        "option1": "Todas",
+        "option2": "Principiante",
+        "option3": "Intermedio",
+        "option4": "Experto"
+      },
+      "activities": {
+        "button": "Inscripción",
+        "months": "ENE,FEB,MAR,ABR,MAY,JUN,JUL,AGO,SEP,OCT,NOV,DIC"
+      },
+      "asideSection":{
+        "title1":"¿Quieres realizar alguna",
+        "title2":"actividad?",
+        "button": "Proponer una actividad",
+        "calendar": "L,M,X,J,V,S,D"
+      }
+    },
+
+    "activity": {
+      "difficulty": "Dificultad",
+      "description": "Descripción",
+      "whats1": "Unete al",
+      "whats2": "chat",
+      "whats3": "de la actividad",
+      "drive1": "Accede a las",
+      "drive2": "fotos",
+      "drive3": "de la actividad",
+      "suscribe": "Inscribirse",
+      "unsuscribe": "Desinscribirse"
+    },
+
+    "newActivity": {
+      "text1": "Nota",
+      "text2": "la actividad propuesta necesitan una aprobación por la Junta Directiva. Cuando se realice la aprobación se le notificará."
+    },
+
+    "equipment": {
+      "title": "ALQUILER DE MATERIAL",
+      "filtersSidebar": {
+        "search": "Introduzca un producto",
+        "type": "Tipo de producto",
+        "size": "Talla",
+        "state": "Estado del producto",
+        "category": "Categoria",
+        "all": "Todas"
+      },
+      "available": "Disponibles",
+      "confirm": "Confirmar",
+      "keys" : {
+        "object": "Nombre", 
+        "model": "Modelo", 
+        "description": "Descripción", 
+        "size": "Talla", 
+        "length": "Medidas", 
+        "condition": "Condición", 
+        "available": "Disponibles", 
+        "category": "Categoría"
+      },
+      "ok": "Todo ha salido correctamente. Se te notificará por correo",
+      "failed": "Se ha producido un error"
+    },
+
+    "admin": {
+      "capability1": "Ajustes de administrador",
+      "capability2": "Gestión de usuarios",
+      "capability3": "Gestion de material",
+      "capability4": "Gestión de préstamos",
+      "capability5": "Gestión de actividades",
+      "capability6": "Gestion de notificaciones"
+
+    },
+
+    "adminSettings": {
+      "title1":"Detalles de cuenta",
+      "title2":"Detalles de facturación",
+      "title3":"Añadir administradores",
+      "action": "Cambiar",
+      "search": "Introduce un correo de un usuario"
     }
+
+
 
 
 }

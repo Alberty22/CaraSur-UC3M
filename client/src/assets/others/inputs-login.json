@@ -2,19 +2,28 @@
     {
         "inputKey": "login-email",
         "inputType":"email",
-        "placeholder":"Introduce tu email",
+        "placeholder": {
+            "es": "Correo eléctronico",
+            "en": "Email"
+        },
         "error":"Email is required"
     },
     {
         "inputKey": "login-password",
         "inputType":"password",
-        "placeholder":"Introduce tu contraseña",
+        "placeholder": {
+            "es": "Contraseña",
+            "en": "Password"
+        },
         "error":"Password is required"
     },
     {
         "inputKey": "login-remember",
         "inputType":"checkbox",
-        "placeholder":"Recuérdame",
-        "error":"Password is required"
+        "placeholder": {
+            "es": "Recuérdame",
+            "en": "Remember me"
+        },
+        "error":""
     }
 ]

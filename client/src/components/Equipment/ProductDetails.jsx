@@ -1,5 +1,6 @@
 import './ProductDetails.css'
 import stock_icon from '../../assets/images/icons/Stock-product.webp'
+import { useTranslation } from 'react-i18next';
 
 export function ProductDetails({ product }) {
 
@@ -10,6 +11,9 @@ export function ProductDetails({ product }) {
     }
     return acc;
     }, {});
+
+    const { t } = useTranslation();
+
     return (
         <div className="product-details">
             <section className="product-photo">
@@ -20,7 +24,7 @@ export function ProductDetails({ product }) {
                     Object.keys(targetDetails).map((key) => {
                         return (
                             targetDetails[key] !== null
-                            ? <p key={key}><strong>{key}: </strong>{targetDetails[key]}</p>
+                            ? <p key={key}><strong>{t(`equipment.keys.${key}`)}: </strong>{targetDetails[key]}</p>
                             : <></>
                         )
                     })

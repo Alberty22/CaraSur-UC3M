@@ -8,6 +8,7 @@ import { usePopup } from "../../hooks/usePopups";
 import { OkSection } from "../others/OkSection";
 import { FailedSection } from "../others/FailedSection";
 import stock_icon from '../../assets/images/icons/Stock-product.webp'
+import { useTranslation } from "react-i18next";
 
 
 function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
@@ -36,14 +37,16 @@ export function Cart() {
     const cartCheckboxId = useId()
     const { cart, clearCart, addToCart, removeOneFromCart } = useCart()
 
+    const { t } = useTranslation();
+
     const { handleOpen } = usePopup();
 
     const handleCheckout = () => {
         
         console.log(cart)
         if (cart.length > 0) {
-            handleOpen(<OkSection message={"Todo ha salido correctamente"} />)
-            // handleOpen(<FailedSection message={"Se ha producido un error"} />)
+            handleOpen(<OkSection message={t('equipment.ok')} />)
+            // handleOpen(<FailedSection message={t('equipment.failed')} />)
             clearCart()
         }
         
@@ -66,7 +69,7 @@ export function Cart() {
                 </button>
 
                 <button className='confirm-cart' onClick={handleCheckout}>
-                    Confirmar
+                    {t('equipment.confirm')}
                 </button>
 
             </div>

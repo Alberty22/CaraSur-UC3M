@@ -8,13 +8,17 @@ import { Form } from '../../components/others/Form.jsx';
 import inputSingup1 from '../../assets/others/inputs-singup1.json'
 import inputSingup2 from '../../assets/others/inputs-singup2.json'
 
-import { Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../hooks/useAuth.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function SingupPage() {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
+
+    const { t } = useTranslation()
+    const { lng } = useParams()
 
     const [inputsSingup, setInputsSingup] = useState(inputSingup2)
     const [stepSingup, setStepSingup] = useState(true)
@@ -25,10 +29,6 @@ export function SingupPage() {
         setInputsSingup(inputSingup2)
         setStepSingup(true)
     };
-
-
-    
-
     
     return (
         <>
@@ -36,26 +36,26 @@ export function SingupPage() {
         <main className='login-main'>
             <FormSection divideBy={(group) => group === 'left'}>
                 <div className='title' group='right'>
-                    <h2>SING UP</h2>
-                    {isMobile && <p>Ya tienes cuenta. <Link to='/login' className="register-link">Inicia Sesión</Link></p>}
+                    <h2>{t('signup.title')}</h2>
+                    {isMobile && <p>{t('signup.login1')}<Link to={`/${lng}/login`} className="register-link">{t('signup.login2')}</Link></p>}
                 </div>
                 
-                <Form inputs={inputsSingup} onSubmit={onSubmit} type={'Sing Up'} group='right' />
+                <Form inputs={inputsSingup} onSubmit={onSubmit} type={t('signup.action')} group='right' />
                 
                 { !stepSingup &&
                 <>
                 <div className='separator' group='right'>
-                    <span>o</span>
+                    <span>{t('signup.separator')}</span>
                 </div>
                 <div className='other-login' group='right'>
                     <button>
                         <img src={google_logo} alt='Google logo'></img>
-                        Sing Up with Google
+                        {t('signup.google')}
                     </button>
                 </div>
                 </>
                 }
-                <p className='switch-form' group='left'>Ya tienes cuenta. <Link to='/login' className="register-link">Inicia Sesión</Link></p>
+                <p className='switch-form' group='left'>{t('signup.login1')} <Link to={`/${lng}/login`} className="register-link">{t('signup.login2')}</Link></p>
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='left'/>
             </FormSection>  
         </main>

@@ -91,5 +91,175 @@
           "text4": "2.3.D.02B."
         }
       }
+
+    },
+    "login": {
+      "title": "LOGIN",
+      "signup1": "Don't have an account yet?",
+      "signup2": "Sign up now",
+      "google": "Log in with Google",
+      "separator": "or",
+      "action": "Log In",
+      "forgot": "Forgot password?"
+    },
+
+    "signup": {
+      "title": "SIGN UP",
+      "login1": "Already have an account.",
+      "login2": "Log In",
+      "google": "Sign up with Google",
+      "separator": "or",
+      "action": "Sign Up",
+      "forgot": "Forgot your password?"
+    },
+
+    "form": {
+      "uc3m-student": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "gender": {
+        "man": "Man",
+        "woman": "Woman",
+        "other": "Other",
+        "notAnswer": "Prefer not to answer"
+      },
+      "student": {
+        "yes": "Yes",
+        "no": "No",
+        "notAnswer": "Prefer not to answer"
+      },
+      "theme": {
+        "light": "Light"
+      }
+    },
+
+    "breadcrums":{
+      "home": "Home",
+      "profile": "Profile",
+      "activities": "Activities",
+      "equipment": "Equipment",
+      "loans": "Loans",
+      "admin": "Admin",
+      "new": "New"
+    },
+
+    "profile": {
+      "action": "Change",
+      "title1": "Account Details",
+      "title2": "User Details",
+      "title3": "Optional Details",
+      "title4": "Preferences",
+      "email": "Email",
+      "password": "Password",
+      "name": "Name",
+      "surname": "Surname",
+      "id": "DNI/NIE",
+      "telephone": "Phone",
+      "postal": "Postal Address",
+      "UC3MStudent": "UC3M Student",
+      "gender": "Gender",
+      "birthdate": "Birthdate",
+      "country": "Country of Origin",
+      "student": "Student",
+      "sports": "Sports you're interested in",
+      "language": "Language",
+      "theme": "Theme",
+      "adminEmail": "Administrator Email",
+      "billing": "Account"
+    },
+
+    "loans": {
+      "quantity": "Quantity",
+      "date1": "Loan Date",
+      "date2": "Return Date"
+    },
+
+    "activities": {
+      "title": "ACTIVITIES",
+      "filtersBar": {
+        "search": "Enter an activity",
+        "date": "From",
+        "difficulty": "Difficulty",
+        "option1": "All",
+        "option2": "Beginner",
+        "option3": "Intermediate",
+        "option4": "Expert"
+      },
+      "activities": {
+        "button": "Registration",
+        "months": "JAN,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC"
+      },
+      "asideSection": {
+        "title1": "Do you want to do any",
+        "title2": "activities?",
+        "button": "Propose an activity",
+        "calendar": "Mon,Tue,Wed,Thur,Fri,Sat,Sun"
+      }
+    },
+
+    "activity": {
+      "difficulty": "Difficulty",
+      "description": "Description",
+      "whats1": "Join the",
+      "whats2": "chat",
+      "whats3": "for the activity",
+      "drive1": "Access the",
+      "drive2": "photos",
+      "drive3": "of the activity",
+      "suscribe": "Subscribe",
+      "unsuscribe": "Unsubscribe"
+  },
+
+  "newActivity": {
+      "text1": "Note",
+      "text2": "The proposed activity needs approval from the Board of Directors. Once the approval is granted, you will be notified."
+    },
+   
+  "equipment": {
+    "title": "EQUIPMENT RENTAL",
+    "filtersSidebar": {
+      "search": "Enter a product",
+      "type": "Product Type",
+      "size": "Size",
+      "state": "Product Condition",
+      "category": "Category",
+      "all": "All"
+    },
+    "available": "Available",
+    "confirm": "Confirm",
+    "keys": {
+      "object": "Name",
+      "model": "Model",
+      "description": "Description",
+      "size": "Size",
+      "length": "Measurements",
+      "condition": "Condition",
+      "available": "Available",
+      "category": "Category"
+    },
+    "ok": "Everything went well. You will be notified by email",
+    "failed": "An error occurred"
+  },
+
+  "admin": {
+    "capability1": "Administrator Settings",
+    "capability2": "User Management",
+    "capability3": "Material Management",
+    "capability4": "Loan Management",
+    "capability5": "Activity Management",
+    "capability6": "Notification Management"
+  },
+
+  "adminSettings": {
+      "title1":"Account Details",
+      "title2":"Billing Details",
+      "title3":"Add Administrators",
+      "action": "Change",
+      "search": "Enter a user email"
     }
-  }
+
+
+
+
+}

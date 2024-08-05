@@ -2,7 +2,10 @@
     {
         "inputKey": "activity-title",
         "inputType":"text",
-        "placeholder":"Titulo de la actividad",
+        "placeholder": {
+                "es": "Titulo de la actividad",
+                "en": "Activity title"
+            },
         "error":"Title is required"
     },
     {
@@ -14,13 +17,19 @@
     {
         "inputKey": "activity-description",
         "inputType":"text",
-        "placeholder":"Descripción de la actividad",
+        "placeholder": {
+                "es": "Descripción de la actividad",
+                "en": "Activity description"
+            },
         "error":"Desc is required"
     },
     {
         "inputKey": "activity-group",
         "inputType":"text",
-        "placeholder":"Enlace grupo del whatsapp de la actividad",
+        "placeholder": {
+                "es": "Enlace grupo del whatsapp de la actividad",
+                "en": "Activity whatsapp group link"
+            },
         "error":"Link is required"
     }
 ]

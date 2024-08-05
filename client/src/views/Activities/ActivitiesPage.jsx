@@ -5,6 +5,7 @@ import { useFetch } from '../../hooks/useFetch'
 import { Activities } from '../../components/Activities/Activities.jsx'
 import { useActivityFilters } from '../../hooks/useActivityFilters.js'
 import { AsideSection } from '../../components/Activities/AsideSection.jsx'
+import { useTranslation } from 'react-i18next'
 
 export function ActivitiesPage() {
 
@@ -20,12 +21,14 @@ export function ActivitiesPage() {
         text: activity.title
         })) 
         : []
+
+    const { t } = useTranslation();
         
     return (
         <main className='activities-page'>
             <Breadcrumbs />
             <header>
-                <h2>ACTIVIDADES</h2>
+                <h2>{t('activities.title')}</h2>
             </header>
             <main>
                 <FiltersBar />

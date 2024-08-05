@@ -1,16 +1,16 @@
 {
     "user": {
-      "account_details": [{"title": "Dirección de correo", "text": "a@a.com"}, {"title": "Contraseña","text": "********"}],
+      "account_details": [{"title": "email", "text": "a@a.com"}, {"title": "password","text": "********"}],
       "user_details": [
-        {"title": "Nombre", "text": "a@a.com"}, {"title": "Apellidos","text": "********"},
-        {"title": "DNI/NIE", "text": "a@a.com"}, {"title": "Teléfono","text": "********"},
-        {"title": "Dirección postal", "text": "a@a.com"}, {"title": "Estudiante UC3M","text": "********"}
+        {"title": "name", "text": "a@a.com"}, {"title": "surname","text": "********"},
+        {"title": "id", "text": "a@a.com"}, {"title": "telephone","text": "********"},
+        {"title": "postal", "text": "a@a.com"}, {"title": "UC3MStudent","text": "********"}
       ],
       "user_optional_details": [
-        {"title": "Sexo", "text": "a@a.com"}, {"title": "Fecha de nacimiento","text": "********"},
-        {"title": "País de origen", "text": "a@a.com"}, {"title": "Estudiante","text": "********"},
-        {"title": "Deportes que te interesan", "text": "a@a.com"}
+        {"title": "gender", "text": "a@a.com"}, {"title": "birthdate","text": "********"},
+        {"title": "country", "text": "a@a.com"}, {"title": "student","text": "********"},
+        {"title": "sports", "text": "a@a.com"}
       ],
-      "preferences": [{"title": "Idioma", "text": "ES"}, {"title": "Tema","text": "Claro"}]
+      "preferences": [{"title": "language", "text": "ES"}, {"title": "theme","text": "Claro"}]
     }
   }

@@ -4,6 +4,7 @@ import { useId } from 'react'
 import { useActivityFilters } from '../../hooks/useActivityFilters'
 import { useState } from 'react'
 import { Searchbar } from '../others/Searchbar'
+import { useTranslation } from 'react-i18next'
 
 
 export function FiltersBar() {
@@ -40,23 +41,25 @@ export function FiltersBar() {
         }));
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className='filters-bar'>
             <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} 
-                searchQuery={searchQuery} placeholder='Introduzca una actividad' className='search-bar-activities'/>
+                searchQuery={searchQuery} placeholder={t('activities.filtersBar.search')} className='search-bar-activities'/>
             <div className='other-filters'>
                 <div>
                     <div>
-                        <label htmlFor={dateFilterId}>A partir de:</label>
+                        <label htmlFor={dateFilterId}>{t('activities.filtersBar.date')}:</label>
                         <input htmlFor={dateFilterId} name='date' type='date' onChange={handleChange}/>
                     </div>
                     <div>
-                        <label htmlFor={difficultyFilterId}>Dificultad:</label>
+                        <label htmlFor={difficultyFilterId}>{t('activities.filtersBar.difficulty')}:</label>
                         <select name='difficulty' id={difficultyFilterId} onChange={handleChange}>
-                            <option value='all'>Todas</option>
-                            <option value='1'>Principiante</option>
-                            <option value='2'>Intermedio</option>
-                            <option value='3'>Experto</option>
+                            <option value='all'>{t('activities.filtersBar.option1')}</option>
+                            <option value='1'>{t('activities.filtersBar.option2')}</option>
+                            <option value='2'>{t('activities.filtersBar.option3')}</option>
+                            <option value='3'>{t('activities.filtersBar.option4')}</option>
                         </select>
                     </div>
                 </div>

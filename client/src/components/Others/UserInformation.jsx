@@ -1,11 +1,13 @@
 import './UserInformation.css'
 import edit_icon from '../../assets/images/icons/Edit.webp'
 import { usePopup } from '../../hooks/usePopups';
-import Popup from './Popup';
+import { useTranslation } from 'react-i18next';
 
 export const UserInformation = ({ information, sectionTitle, popupContent }) => {
     
     const { handleOpen } = usePopup();
+
+    const { t } = useTranslation();
 
     return (
     <>
@@ -13,7 +15,7 @@ export const UserInformation = ({ information, sectionTitle, popupContent }) => 
         <h3>{sectionTitle}</h3>
         {
             information.map((info) => {
-                return <p key={info.title}><strong>{info.title}: </strong>{info.text}</p>
+                return <p key={info.title}><strong>{t(`profile.${info.title}`)}: </strong>{info.text}</p>
             })
         }
         <button onClick={() => {handleOpen(popupContent)}}>

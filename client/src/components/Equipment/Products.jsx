@@ -4,9 +4,12 @@ import { useCart } from '../../hooks/useCart'
 import { usePopup } from '../../hooks/usePopups'
 import { ProductDetails } from './ProductDetails'
 import stock_icon from '../../assets/images/icons/Stock-product.webp'
+import { useTranslation } from 'react-i18next'
 
 export function Products ({ products }) {
     const { addToCart, cart } = useCart()
+
+    const { t } = useTranslation();
 
     const checkProductInCart = product => {
         return cart.some(item=> item.id === product.id)
@@ -30,7 +33,7 @@ export function Products ({ products }) {
                         <div>
                             <div>
                                 <strong>{product.model}</strong>{product.model ? ' - ' : ''}{product.object}
-                                <p>Disponibles: {product.available}</p>
+                                <p>{t('equipment.available')}: {product.available}</p>
                             </div>
                             <button onClick={ (product.available === 0) 
                             ? () => {} 

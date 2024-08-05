@@ -1,10 +1,12 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller} from "react-hook-form";
 import { useState } from "react";
 import { useDropzone } from 'react-dropzone';
 import './Form.css'
 import hide_icon from '../../assets/images/icons/View_hide.webp'
 import show_icon from '../../assets/images/icons/View_show.webp'
 import countryList from 'react-select-country-list'
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 export const Form = ({ inputs, onSubmit, type }) => {
@@ -55,6 +57,9 @@ export const Form = ({ inputs, onSubmit, type }) => {
     //     accept: 'image/*',
     //   });
 
+    const { t } = useTranslation();
+    const { lng } = useParams()
+
     return(
         <div className='form-container'>
             {/* Poner handleSubmit(onSubmit) */}
@@ -68,7 +73,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                 <div key={inputKey} className='pass-container' style={{display:'flex', flexDirection:'column' }}>
                                     <input
                                     type={showPassword ? "text" :"password"}
-                                    placeholder={placeholder}
+                                    placeholder={placeholder[lng]}
                                     {...register(inputKey, { required: error })}
                                     />
                                     <button type="button" onClick={handleClick} className='show-pass'><img src={passIcon} alt="Mostrar contraseña" /></button>
@@ -86,9 +91,9 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                             id="rememberMe"
                                             {...register('rememberMe')}
                                         />
-                                        <label htmlFor="rememberMe">{placeholder}</label>
+                                        <label htmlFor="rememberMe">{placeholder[lng]}</label>
                                     </div>
-                                    <a href="/" className="forgot-password">¿Has olvidado tu contraseña?</a>
+                                    <a href="/" className="forgot-password">{t('login.forgot')}</a>
                                 </div>
                             )}
                         
@@ -98,9 +103,9 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                     id="isUc3mStudent"
                                     {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                        <option value="" disabled>{placeholder}</option>
-                                        <option value="si">Sí</option>
-                                        <option value="no">No</option>
+                                        <option value="" disabled>{placeholder[lng]}</option>
+                                        <option value="yes">{t('form.uc3m-student.yes')}</option>
+                                        <option value="no">{t('form.uc3m-student.no')}</option>
                                     </select>
                                     {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                 </div>   
@@ -111,11 +116,11 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                         <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                            <option value="" disabled>{placeholder}</option>
-                                            <option value="hombre">Hombre</option>
-                                            <option value="mujer">Mujer</option>
-                                            <option value="otro">Otro</option>
-                                            <option value="">Prefiero no contestar</option>
+                                            <option value="" disabled>{placeholder[lng]}</option>
+                                            <option value="man">{t('form.gender.man')}</option>
+                                            <option value="woman">{t('form.gender.woman')}</option>
+                                            <option value="other">{t('form.gender.other')}</option>
+                                            <option value="">{t('form.gender.notAnswer')}</option>
                                         </select>
                                         {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                     </div>   
@@ -126,7 +131,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                         <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                            <option value="" disabled>{placeholder}</option>
+                                            <option value="" disabled>{placeholder[lng]}</option>
                                             {countryList().getData().map((country) => {
                                                 return (
                                                     <option key={country.value} value={country.label}>{country.label}</option>
@@ -143,10 +148,10 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                         <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                         {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                            <option value=""  disabled>{placeholder}</option>
-                                            <option value="si">Sí</option>
-                                            <option value="no">No</option>
-                                            <option value="">Prefiero no contestar</option>
+                                            <option value=""  disabled>{placeholder[lng]}</option>
+                                            <option value="yes">{t('form.student.yes')}</option>
+                                            <option value="no">{t('form.student.no')}</option>
+                                            <option value="">{t('form.student.notAnswer')}</option>
                                         </select>
                                         {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                     </div>   
@@ -159,7 +164,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                             {...register(inputKey, { required: 'Este campo es obligatorio' })}>
                                                 <option value="" disabled>{placeholder}</option>
                                                 <option value="es">ES</option>
-                                                <option value="eng">ENG</option>
+                                                <option value="en">EN</option>
                                             </select>
                                             {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                         </div>   
@@ -170,9 +175,8 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                             <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                                 <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                                 {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                                    <option value="" disabled>{placeholder}</option>
-                                                    <option value="light">Claro</option>
-                                                    <option value="dark">Oscuro</option>
+                                                    <option value="" disabled>{placeholder[lng]}</option>
+                                                    <option value="light">{t('form.theme.light')}</option>
                                                 </select>
                                                 {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                             </div>   
@@ -181,7 +185,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                     else {
                                         return (
                                             <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
-                                                <input type={inputType} placeholder={placeholder}
+                                                <input type={inputType} placeholder={placeholder[lng]}
                                                 {...register(inputKey, { required: error })}/>
                                                 {errors[inputKey] && <p>{errors[inputKey].message}</p>}
                                             </div>   

@@ -8,23 +8,16 @@ import useMobileQuery from '../../hooks/useMobileQuery';
 import whatsapp_logo from '../../assets/images/logos/whatsapp.webp'
 import drive_logo from '../../assets/images/logos/drive.webp'
 import star_icon from '../../assets/images/icons/Star.webp'
+import { useTranslation } from 'react-i18next';
 
-const formattedDate = (date) => {
-    const months = {
-        '01': 'ENE',
-        '02': 'FEB',
-        '03': 'MAR',
-        '04': 'ABR',
-        '05': 'MAY',
-        '06': 'JUN',
-        '07': 'JUL',
-        '08': 'AGO',
-        '09': 'SEP',
-        '10': 'OCT',
-        '11': 'NOV',
-        '12': 'DIC'
-      };
-    
+const formattedDate = (date, monthsList) => {
+
+    const months = monthsList.reduce((acc, abbreviation, index) => {
+        const monthNumber = String(index + 1).padStart(2, '0');
+        acc[monthNumber] = abbreviation;
+        return acc;
+    }, {});
+
       const day = date.getDate();
       const month = ('0' + (date.getMonth() + 1)).slice(-2);
       const year = date.getFullYear();
@@ -57,6 +50,8 @@ export function ActivityPage() {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
+    const { t } = useTranslation();
+
     return (
 
         <main className='activity-page'>
@@ -66,27 +61,27 @@ export function ActivityPage() {
                     <div>
                         <h2>{title}</h2>
                         <div>
-                            <div>{formattedDate(new Date(date))}</div>
+                            <div>{formattedDate(new Date(date), t('activities.activities.months').split(','))}</div>
                             <div>{time}</div>
                         </div>
                         
                     </div>
                     <div>
-                        <h3>Dificultad:</h3>
+                        <h3>{t('activity.difficulty')}:</h3>
                         {difficultyArray.map((index) => {
                             return <img key={index} className='star' src={star_icon} alt='dificultad' />
                         })}
                     </div>
                     <div>
-                        <h3>Descripción</h3>
+                        <h3>{t('activity.description')}:</h3>
                         <p>{description}</p>
                     </div>
                     <div>
-                        <p><img src={whatsapp_logo} alt='whatsapp'/>Unete al <a href={chat}>chat</a> de la actividad</p>
-                        <p><img src={drive_logo} alt='drive'/>Accede a las <a href={drive}>fotos</a> de la actividad</p>
+                        <p><img src={whatsapp_logo} alt='whatsapp'/>{t('activity.whats1')} <a href={chat}>{t('activity.whats2')}</a> {t('activity.whats3')}</p>
+                        <p><img src={drive_logo} alt='drive'/>{t('activity.drive1')} <a href={drive}>{t('activity.drive2')}</a> {t('activity.drive3')}</p>
                     </div>
                     <button onClick={() => toggleRegistration(id)} className={registeredActivities.includes(id) ? 'unsuscribe': 'suscribe'}>
-                        {registeredActivities.includes(id) ? 'Desinscribirse' : 'Inscribirse'}
+                        {registeredActivities.includes(id) ? t('activity.unsuscribe') : t('activity.suscribe')}
                     </button>
                 </div>
                 { !isMobile &&

@@ -7,31 +7,34 @@ import inputs_profile from '../../assets/others/inputs-profile.json'
 import { Form } from '../../components/others/Form.jsx'
 import { useFetch } from '../../hooks/useFetch.js'
 import { usePopup } from '../../hooks/usePopups.js'
+import { useTranslation } from 'react-i18next'
 
 export function ProfilePage () {
 
     const { data } = useFetch({ url:'/user-data.json' })
     const userData = data?.user
 
+    const { t } = useTranslation()
+
     const information = [
         {
             "id":"profile-account-popup",
-            "titleSection": "Detalles de cuenta",
+            "titleSection": t('profile.title1'),
             "information": userData?.account_details
         },
         {
             "id":"profile-user-popup",
-            "titleSection": "Detalles del usuario",
+            "titleSection": t('profile.title2'),
             "information": userData?.user_details
         },
         {
             "id":"profile-optional-popup",
-            "titleSection": "Detalles opcionales",
+            "titleSection": t('profile.title3'),
             "information": userData?.user_optional_details
         },
         {
             "id":"profile-preferences-popup",
-            "titleSection": "Preferencias",
+            "titleSection": t('profile.title4'),
             "information": userData?.preferences
         }
         
@@ -53,7 +56,7 @@ export function ProfilePage () {
                     { userData !== undefined &&
                         information.map((section) => {
                             return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} 
-                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />}
+                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={t('profile.action')} />}
                             />
                         })
                     } 

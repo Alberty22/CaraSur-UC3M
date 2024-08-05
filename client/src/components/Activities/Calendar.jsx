@@ -1,10 +1,13 @@
 import './Calendar.css'
 import { useState } from 'react';
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameDay, isSameMonth, addMonths, subMonths } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 export function Calendar({ markedDates }) {
     
     const [currentMonth, setCurrentMonth] = useState(new Date());
+
+    const { t } = useTranslation();
 
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1));
@@ -32,7 +35,7 @@ export function Calendar({ markedDates }) {
     };
 
   const renderDays = () => {
-    const days = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+    const days = t('activities.asideSection.calendar').split(',')
     return (
       <div className="days">
         {days.map((day, index) => (

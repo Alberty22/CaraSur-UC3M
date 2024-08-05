@@ -7,6 +7,7 @@ import material_icon from '../../assets/images/icons/Materials.webp'
 import loans_icon from '../../assets/images/icons/Loans.webp'
 import activities_icon from '../../assets/images/icons/Activities.webp'
 import notifications_icon from '../../assets/images/icons/Notifications.webp'
+import { useTranslation } from 'react-i18next'
 
 const AdminCapability = ({ title, logo , route}) => {
     return(
@@ -20,34 +21,37 @@ const AdminCapability = ({ title, logo , route}) => {
 }
 
 export function AdminPage() {
+
+    const { t } = useTranslation();
+
     const capabilities = [
         {
-            "title":"Ajustes de administrador",
+            "title":t('admin.capability1'),
             "logo":admin_icon,
             "route":"settings"
         },
         {
-            "title":"Gestión de usuarios",
+            "title":t('admin.capability2'),
             "logo":users_icon,
             "route":"users"
         },
         {
-            "title":"Gestion de material",
+            "title":t('admin.capability3'),
             "logo":material_icon,
             "route":"equipment"
         },
         {
-            "title":"Gestión de préstamos",
+            "title":t('admin.capability4'),
             "logo":loans_icon,
             "route":"loans"
         },
         {
-            "title":"Gestión de actividades",
+            "title":t('admin.capability5'),
             "logo":activities_icon,
             "route":"activities"
         },
         {
-            "title":"Gestion de notificaciones",
+            "title":t('admin.capability6'),
             "logo":notifications_icon,
             "route":"notifications"
         },

@@ -18,9 +18,6 @@ import { NewActivity } from './views/Activities/NewActivity.jsx';
 import { AdminPage } from './views/Admin/AdminPage.jsx';
 import { AdminSettingsPage } from './views/Admin/Settings/AdminSettingsPage.jsx';
 
-
-
-import { useAuth } from './hooks/useAuth.js';
 import { NotificationsProvider } from './context/notifications.jsx';
 import { EquipmentFiltersProvider } from './context/equipmentFilters.jsx';
 import { ActivityFiltersProvider } from './context/activityFilters.jsx';
@@ -30,7 +27,11 @@ import { CartProvider } from './context/cart.jsx';
 import { ProtectedRoute } from './components/Routes/ProtectedRoute.jsx';
 import { AdminRoute } from './components/Routes/AdminRoute.jsx';
 
+import { useLanguageFromURL } from './hooks/useLanguageURL.js';
+
 function App() {
+  
+  useLanguageFromURL()
 
   return (
     <>
@@ -42,7 +43,6 @@ function App() {
         <Route path='/:lng/login' element={<LoginPage />} />
         <Route path='/:lng/singup' element={<SingupPage />} />
         <Route path='/:lng/singup/next-step' element={<SingupPage />} />
-        {/* <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} /> */}
         <Route path='/:lng/activities' element={<ProtectedRoute><ActivityFiltersProvider>
                                             <ActivitiesPage />
                                           </ActivityFiltersProvider></ProtectedRoute>} />

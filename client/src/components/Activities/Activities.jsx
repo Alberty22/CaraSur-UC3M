@@ -1,11 +1,11 @@
 import './Activities.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function Activities({ activities }) {
 
-    // const textMonths = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-    const textMonths = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+    const { t } = useTranslation();
+    const { lng } = useParams()
 
     return (
         <main className='activities'>
@@ -16,13 +16,13 @@ export function Activities({ activities }) {
                         return(
                             <li key={activity.id} >
                                 <div className="date">
-                                    <div className="month">{textMonths[parseInt(month, 10) - 1]}</div>
+                                    <div className="month">{t('activities.activities.months').split(',')[parseInt(month, 10) - 1]}</div>
                                     <div className="day">{day}</div>
                                     <div className="year">{year}</div>
                                 </div>
                                 <div className="event">{activity.title}</div>
                                 <button>
-                                    <Link to={`/activities/${activity.id}-${activity.title}`} state={activity}>Inscripción</Link>
+                                    <Link to={`${activity.id}-${activity.title}`} state={activity}>{t('activities.activities.button')}</Link>
                                 </button>
                             </li>
                         )

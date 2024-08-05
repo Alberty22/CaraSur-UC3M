@@ -2,19 +2,28 @@
     {
         "inputKey": "singup-email",
         "inputType":"email",
-        "placeholder":"Introduce tu email",
+        "placeholder": {
+            "es": "Correo eléctronico",
+            "en": "Email"
+        },
         "error":"Email is required"
     },
     {
         "inputKey": "singup-password",
         "inputType":"password",
-        "placeholder":"Introduce una contraseña",
+        "placeholder": {
+            "es": "Contraseña",
+            "en": "Password"
+        },
         "error":"Password is required"
     },
     {
         "inputKey": "singup-password-repeat",
         "inputType":"password",
-        "placeholder":"Introduce de nuevo contraseña",
+        "placeholder": {
+            "es": "Contraseña",
+            "en": "Password"
+        },
         "error":"Password is required"
     }
 ]

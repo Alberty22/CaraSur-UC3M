@@ -8,11 +8,14 @@ import Popup from '../../../components/others/Popup'
 import { Searchbar } from '../../../components/others/Searchbar'
 import { useState } from 'react'
 import { ResultList } from '../../../components/others/ResultList'
+import { useTranslation } from 'react-i18next'
 
 export function AdminSettingsPage() {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+
+    const { t } = useTranslation();
 
     const handleSearchClick = () => {
 
@@ -72,22 +75,24 @@ export function AdminSettingsPage() {
 
     const { popupContent } = usePopup();
 
+    
+
     return(
         <>
         <main className='settings-page'>
             <Breadcrumbs />
             <section>
                 <div>
-                    <UserInformation information={[{"title": "Correo de administrador", "text": "correo"}]} sectionTitle='Detalles de cuenta'
-                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />}/>
-                    <UserInformation information={[{"title": "Cuenta", "text": "000000"}]} sectionTitle='Detalles de facturación'
-                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data)}} type={'Cambiar'} />}/>
+                    <UserInformation information={[{"title": "adminEmail", "text": "correo"}]} sectionTitle={t('adminSettings.title1')}
+                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data)}} type={t('adminSettings.action')} />}/>
+                    <UserInformation information={[{"title": "billing", "text": "000000"}]} sectionTitle={t('adminSettings.title2')}
+                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data)}} type={t('adminSettings.action')} />}/>
                 </div>
                 <div>
                     <section className='information-section' style={{minHeight: "370px"}}>
-                        <h3>Añadir administradores</h3>
+                        <h3>{t('adminSettings.title3')}</h3>
                         <div>
-                            <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} searchQuery={query} placeholder='Introduce un correo de un usuario' />
+                            <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} searchQuery={query} placeholder={t('adminSettings.search')} />
                             <ResultList results={results} onButtonClick={handleButtonClick} />
                         </div>
                     </section>

@@ -3,19 +3,28 @@
         {
             "inputKey": "profile-email",
             "inputType":"email",
-            "placeholder":"Introduce tu email",
+            "placeholder": {
+                "es": "Correo eléctronico",
+                "en": "Email"
+            },
             "error":"Email is required"
         },
         {
             "inputKey": "profile-password",
             "inputType":"password",
-            "placeholder":"Introduce una contraseña",
+            "placeholder": {
+                "es": "Contraseña",
+                "en": "Password"
+            },
             "error":"Password is required"
         },
         {
             "inputKey": "profile-password-repeat",
             "inputType":"password",
-            "placeholder":"Introduce de nuevo contraseña",
+            "placeholder": {
+                "es": "Contraseña",
+                "en": "Password"
+            },
             "error":"Password is required"
         }
     ],
@@ -23,43 +32,64 @@
         {
             "inputKey": "profile-name",
             "inputType":"text",
-            "placeholder":"Introduce tu nombre",
+            "placeholder": {
+                "es": "Nombre",
+                "en": "Name"
+            },
             "error":"Name is required"
         },
         {
             "inputKey": "profile-surname",
             "inputType":"text",
-            "placeholder":"Introduce tus apellidos",
+            "placeholder": {
+                "es": "Apellidos",
+                "en": "Surname"
+            },
             "error":"Surname is required"
         },
         {
             "inputKey": "profile-id",
             "inputType":"text",
-            "placeholder":"Introduce tu DNI/NIE",
+            "placeholder": {
+                "es": "DNI/NIE",
+                "en": "DNI/NIE"
+            },
             "error":"DNI/NIE is required"
         },
         {
             "inputKey": "profile-id-photo",
             "inputType":"image",
-            "placeholder":"Introduce tu foto del DNI/NIE",
+            "placeholder": {
+                "es": "Foto DNI/NIE",
+                "en": "Photo DNI/NIE"
+            },
             "error":"DNI/NIE is required"
         },
         {
             "inputKey": "profile-postal",
             "inputType":"number",
-            "placeholder":"Introduce tu dirección postal",
+            "placeholder": {
+                "es": "Código postal",
+                "en": "Postal Code"
+            },
             "error":"Dirección postal is required"
         },
         {
             "inputKey": "profile-phone",
             "inputType":"tel",
-            "placeholder":"Introduce tu teléfono",
+            "placeholder": {
+                "es": "Teléfono",
+                "en": "Thelephone"
+            },
             "error":"Telephone is required"
         },
         {
             "inputKey": "profile-uc3m-student",
             "inputType":"uc3m-student",
-            "placeholder":"Estudiante UC3M",
+            "placeholder": {
+                "es": "Estudiante UC3M",
+                "en": "UC3M Student"
+            },
             "error":"UC3M student is required"
         }
 
@@ -69,31 +99,46 @@
         {
             "inputKey": "profile-gender",
             "inputType":"gender",
-            "placeholder":"Género (opcional)",
+            "placeholder": {
+                "es": "Género (opcional)",
+                "en": "Gender (optional)"
+            },
             "error":""
         },
         {
             "inputKey": "profile-birthdate",
             "inputType":"date",
-            "placeholder":"Fecha de nacimiento (opcional)",
+            "placeholder": {
+                "es": "Fecha de nacimiento (opcional)",
+                "en": "Birthdate (optional)"
+            },
             "error":""
         },
         {
             "inputKey": "profile-country",
             "inputType":"country",
-            "placeholder":"País de origen (opcional)",
+            "placeholder": {
+                "es": "País de origen (opcional)",
+                "en": "Country of origin (optional)"
+            },
             "error":""
         },
         {
             "inputKey": "profile-student",
             "inputType":"student",
-            "placeholder":"Eres estudiante (opcional)",
+            "placeholder": {
+                "es": "Estudiante (opcional)",
+                "en": "Student (optional)"
+            },
             "error":""
         },
         {
             "inputKey": "profile-sports",
             "inputType":"sports",
-            "placeholder":"Deportes que te interesa (opcional)",
+            "placeholder": {
+                "es": "Deportes que te interesa (opcional)",
+                "en": "Sports you're interested in (optional)"
+            },
             "error":""
         }
 
@@ -103,13 +148,19 @@
         {
             "inputKey": "profile-language",
             "inputType":"language",
-            "placeholder":"Idioma",
+            "placeholder": {
+                "es": "Idioma",
+                "en": "language"
+            },
             "error":""
         },
         {
             "inputKey": "profile-theme",
             "inputType":"theme",
-            "placeholder":"Tema",
+            "placeholder": {
+                "es": "Tema",
+                "en": "Theme"
+            },
             "error":""
         }
     ]
