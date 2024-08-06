@@ -1,0 +1,86 @@
+.admin-loans-page {
+    width: 100%;
+    background-color: #f7f7f7;
+    min-height: 300px;
+    padding-bottom: 50px;
+}
+
+.admin-loans-page > div{
+    width: 80vw;
+    margin-left: 10vw;
+    display: flex;
+    gap: 50px;
+}
+
+.admin-loans-page  h2{
+    color: #235371;
+    cursor: pointer;
+}
+
+.admin-loans-page > section:last-child {
+    width: 80vw;
+    margin-left: 10vw;
+    display: grid;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.admin-loans-page button {
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+    background-color: #235371;
+    margin: 0;
+    border: 0;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-loans-page table {
+    width: 100%;
+    border-collapse:collapse; 
+}
+
+.admin-loans-page th, .admin-loans-page td {
+    padding: 12px 15px;
+    border: 1px solid #000;
+}
+.admin-loans-page th {
+    color: #fff;
+    background-color: #235371;
+}
+
+.admin-loans-page .button {
+    color: #fff;
+    
+    background-color: #235371;
+}
+
+
+
+@media (max-width: 768px) {
+    .admin-loans-page > section:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+    .admin-loans-page > section:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+}

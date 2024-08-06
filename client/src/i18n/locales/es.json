@@ -296,6 +296,16 @@
         "ok": "Todo ha salido correctamente.",
         "failed": "Se ha producido un error."
       }
+    },
+
+    "adminLoans": {
+      "title1": "Pendientes",
+      "title2": "Tramitadas",
+      "column1":"Producto",
+      "column2":"Usuario",
+      "column3":"Fecha Préstamo",
+      "column4":"Fecha Retorno",
+      "accept": "Aceptar"
     }
 
 

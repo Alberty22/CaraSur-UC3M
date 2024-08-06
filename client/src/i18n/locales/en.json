@@ -293,8 +293,18 @@
         "ok": "Everything went well",
         "failed": "An error occurred"
       }
+    },
 
-    } 
+    "adminLoans": {
+      "title1": "Pending",
+      "title2": "Processed",
+      "column1": "Product",
+      "column2": "User",
+      "column3": "Loan Date",
+      "column4": "Return Date",
+      "accept": "Accept"
+    }
+
 
 
   

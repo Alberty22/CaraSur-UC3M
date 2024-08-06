@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback} from "react";
+import { useEffect, useState, useCallback, useRef} from "react";
 
-export function useFetch({ url }) {
+export function useFetch({ url, fetchOnce = false }) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,9 +21,18 @@ export function useFetch({ url }) {
         }, [url])
 
 
+    // useEffect(() => {
+    //     fetchData();
+    // }, [fetchData]);
+
+    const initialUrl = useRef(url);
     useEffect(() => {
+        if (fetchOnce && url !== initialUrl.current) {
+            return;
+        }
         fetchData();
-    }, [fetchData]);
+        console.log("fetch")
+    }, [url, fetchData, fetchOnce]);
 
     return { data, loading, error };
 }

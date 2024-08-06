@@ -150,7 +150,7 @@
             "inputType":"language",
             "placeholder": {
                 "es": "Idioma",
-                "en": "language"
+                "en": "Language"
             },
             "error":""
         },

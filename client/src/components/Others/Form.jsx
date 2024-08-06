@@ -162,7 +162,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
                                         <div key={inputKey} style={{display:'flex', flexDirection:'column' }}>
                                             <select onChange={handleChange} value={selectedValue} className={selectedValue ? 'selected' : ''}
                                             {...register(inputKey, { required: 'Este campo es obligatorio' })}>
-                                                <option value="" disabled>{placeholder}</option>
+                                                <option value="" disabled>{placeholder[lng]}</option>
                                                 <option value="es">ES</option>
                                                 <option value="en">EN</option>
                                             </select>
