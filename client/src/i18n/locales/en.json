@@ -141,7 +141,10 @@
       "equipment": "Equipment",
       "loans": "Loans",
       "admin": "Admin",
-      "new": "New"
+      "new": "New",
+      "settings": "Settings",
+      "users": "Users",
+      "notificacitions": "Notifications"
     },
 
     "profile": {
@@ -166,7 +169,8 @@
       "language": "Language",
       "theme": "Theme",
       "adminEmail": "Administrator Email",
-      "billing": "Account"
+      "billing": "Account",
+      "pay": "Last payment"
     },
 
     "loans": {
@@ -257,7 +261,43 @@
       "title3":"Add Administrators",
       "action": "Change",
       "search": "Enter a user email"
-    }
+    },
+
+  "adminUsers": {
+    "title1": "Account Details",
+    "title2": "User Details",
+    "title3": "Optional Details",
+    "title4": "Payments",
+    "search": "Enter a user's email"
+  },
+
+  "adminEquipment": {
+      "title": "Add products",
+      "addProduct": {
+        "name": "Product Name",
+        "name-placeholder": "Enter the product name",
+        "desc": "Product Description",
+        "desc-placeholder": "Enter a product description",
+        "brand": "Product Brand",
+        "brand-placeholder": "Enter the product brand",
+        "state": "Product Condition",
+        "state-placeholder": "Enter the product condition",
+        "category": "Product Category",
+        "category-placeholder": "Enter the product category",
+        "size": "Size",
+        "measurements": "Size/Length",
+        "quantity": "Quantity",
+        "available": "Available",
+        "photo": "Product Photo",
+        "add": "Add product",
+        "ok": "Everything went well",
+        "failed": "An error occurred"
+      }
+
+    } 
+
+
+  
 
 
 

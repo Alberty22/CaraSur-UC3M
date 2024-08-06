@@ -80,9 +80,11 @@ export function ActivityPage() {
                         <p><img src={whatsapp_logo} alt='whatsapp'/>{t('activity.whats1')} <a href={chat}>{t('activity.whats2')}</a> {t('activity.whats3')}</p>
                         <p><img src={drive_logo} alt='drive'/>{t('activity.drive1')} <a href={drive}>{t('activity.drive2')}</a> {t('activity.drive3')}</p>
                     </div>
+                    { new Date(date) > new Date() &&
                     <button onClick={() => toggleRegistration(id)} className={registeredActivities.includes(id) ? 'unsuscribe': 'suscribe'}>
                         {registeredActivities.includes(id) ? t('activity.unsuscribe') : t('activity.suscribe')}
                     </button>
+                    }
                 </div>
                 { !isMobile &&
                     <AsideSection markedDates={markedDates}></AsideSection>}

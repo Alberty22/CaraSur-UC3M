@@ -18,7 +18,7 @@ export const Menu = ({ isMenu, refList }) => {
     const { isAuthenticated } = useAuth()
     
     return(
-      <nav className='navigation'>
+      <nav className='navigation' style={isAuthenticated && isMobile ? { justifyContent: 'space-between' } : {}}>
         {
           isMobile 
           ?  <MenuMobile refList={refList} />

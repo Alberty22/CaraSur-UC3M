@@ -142,7 +142,10 @@
       "equipment": "Material",
       "loans": "Préstamos",
       "admin": "Administrador",
-      "new": "Nueva"
+      "new": "Nueva",
+      "settings": "Ajustes",
+      "users": "Usuarios",
+      "notificacitions": "Notificaciones"
     },
 
     "profile": {
@@ -167,7 +170,8 @@
       "language": "Idioma",
       "theme": "Tema",
       "adminEmail": "Correo de administrador",
-      "billing" : "Cuenta"
+      "billing" : "Cuenta",
+      "pay": "Último pago"
       
     },
 
@@ -260,6 +264,38 @@
       "title3":"Añadir administradores",
       "action": "Cambiar",
       "search": "Introduce un correo de un usuario"
+    },
+
+    "adminUsers": {
+      "title1":"Detalles de cuenta",
+      "title2":"Detalles del usuario",
+      "title3":"Detalles opcionales",
+      "title4":"Pagos",
+      "search": "Introduce un correo de un usuario"
+    },
+
+    "adminEquipment": {
+      "title": "Añadir productos",
+      "addProduct": {
+        "name": "Nombre del producto",
+        "name-placeholder": "Introduce el nombre del producto",
+        "desc": "Descripción del producto",
+        "desc-placeholder": "Introduce una descripción del producto",
+        "brand": "Marca del producto",
+        "brand-placeholder": "Introduce la marca del producto",
+        "state": "Estado del producto",
+        "state-placeholder": "Introduce el estado del producto",
+        "category": "Categoría del producto",
+        "category-placeholder": "Introduce la categoría del producto",
+        "size": "Talla",
+        "measurements": "Tamaño/Longitud",
+        "quantity": "Cantidad",
+        "available": "Disponibles",
+        "photo": "Foto del producto",
+        "add": "Añadir producto",
+        "ok": "Todo ha salido correctamente.",
+        "failed": "Se ha producido un error."
+      }
     }
 
 

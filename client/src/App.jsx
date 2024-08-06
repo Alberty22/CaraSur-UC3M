@@ -17,6 +17,8 @@ import { ActivityPage } from './views/Activities/ActivityPage.jsx';
 import { NewActivity } from './views/Activities/NewActivity.jsx';
 import { AdminPage } from './views/Admin/AdminPage.jsx';
 import { AdminSettingsPage } from './views/Admin/Settings/AdminSettingsPage.jsx';
+import { AdminUsersPage } from './views/Admin/Users/AdminUsersPage.jsx';
+import { AdminEquipmentPage } from './views/Admin/Equipment/AdminEquipmentPage.jsx';
 
 import { NotificationsProvider } from './context/notifications.jsx';
 import { EquipmentFiltersProvider } from './context/equipmentFilters.jsx';
@@ -55,8 +57,8 @@ function App() {
         <Route path='/:lng/loans' element={<ProtectedRoute><LoansPage /></ProtectedRoute>} />
         <Route path='/:lng/admin' element={<AdminRoute><AdminPage /></AdminRoute>} />
         <Route path='/:lng/admin/settings' element={<AdminRoute><AdminSettingsPage /></AdminRoute>} />
-        <Route path='/:lng/admin/users' element={<AdminRoute><AdminPage /></AdminRoute>} />
-        <Route path='/:lng/admin/equipment' element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path='/:lng/admin/users' element={<AdminRoute><AdminUsersPage /></AdminRoute>} />
+        <Route path='/:lng/admin/equipment' element={<AdminRoute><AdminEquipmentPage /></AdminRoute>} />
         <Route path='/:lng/admin/loans' element={<AdminRoute><AdminPage /></AdminRoute>} />
         <Route path='/:lng/admin/activities' element={<AdminRoute><AdminPage /></AdminRoute>} />
         <Route path='/:lng/admin/notifications' element={<AdminRoute><AdminPage /></AdminRoute>} />

@@ -35,13 +35,6 @@
     gap: 20px;
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
-    .profile-page .user-info {
-        height: 90vh;
-        
-    }
-}
-
 @media (max-width: 768px) {
     .profile-page > section:last-child {
         width: 100%;
@@ -71,6 +64,7 @@
 
     .profile-page .user-info {
         width: 90%;
+        height: 90vh;
         height: auto;
         display: flex;
         flex-direction: column;

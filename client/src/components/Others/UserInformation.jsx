@@ -3,7 +3,7 @@ import edit_icon from '../../assets/images/icons/Edit.webp'
 import { usePopup } from '../../hooks/usePopups';
 import { useTranslation } from 'react-i18next';
 
-export const UserInformation = ({ information, sectionTitle, popupContent }) => {
+export const UserInformation = ({ information, sectionTitle, popupContent, editable = true }) => {
     
     const { handleOpen } = usePopup();
 
@@ -18,9 +18,11 @@ export const UserInformation = ({ information, sectionTitle, popupContent }) => 
                 return <p key={info.title}><strong>{t(`profile.${info.title}`)}: </strong>{info.text}</p>
             })
         }
+        { editable &&
         <button onClick={() => {handleOpen(popupContent)}}>
             <img src={edit_icon} alt='Editar'></img>
         </button>
+        }
     </section>
     </>
     
