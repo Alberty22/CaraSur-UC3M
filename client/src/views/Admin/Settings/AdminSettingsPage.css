@@ -32,6 +32,10 @@
     margin-left: 20px;
 }
 
+.search-results {
+    position: relative;
+}
+
 @media (max-width: 768px) {
 
     .settings-page> section:last-child {

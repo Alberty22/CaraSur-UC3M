@@ -17,8 +17,7 @@ export function AdminSettingsPage() {
 
     const { t } = useTranslation();
 
-    const handleSearchClick = () => {
-
+    const filterSearch = () => {
         const users = [
             {
                 "email": "pablo@gmail.com",
@@ -62,18 +61,23 @@ export function AdminSettingsPage() {
         })
         
         setResults(filteredUsers);
+    }
+
+    const handleSearchClick = () => {
+        filterSearch()
       };
     
-      const handleSearchChange = (event) => {
+    const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
         setQuery(newSearch);
-      };
+        filterSearch()
+    };
     
-      const handleButtonClick = (result, state) => {
+    const handleButtonClick = (result, state) => {
         alert(`Botón presionado en: ${result.title} ${state}`);
-      };
+    };
 
-    const { popupContent } = usePopup();
+    const { popupContent, handleClose } = usePopup();
 
     
 
@@ -84,16 +88,22 @@ export function AdminSettingsPage() {
             <section>
                 <div>
                     <UserInformation information={[{"title": "adminEmail", "text": "correo"}]} sectionTitle={t('adminSettings.title1')}
-                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data)}} type={t('adminSettings.action')} />}/>
+                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
                     <UserInformation information={[{"title": "billing", "text": "000000"}]} sectionTitle={t('adminSettings.title2')}
-                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data)}} type={t('adminSettings.action')} />}/>
+                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
                 </div>
                 <div>
                     <section className='information-section' style={{minHeight: "370px"}}>
                         <h3>{t('adminSettings.title3')}</h3>
                         <div>
                             <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} searchQuery={query} placeholder={t('adminSettings.search')} />
-                            <ResultList results={results} onButtonClick={handleButtonClick} />
+                        </div>
+                        <div className='search-results'>
+                            {
+                                query.length > 0 &&
+                                <ResultList results={results} onButtonClick={handleButtonClick} />
+                            }
+                            
                         </div>
                     </section>
                 </div>

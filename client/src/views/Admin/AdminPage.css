@@ -61,7 +61,7 @@
 }
 
 .admin-capability a{
-    margin: 10px 20px 10px 20px;
+    margin: 10px 35px 10px 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,6 +108,7 @@
 
     .admin-capability a{
         font-size: 0.7rem;
+        margin: 10px 20px 10px 20px;
     }
     
     .admin-capability a img{

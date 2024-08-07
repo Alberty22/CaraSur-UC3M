@@ -15,6 +15,7 @@
 .admin-loans-page  h2{
     color: #235371;
     cursor: pointer;
+    border-bottom: solid 3px #235371;
 }
 
 .admin-loans-page > section:last-child {

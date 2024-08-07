@@ -1,0 +1,31 @@
+.admin-activities-page {
+    width: 100%;
+    background-color: #f7f7f7;
+    min-height: 300px;
+    padding-bottom: 50px;
+}
+
+.admin-activities-page > section:last-child {
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 20px;
+    
+}
+
+
+
+@media (max-width: 768px) {
+    
+    .admin-activities-page > section:last-child {
+        width: 90vw;
+        margin-left: 10vw;
+        margin-top: 20px;
+        
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+
+
+}

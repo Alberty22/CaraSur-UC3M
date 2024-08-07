@@ -1,0 +1,104 @@
+{
+    "activities": {
+        "1": {
+            "id":1,
+            "title": "LOL",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-01",
+            "time": "12:00",
+            "difficulty": "1",
+            "chat": "",
+            "drive": ""
+        },
+        "2": {
+            "id":2,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-02",
+            "time": "12:00",
+            "difficulty": "2",
+            "chat": "",
+            "drive": ""
+        },
+        "3": {
+            "id":3,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-03",
+            "time": "12:00",
+            "difficulty": "2",
+            "chat": "",
+            "drive": ""
+        },
+        "4": {
+            "id":4,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-04",
+            "time": "13:00",
+            "difficulty": "3",
+            "chat": "",
+            "drive": ""
+        },
+        "5": {
+            "id":5,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-05",
+            "time": "14:00",
+            "difficulty": "1",
+            "chat": "",
+            "drive": ""
+        },
+        "6": {
+            "id":6,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-06",
+            "time": "15:00",
+            "difficulty": "3",
+            "chat": "",
+            "drive": ""
+        },
+        "7": {
+            "id":7,
+            "title": "Alpinismo",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-07",
+            "time": "16:00",
+            "difficulty": "3",
+            "chat": "",
+            "drive": ""
+        },
+        "8": {
+            "id":8,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-08",
+            "time": "17:00",
+            "difficulty": "2",
+            "chat": "",
+            "drive": ""
+        },
+        "9": {
+            "id":9,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-09",
+            "time": "18:00",
+            "difficulty": "1",
+            "chat": "",
+            "drive": ""
+        },
+        "10": {
+            "id":10,
+            "title": "Trekking-Escalada Pedriza",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "date": "2024-08-10",
+            "time": "19:00",
+            "difficulty": "3",
+            "chat": "",
+            "drive": ""
+        }
+    }
+}

@@ -49,12 +49,18 @@
 
 .activities button {
     background-color: #235371;
-    
     border: none;
     border-radius: 15px;
     padding: 20px 20px;
     cursor: pointer;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
     
+}
+
+.activities button + button {
+    margin-left: 20px;
 }
 
 .activities button a{
@@ -97,14 +103,22 @@
     }
 
     .activities button {
+        margin-left: 10px;
         padding: 15px 15px;
+   
+    }
 
-        
+    .activities button + button {
+        padding: 15px;
+        font-size: 0.7rem;
+        margin-left: 10px;
     }
     
     .activities button a{
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
+
+    
 }
 
 
@@ -138,6 +152,10 @@
         padding: 20px 20px;
 
         
+    }
+
+    .activities button + button {
+        font-size: 1rem;
     }
     
     .activities button a{

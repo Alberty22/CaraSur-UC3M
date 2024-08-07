@@ -87,7 +87,7 @@ export function AdminLoansPage() {
                                 <td>{loan.product}</td>
                                 <td>{loan.user}</td>
                                 <td>{loan.loanDate}</td>
-                                <td>{loan.returnDate}</td>
+                                <td>{t(`adminLoans.${loan.returnDate}`)}</td>
                                 <td className='button'><button onClick={() => handleAccept(index)}>{t('adminLoans.accept')}</button></td>
                             </tr>
                         )

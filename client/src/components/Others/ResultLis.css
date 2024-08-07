@@ -3,6 +3,14 @@
     height: auto;
     max-height: 220px;
     overflow-y: auto;
+    position: absolute;
+    top:0;
+    z-index: 2;
+    background-color: #fff;
+    border: solid 1px #235471;
+    border-top: 0;
+    left: 0;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .result-list .result-item {

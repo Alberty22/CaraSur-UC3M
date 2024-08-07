@@ -302,7 +302,23 @@
       "column2": "User",
       "column3": "Loan Date",
       "column4": "Return Date",
-      "accept": "Accept"
+      "accept": "Accept",
+      "pending": "Pending"
+    },
+
+    "adminActivities": {
+      "aprove": "Aprove",
+      "seeMore": "Go"
+    },
+
+    "adminNotifications": {
+      "title": "Send Notifications",
+      "message": "Message",
+      "placeholder": "Enter the notification message.",
+      "send": "Send",
+      "error" : "Please select users and write a message.",
+      "ok": "Everything went well",
+      "failed": "An error occurred"
     }
 
 

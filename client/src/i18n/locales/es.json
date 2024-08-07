@@ -293,8 +293,8 @@
         "available": "Disponibles",
         "photo": "Foto del producto",
         "add": "Añadir producto",
-        "ok": "Todo ha salido correctamente.",
-        "failed": "Se ha producido un error."
+        "ok": "Todo ha salido correctamente",
+        "failed": "Se ha producido un error"
       }
     },
 
@@ -305,9 +305,24 @@
       "column2":"Usuario",
       "column3":"Fecha Préstamo",
       "column4":"Fecha Retorno",
-      "accept": "Aceptar"
-    }
+      "accept": "Aceptar",
+      "pending": "Pendiente"
+    },
 
+    "adminActivities": {
+      "aprove": "Aprobar",
+      "seeMore": "Ir"
+    },
+
+    "adminNotifications": {
+      "title": "Enviar notificaciones",
+      "message": "Mensaje",
+      "placeholder": "Introduce el mensaje de la notificación.",
+      "send": "Enviar",
+      "error" : "Por favor, seleccione usuarios y escriba un mensaje.",
+      "ok": "Todo ha salido correctamente",
+      "failed": "Se ha producido un error"
+    }
 
 
 

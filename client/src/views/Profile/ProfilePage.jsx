@@ -42,7 +42,7 @@ export function ProfilePage () {
 
     ]
 
-    const { popupContent } = usePopup();
+    const { popupContent, handleClose } = usePopup();
 
     return(
         <>
@@ -56,7 +56,7 @@ export function ProfilePage () {
                     { userData !== undefined &&
                         information.map((section) => {
                             return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} 
-                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data)}} type={t('profile.action')} />}
+                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data); handleClose()}} type={t('profile.action')} />}
                             />
                         })
                     } 

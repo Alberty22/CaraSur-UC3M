@@ -2,10 +2,11 @@ import './Activities.css'
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-export function Activities({ activities }) {
+export function Activities({ activities, admin=false, handleClick}) {
 
     const { t } = useTranslation();
     const { lng } = useParams()
+
 
     return (
         <main className='activities'>
@@ -21,9 +22,23 @@ export function Activities({ activities }) {
                                     <div className="year">{year}</div>
                                 </div>
                                 <div className="event">{activity.title}</div>
-                                <button>
+                                { !admin 
+                                ? <button>
                                     <Link to={`${activity.id}-${activity.title}`} state={activity}>{t('activities.activities.button')}</Link>
                                 </button>
+
+                                : <>
+                                <button>
+                                    <Link to={`/${lng}/activities/${activity.id}-${activity.title}`} state={activity}>{t('adminActivities.seeMore')}</Link>
+                                </button>
+                                <button onClick={() => handleClick(activity.id)}>
+                                    {t('adminActivities.aprove')}
+                                </button>
+                                
+                                </>
+
+                                }
+                                
                             </li>
                         )
                     })
