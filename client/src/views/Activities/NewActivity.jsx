@@ -13,33 +13,8 @@ export function NewActivity(){
             <Breadcrumbs />
             <section>
 
-                <Form inputs={inputs_activity} onSubmit={(data) => {console.log(data)}} type={'Registrar actividad'} />
+                <Form inputs={inputs_activity} onSubmit={(data) => {console.log(data)}} type={t('newActivity.action')} className='form-new-activity'/>
                 <p>* <span>{t('newActivity.text1')}:</span> {t('newActivity.text2')}</p>
-                {/* <div className='activity-info'>
-                    <div>
-                        <h2></h2>
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        
-                    </div>
-                    <div>
-                        <h3>Dificultad:</h3>
-                        
-                    </div>
-                    <div>
-                        <h3>Descripción</h3>
-                        <p>dsafs</p>
-                    </div>
-                    <div>
-                        <p><img src={whatsapp_logo} alt='whatsapp'/>Unete al chat de la actividad</p>
-                        <p><img src={drive_logo} alt='drive'/>Accede a las fotos de la actividad</p>
-                    </div>
-                    <button >
-                        Registrar actividad
-                    </button>
-                </div> */}
             </section>
             
         </main>

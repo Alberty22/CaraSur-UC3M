@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 
-export const Form = ({ inputs, onSubmit, type }) => {
+export const Form = ({ inputs, onSubmit, type, className='form' }) => {
     // const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({
     //     defaultValues: {
     //       image: null 
@@ -63,7 +63,7 @@ export const Form = ({ inputs, onSubmit, type }) => {
     return(
         <div className='form-container'>
             {/* Poner handleSubmit(onSubmit) */}
-            <form className= 'login-form' onSubmit={onSubmit}>
+            <form className={className} onSubmit={onSubmit}>
                 {
                     inputs.map((input) => {
                         const { inputKey, inputType, placeholder, error } = input

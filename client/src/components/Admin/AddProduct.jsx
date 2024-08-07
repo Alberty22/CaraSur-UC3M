@@ -22,7 +22,7 @@ export function AddProduct() {
   
   
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+    <form onSubmit={handleSubmit(onSubmit)} className='add-form'>
         <div>
             <label>{t('adminEquipment.addProduct.name')}:</label>
             <input 

@@ -217,7 +217,8 @@
 
   "newActivity": {
       "text1": "Note",
-      "text2": "The proposed activity needs approval from the Board of Directors. Once the approval is granted, you will be notified."
+      "text2": "The proposed activity needs approval from the Board of Directors. Once the approval is granted, you will be notified.",
+      "action": "Propose activity"
     },
    
   "equipment": {

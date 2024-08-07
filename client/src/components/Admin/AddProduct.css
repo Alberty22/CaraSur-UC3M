@@ -1,11 +1,11 @@
-.form {
+.add-form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between
   }
 
-.form > div {
+.add-form > div {
     flex-basis: 45%;
     margin-bottom: 10px;
     display: flex;
@@ -13,44 +13,44 @@
     justify-content: center;
 }
 
-.form .multi-container {
+.add-form .multi-container {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-.form .multi-container .input-container {
+.add-form .multi-container .input-container {
     display: flex;
     flex-direction: column;
 }
 
 
-.form > div > div {
+.add-form > div > div {
     width: 45%;
 }
 
-.form label {
+.add-form label {
     font-weight: bold;
     font-size: 0.9rem;
 }
 
-.form input {
+.add-form input {
     width: 100%;
     border-radius: 10px;
     padding: 7px 5px;
     border: solid 2px #235371;
 }
 
-.form input[type="number"]::-webkit-inner-spin-button, .form input[type="number"]::-webkit-outer-spin-button {
+.add-form input[type="number"]::-webkit-inner-spin-button, .form input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-.form input[type="number"] {
+.add-form input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.form .size-container{
+.add-form .size-container{
     width: 100%;
     display: flex;
     gap: 20px;
@@ -59,7 +59,7 @@
     font-weight: bold;
 }
 
-.form .multi-container input {
+.add-form .multi-container input {
     width: 30px;
     height: 30px;
     padding: 0;
@@ -69,7 +69,7 @@
     text-align: center;
 }
 
-.form button{
+.add-form button{
     margin-top: 30px;
     width: fit-content;
     height: fit-content;
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.form span {
+.add-form span {
     margin: 0;
     padding-top: 10px;
     color: #ff3511;
@@ -92,33 +92,33 @@
   }
 
   @media (max-width: 768px) {
-    .form {
+    .add-form {
         flex-direction: column;
         flex-wrap: wrap;
       }
 
-      .form .size-container{
+      .add-form .size-container{
         gap: 10px;
     
     }
     
-      .form > div > div {
+      .add-form > div > div {
         width: 50%;
     }
   }
   
   @media (min-width: 768px) and (max-width: 1024px)  {
-    .form {
+    .add-form {
         flex-direction: column;
         flex-wrap: wrap;
       }
 
-      .form .size-container{
+      .add-form .size-container{
         gap: 20px;
     
     }
     
-      .form > div > div {
+      .add-form > div > div {
         width: 50%;
         
     }

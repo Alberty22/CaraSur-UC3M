@@ -36,7 +36,7 @@
 
 
 
-.login-form {
+.form, .form-new-activity {
     width: 90%;
     height: auto;
     display: flex;
@@ -46,7 +46,7 @@
   }
 
 
-  .login-form input , .login-form select{
+  .form input , .form select{
 
     width: 100%;
     padding: 20px 0;
@@ -61,19 +61,34 @@
     
   }
 
-  .login-form select{
+  .form-new-activity input , .form-new-activity select{
+
+    width: 100%;
+    padding: 20px 0;
+    padding-bottom: 10px;
+    color: #000 ;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #235371;
+    font-size: 1.2rem;
+    font-weight: normal;
+    appearance: none;
+    
+  }
+
+  .form select{
     color: #969696;
   }
 
-  .login-form select:valid {
-    color: #fff; /* Color cuando se enfoca el select */
+  .form select:valid {
+    color: #fff; 
   }
 
-  .login-form .selected{
+  .form .selected{
     color: #ffffff;
   }
 
-  .login-form select option {
+  .form select option {
     font-size: 1.1rem;
     font-weight: normal;
     color: #ffffff;
@@ -81,24 +96,24 @@
     
   }
 
-  .login-form select option:disabled {
+  .form select option:disabled {
     color: #969696;
     
   }
 
-  .login-form select option:first-child {
+  .form select option:first-child {
     color: #969696;
   }
 
 
-  .login-form input:focus , .login-form select:focus{
+  .form input:focus , .login-form select:focus{
     outline: none;
     border-bottom: 2px solid initial;  
     box-shadow: none;
     background-color: initial;
   }
 
-  .login-form input:-internal-autofill-selected, .login-form select:-internal-autofill-selected{
+  .form input:-internal-autofill-selected, .form select:-internal-autofill-selected{
     outline: none;
     border-bottom: 2px solid initial;  
     box-shadow: none;
@@ -106,7 +121,7 @@
     appearance: initial;
   }
 
-  .login-form  p {
+  .form  p {
     margin: 0;
     padding-top: 10px;
     color: #ff3511;
@@ -114,13 +129,13 @@
     font-size: 0.7rem;
   }
 
-  .login-form  .pass-container {
+  .form  .pass-container {
     margin: 0;
     display: flex;
     position: relative;
   }
 
-  .login-form .show-pass {
+  .form .show-pass {
     width: 25px;
     height: 25px;
     background-color: transparent;
@@ -130,19 +145,19 @@
     margin: 0;
   }
 
-  .login-form .show-pass img {
+  .form .show-pass img {
     width: 25px;
     height: 25px;
   }
   
-  .login-form .login-extra {
+  .form .login-extra {
     margin-top: 20px;
     display: flex;
     font-size: 0.8rem;
     justify-content: space-between;
   }
 
-  .login-form .remember-me {
+  .form .remember-me {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -150,12 +165,12 @@
     color: #ffffff;
   }
 
-  .login-form .remember-me label {
+  .form .remember-me label {
     font-size: 0.8rem;
     
   }
 
-  .login-form .remember-me-check {
+  .form .remember-me-check {
     appearance:auto;
     width: auto;
     margin: 0;
@@ -165,13 +180,13 @@
     background-color: #ffffff;
   }
 
-  .login-form .forgot-password {
+  .form .forgot-password {
     color: #ffffff;
   }
   
   
 
-  .login-form button, .other-login button {
+  .form button, .other-login button {
     width: 100%;
     margin: 20px 0 10px 0;
     padding: 20px 0;
@@ -182,6 +197,22 @@
     font-weight: bold;
     background-color: #fff;
     color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-new-activity button {
+    width: 50%;
+    margin: 20px 0 10px 0;
+    padding: 20px 0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #235371;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,83 +236,105 @@
 
   @media (max-width: 768px) {
 
-    .login-form input , .login-form select{
+    .form input , .form select{
         margin-bottom: 20px;
         font-size: 0.8rem;
         
       }
+
+    .form-new-activity input {
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+    }
   
-      .login-form .show-pass {
+    .form .show-pass {
+
+      bottom: 20px;
+    }
   
-        bottom: 20px;
-      }
-  
-      .login-form  p {
-        font-size: 0.3rem;
-      }
+    .form  p {
+      font-size: 0.3rem;
+    }
       
   
-      .login-form > div {
-        font-size: 0.6rem;
-        
-      }
+    .form > div {
+      font-size: 0.6rem;
+      
+    }
 
-      .login-form .login-extra {
-        
-        flex-direction: column;
-        
-      }
-    
-      .login-form .remember-me {
-        
-        font-size: 0.8rem;
-        
-      }
+    .form .login-extra {
+      
+      flex-direction: column;
+      
+    }
   
-      .login-form button, .other-login button {
-        padding: 15px 0;
-        margin: 20px 0 20px 0;
-        font-size: 1rem;
-      }
+    .form .remember-me {
+      
+      font-size: 0.8rem;
+      
+    }
+  
+    .form button, .other-login button {
+      padding: 15px 0;
+      margin: 20px 0 20px 0;
+      font-size: 1rem;
+    }
+
+    .form-new-activity button {
+      padding: 15px 0;
+      margin: 20px 0 20px 0;
+      font-size: 1rem;
+    }
   }
 
   @media (min-width: 768px) and (max-width: 1024px)  {
 
-    .login-form input, .login-form select {
+    .form input, .login-form select {
         margin-bottom: 20px;
         font-size: 1.2rem;
         
       }
-  
-      .login-form .show-pass {
-  
-        bottom: 10px;
-      }
-  
-      .login-form  p {
-        font-size: 0.9rem;
-      }
-  
-      .login-form > div {
-        font-size: 1.2rem;
-        
-      }
 
-      .login-form .login-extra {
-        
-        flex-direction: row;
-        
-      }
-    
-      .login-form .remember-me {
-        
-        font-size: 1.2rem;
-        
-      }
+    .form-new-activity input {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
   
-      .login-form button, .other-login button {
-        margin-top: 50px;
-        font-size: 1.5rem;
-        padding: 30px 0;
-      }
+    .form .show-pass {
+
+      bottom: 10px;
+    }
+
+    .form  p {
+      font-size: 0.9rem;
+    }
+
+    .form > div {
+      font-size: 1.2rem;
+      
+    }
+
+    .form .login-extra {
+      
+      flex-direction: row;
+      
+    }
+  
+    .form .remember-me {
+      
+      font-size: 1.2rem;
+      
+    }
+
+    .form button, .other-login button {
+      margin-top: 50px;
+      font-size: 1.5rem;
+      padding: 30px 0;
+    }
+
+    .form-new-activity button {
+      margin-top: 50px;
+      font-size: 1.5rem;
+      padding: 30px 0;
+    }
   }

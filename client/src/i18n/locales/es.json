@@ -219,7 +219,8 @@
 
     "newActivity": {
       "text1": "Nota",
-      "text2": "la actividad propuesta necesitan una aprobación por la Junta Directiva. Cuando se realice la aprobación se le notificará."
+      "text2": "la actividad propuesta necesitan una aprobación por la Junta Directiva. Cuando se realice la aprobación se le notificará.",
+      "action": "Proponer actividad"
     },
 
     "equipment": {
