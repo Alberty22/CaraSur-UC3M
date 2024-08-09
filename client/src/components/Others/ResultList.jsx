@@ -1,7 +1,8 @@
-import './ResultLis.css'
+import './ResultList.css'
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const ResultItem = ({ result, onButtonClick, role })  => {
+const ResultItem = ({ result, onButtonClick, role})  => {
 
     
     const [userAdd, setUserAdd] = useState(false)
@@ -18,9 +19,16 @@ const ResultItem = ({ result, onButtonClick, role })  => {
     );
   }
 
-export function ResultList({ results, onButtonClick }) {
+export function ResultList({ results, onButtonClick, all=false }) {
+
+  const { t } = useTranslation()
+  
   return (
     <div className='result-list'>
+      { all &&
+        <ResultItem result={{email: t('adminNotifications.all')}} role='' onButtonClick={onButtonClick} />
+
+      }
       {results.map((result, index) => (
         <ResultItem key={index} result={result} role={result.role} onButtonClick={onButtonClick} />
       ))}

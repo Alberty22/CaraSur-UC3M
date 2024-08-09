@@ -3,7 +3,9 @@ import { Controller } from "react-hook-form";
 
 import countryList from 'react-select-country-list'
 
-export function SelectInput({inputKey, inputType, placeholder, error, errors, options, optional, control}) {
+export function SelectInput({inputKey, inputType, placeholder, error, errors, options, optional, control, setValue}) {
+
+    const [selectedValue, setSelectedValue] = useState("");
 
     return (
         <>
@@ -15,7 +17,9 @@ export function SelectInput({inputKey, inputType, placeholder, error, errors, op
         rules={!optional ? { required: error } : {}}
         render={({ field }) => (
             <>
-            <select  {...field}>
+            <select  {...field} value={selectedValue} 
+                        onChange={(event) => {setSelectedValue(event.target.value); setValue(inputKey, event.target.value)}}  
+                        style={{color: selectedValue ? '#fff' : '#989898',}}>
                 <option value="" disabled>{placeholder}</option>
                 { inputType !== 'country'
                 ? options.map((option) =>{

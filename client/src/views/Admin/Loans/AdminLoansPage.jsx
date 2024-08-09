@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 
+import { ROUTES } from '../../../config/apiRoutes'
+
 
 const addDays = (dateString, days) => {
     const [day, month, year] = dateString.split('-').map(Number)
@@ -25,8 +27,8 @@ export function AdminLoansPage() {
 
     const [section, setSection] = useState('pending')
 
-    const { data:dataPending } = useFetch({ url:`/loans-pending.json`})
-    const { data:dataProcessed } = useFetch({ url:`/loans-processed.json`})
+    const { data:dataPending } = useFetch({ url: ROUTES.PENDING_LOANS})
+    const { data:dataProcessed } = useFetch({ url: ROUTES.PROCCESED_LOANS})
 
     const [pendingLoans, setPendingLoans] = useState([])
     const [processedLoans, setProcessedLoans] = useState([])
@@ -59,6 +61,15 @@ export function AdminLoansPage() {
         
     };
 
+    const handleDecline = (index) => {
+        setPendingLoans((prev) => {
+            const updated = [...prev]
+            updated.splice(index, 1)
+            return updated
+        });
+        
+    };
+
     return (
         <main className='admin-loans-page'>
             <Breadcrumbs />
@@ -88,6 +99,7 @@ export function AdminLoansPage() {
                                 <td>{loan.user}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{t(`adminLoans.${loan.returnDate}`)}</td>
+                                <td className='button'><button onClick={() => handleDecline(index)}>{t('adminLoans.decline')}</button></td>
                                 <td className='button'><button onClick={() => handleAccept(index)}>{t('adminLoans.accept')}</button></td>
                             </tr>
                         )

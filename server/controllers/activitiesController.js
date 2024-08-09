@@ -4,7 +4,6 @@ const activitiesPath = path.join(__dirname, '../data/activities.json');
 
 // GET request handler
 exports.getActivities = async (req, res) => {
-    console.log("Peticion")
   try {
     const activities = await readJsonFile(activitiesPath);
     res.json(activities);

@@ -1,15 +1,19 @@
 import './ActivitiesPage.css'
+
 import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
 import { FiltersBar } from '../../components/Activities/FiltersBar'
-import { useFetch } from '../../hooks/useFetch'
 import { Activities } from '../../components/Activities/Activities.jsx'
-import { useActivityFilters } from '../../hooks/useActivityFilters.js'
 import { AsideSection } from '../../components/Activities/AsideSection.jsx'
+
 import { useTranslation } from 'react-i18next'
+import { useActivityFilters } from '../../hooks/useActivityFilters.js'
+import { useFetch } from '../../hooks/useFetch'
+
+import { ROUTES } from '../../config/apiRoutes.js'
 
 export function ActivitiesPage() {
 
-    const { data } = useFetch({ url:'/activities.json' })
+    const { data } = useFetch({ url: ROUTES.ACTIVITIES })
     const activities = data ? data : []
     
     const { filterActivities, sortActivities } = useActivityFilters()

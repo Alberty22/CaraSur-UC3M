@@ -82,8 +82,8 @@ export function Footer () {
 
             <div className='extra-links'>
                 <ul>
-                    <li><a>{t('footer.privacy')}</a></li>
-                    <li><a>{t('footer.regulations')}</a></li>
+                    <li><a href='/privacy.pdf' target="_blank" download>{t('footer.privacy')}</a></li>
+                    <li><a href='/regulations.pdf' target="_blank" download>{t('footer.regulations')}</a></li>
                     <li><a>{t('footer.cookies')}</a></li>
                 </ul>
             </div>

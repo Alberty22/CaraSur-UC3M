@@ -1,21 +1,26 @@
-import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
-import filters_icon from '../../assets/images/icons/Filter.webp'
-import cart_icon from '../../assets/images/icons/Cart.webp'
 import './EquipmentPage.css'
-import { useFetch } from '../../hooks/useFetch'
+
+import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
 import { Products } from '../../components/Equipment/Products'
 import { useSideBar } from '../../hooks/useSideBar'
 import { FiltersSidebar } from '../../components/Equipment/FiltersSidebar'
 import { CartSidebar } from '../../components/Equipment/CartSidebar'
-import swipe_icon from '../../assets/images/icons/Expand_left.webp'
+import Popup from '../../components/others/Popup'
+
+import { useFetch } from '../../hooks/useFetch'
 import { useEquipmentFilters } from '../../hooks/useEquipmentFilters'
 import { usePopup } from '../../hooks/usePopups'
-import Popup from '../../components/others/Popup'
 import { useTranslation } from 'react-i18next'
+
+import { ROUTES } from '../../config/apiRoutes.js'
+
+import swipe_icon from '../../assets/images/icons/Expand_left.webp'
+import filters_icon from '../../assets/images/icons/Filter.webp'
+import cart_icon from '../../assets/images/icons/Cart.webp'
 
 export function EquipmentPage() {
 
-    const { data } = useFetch({ url:'/inventory.json' })
+    const { data } = useFetch({ url:ROUTES.EQUIPMENT })
     const inventory = data ? data : []
 
     const inventory_unique = {

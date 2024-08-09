@@ -1,9 +1,9 @@
 import './SingupPage.css'
-import google_logo from '../../assets/images/logos/google.webp'
-import mountain_path from '../../assets/images/visuals/mountain-path.png'
-import useMobileQuery from '../../hooks/useMobileQuery.js';
+
 import { FormSection } from '../../components/Sections/FormSection.jsx';
 import { Form } from '../../components/Form/Form.jsx';
+import Popup from '../../components/others/Popup.jsx';
+import { FailedSection } from '../../components/others/FailedSection.jsx';
 
 import inputSingup1 from '../../assets/others/inputs-singup1.json'
 import inputSingup2 from '../../assets/others/inputs-singup2.json'
@@ -12,6 +12,15 @@ import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../hooks/useAuth.js';
 import { useEffect, useState } from 'react';
+import { usePopup } from '../../hooks/usePopups.js';
+import useMobileQuery from '../../hooks/useMobileQuery.js';
+
+import { toBase64 } from '../../utils/photo.js';
+import { sendData } from '../../utils/communications.js';
+
+import { ROUTES } from '../../config/apiRoutes.js';
+import google_logo from '../../assets/images/logos/google.webp'
+import mountain_path from '../../assets/images/visuals/mountain-path.png'
 
 export function SingupPage() {
 
@@ -27,16 +36,64 @@ export function SingupPage() {
     const [stepSingup, setStepSingup] = useState(false)
     const [formData, setFormData] = useState(null)
 
+    const { popupContent, handleOpen } = usePopup();
+
     const onSubmit1 = (data) => {
         setFormData(data)
         setStepSingup(true)
+        
     };
 
-    const onSubmit2 = data => {
-        console.log(formData);
-        console.log(data);
-        login(formData)
-        navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
+    const onSubmit2 = async (data) => {
+
+        let base64Photo = ''
+        const file = data['id-photo']
+        console.log(file)
+        if (file) {
+            base64Photo = await toBase64(file);
+        }
+
+        const dataToSend = {
+            email: formData.email,
+            password: formData.password,
+            role: 'user',
+            details: {
+                "user-details": {
+                    name: data.name,
+                    surname: data.surname,
+                    id: data.id,
+                    telephone: data.phone,
+                    postal: data.postal,
+                    UC3MStudent: data['uc3m-student']
+                },
+                "user-optional-details": {
+                    gender: data.gender,
+                    birthdate: data.birthdate,
+                    country: data.country,
+                    student: data.student,
+                    sports: data.sports
+                },
+                "id-photo": {
+                    base64: base64Photo,
+                    name: file.name,
+                    type: file.type,
+                    size: file.size
+                }
+            }
+        }
+        const res = await sendData(dataToSend, ROUTES.SIGNUP)
+        console.log(res)
+        console.log(res.code)
+        if(res.result.succes) {
+            login({name: dataToSend.details['user-details'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
+            navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
+        }
+        else {
+            setFormData(false)
+            setStepSingup(false)
+            handleOpen(<FailedSection message={t('signup.failed')} />)
+        }
+        
     }
     
     return (
@@ -56,7 +113,7 @@ export function SingupPage() {
                 
                 { !stepSingup &&
                 <>
-                <div className='separator' group='right'>
+                {/* <div className='separator' group='right'>
                     <span>{t('signup.separator')}</span>
                 </div>
                 <div className='other-login' group='right'>
@@ -64,13 +121,19 @@ export function SingupPage() {
                         <img src={google_logo} alt='Google logo'></img>
                         {t('signup.google')}
                     </button>
-                </div>
+                </div> */}
                 </>
                 }
                 <p className='switch-form' group='left'>{t('signup.login1')} <Link to={`/${lng}/login`} className="register-link">{t('signup.login2')}</Link></p>
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='left'/>
             </FormSection>  
         </main>
+
+        { popupContent &&
+            <Popup className='popup-product'>
+                {popupContent}
+            </Popup>
+        }
         </>
         
     )

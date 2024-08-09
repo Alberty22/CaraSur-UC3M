@@ -117,7 +117,8 @@
       "google": "Sign up with Google",
       "separator": "or",
       "action": "Sign Up",
-      "forgot": "Forgot your password?"
+      "forgot": "Forgot your password?",
+      "failed": "An error occurred"
     },
 
     "form": {
@@ -135,6 +136,15 @@
       "student": {
         "yes": "Yes",
         "no": "No",
+        "notAnswer": "Prefer not to answer"
+      },
+      "sports": {
+        "climbing": "Climbing",
+        "hiking": "Hiking",
+        "alpinism": "Alpinism",
+        "ski": "Ski",
+        "cannoying": "Cannoying",
+        "cycling": "Cycling",
         "notAnswer": "Prefer not to answer"
       },
       "theme": {
@@ -311,6 +321,7 @@
       "column2": "User",
       "column3": "Loan Date",
       "column4": "Return Date",
+      "decline": "Decline",
       "accept": "Accept",
       "pending": "Pending"
     },
@@ -327,14 +338,21 @@
       "send": "Send",
       "error" : "Please select users and write a message.",
       "ok": "Everything went well",
+      "all": "All",
       "failed": "An error occurred"
+    },
+
+    "formErrors": {
+      "password": {
+        "minLength": "Password must be at least 8 characters long",
+        "letters": "Password must include at least one letter",
+        "special": "Password must include at least one number and one special character",
+        "repeat": "Passwords must be identical"
+      },
+      "id": "Invalid DNI/NIE format",
+      "postal": "Invalid postal code format",
+      "telephone": "Invalid phone number format",
+      "billing": "Invalid Spanish bank account format"
     }
-
-
-
-  
-
-
-
-
+    
 }

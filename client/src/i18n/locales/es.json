@@ -118,7 +118,8 @@
       "google": "Registrarse con Google",
       "separator": "o",
       "action": "Registrarse",
-      "forgot": "¿Has olvidado tu contraseña?"
+      "forgot": "¿Has olvidado tu contraseña?",
+      "failed": "Se ha producido un error"
     },
 
     "form": {
@@ -138,6 +139,16 @@
         "no": "No",
         "notAnswer": "Prefiero no contestar"
       },
+      "sports": {
+        "climbing": "Escalada",
+        "hiking": "Senderismo",
+        "alpinism": "Alpinismo",
+        "ski": "Esquí",
+        "cannoying": "Piragüismo",
+        "cycling": "Ciclismo",
+        "notAnswer": "Prefiero no contestar"
+      },
+
       "theme": {
         "light": "Claro"
       }
@@ -314,6 +325,7 @@
       "column2":"Usuario",
       "column3":"Fecha Préstamo",
       "column4":"Fecha Retorno",
+      "decline": "Rechazar",
       "accept": "Aceptar",
       "pending": "Pendiente"
     },
@@ -330,7 +342,21 @@
       "send": "Enviar",
       "error" : "Por favor, seleccione usuarios y escriba un mensaje.",
       "ok": "Todo ha salido correctamente",
+      "all": "Todos",
       "failed": "Se ha producido un error"
+    },
+
+    "formErrors": {
+      "password": {
+        "minLength": "La clave debe tener al menos 8 caracteres",
+        "letters": "La clave debe contener al menos una letra",
+        "special":"La clave debe contener al menos un número y un caracter especial",
+        "repeat": "Las claves deben coincidir"
+      },
+      "id":"No cumple con el formato DNI/NIE",
+      "postal":"No cumple con el formato de código postal",
+      "telephone":"No cumple con el formato de télefono",
+      "billing": "No cumple con el formato de cuenta bancaria en España"
     }
 
 

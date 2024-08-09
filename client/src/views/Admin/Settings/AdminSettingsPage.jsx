@@ -1,22 +1,27 @@
 import './AdminSettingsPage.css'
+
 import { Breadcrumbs } from '../../../components/others/Breadcrumbs'
 import { UserInformation } from '../../../components/others/UserInformation'
 import { Form } from '../../../components/Form/Form'
-import admin_settings from '../../../assets/others/admin-settings.json'
-import { usePopup } from '../../../hooks/usePopups'
+import { ResultList } from '../../../components/others/ResultList'
 import Popup from '../../../components/others/Popup'
+
+import { usePopup } from '../../../hooks/usePopups'
 import { Searchbar } from '../../../components/others/Searchbar'
 import { useState } from 'react'
-import { ResultList } from '../../../components/others/ResultList'
 import { useTranslation } from 'react-i18next';
 import { useFetch } from '../../../hooks/useFetch'
+
+import { ROUTES } from '../../../config/apiRoutes'
+
+import admin_settings from '../../../assets/others/admin-settings.json'
 
 export function AdminSettingsPage() {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
 
-    const { data } = useFetch({url: '/users.json'})
+    const { data } = useFetch({url: ROUTES.USERS})
     const users = data ? data : []
 
     const { t } = useTranslation();
@@ -53,9 +58,9 @@ export function AdminSettingsPage() {
             <Breadcrumbs />
             <section>
                 <div>
-                    <UserInformation information={[{"title": "adminEmail", "text": "correo"}]} sectionTitle={t('adminSettings.title1')}
+                    <UserInformation information={{"adminEmail": "correo"}} sectionTitle={t('adminSettings.title1')}
                     popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
-                    <UserInformation information={[{"title": "billing", "text": "000000"}]} sectionTitle={t('adminSettings.title2')}
+                    <UserInformation information={{"billing": "000000"}} sectionTitle={t('adminSettings.title2')}
                     popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
                 </div>
                 <div>

@@ -8,13 +8,13 @@ import { useState } from "react";
 
 
 
-export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=[] }) => {
+export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=[], isLogin=false }) => {
 
     const [optional, setOptional] = useState(false)
 
     const { t } = useTranslation()
 
-    const { register, handleSubmit, formState: { errors }, setValue, control, watch } = useForm({
+    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues } = useForm({
         defaultValues: {
           image: null 
         }
@@ -28,7 +28,7 @@ export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=
         <div className='form-container'>
             <form className={className} onSubmit={handleSubmit(onSubmit)}>
                 {
-                    <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} control={control} watch={watch}/>
+                    <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} getValues={getValues} control={control} watch={watch} isLogin={isLogin}/>
                 }
                 { optionalInputs.length > 0 &&
                 <>

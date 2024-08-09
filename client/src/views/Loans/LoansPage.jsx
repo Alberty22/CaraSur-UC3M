@@ -1,10 +1,14 @@
 import './LoansPage.css'
+
 import { Breadcrumbs } from '../../components/others/Breadcrumbs'
-import { useFetch } from '../../hooks/useFetch'
 import { LoanItem } from '../../components/others/LoanItem'
 
+import { useFetch } from '../../hooks/useFetch'
+
+import { ROUTES } from '../../config/apiRoutes'
+
 export function LoansPage() {
-    const { data } = useFetch({ url:'/loans.json' })
+    const { data } = useFetch({ url: ROUTES.USER_LOANS })
     const loans = data ? data : []
     return (
         <main className='loans-page'>

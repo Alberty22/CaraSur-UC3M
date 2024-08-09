@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 import { usePopup } from '../../../hooks/usePopups'
 
+import { ROUTES } from '../../../config/apiRoutes'
+
 import admin_activities from '../../../assets/others/admin-activities.json'
 
 
@@ -16,7 +18,7 @@ export function AdminActivitiesPage() {
 
     const { t } = useTranslation();
 
-    const { data } = useFetch({ url:'/activities-pending.json'})
+    const { data } = useFetch({ url: ROUTES.PENDING_ACTIVITIES})
 
     const [pendingActivities, setPendingActivities] = useState([])
 

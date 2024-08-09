@@ -1,7 +1,7 @@
 {
     "profile-account-popup": [
         {
-            "inputKey": "profile-email",
+            "inputKey": "email",
             "inputType":"email",
             "placeholder": {
                 "es": "Correo eléctronico",
@@ -13,7 +13,7 @@
             }
         },
         {
-            "inputKey": "profile-password",
+            "inputKey": "password",
             "inputType":"password",
             "placeholder": {
                 "es": "Contraseña",
@@ -25,7 +25,7 @@
             }
         },
         {
-            "inputKey": "profile-password-repeat",
+            "inputKey": "password-repeat",
             "inputType":"password",
             "placeholder": {
                 "es": "Contraseña",
@@ -39,7 +39,7 @@
     ],
     "profile-user-popup": [
         {
-            "inputKey": "profile-name",
+            "inputKey": "name",
             "inputType":"text",
             "placeholder": {
                 "es": "Nombre",
@@ -51,7 +51,7 @@
             }
         },
         {
-            "inputKey": "profile-surname",
+            "inputKey": "surname",
             "inputType":"text",
             "placeholder": {
                 "es": "Apellidos",
@@ -63,7 +63,7 @@
             }
         },
         {
-            "inputKey": "profile-id",
+            "inputKey": "id",
             "inputType":"text",
             "placeholder": {
                 "es": "DNI/NIE",
@@ -75,7 +75,7 @@
             }
         },
         {
-            "inputKey": "profile-id-photo",
+            "inputKey": "id-photo",
             "inputType":"image",
             "placeholder": {
                 "es": "Foto DNI/NIE",
@@ -87,7 +87,7 @@
             }
         },
         {
-            "inputKey": "profile-postal",
+            "inputKey": "postal",
             "inputType":"number",
             "placeholder": {
                 "es": "Código postal",
@@ -99,7 +99,7 @@
             }
         },
         {
-            "inputKey": "profile-phone",
+            "inputKey": "phone",
             "inputType":"tel",
             "placeholder": {
                 "es": "Teléfono",
@@ -111,7 +111,7 @@
             }
         },
         {
-            "inputKey": "profile-uc3m-student",
+            "inputKey": "uc3m-student",
             "inputType":"uc3m-student",
             "placeholder": {
                 "es": "Estudiante UC3M",
@@ -127,7 +127,7 @@
 
     "profile-optional-popup": [
         {
-            "inputKey": "profile-gender",
+            "inputKey": "gender",
             "inputType":"gender",
             "placeholder": {
                 "es": "Género (opcional)",
@@ -136,7 +136,7 @@
             "error":""
         },
         {
-            "inputKey": "profile-birthdate",
+            "inputKey": "birthdate",
             "inputType":"date",
             "placeholder": {
                 "es": "Fecha de nacimiento (opcional)",
@@ -145,7 +145,7 @@
             "error":""
         },
         {
-            "inputKey": "profile-country",
+            "inputKey": "country",
             "inputType":"country",
             "placeholder": {
                 "es": "País de origen (opcional)",
@@ -154,7 +154,7 @@
             "error":""
         },
         {
-            "inputKey": "profile-student",
+            "inputKey": "student",
             "inputType":"student",
             "placeholder": {
                 "es": "Estudiante (opcional)",
@@ -163,7 +163,7 @@
             "error":""
         },
         {
-            "inputKey": "profile-sports",
+            "inputKey": "sports",
             "inputType":"sports",
             "placeholder": {
                 "es": "Deportes que te interesa (opcional)",
@@ -176,7 +176,7 @@
 
     "profile-preferences-popup": [
         {
-            "inputKey": "profile-language",
+            "inputKey": "language",
             "inputType":"language",
             "placeholder": {
                 "es": "Idioma",
@@ -185,7 +185,7 @@
             "error":""
         },
         {
-            "inputKey": "profile-theme",
+            "inputKey": "theme",
             "inputType":"theme",
             "placeholder": {
                 "es": "Tema",

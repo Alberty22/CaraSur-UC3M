@@ -6,10 +6,12 @@ import { useState, useRef } from 'react';
 import { useFetch } from '../../hooks/useFetch.js'
 import { useTranslation } from 'react-i18next';
 
+import { ROUTES } from '../../config/apiRoutes.js';
+
 export function Carousel() {
   const contentRef = useRef(null);
 
-  const { data } = useFetch({ url:'/activities.json' })
+  const { data } = useFetch({ url: ROUTES.ACTIVITIES_STOCK })
   const activities = data ? data : []
  
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ export function Carousel() {
                 <img src={`/activities/${activity.id}.webp`} alt={`carousel-item-${activity.id}`} />
                 <div className="info">
                   <span>{activity.title}</span>
-                  <button onClick={() => navigate(`/${lng}/activities/${activity.id}-${activity.title}`)}>{t('home.activitiesSection.action')}</button>
+                  <button onClick={() => navigate(`/${lng}/activities/${activity.id}-${activity.title}`,{state:activity})}>{t('home.activitiesSection.action')}</button>
                 </div>
               </div>
             ))}

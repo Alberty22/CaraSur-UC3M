@@ -1,7 +1,7 @@
 {
    "required": [
         {
-            "inputKey": "singup-name",
+            "inputKey": "name",
             "inputType":"text",
             "placeholder": {
                 "es": "Nombre",
@@ -13,7 +13,7 @@
             }
         },
         {
-            "inputKey": "singup-surname",
+            "inputKey": "surname",
             "inputType":"text",
             "placeholder": {
                 "es": "Apellidos",
@@ -25,7 +25,7 @@
             }
         },
         {
-            "inputKey": "singup-id",
+            "inputKey": "id",
             "inputType":"text",
             "placeholder": {
                 "es": "DNI/NIE",
@@ -37,7 +37,7 @@
             }
         },
         {
-            "inputKey": "singup-id-photo",
+            "inputKey": "id-photo",
             "inputType":"image",
             "placeholder": {
                 "es": "Foto DNI/NIE",
@@ -49,7 +49,7 @@
             }
         },
         {
-            "inputKey": "singup-postal",
+            "inputKey": "postal",
             "inputType":"number",
             "placeholder": {
                 "es": "Código postal",
@@ -61,7 +61,7 @@
             }
         },
         {
-            "inputKey": "singup-phone",
+            "inputKey": "phone",
             "inputType":"tel",
             "placeholder": {
                 "es": "Teléfono",
@@ -73,7 +73,7 @@
             }
         },
         {
-            "inputKey": "singup-uc3m-student",
+            "inputKey": "uc3m-student",
             "inputType":"uc3m-student",
             "placeholder": {
                 "es": "Estudiante UC3M",
@@ -83,11 +83,33 @@
                 "es": "Estudiante UC3M es requerido",
                 "en": "UC3M student is required"
             }
+        },
+        {
+            "inputKey": {
+                "inputKey1": "privacy",
+                "inputKey2": "regulations"
+            },
+            "inputType":"policy",
+            "placeholder": {
+                "placeholder1": {
+                "es": "Aceptas la Política de Privacidad",
+                "en": "Agree to the Privacy Policy"
+                },
+                "placeholder2": {
+                    "es": "Aceptas la Normativa del club",
+                    "en": "Agree to the Club Regulations"
+                }
+            },
+            "error": {
+                "es": "Requerido",
+                "en": "Required"
+            }
         }
+
    ],
    "optional": [
         {
-            "inputKey": "singup-gender",
+            "inputKey": "gender",
             "inputType":"gender",
             "placeholder": {
                 "es": "Género (opcional)",
@@ -96,7 +118,7 @@
             "error":""
         },
         {
-            "inputKey": "singup-birthdate",
+            "inputKey": "birthdate",
             "inputType":"date",
             "placeholder": {
                 "es": "Fecha de nacimiento (opcional)",
@@ -105,7 +127,7 @@
             "error":""
         },
         {
-            "inputKey": "singup-country",
+            "inputKey": "country",
             "inputType":"country",
             "placeholder": {
                 "es": "País de origen (opcional)",
@@ -114,7 +136,7 @@
             "error":""
         },
         {
-            "inputKey": "singup-student",
+            "inputKey": "student",
             "inputType":"student",
             "placeholder": {
                 "es": "Estudiante (opcional)",
@@ -123,7 +145,7 @@
             "error":""
         },
         {
-            "inputKey": "singup-sports",
+            "inputKey": "sports",
             "inputType":"sports",
             "placeholder": {
                 "es": "Deportes que te interesa (opcional)",

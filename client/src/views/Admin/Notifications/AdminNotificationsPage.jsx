@@ -9,6 +9,9 @@ import { FailedSection } from '../../../components/others/FailedSection'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePopup } from '../../../hooks/usePopups'
+import { useFetch } from '../../../hooks/useFetch'
+
+import { ROUTES } from '../../../config/apiRoutes'
 
 
 export function AdminNotificationsPage() {
@@ -21,12 +24,10 @@ export function AdminNotificationsPage() {
     const { t } = useTranslation()
     const { popupContent, handleOpen } = usePopup();
 
+    const { data } = useFetch({url: ROUTES.USERS})
+    const users = data ? data.map(({ role, ...rest }) => rest) : []
+
     const filterSearch = () => {
-        const users = [
-            { "email": "pablo@gmail.com"},
-            { "email": "jose@gmail.com"},
-            { "email": "josefina@gmail.com"}
-        ];
         const filteredUsers = users.filter(user => {
             return query === '' || user.email.toLowerCase().includes(query.toLowerCase())
         });
@@ -68,6 +69,7 @@ export function AdminNotificationsPage() {
         };
 
         // Aquí puedes enviar la información al backend
+        console.log(selectedUsers)
         console.log('Enviando:', payload)
         // Resetear el estado después de enviar
         setSelectedUsers([])
@@ -76,6 +78,7 @@ export function AdminNotificationsPage() {
         // handleOpen(<FailedSection message={t('adminNotifications.failed')} />)
     }
 
+    
     return (
         <>
         <main className='admin-notificactions-page'>
@@ -96,7 +99,7 @@ export function AdminNotificationsPage() {
                         <div className='search-results'>
                             {
                                 results.length > 0 &&
-                                <ResultList results={results} onButtonClick={handleAddUser} />
+                                <ResultList results={results} onButtonClick={handleAddUser} all={true}/>
                             }
                             
                         </div>

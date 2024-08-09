@@ -1,14 +1,19 @@
 import './ActivityPage.css'
-import { useParams, useLocation } from 'react-router-dom'
+
 import { Breadcrumbs } from '../../components/others/Breadcrumbs'
 import { AsideSection } from '../../components/Activities/AsideSection'
+
 import { useFetch } from '../../hooks/useFetch'
 import { useActivity } from '../../hooks/useActivity'
 import useMobileQuery from '../../hooks/useMobileQuery';
+import { useTranslation } from 'react-i18next';
+import { useParams, useLocation } from 'react-router-dom'
+
+import { ROUTES } from '../../config/apiRoutes'
+
 import whatsapp_logo from '../../assets/images/logos/whatsapp.webp'
 import drive_logo from '../../assets/images/logos/drive.webp'
 import star_icon from '../../assets/images/icons/Star.webp'
-import { useTranslation } from 'react-i18next';
 
 const formattedDate = (date, monthsList) => {
 
@@ -31,7 +36,7 @@ export function ActivityPage() {
     
     const { registeredActivities, toggleRegistration } = useActivity();
 
-    const { data } = useFetch({ url:'/activities.json' })
+    const { data } = useFetch({ url: ROUTES.ACTIVITIES })
     const activities = data?.activities
 
     const {id, title, description, date, time, difficulty, chat, drive } = location?.state 

@@ -1,17 +1,22 @@
 import './ProfilePage.css'
+
 import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
-import user_img from '../../assets/images/icons/User_primary.webp'
+import { Form } from '../../components/Form/Form'
 import { UserInformation } from '../../components/others/UserInformation.jsx'
 import Popup from '../../components/others/Popup.jsx'
-import inputs_profile from '../../assets/others/inputs-profile.json';
-import { Form } from '../../components/Form/Form'
+
 import { useFetch } from '../../hooks/useFetch.js'
 import { usePopup } from '../../hooks/usePopups.js'
 import { useTranslation } from 'react-i18next'
 
+import { ROUTES } from '../../config/apiRoutes.js'
+
+import user_img from '../../assets/images/icons/User_primary.webp'
+import inputs_profile from '../../assets/others/inputs-profile.json';
+
 export function ProfilePage () {
 
-    const { data } = useFetch({ url:'/user-data.json' })
+    const { data } = useFetch({ url: ROUTES.PROFILE })
     const userData = data ? data : []
 
     const { t } = useTranslation()

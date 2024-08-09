@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import './App.css'
+
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { Footer } from './components/Footer/Footer.jsx';
 import { Header } from './components/Header/Header.jsx';

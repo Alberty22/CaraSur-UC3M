@@ -39,9 +39,9 @@ export function LoginPage() {
                     {isMobile && <p>{t('login.signup1')} <Link to={`/${lng}/singup`} className="register-link">{t('login.signup2')}</Link></p>}
                 </div>
 
-                <Form inputs={inputsLogin} onSubmit={onSubmit} type={t('login.action')} group='left' />
+                <Form inputs={inputsLogin} onSubmit={onSubmit} type={t('login.action')} group='left' isLogin={true}/>
                 
-                <div className='separator' group='left'>
+                {/* <div className='separator' group='left'>
                     <span>{t('login.separator')}</span>
                 </div>
                 <div className='other-login' group='left'>
@@ -49,7 +49,7 @@ export function LoginPage() {
                         <img src={google_logo} alt='Google logo'></img>
                         {t('login.google')}
                     </button>
-                </div>
+                </div> */}
                 <p className='switch-form' group='right'>{t('login.signup1')} <Link to={`/${lng}/singup`} className="register-link">{t('login.signup2')}</Link></p>
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='right'/>
             </FormSection>  
