@@ -1,0 +1,263 @@
+.activities-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+}
+
+.activities-section > h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #282828;
+  
+}
+
+.activities-section > h2 > span {
+  color: #235371;
+}
+
+.carousel-container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    width: 90%;
+    height: 400px;
+  }
+
+  .carousel-content {
+    display: flex;
+    flex-direction: row;
+    
+    width: auto;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+    align-items: center;
+    overflow-x:auto;
+    scrollbar-width: none;
+  }
+
+  .carousel-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .carousel-item {
+    position: relative;
+    min-width: 300px;
+    border-radius: 5px;
+    height: 300px;
+    margin: 0 10px;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  .carousel-item:first-child{
+    margin-left: 50px;
+    background-color: #235371;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
+
+  .carousel-item:first-child > a{
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 10px 25px;
+    
+  }
+  .carousel-item:first-child > a:visited{
+    color: #fff;
+    
+  }
+
+
+
+  .carousel-item:last-child{
+    margin-right: 50px;
+    
+  }
+
+  
+  
+  .carousel-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .carousel-item:hover {
+    transform: scale(1.25);
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  .carousel-item:hover .info {
+    opacity: 1;
+  }
+  
+  .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #235371;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .info span {
+    width: 80%;
+    white-space: nowrap; 
+    overflow: hidden; 
+    font-size: 1rem;
+    text-overflow: ellipsis;
+  }
+  .info button {
+    background-color: #fff;
+    color: #235371;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .info button:hover {
+    background-color: #ddd;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    padding: 10px 15px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .arrow-left {
+    left: 5;
+    right: auto;
+  }
+  
+  .arrow-right {
+    left:auto;
+    right: 0;
+  }
+
+  @media (max-width: 768px) {
+    
+    .activities-section {
+      height: 300px;
+    }
+    
+    .activities-section > h2 {
+      font-size: 1.2rem;
+      
+    }
+     
+    .carousel-container {
+        height: 200px;
+      }
+
+    .carousel-item {
+      min-width: 150px;
+      height: 150px;
+      margin: 0 10px;
+    }
+    
+    .carousel-item:first-child{
+      margin-left: 20px;
+      
+      
+    }
+
+    .carousel-item:first-child > a{
+      font-size: 0.9rem;
+      
+    }
+  
+    .carousel-item:last-child{
+      margin-right: 20px;
+      
+    }
+
+    .info span {
+      width: 60%;
+      font-size: 0.6rem;
+
+    }
+
+    .arrow {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px)  {
+    .activities-section {
+      height: 500px;
+    }
+    
+    .activities-section > h2 {
+      font-size: 2rem;
+      
+    }
+     
+    .carousel-container {
+        height: 400px;
+      }
+
+    .carousel-item {
+      min-width: 300px;
+      height: 300px;
+      margin: 0 10px;
+    }
+    
+    .carousel-item:first-child{
+      margin-left: 50px;
+      
+      
+    }
+  
+    .carousel-item:last-child{
+      margin-right: 50px;
+      
+    }
+
+    .carousel-item:first-child > a{
+      font-size: 1rem;
+      
+    }
+
+    .info span {
+      width: 80%;
+      font-size: 0.9rem;
+
+    }
+
+    .arrow {
+      display: none;
+    }
+  }
+  

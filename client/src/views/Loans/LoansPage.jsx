@@ -5,13 +5,13 @@ import { LoanItem } from '../../components/others/LoanItem'
 
 export function LoansPage() {
     const { data } = useFetch({ url:'/loans.json' })
-    const loans = data?.loans
+    const loans = data ? data : []
     return (
         <main className='loans-page'>
             <Breadcrumbs />
             <section>
                 { loans !== undefined &&
-                    Object.values(loans).map((loan) => {
+                    loans.map((loan) => {
                         return (
                             <LoanItem key={loan.id} information={loan}></LoanItem>
                         )

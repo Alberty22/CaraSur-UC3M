@@ -1,21 +1,27 @@
 [
     {
-        "inputKey": "login-email",
+        "inputKey": "email",
         "inputType":"email",
         "placeholder": {
             "es": "Correo eléctronico",
             "en": "Email"
         },
-        "error":"Email is required"
+        "error": {
+            "es": "Correo eléctronico es requerido",
+            "en": "Email is required"
+        }
     },
     {
-        "inputKey": "login-password",
+        "inputKey": "password",
         "inputType":"password",
         "placeholder": {
             "es": "Contraseña",
             "en": "Password"
         },
-        "error":"Password is required"
+        "error": {
+            "es": "Contraseña es requerida",
+            "en": "Password is required"
+        }
     },
     {
         "inputKey": "login-remember",

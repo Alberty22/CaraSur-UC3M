@@ -25,7 +25,7 @@ export function useActivityFilters () {
             const dateA = new Date(a.date)
             const dateB = new Date(b.date)
 
-            return dateA - dateB;
+            return dateB - dateA;
         });
     }
     return { filters, filterActivities, sortActivities, setFilters }

@@ -3,7 +3,7 @@ import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 import useMobileQuery from '../../hooks/useMobileQuery.js';
 import { FormSection } from '../../components/Sections/FormSection.jsx';
-import { Form } from '../../components/others/Form.jsx';
+import { Form } from '../../components/Form/Form.jsx';
 import inputsLogin from '../../assets/others/inputs-login.json'
 
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -23,7 +23,7 @@ export function LoginPage() {
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
     const onSubmit = data => {
-        login()
+        login(data)
         navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
     };
 

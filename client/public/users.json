@@ -1,3 +1,38 @@
 [
-    
+    {
+        "email": "pablo@gmail.com",
+        "role": "admin"
+    },
+    {
+        "email": "jose@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    },
+    {
+        "email": "josefina@gmail.com",
+        "role": "user"
+    }
 ]

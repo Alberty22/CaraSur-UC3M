@@ -10,13 +10,13 @@ import { useTranslation } from 'react-i18next'
 export function ActivitiesPage() {
 
     const { data } = useFetch({ url:'/activities.json' })
-    const activities = data?.activities
+    const activities = data ? data : []
     
     const { filterActivities, sortActivities } = useActivityFilters()
-    const filteredActivities = sortActivities(filterActivities(activities ? Object.values(activities) : []))
+    const filteredActivities = sortActivities(filterActivities(activities ? activities : []))
 
     const markedDates = activities 
-        ? Object.values(activities).map(activity => ({
+        ? activities.map(activity => ({
         date: new Date(activity.date),
         text: activity.title
         })) 

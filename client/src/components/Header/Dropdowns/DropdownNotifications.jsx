@@ -30,7 +30,7 @@ export const DropdownNotifications = forwardRef((props, ref) => {
                     </button>
                 </div>
             </li>
-            { Object.keys(notifications).length === 0 &&
+            { notifications.length === 0 &&
             <li>
                 {t('notifications.text')}
             </li>

@@ -16,19 +16,19 @@ import { useTranslation } from 'react-i18next'
 export function EquipmentPage() {
 
     const { data } = useFetch({ url:'/inventory.json' })
-    const inventory = data?.inventory
+    const inventory = data ? data : []
 
     const inventory_unique = {
-        "object": inventory ? [...new Set(Object.values(inventory).map(item => item?.object))] : [],
-        "size" : inventory ? [...new Set(Object.values(inventory).map(item => item?.size))] : [],
-        "condition": inventory ? [...new Set(Object.values(inventory).map(item => item?.condition))] : [],
-        "category": inventory ? [...new Set(Object.values(inventory).map(item => item?.category))] : [],
+        "object": inventory ? [...new Set(inventory.map(item => item?.object))] : [],
+        "size" : inventory ? [...new Set(inventory.map(item => item?.size))] : [],
+        "condition": inventory ? [...new Set(inventory.map(item => item?.condition))] : [],
+        "category": inventory ? [...new Set(inventory.map(item => item?.category))] : [],
     }
 
     const { openSidebars, handleOpenSidebar, handleCloseSidebar } = useSideBar()
 
     const { filterProducts, sortProducts } = useEquipmentFilters()
-    const filteredProducts = sortProducts(filterProducts(inventory ? Object.values(inventory) : []))
+    const filteredProducts = sortProducts(filterProducts(inventory))
     
     const { popupContent } = usePopup();
 

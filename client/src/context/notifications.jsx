@@ -14,7 +14,7 @@ export function NotificationsProvider ({ children }) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setNotifications(data.notifications);
+        setNotifications(data);
         } catch (error) {
         setError(error);
         } finally {

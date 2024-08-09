@@ -40,7 +40,8 @@
       },
       "separator": {
         "text1": "Are you interested in",
-        "text2": "mountain sports?"
+        "text2": "mountain sports?",
+        "text3": "Welcome, "
       } ,
       "descriptionSection": {
         "title": "CaraSur UC3M Sports Association.",
@@ -69,6 +70,12 @@
         "privilege4": "Access to educational books and climbing guides.",
         "privilege5": "Meet people interested in mountain sports.",
         "partner": "BECOME A MEMBER"
+      },
+      "activitiesSection": {
+        "title1": "Check out the",
+        "title2": "activities",
+        "link": "See all activities",
+        "action": "Go"
       },
       "equipmentSection": {
         "title1": "Equipment",
@@ -114,6 +121,7 @@
     },
 
     "form": {
+      "optional": "Aditional Information",
       "uc3m-student": {
         "yes": "Yes",
         "no": "No"
@@ -144,7 +152,7 @@
       "new": "New",
       "settings": "Settings",
       "users": "Users",
-      "notificacitions": "Notifications"
+      "notifications": "Notifications"
     },
 
     "profile": {

@@ -1,58 +1,56 @@
-{
-    "pending": {
-        "1": {
-            "product": "1",
-            "user": "hola@gmail.com",
-            "loanDate": "01-01-2002",
-            "returnDate": "pending"
-        },
-        "2": {
-            "product": "2",
-            "user": "adios@gmail.com",
-            "loanDate": "02-02-2003",
-            "returnDate": "pending"
-        },
-        "3": {
-            "product": "3",
-            "user": "user3@example.com",
-            "loanDate": "03-03-2004",
-            "returnDate": "pending"
-        },
-        "4": {
-            "product": "4",
-            "user": "user4@example.com",
-            "loanDate": "04-04-2005",
-            "returnDate": "pending"
-        },
-        "5": {
-            "product": "5",
-            "user": "user5@example.com",
-            "loanDate": "05-05-2006",
-            "returnDate": "pending"
-        },
-        "6": {
-            "product": "5",
-            "user": "user5@example.com",
-            "loanDate": "05-05-2006",
-            "returnDate": "pending"
-        },
-        "7": {
-            "product": "5",
-            "user": "user5@example.com",
-            "loanDate": "05-05-2006",
-            "returnDate": "pending"
-        },
-        "8": {
-            "product": "5",
-            "user": "user5@example.com",
-            "loanDate": "05-05-2006",
-            "returnDate": "pending"
-        },
-        "9": {
-            "product": "5",
-            "user": "user5@example.com",
-            "loanDate": "05-05-2006",
-            "returnDate": "pending"
-        }
+[
+    {
+        "product": "1",
+        "user": "hola@gmail.com",
+        "loanDate": "01-01-2002",
+        "returnDate": "pending"
+    },
+    {
+        "product": "2",
+        "user": "adios@gmail.com",
+        "loanDate": "02-02-2003",
+        "returnDate": "pending"
+    },
+    {
+        "product": "3",
+        "user": "user3@example.com",
+        "loanDate": "03-03-2004",
+        "returnDate": "pending"
+    },
+    {
+        "product": "4",
+        "user": "user4@example.com",
+        "loanDate": "04-04-2005",
+        "returnDate": "pending"
+    },
+    {
+        "product": "5",
+        "user": "user5@example.com",
+        "loanDate": "05-05-2006",
+        "returnDate": "pending"
+    },
+    {
+        "product": "5",
+        "user": "user5@example.com",
+        "loanDate": "05-05-2006",
+        "returnDate": "pending"
+    },
+    {
+        "product": "5",
+        "user": "user5@example.com",
+        "loanDate": "05-05-2006",
+        "returnDate": "pending"
+    },
+    {
+        "product": "5",
+        "user": "user5@example.com",
+        "loanDate": "05-05-2006",
+        "returnDate": "pending"
+    },
+    {
+        "product": "5",
+        "user": "user5@example.com",
+        "loanDate": "05-05-2006",
+        "returnDate": "pending"
     }
-}
+]

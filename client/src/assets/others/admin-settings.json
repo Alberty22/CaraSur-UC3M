@@ -7,7 +7,10 @@
                 "es": "Correo eléctronico",
                 "en": "Email"
             },
-            "error":"Email is required"
+            "error": {
+                "es": "Correo eléctronico es requerido",
+                "en": "Email is required"
+            }
         }
     ],
     "admin-billing-popup": [
@@ -18,7 +21,10 @@
                 "es": "Cuenta de facturación",
                 "en": "Billing account"
             },
-            "error":"Billing is required"
+            "error": {
+                "es": "Cuenta de facturación es requerida",
+                "en": "Billing is required"
+            }
         }
 
     ]

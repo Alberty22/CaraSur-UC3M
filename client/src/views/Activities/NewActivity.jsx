@@ -1,6 +1,6 @@
 import './NewActivity.css'
 import { Breadcrumbs } from '../../components/others/Breadcrumbs'
-import { Form } from '../../components/others/Form'
+import { Form } from '../../components/Form/Form'
 import inputs_activity from '../../assets/others/inputs-activity.json'
 import { useTranslation } from 'react-i18next'
 

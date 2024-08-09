@@ -6,13 +6,19 @@
                 "es": "Titulo de la actividad",
                 "en": "Activity title"
             },
-        "error":"Title is required"
+        "error": {
+                "es": "Título es requerida",
+                "en": "Title is required"
+        }
     },
     {
         "inputKey": "activity-datetime",
         "inputType":"datetime-local",
         "placeholder":"",
-        "error":"Datetime is required"
+        "error": {
+                "es": "Fecha y hora son requeridos",
+                "en": "Datetime is required"
+        }
     },
     {
         "inputKey": "activity-description",
@@ -21,15 +27,21 @@
                 "es": "Descripción de la actividad",
                 "en": "Activity description"
             },
-        "error":"Desc is required"
+        "error": {
+                "es": "Descripción es requerida",
+                "en": "Description is required"
+        }
     },
     {
         "inputKey": "activity-group",
-        "inputType":"text",
+        "inputType":"url",
         "placeholder": {
                 "es": "Enlace grupo del whatsapp de la actividad",
                 "en": "Activity whatsapp group link"
             },
-        "error":"Link is required"
+        "error": {
+                "es": "Enlace es requerido",
+                "en": "Link is required"
+        }
     }
 ]

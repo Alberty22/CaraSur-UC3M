@@ -1,17 +1,16 @@
+
 {
-    "user": {
-      "account_details": [{"title": "email", "text": "a@a.com"}, {"title": "password","text": "********"}],
-      "user_details": [
-        {"title": "name", "text": "a@a.com"}, {"title": "surname","text": "********"},
-        {"title": "id", "text": "a@a.com"}, {"title": "telephone","text": "********"},
-        {"title": "postal", "text": "a@a.com"}, {"title": "UC3MStudent","text": "********"}
-      ],
-      "user_optional_details": [
-        {"title": "gender", "text": "a@a.com"}, {"title": "birthdate","text": "********"},
-        {"title": "country", "text": "a@a.com"}, {"title": "student","text": "********"},
-        {"title": "sports", "text": "a@a.com"}
-      ],
-      "preferences": [{"title": "language", "text": "ES"}, {"title": "theme","text": "Claro"}],
-      "pay_details": [{"title": "pay", "text": "12-02-2002"}]
-    }
-  }
+  "account_details": [{"title": "email", "text": "a@a.com"}, {"title": "password","text": "********"}],
+  "user_details": [
+    {"title": "name", "text": "a@a.com"}, {"title": "surname","text": "********"},
+    {"title": "id", "text": "a@a.com"}, {"title": "telephone","text": "********"},
+    {"title": "postal", "text": "a@a.com"}, {"title": "UC3MStudent","text": "********"}
+  ],
+  "user_optional_details": [
+    {"title": "gender", "text": "a@a.com"}, {"title": "birthdate","text": "********"},
+    {"title": "country", "text": "a@a.com"}, {"title": "student","text": "********"},
+    {"title": "sports", "text": "a@a.com"}
+  ],
+  "preferences": [{"title": "language", "text": "ES"}, {"title": "theme","text": "Claro"}],
+  "pay_details": [{"title": "pay", "text": "12-02-2002"}]
+}

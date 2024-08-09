@@ -1,60 +1,60 @@
-{
-    "loans": {
-      "l1": {
-        "id": "1",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l2": {
-        "id": "2",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l3": {
-        "id": "3",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l4": {
-        "id": "4",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l5": {
-        "id": "5",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l6": {
-        "id": "6",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      },
-      "l7": {
-        "id": "7",
-        "name":"producto",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loan_date":"01/01/2002",
-        "return_date": "07/01/2002"
-      }
-    }
+[
+  {
+    "id": "1",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "2",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "3",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "4",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "5",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "6",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
+  },
+  {
+    "id": "7",
+    "name":"producto",
+    "quantity": "1",
+    "image":"/arnes_1.png",
+    "loan_date":"01/01/2002",
+    "return_date": "07/01/2002"
   }
+
+]
+    

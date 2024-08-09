@@ -1,0 +1,55 @@
+import './Form.css'
+
+import { Inputs } from './Inputs';
+
+import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+
+
+
+export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=[] }) => {
+
+    const [optional, setOptional] = useState(false)
+
+    const { t } = useTranslation()
+
+    const { register, handleSubmit, formState: { errors }, setValue, control, watch } = useForm({
+        defaultValues: {
+          image: null 
+        }
+      });
+
+    const handleClick = () => {
+        setOptional(!optional)
+    }
+
+    return(
+        <div className='form-container'>
+            <form className={className} onSubmit={handleSubmit(onSubmit)}>
+                {
+                    <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} control={control} watch={watch}/>
+                }
+                { optionalInputs.length > 0 &&
+                <>
+                <div className='optional-title'>
+                    <button type='button' onClick={handleClick}><h2>{t('form.optional')} &#9660;</h2></button>
+                </div>
+                
+                { optional && 
+                <div className='optional-part'>
+                    <Inputs inputs={optionalInputs} register={register} errors={errors} setValue={setValue} control={control} watch={watch}/>
+                 </div>
+                 }
+                </>
+                
+                 
+
+                }
+                <button type="submit">{type}</button>
+            </form>    
+        </div>
+    
+    )
+
+}

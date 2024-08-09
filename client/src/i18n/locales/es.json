@@ -41,7 +41,8 @@
       },
       "separator": {
         "text1":"¿Te interesan los",
-        "text2":"deportes de montaña?"
+        "text2":"deportes de montaña?",
+        "text3": "Bienvenido, "
       },
       "descriptionSection":{
         "title": "Asocición deportiva CaraSur UC3M.",
@@ -70,6 +71,12 @@
         "privilege4": "Acceso a libros didácticos y guías de escalada.",
         "privilege5": "Conocer gente con interés en deportes de montaña.",
         "partner": "HAZTE SOCIO"
+      },
+      "activitiesSection" :{
+        "title1": "Consulta las",
+        "title2": "actividades",
+        "link": "Ver todas las actividades",
+        "action": "Ir"
       },
       "equipmentSection":{
         "title1": "Alquiler de",
@@ -115,6 +122,7 @@
     },
 
     "form": {
+      "optional": "Información Adicional",
       "uc3m-student": {
         "yes": "Sí",
         "no": "No"
@@ -145,7 +153,7 @@
       "new": "Nueva",
       "settings": "Ajustes",
       "users": "Usuarios",
-      "notificacitions": "Notificaciones"
+      "notifications": "Notificaciones"
     },
 
     "profile": {

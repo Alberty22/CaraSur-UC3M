@@ -1,10 +1,10 @@
-{
-    "processed":{
-        "1": {
-            "product": "1",
-            "user": "hola@gmail.com",
-            "loanDate": "01-01-2002",
-            "returnDate": "07-01-2002"
-        }
+[
+    {
+        "product": "1",
+        "user": "hola@gmail.com",
+        "loanDate": "01-01-2002",
+        "returnDate": "07-01-2002"
     }
-}
+
+]
+    

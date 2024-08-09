@@ -33,11 +33,11 @@ export function AdminLoansPage() {
 
     useEffect(() => {
         if (dataPending) {
-            setPendingLoans(Object.values(dataPending.pending || []))
+            setPendingLoans(dataPending ? dataPending : [])
             
         }
         if (dataProcessed){
-            setProcessedLoans(Object.values(dataProcessed.processed || []))
+            setProcessedLoans(dataProcessed ? dataProcessed : [])
         }
     }, [dataPending, dataProcessed]);
 

@@ -1,104 +1,113 @@
-{
-    "activities": {
-        "1": {
-            "id":1,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-01",
-            "time": "12:00",
-            "difficulty": "1",
-            "chat": "",
-            "drive": ""
-        },
-        "2": {
-            "id":2,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-02",
-            "time": "12:00",
-            "difficulty": "2",
-            "chat": "",
-            "drive": ""
-        },
-        "3": {
-            "id":3,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-03",
-            "time": "12:00",
-            "difficulty": "2",
-            "chat": "",
-            "drive": ""
-        },
-        "4": {
-            "id":4,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-04",
-            "time": "13:00",
-            "difficulty": "3",
-            "chat": "",
-            "drive": ""
-        },
-        "5": {
-            "id":5,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-05",
-            "time": "14:00",
-            "difficulty": "1",
-            "chat": "",
-            "drive": ""
-        },
-        "6": {
-            "id":6,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-06",
-            "time": "15:00",
-            "difficulty": "3",
-            "chat": "",
-            "drive": ""
-        },
-        "7": {
-            "id":7,
-            "title": "Alpinismo",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-07",
-            "time": "16:00",
-            "difficulty": "3",
-            "chat": "",
-            "drive": ""
-        },
-        "8": {
-            "id":8,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-08",
-            "time": "17:00",
-            "difficulty": "2",
-            "chat": "",
-            "drive": ""
-        },
-        "9": {
-            "id":9,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-09",
-            "time": "18:00",
-            "difficulty": "1",
-            "chat": "",
-            "drive": ""
-        },
-        "10": {
-            "id":10,
-            "title": "Trekking-Escalada Pedriza",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            "date": "2024-08-10",
-            "time": "19:00",
-            "difficulty": "3",
-            "chat": "",
-            "drive": ""
-        }
+[
+    {
+        "id": 1,
+        "title": "Trekking Invernal",
+        "description": "Aventura invernal en Sierra Nevada con trekking entre paisajes nevados.",
+        "date": "2023-11-04",
+        "time": "10:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 2,
+        "title": "Escalada Pedriza",
+        "description": "Actividad de escalada en La Pedriza, ideal para amantes de la roca.",
+        "date": "2024-01-23",
+        "time": "10:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 3,
+        "title": "Trekking-Escalada Pedriza",
+        "description": "Combinación de trekking y escalada en La Pedriza.",
+        "date": "2023-10-08",
+        "time": "10:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 4,
+        "title": "Iniciación Alpinismo",
+        "description": "Curso básico para iniciarse en el alpinismo.",
+        "date": "2024-03-17",
+        "time": "12:00",
+        "difficulty": "1",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 5,
+        "title": "Iniciación Escalada San Martín",
+        "description": "Introducción a la escalada en San Martín.",
+        "date": "2023-10-01",
+        "time": "14:00",
+        "difficulty": "1",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 6,
+        "title": "Tenerife - Teide",
+        "description": "Ascenso al Teide, el pico más alto de España.",
+        "date": "2023-02-09",
+        "time": "10:00",
+        "difficulty": "3",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 7,
+        "title": "Senderismo Santillana",
+        "description": "Ruta de senderismo en la Sierra de Guadarrama.",
+        "date": "2023-03-26",
+        "time": "09:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 8,
+        "title": "Vivac Almanzor",
+        "description": "Experiencia de vivac en el pico Almanzor.",
+        "date": "2023-02-04",
+        "time": "16:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 9,
+        "title": "Senderismo Patones",
+        "description": "Senderismo en Patones con vistas espectaculares.",
+        "date": "2022-08-10",
+        "time": "12:00",
+        "difficulty": "1",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 10,
+        "title": "Montanejos",
+        "description": "Aventura en Montanejos con trekking.",
+        "date": "2023-05-02",
+        "time": "08:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
+    },
+    {
+        "id": 11,
+        "title": "Cercedilla 2 Picos",
+        "description": "Ruta por dos picos en Cercedilla con vistas panorámicas.",
+        "date": "2022-02-24",
+        "time": "10:00",
+        "difficulty": "2",
+        "chat": "",
+        "drive": ""
     }
-}
+    
+]

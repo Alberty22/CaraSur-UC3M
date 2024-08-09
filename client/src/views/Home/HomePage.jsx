@@ -1,5 +1,5 @@
-import React from 'react';
 import './HomePage.css';
+
 import { PrimarySection } from '../../components/Sections/PrimarySection.jsx';
 import { Separator } from '../../components/Sections/Separator.jsx';
 import { DescriptionSection } from '../../components/Sections/DescriptionSection.jsx';
@@ -7,9 +7,14 @@ import { ActivitiesTitleSection } from '../../components/Sections/ActivitiesTitl
 import { PrivilegesSection } from '../../components/Sections/PrivilegesSection.jsx';
 import { ContactSection } from '../../components/Sections/ContactSection.jsx';
 import { EquipmentSection } from '../../components/Sections/EquipmentSection.jsx';
+import { Carousel } from '../../components/Sections/Carousel.jsx';
+
+
 import { useLocation } from "react-router-dom";
 import { useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth.js';
+
+
 
 export function HomePage() {
     
@@ -43,6 +48,7 @@ export function HomePage() {
               
             { isAuthenticated &&
               <>
+              <Carousel/>
               <EquipmentSection />
               </>
             }

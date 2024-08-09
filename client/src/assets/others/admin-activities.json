@@ -1,11 +1,14 @@
 [
     {
         "inputKey": "drive-url",
-        "inputType":"text",
+        "inputType":"url",
         "placeholder": {
             "es": "URL de DRIVE",
             "en": "DRIVE URL"
         },
-        "error":"URL is required"
+        "error": {
+                "es": "URL es requerida",
+                "en": "URL is required"
+        }
     }
 ]

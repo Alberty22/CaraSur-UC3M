@@ -3,8 +3,9 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './App.css'
 
-import { Footer } from './components/Footer/Footer.jsx'
-import { Header } from './components/Header/Header.jsx'
+import { Footer } from './components/Footer/Footer.jsx';
+import { Header } from './components/Header/Header.jsx';
+import { ScrollToTop } from './components/others/ScrollToTop.jsx';
 
 import { HomePage } from './views/Home/HomePage.jsx';
 import { LoginPage } from './views/Login/LoginPage.jsx';
@@ -43,6 +44,7 @@ function App() {
       <NotificationsProvider>
         <Header />
       </NotificationsProvider>
+      <ScrollToTop />
       <Routes>
         <Route path='/:lng' element={<HomePage />} />
         <Route path='/:lng/login' element={<LoginPage />} />

@@ -1,61 +1,27 @@
 import './AdminSettingsPage.css'
 import { Breadcrumbs } from '../../../components/others/Breadcrumbs'
 import { UserInformation } from '../../../components/others/UserInformation'
-import { Form } from '../../../components/others/Form'
+import { Form } from '../../../components/Form/Form'
 import admin_settings from '../../../assets/others/admin-settings.json'
 import { usePopup } from '../../../hooks/usePopups'
 import Popup from '../../../components/others/Popup'
 import { Searchbar } from '../../../components/others/Searchbar'
 import { useState } from 'react'
 import { ResultList } from '../../../components/others/ResultList'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import { useFetch } from '../../../hooks/useFetch'
 
 export function AdminSettingsPage() {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
 
+    const { data } = useFetch({url: '/users.json'})
+    const users = data ? data : []
+
     const { t } = useTranslation();
 
     const filterSearch = () => {
-        const users = [
-            {
-                "email": "pablo@gmail.com",
-                "role": "admin"
-            },
-            {
-                "email": "jose@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            },
-            {
-                "email": "josefina@gmail.com",
-                "role": "user"
-            }
-        ]
         const filteredUsers = users.filter(user => {
             return query === '' || user.email.toLowerCase().includes(query.toLowerCase());
         })

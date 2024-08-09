@@ -1,24 +1,25 @@
-{
-    "notifications": {
-      "n1": {
-        "id": "n1",
-        "text": "Bienvenido a nuestra aplicación!"
-      },
-      "n2": {
-        "id": "n2",
-        "text": "Tu pedido ha sido enviado."
-      },
-      "n3": {
-        "id": "n3",
-        "text": "Tienes un nuevo mensaje."
-      },
-      "n4": {
-        "id": "n4",
-        "text": "Actualización disponible. Por favor, actualiza la aplicación."
-      },
-      "n5": {
-        "id": "n5",
-        "text": "Tu contraseña ha sido cambiada exitosamente."
-      }
-    }
+[
+
+  {
+    "id": "n1",
+    "text": "Bienvenido a nuestra aplicación!"
+  },
+  {
+    "id": "n2",
+    "text": "Tu pedido ha sido enviado."
+  },
+  {
+    "id": "n3",
+    "text": "Tienes un nuevo mensaje."
+  },
+  {
+    "id": "n4",
+    "text": "Actualización disponible. Por favor, actualiza la aplicación."
+  },
+  {
+    "id": "n5",
+    "text": "Tu contraseña ha sido cambiada exitosamente."
   }
+
+]
+      

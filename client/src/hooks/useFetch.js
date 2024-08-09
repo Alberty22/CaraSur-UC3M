@@ -20,11 +20,6 @@ export function useFetch({ url, fetchOnce = false }) {
         }
         }, [url])
 
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, [fetchData]);
-
     const initialUrl = useRef(url);
     useEffect(() => {
         if (fetchOnce && url !== initialUrl.current) {

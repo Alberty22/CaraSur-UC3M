@@ -12,7 +12,7 @@ import user_img from '../../../assets/images/icons/User_primary.webp'
 export function AdminUsersPage() {
 
     const { data } = useFetch({ url:'/user-data.json' })
-    const user = data?.user
+    const user = data ? data : {}
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);

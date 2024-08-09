@@ -2,7 +2,7 @@ import './AdminActivitiesPage.css'
 import { Breadcrumbs } from '../../../components/others/Breadcrumbs'
 import { Activities } from '../../../components/Activities/Activities'
 import Popup from '../../../components/others/Popup'
-import { Form } from '../../../components/others/Form'
+import { Form } from '../../../components/Form/Form'
 
 import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
@@ -24,7 +24,7 @@ export function AdminActivitiesPage() {
 
     useEffect(() => {
         if (data) {
-            setPendingActivities(Object.values(data.activities || []))
+            setPendingActivities(data ? data : [])
             
         }
     }, [data]);
