@@ -19,6 +19,8 @@ import { toBase64 } from '../../utils/photo.js';
 import { sendData } from '../../utils/communications.js';
 
 import { ROUTES } from '../../config/apiRoutes.js';
+import { getActualDate } from '../../utils/date.js';
+
 import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 
@@ -52,40 +54,43 @@ export function SingupPage() {
         if (file) {
             base64Photo = await toBase64(file);
         }
-
         const dataToSend = {
-            email: formData.email,
-            password: formData.password,
-            role: 'user',
-            details: {
-                "user-details": {
-                    name: data.name,
-                    surname: data.surname,
-                    id: data.id,
-                    telephone: data.phone,
-                    postal: data.postal,
-                    UC3MStudent: data['uc3m-student']
+            "email": formData.email,
+            "password": formData.password,
+            "role": 'user',
+            "details": {
+                "userDetails": {
+                    "name": data.name,
+                    "surname": data.surname,
+                    "id": data.id,
+                    "telephone": data.phone,
+                    "postal": data.postal,
+                    "UC3MStudent": data['uc3m-student']
                 },
-                "user-optional-details": {
-                    gender: data.gender,
-                    birthdate: data.birthdate,
-                    country: data.country,
-                    student: data.student,
-                    sports: data.sports
+                "userOptionalDetails": {
+                    "gender": data.gender || "",
+                    "birthdate": data.birthdate || "",
+                    "country": data.country || "",
+                    "student": data.student || "",
+                    "sports": data.sports || ""
                 },
-                "id-photo": {
-                    base64: base64Photo,
-                    name: file.name,
-                    type: file.type,
-                    size: file.size
-                }
+                "idPhoto": {
+                    "base64": base64Photo,
+                    "name": file.name,
+                    "type": file.type,
+                    "size": file.size
+                },
+                "preferences": {
+                    "language": lng,
+                    "theme": "light"
+                },
+                "payDetails": {"pay": getActualDate()}
             }
         }
         const res = await sendData(dataToSend, ROUTES.SIGNUP)
-        console.log(res)
-        console.log(res.code)
-        if(res.result.succes) {
-            login({name: dataToSend.details['user-details'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
+
+        if(res.result.success) {
+            login({name: dataToSend.details['userDetails'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
             navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
         }
         else {

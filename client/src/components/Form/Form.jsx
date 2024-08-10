@@ -14,11 +14,7 @@ export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=
 
     const { t } = useTranslation()
 
-    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues } = useForm({
-        defaultValues: {
-          image: null 
-        }
-      });
+    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues } = useForm()
 
     const handleClick = () => {
         setOptional(!optional)

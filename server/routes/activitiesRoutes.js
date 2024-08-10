@@ -8,4 +8,10 @@ router.get('/', activitiesController.getActivities);
 // POST request to add an activity
 router.post('/', activitiesController.addActivity);
 
+// GET request for stock activities
+router.get('/stock', () => {});
+
+// GET request for pending activities
+router.get('/pending', () => {});
+
 module.exports = router;

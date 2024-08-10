@@ -54,3 +54,29 @@
     outline: none;
     box-shadow: 0 0 0 2px rgba(35, 83, 113, 0.5);
 }
+
+@media (max-width: 768px) {
+    .language-selector-wrapper {
+        width: 45px;
+        margin-right: 10px;
+    }
+    .language-selector option {
+        
+        font-size: 0.6rem; 
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .language-selector-wrapper {
+        width: 55px;
+        margin-right: 10px;
+    }
+    .language-selector {
+        font-size: 1.2rem;
+    }
+
+    .language-selector option {
+        
+        font-size: 0.9rem; 
+    }
+}

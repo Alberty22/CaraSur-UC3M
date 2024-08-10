@@ -21,6 +21,8 @@ export function Header() {
     
 
     const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const lng = pathSegments[1];
 
     useEffect(() => {
         const route = location.pathname.split('/');
@@ -43,7 +45,7 @@ export function Header() {
         <header>
             { !(isAuthenticated && isMobile) &&
             <div>
-                <Link to="/"><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
+                <Link to={`/${lng}/`}><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
             </div>
             }
             <Menu isMenu={isMenu} refList={{menu:menuRef, notifications:notificationsRef, user:userRef}}/>

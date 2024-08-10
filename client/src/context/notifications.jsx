@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import { ROUTES } from '../config/apiRoutes.js';
-import { useLocation } from 'react-router-dom';
+import { getCookie } from "../utils/cookies.js";
+import { useAuth } from "../hooks/useAuth.js"
 
 export const NotificationContext = createContext()
 
@@ -9,17 +10,16 @@ export function NotificationsProvider ({ children }) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const location = useLocation()
+    const { isAuthenticated } = useAuth()
 
     const fetchNotifications = useCallback(async () => {
         try {
-        console.log('notifications')
-        const response = await fetch(ROUTES.NOTIFICATIONS);
+        const response = await fetch(`${ROUTES.NOTIFICATIONS}/${encodeURIComponent(getCookie('email'))}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setNotifications(data);
+        setNotifications(Object.values(data));
         } catch (error) {
         setError(error);
         } finally {
@@ -28,14 +28,17 @@ export function NotificationsProvider ({ children }) {
     }, []);
 
     useEffect(() => {
-        fetchNotifications();
-        const intervalId = setInterval(async () => {
+        if(isAuthenticated) {
             fetchNotifications();
-            
-          }, 60000);
+            const intervalId = setInterval(async () => {
+                fetchNotifications();
+                
+            }, 60000);
         
-        return () => clearInterval(intervalId);
-    }, [fetchNotifications, location]);
+            return () => clearInterval(intervalId);
+        }
+        
+    }, [fetchNotifications, isAuthenticated]);
 
     return (
         <NotificationContext.Provider value={{ notifications, setNotifications }}>

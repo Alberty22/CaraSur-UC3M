@@ -9,12 +9,11 @@ import { useTranslation } from "react-i18next";
 export const DropdownNotifications = forwardRef((props, ref) => {
 
     const {notifications, setNotifications} = useNotifications()
-
     const { dropdownRef, handleClose } = useDropdown({ id:'notifications', maxHeight:'500', toggleRefs:[ref]});
 
     const handleClick = () => {
         handleClose();
-        setNotifications({})
+        setNotifications([])
         //TODO Llamada al servidor de borrar
     }
 

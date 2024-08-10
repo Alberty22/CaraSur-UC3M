@@ -2,6 +2,10 @@ const express = require('express');
 
 const activitiesRoutes = require('./routes/activitiesRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const equipmentRoutes = require('./routes/equipmentRoutes');
+const loansRoutes = require('./routes/loansRoutes');
+const notificationsRoutes = require('./routes/notificationsRoutes')
+
 const errorHandler = require('./middleware/errorHandler');
 
 
@@ -14,6 +18,9 @@ app.use(express.json());
 
 app.use('/server/activities', activitiesRoutes);
 app.use('/server/users', usersRoutes);
+app.use('/server/equipment', equipmentRoutes);
+app.use('/server/loans', loansRoutes);
+app.use('/server/notifications', notificationsRoutes);
 
 
 

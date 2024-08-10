@@ -6,10 +6,11 @@ import { LoanItem } from '../../components/others/LoanItem'
 import { useFetch } from '../../hooks/useFetch'
 
 import { ROUTES } from '../../config/apiRoutes'
+import { getCookie } from '../../utils/cookies'
 
 export function LoansPage() {
-    const { data } = useFetch({ url: ROUTES.USER_LOANS })
-    const loans = data ? data : []
+    const { data } = useFetch({ url:`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`})
+    const loans = data ? Object.values(data) : []
     return (
         <main className='loans-page'>
             <Breadcrumbs />

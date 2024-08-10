@@ -5,6 +5,7 @@ import { useAuth } from "../../../hooks/useAuth"
 import { useNotifications } from "../../../hooks/useNotifications"
 import { useRef } from "react"
 import { forwardRef } from 'react';
+import { LanguageSelector } from "../LanguageSelector"
 
 export const MenuMobile = ({ refList }) => {
     const { isAuthenticated } = useAuth()
@@ -24,11 +25,14 @@ export const MenuMobile = ({ refList }) => {
             }
             </button>
         </div>
-            
         }
-        <button ref={refMenu} className="burger-menu">
-            <img src={menu_icon} alt="Menú" />
-        </button>
+        <div className="menu-container">
+            <LanguageSelector />  
+            <button ref={refMenu} className="burger-menu">
+                <img src={menu_icon} alt="Menú" />
+            </button>
+        </div>
+        
         </>
     )
 }
