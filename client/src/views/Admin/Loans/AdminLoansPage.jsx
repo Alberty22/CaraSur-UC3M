@@ -95,7 +95,7 @@ export function AdminLoansPage() {
                     pendingLoans.map((loan,index) => {
                         return (
                             <tr key={index}>
-                                <td>{loan.product}</td>
+                                <td>{loan.name}</td>
                                 <td>{loan.user}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{t(`adminLoans.${loan.returnDate}`)}</td>
@@ -125,7 +125,7 @@ export function AdminLoansPage() {
                      processedLoans.map((loan,index) => {
                         return (
                             <tr key={index}>
-                                <td>{loan.product}</td>
+                                <td>{loan.name}</td>
                                 <td>{loan.user}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{loan.returnDate}</td>

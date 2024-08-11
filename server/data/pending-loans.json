@@ -1,0 +1,29 @@
+[
+    {
+        "product": "1",
+        "name":"producto",
+        "user":"alberto@gmail.com",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loanDate":"01/01/2002",
+        "returnDate": "pending"
+    },
+    {
+        "product": "2",
+        "name":"producto",
+        "user":"alberto@gmail.com",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loanDate":"01/01/2002",
+        "returnDate": "pending"
+    },
+    {
+        "product": "3",
+        "name":"producto",
+        "user":"alberto@gmail.com",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loanDate":"01/01/2002",
+        "returnDate": "pending"
+    }
+]

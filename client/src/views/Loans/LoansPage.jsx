@@ -18,7 +18,7 @@ export function LoansPage() {
                 { loans !== undefined &&
                     loans.map((loan) => {
                         return (
-                            <LoanItem key={loan.id} information={loan}></LoanItem>
+                            <LoanItem key={loan.product} information={loan}></LoanItem>
                         )
                     })
                 }

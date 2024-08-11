@@ -18,9 +18,9 @@ export function LoanItem({ information }) {
                 </div>
                 <div className="date-part">
                     <p>{t('loans.date1')}:</p>
-                    <div>{information.loan_date}</div>
+                    <div>{information.loanDate}</div>
                     <p>{t('loans.date2')}:</p>
-                    <div>{information.return_date}</div>
+                    <div>{information.returnDate}</div>
                 </div>
             </section>
         </div>

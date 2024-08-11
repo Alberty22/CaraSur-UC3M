@@ -9,9 +9,9 @@ router.get('/', activitiesController.getActivities);
 router.post('/', activitiesController.addActivity);
 
 // GET request for stock activities
-router.get('/stock', () => {});
+router.get('/stock', activitiesController.getStockActivities);
 
 // GET request for pending activities
-router.get('/pending', () => {});
+router.get('/pending', activitiesController.getPendingActivities);
 
 module.exports = router;

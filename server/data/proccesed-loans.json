@@ -1,0 +1,13 @@
+[
+    {
+        "product": "1",
+        "name":"producto",
+        "user":"alberto@gmail.com",
+        "quantity": "1",
+        "image":"/arnes_1.png",
+        "loanDate":"01/01/2002",
+        "returnDate": "07/01/2002"
+    }
+
+]
+    
