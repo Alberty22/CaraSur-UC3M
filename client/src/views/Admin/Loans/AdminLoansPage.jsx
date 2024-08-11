@@ -6,10 +6,11 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 
 import { ROUTES } from '../../../config/apiRoutes'
+import { sendData } from '../../../utils/communications'
 
 
 const addDays = (dateString, days) => {
-    const [day, month, year] = dateString.split('-').map(Number)
+    const [year, month, day] = dateString.split('-').map(Number)
     const result = new Date(year, month - 1, day)
     result.setDate(result.getDate() + days)
 
@@ -17,7 +18,7 @@ const addDays = (dateString, days) => {
     const monthFormatted = String(result.getMonth() + 1).padStart(2, '0')
     const yearFormatted = result.getFullYear()
 
-    return `${dayFormatted}-${monthFormatted}-${yearFormatted}`
+    return `${yearFormatted}-${monthFormatted}-${dayFormatted}`
 };
 
 
@@ -43,23 +44,26 @@ export function AdminLoansPage() {
         }
     }, [dataPending, dataProcessed]);
 
-    const handleAccept = (index) => {
+    const handleAccept = async(index) => {
         const loan = pendingLoans[index]
-        
-        setPendingLoans((prev) => {
-            const updated = [...prev]
-            updated.splice(index, 1)
-            return updated
-        });
 
         const updatedLoan = {
             ...loan,
             returnDate: addDays(loan.loanDate, 10)
-        };
+        }
 
-        setProcessedLoans((prev) => [...prev, updatedLoan])
+        const res = await sendData(updatedLoan, ROUTES.PROCCESED_LOANS)
         
-    };
+        if(res.code) {
+            setPendingLoans((prev) => {
+                const updated = [...prev]
+                updated.splice(index, 1)
+                return updated
+            })
+            
+            setProcessedLoans((prev) => [...prev, updatedLoan])
+        }   
+    }
 
     const handleDecline = (index) => {
         setPendingLoans((prev) => {

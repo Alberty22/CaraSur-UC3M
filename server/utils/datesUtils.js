@@ -1,5 +1,6 @@
+const fs = require('fs');
 
-export const getActualDate = () => {
+const getActualDate = () => {
 
     const date = new Date()
     
@@ -9,3 +10,7 @@ export const getActualDate = () => {
 
     return `${year}-${month}-${day}`
 }
+
+module.exports = {
+    getActualDate
+  }

@@ -36,44 +36,53 @@
       "1": {
         "id": "1",
         "text": "Bienvenido a club CaraSur"
-      },
-      "2": {
-        "id": "2",
-        "text": "Esto es una prueba"
-      },
-      "3": {
-        "id": "3",
-        "text": "Se lo envio a dos"
-      },
-      "4": {
-        "id": "4",
-        "text": "Mensaje para todos"
-      },
-      "5": {
-        "id": "5",
-        "text": "Mensaje para todos 2"
-      },
-      "6": {
-        "id": "6",
-        "text": "adafdfds"
-      },
-      "7": {
-        "id": "7",
-        "text": "dafdsfadsfds"
-      },
-      "8": {
-        "id": "8",
-        "text": "dafdsafdasfasf"
       }
     },
     "loans": {
       "1": {
+        "id": "1",
         "product": "1",
         "name": "producto",
         "quantity": "1",
         "image": "/arnes_1.png",
-        "loanDate": "01/01/2002",
-        "returnDate": "07/01/2002"
+        "loanDate": "2002-01-01",
+        "returnDate": "2002-01-11"
+      },
+      "2": {
+        "id": "2",
+        "product": "3",
+        "name": "producto",
+        "quantity": "1",
+        "image": "/arnes_1.png",
+        "loanDate": "2002-01-01",
+        "returnDate": "2002-01-11"
+      },
+      "3": {
+        "id": "3",
+        "product": 100,
+        "name": "Mosquetón",
+        "quantity": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F100.png?alt=media&token=ed1409ad-665d-4353-8c99-c5ffe90b2daa",
+        "loanDate": "2024-08-11",
+        "returnDate": "2024-08-21"
+      },
+      "4": {
+        "id": "4",
+        "product": 101,
+        "name": "Mosquetón",
+        "quantity": 2,
+        "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F101.png?alt=media&token=035b5495-fc34-46c0-8394-7f4f3521020f",
+        "loanDate": "2024-08-11",
+        "returnDate": "2024-08-21"
+      },
+      "5": {
+        "id": "5",
+        "product": 105,
+        "name": "Mosquetón",
+        "quantity": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F105.png?alt=media&token=82f9a4cf-631a-41b9-afa0-dd2356c05766",
+        "loanDate": "2024-08-11",
+        "returnDate": "2024-08-21"
       }
     }
   },
@@ -114,28 +123,17 @@
       "1": {
         "id": "1",
         "text": "Bienvenido a club CaraSur"
-      },
-      "2": {
-        "id": "2",
-        "text": "Se lo envio a dos"
-      },
-      "3": {
-        "id": "3",
-        "text": "Mensaje para todos"
-      },
-      "4": {
-        "id": "4",
-        "text": "Mensaje para todos 2"
       }
     },
     "loans": {
       "1": {
-        "product": "1",
+        "id": "1",
+        "product": "2",
         "name": "producto",
         "quantity": "1",
         "image": "/arnes_1.png",
-        "loanDate": "01/01/2002",
-        "returnDate": "07/01/2002"
+        "loanDate": "2002-01-01",
+        "returnDate": "2002-01-11"
       }
     }
   }

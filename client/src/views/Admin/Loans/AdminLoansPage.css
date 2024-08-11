@@ -1,7 +1,7 @@
 .admin-loans-page {
     width: 100%;
     background-color: #f7f7f7;
-    min-height: 300px;
+    min-height: 60vh;
     padding-bottom: 50px;
 }
 
@@ -64,6 +64,11 @@
 
 
 @media (max-width: 768px) {
+    .admin-loans-page {
+        min-height: 90vh;
+        
+    }
+
     .admin-loans-page > section:last-child {
         width: auto;
         display: flex;

@@ -69,9 +69,9 @@ export function AdminNotificationsPage() {
             message: message,
         }
 
-        console.log(payload)
+       
         const res = await sendData(payload, ROUTES.NOTIFICATIONS)
-        console.log({res})
+        
         if(res.code) {
             setSelectedUsers([])
             setMessage('')

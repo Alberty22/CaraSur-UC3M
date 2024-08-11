@@ -1,5 +1,6 @@
 .settings-page {
     width: 100%;
+    min-height: 60vh;
     background-color: #f7f7f7;
 }
 
@@ -37,6 +38,10 @@
 }
 
 @media (max-width: 768px) {
+
+    .settings-page {
+        min-height: 90vh;
+    }
 
     .settings-page> section:last-child {
         grid-template-columns: 1fr;

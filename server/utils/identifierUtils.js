@@ -5,6 +5,20 @@ const generateNotificationId = (user) => {
     return (lastNotificationId + 1).toString()
 }
 
+const generateLoanId = (user) => {
+    const loanIds = Object.keys(user.loans)
+    const lastlLoanId = loanIds.length > 0 ? Math.max(...loanIds.map(id => parseInt(id))) : 0
+    return (lastlLoanId + 1).toString()
+}
+
+const generateProductId = (equipment) => {
+    const equipmentIds = equipment.map(product => product.id)
+    const lastEquipmentId = equipmentIds.length > 0 ? Math.max(...equipmentIds.map(id => parseInt(id))) : 0
+    return (lastEquipmentId + 1).toString()
+}
+
 module.exports = {
-    generateNotificationId
+    generateNotificationId,
+    generateLoanId,
+    generateProductId
   }

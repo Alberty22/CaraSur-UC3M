@@ -1,9 +1,14 @@
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 import './AddProduct.css'
+
 import { OkSection } from '../others/OkSection';
 import { FailedSection } from '../others/FailedSection';
+
 import { usePopup } from '../../hooks/usePopups';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
+import { ROUTES } from '../../config/apiRoutes';
+import { sendData } from '../../utils/communications';
 
 export function AddProduct() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'onChange' })
@@ -12,11 +17,34 @@ export function AddProduct() {
 
   const { handleOpen } = usePopup();
             
-  const onSubmit = data => {
-    console.log(data);
-    handleOpen(<OkSection message={t('adminEquipment.addProduct.ok')} />)
-    // handleOpen(<FailedSection message={t('adminEquipment.addProduct.failed')} />)
-    reset()
+  const onSubmit = async data => {
+    const product = {
+      "description": data.productDescription || null,
+      "size": data.productSize || null,
+      "object": data.productName || null,
+      "quantity": data.quantity || null,
+      "category": data.productCategory || null,
+      "length": data.productLength 
+                ? data.productWidth ? `${data.productLength}cm x ${data.productWidth}cm` : `${data.productLength}cm` 
+                : data.productWidth ? `${data.productWidth}cm` : null,
+      "model": data.productBrand || null,
+      "condition": data.productCondition || null,
+      "photo": data.productImage.size === 0 ? data.productImage : "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=da8c5606-1779-4085-bcef-d627172d5b9c",
+      "available": data.available || null
+    }
+    console.log(product)
+    const res = await sendData(product, ROUTES.EQUIPMENT)
+
+    if(res.code) {
+      handleOpen(<OkSection message={t('adminEquipment.addProduct.ok')} />)
+      reset()
+    }
+    else {
+      handleOpen(<FailedSection message={t('adminEquipment.addProduct.failed')} />)
+    }
+    
+   
+    
   }
 
   

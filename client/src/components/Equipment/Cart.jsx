@@ -1,14 +1,21 @@
-import { useId } from "react";
 import './Cart.css'
+
 import { useCart } from "../../hooks/useCart";
+import { OkSection } from "../others/OkSection";
+import { FailedSection } from "../others/FailedSection";
+
+import { useTranslation } from "react-i18next";
+import { usePopup } from "../../hooks/usePopups";
+
+import { ROUTES } from '../../config/apiRoutes';
+import { sendData } from '../../utils/communications';
+import { getCookie } from '../../utils/cookies';
+
 import add_icon from "../../assets/images/icons/Add.webp"
 import remove_icon from "../../assets/images/icons/Remove.webp"
 import trash_icon from "../../assets/images/icons/Trash.webp"
-import { usePopup } from "../../hooks/usePopups";
-import { OkSection } from "../others/OkSection";
-import { FailedSection } from "../others/FailedSection";
 import stock_icon from '../../assets/images/icons/Stock-product.webp'
-import { useTranslation } from "react-i18next";
+
 
 
 function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
@@ -34,20 +41,24 @@ function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
 
 export function Cart() {
 
-    const cartCheckboxId = useId()
     const { cart, clearCart, addToCart, removeOneFromCart } = useCart()
 
     const { t } = useTranslation();
 
     const { handleOpen } = usePopup();
 
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
         
-        console.log(cart)
         if (cart.length > 0) {
-            handleOpen(<OkSection message={t('equipment.ok')} />)
-            // handleOpen(<FailedSection message={t('equipment.failed')} />)
-            clearCart()
+            const res = await sendData({loansReq:cart, email:getCookie('email')}, ROUTES.PENDING_LOANS)
+            console.log(res)
+            if(res.code) {
+                handleOpen(<OkSection message={t('equipment.ok')} />)
+                clearCart()
+            }
+            else{
+                handleOpen(<FailedSection message={t('equipment.failed')} />)
+            }   
         }
         
     }

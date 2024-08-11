@@ -42,20 +42,23 @@ exports.getPendingActivities = async (req, res) => {
 
 // POST request handler
 exports.addActivity = async (req, res) => {
+  const activity = req.body
   try {
-    const { name } = req.body;
-    if (!name) return res.status(400).json({ error: 'Name is required' });
 
-    const activities = await readJsonFile(activitiesPath);
-    const newActivity = { id: activities.length + 1, name };
-    activities.push(newActivity);
-    await writeJsonFile(activitiesPath, activities);
-    res.status(201).json(newActivity);
+    if (!activity) {
+      return res.status(404).json({ error: 'Error product' })
+    }
+
+    const activities = await readJsonFile(pendingActivitiesPath)
+
+
+    await writeJsonFile(pendingActivitiesPath, activity)
+
+    res.status(201).json({ success: true, message: 'Product Added' })
 
   } 
-  
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error' })
   }
 }
 

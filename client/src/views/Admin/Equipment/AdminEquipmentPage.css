@@ -1,7 +1,7 @@
 .admin-equipment-page {
     width: 100%;
     background-color: #f7f7f7;
-    min-height: 300px;
+    min-height: 60vh;
 }
 
 .admin-equipment-page > section:last-child {
@@ -17,6 +17,9 @@
 }
 
 @media (max-width: 768px) {
+    .admin-equipment-page {
+        min-height: 90vh;
+    }
     
 }
 

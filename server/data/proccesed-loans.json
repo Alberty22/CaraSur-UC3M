@@ -1,13 +1,56 @@
 [
-    {
-        "product": "1",
-        "name":"producto",
-        "user":"alberto@gmail.com",
-        "quantity": "1",
-        "image":"/arnes_1.png",
-        "loanDate":"01/01/2002",
-        "returnDate": "07/01/2002"
-    }
-
+  {
+    "product": "1",
+    "name": "producto",
+    "user": "alberto@gmail.com",
+    "quantity": "1",
+    "image": "/arnes_1.png",
+    "loanDate": "2002-01-01",
+    "returnDate": "2002-01-11"
+  },
+  {
+    "product": "3",
+    "name": "producto",
+    "user": "alberto@gmail.com",
+    "quantity": "1",
+    "image": "/arnes_1.png",
+    "loanDate": "2002-01-01",
+    "returnDate": "2002-01-11"
+  },
+  {
+    "product": "2",
+    "name": "producto",
+    "user": "patata@gmail.com",
+    "quantity": "1",
+    "image": "/arnes_1.png",
+    "loanDate": "2002-01-01",
+    "returnDate": "2002-01-11"
+  },
+  {
+    "product": 100,
+    "name": "Mosquetón",
+    "user": "alberto@gmail.com",
+    "quantity": 1,
+    "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F100.png?alt=media&token=ed1409ad-665d-4353-8c99-c5ffe90b2daa",
+    "loanDate": "2024-08-11",
+    "returnDate": "2024-08-21"
+  },
+  {
+    "product": 101,
+    "name": "Mosquetón",
+    "user": "alberto@gmail.com",
+    "quantity": 2,
+    "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F101.png?alt=media&token=035b5495-fc34-46c0-8394-7f4f3521020f",
+    "loanDate": "2024-08-11",
+    "returnDate": "2024-08-21"
+  },
+  {
+    "product": 105,
+    "name": "Mosquetón",
+    "user": "alberto@gmail.com",
+    "quantity": 1,
+    "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F105.png?alt=media&token=82f9a4cf-631a-41b9-afa0-dd2356c05766",
+    "loanDate": "2024-08-11",
+    "returnDate": "2024-08-21"
+  }
 ]
-    
