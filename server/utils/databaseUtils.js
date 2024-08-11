@@ -25,7 +25,28 @@ const writeJsonFile = (filePath, data) => {
   });
 };
 
+const updateJsonEntries = async (filePath, filterFn, updateFn) => {
+  try {
+    // Leer el archivo JSON
+    const data = await readJsonFile(filePath);
+
+    // Actualizar todas las entradas que coincidan con el filtro
+    const updatedData = data.map(item => {
+      if (filterFn(item)) {
+        return updateFn(item);
+      }
+      return item;
+    });
+
+    // Escribir el archivo JSON actualizado
+    await writeJsonFile(filePath, updatedData);
+  } catch (error) {
+    console.error('Error al modificar las entradas en el archivo JSON:', error);
+  }
+};
+
 module.exports = {
   readJsonFile,
-  writeJsonFile
+  writeJsonFile,
+  updateJsonEntries
 };

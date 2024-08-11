@@ -7,6 +7,6 @@ router.get('/:email', notificationsController.getUserNotifications);
 
 router.delete('/:email', () => {});
 
-router.post('/', () => {});
+router.post('/', notificationsController.postNotifications);
 
 module.exports = router;

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const ResultItem = ({ result, onButtonClick, role})  => {
 
+    const { t } = useTranslation()
     
     const [userAdd, setUserAdd] = useState(false)
 
@@ -13,7 +14,7 @@ const ResultItem = ({ result, onButtonClick, role})  => {
     
     return (
       <div className='result-item'>
-        <p>{result.email}</p>
+        <p>{result.email === 'all' ? t('adminNotifications.all') : result.email}</p>
         <button onClick={() => {setUserAdd(!userAdd), onButtonClick(result, !userAdd)}}>{userAdd ? '-' : '+'}</button>
       </div>
     );
@@ -21,12 +22,12 @@ const ResultItem = ({ result, onButtonClick, role})  => {
 
 export function ResultList({ results, onButtonClick, all=false }) {
 
-  const { t } = useTranslation()
+  
   
   return (
     <div className='result-list'>
       { all &&
-        <ResultItem result={{email: t('adminNotifications.all')}} role='' onButtonClick={onButtonClick} />
+        <ResultItem result={{email: 'all'}} role='' onButtonClick={onButtonClick} />
 
       }
       {results.map((result, index) => (

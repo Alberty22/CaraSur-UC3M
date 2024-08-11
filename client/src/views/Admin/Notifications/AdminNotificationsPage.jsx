@@ -12,6 +12,7 @@ import { usePopup } from '../../../hooks/usePopups'
 import { useFetch } from '../../../hooks/useFetch'
 
 import { ROUTES } from '../../../config/apiRoutes'
+import { sendData } from '../../../utils/communications'
 
 
 export function AdminNotificationsPage() {
@@ -56,7 +57,7 @@ export function AdminNotificationsPage() {
         setMessage(event.target.value)
     }
 
-    const handleSendClick = () => {
+    const handleSendClick = async () => {
         if (selectedUsers.length === 0 || message.trim() === '') {
             setError(true)
             return
@@ -64,18 +65,23 @@ export function AdminNotificationsPage() {
 
         setError(false)
         const payload = {
-            users: selectedUsers,
+            emails: selectedUsers,
             message: message,
-        };
+        }
 
-        // Aquí puedes enviar la información al backend
-        console.log(selectedUsers)
-        console.log('Enviando:', payload)
-        // Resetear el estado después de enviar
-        setSelectedUsers([])
-        setMessage('')
-        handleOpen(<OkSection message={t('adminNotifications.ok')} />)
-        // handleOpen(<FailedSection message={t('adminNotifications.failed')} />)
+        console.log(payload)
+        const res = await sendData(payload, ROUTES.NOTIFICATIONS)
+        console.log({res})
+        if(res.code) {
+            setSelectedUsers([])
+            setMessage('')
+            handleOpen(<OkSection message={t('adminNotifications.ok')} />)
+        }
+        else {
+            handleOpen(<FailedSection message={t('adminNotifications.failed')} />)
+        }
+        
+        
     }
 
     
@@ -107,7 +113,7 @@ export function AdminNotificationsPage() {
                             <ul>
                                 {selectedUsers.map(user => (
                                     <li key={user.email}>
-                                        {user.email}
+                                        {user.email === 'all' ? t('adminNotifications.all') : user.email}
                                         <button onClick={() => handleRemoveUser(user)}>x</button>
                                     </li>
                                 ))}

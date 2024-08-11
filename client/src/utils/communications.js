@@ -15,7 +15,7 @@ export const sendData = async (data, url) => {
   
       const result = await res.json()
       console.log('Datos enviados correctamente:', result)
-      return {code:result.success, result:result}
+      return {code:result.success, result:result.message}
 
     } catch (error) {
       console.error('Error al enviar datos:', error);

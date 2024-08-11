@@ -89,7 +89,7 @@ export function SingupPage() {
         }
         const res = await sendData(dataToSend, ROUTES.SIGNUP)
 
-        if(res.result.success) {
+        if(res.code) {
             login({name: dataToSend.details['userDetails'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
             navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
         }
