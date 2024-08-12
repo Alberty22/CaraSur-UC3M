@@ -1,21 +1,25 @@
 const fs = require('fs');
 const path = require('path');
+const pendingLoansPath = path.join(__dirname, '../data/pending-loans.json');
+const proccessedLoansPath = path.join(__dirname, '../data/proccesed-loans.json');
+const activitiesPath = path.join(__dirname, '../data/activities.json');
 
-// Leer JSON desde un archivo
+
 const readJsonFile = (filePath) => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) return reject(err)
       try {
         resolve(JSON.parse(data))
-      } catch (parseError) {
+      } 
+      catch (parseError) {
         reject(parseError)
       }
     })
   })
 }
 
-// Escribir JSON en un archivo
+
 const writeJsonFile = (filePath, data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8', (err) => {
@@ -40,7 +44,8 @@ const updateJsonEntries = async (filePath, filterFn, updateFn) => {
 
     // Escribir el archivo JSON actualizado
     await writeJsonFile(filePath, updatedData)
-  } catch (error) {
+  } 
+  catch (error) {
     console.error('Error updating JSON:', error)
   }
 }
@@ -55,14 +60,54 @@ const deleteJsonEntry = async (filePath, entryToDelete) => {
 
     // Escribir el archivo JSON actualizado (sin la entrada eliminada)
     await writeJsonFile(filePath, filteredData)
-  } catch (error) {
-    console.error('Error al eliminar la entrada en el archivo JSON:', error)
+  } 
+  catch (error) {
+    console.error('Error in delete JSON:', error)
   }
-};
+}
+
+const updateUserRef = async (email, newEmail) => {
+  try {
+   
+    const pendingLoans = await readJsonFile(pendingLoansPath)
+    const proccesedLoans = await readJsonFile(proccessedLoansPath)
+    const activities = await readJsonFile(activitiesPath)
+    
+    const newPendingLoans = pendingLoans.map(item => {
+      if (item.user === email) {
+          item.user = newEmail
+      }
+      return item
+    })
+
+    const newProccesedLoans = proccesedLoans.map(item => {
+      if (item.user === email) {
+          item.user = newEmail
+      }
+      return item
+    })
+
+      const newActivities = activities.map(item => {
+        if (item?.users && item?.users.includes(email)) {
+          item.users = item.users.map(user => (user === email ? newEmail : user))
+        }
+        return item
+      })
+
+      await writeJsonFile(pendingLoansPath, newPendingLoans)
+      await writeJsonFile(proccessedLoansPath, newProccesedLoans)
+      await writeJsonFile(activitiesPath, newActivities)
+    
+  } 
+  catch (error) {
+    console.error('Error updating JSON:', error)
+  }
+}
 
 module.exports = {
   readJsonFile,
   writeJsonFile,
   updateJsonEntries,
-  deleteJsonEntry
-};
+  deleteJsonEntry,
+  updateUserRef
+}

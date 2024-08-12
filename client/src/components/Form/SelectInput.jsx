@@ -13,7 +13,7 @@ export function SelectInput({inputKey, inputType, placeholder, error, errors, op
             <Controller
         name={inputKey}
         control={control}
-        defaultValue=""
+        defaultValue={selectedValue}
         rules={!optional ? { required: error } : {}}
         render={({ field }) => (
             <>

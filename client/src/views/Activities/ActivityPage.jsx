@@ -1,19 +1,21 @@
-import './ActivityPage.css'
+import './ActivityPage.css';
 
-import { Breadcrumbs } from '../../components/others/Breadcrumbs'
-import { AsideSection } from '../../components/Activities/AsideSection'
+import { Breadcrumbs } from '../../components/others/Breadcrumbs';
+import { AsideSection } from '../../components/Activities/AsideSection';
 
-import { useFetch } from '../../hooks/useFetch'
-import { useActivity } from '../../hooks/useActivity'
+import { useFetch } from '../../hooks/useFetch';
+import { useActivity } from '../../hooks/useActivity';
 import useMobileQuery from '../../hooks/useMobileQuery';
 import { useTranslation } from 'react-i18next';
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom';
 
-import { ROUTES } from '../../config/apiRoutes'
+import { ROUTES } from '../../config/apiRoutes';
+import { getCookie } from '../../utils/cookies';
+import { updateData } from '../../utils/communications';
 
-import whatsapp_logo from '../../assets/images/logos/whatsapp.webp'
-import drive_logo from '../../assets/images/logos/drive.webp'
-import star_icon from '../../assets/images/icons/Star.webp'
+import whatsapp_logo from '../../assets/images/logos/whatsapp.webp';
+import drive_logo from '../../assets/images/logos/drive.webp';
+import star_icon from '../../assets/images/icons/Star.webp';
 
 const formattedDate = (date, monthsList) => {
 
@@ -55,7 +57,21 @@ export function ActivityPage() {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
-    const { t } = useTranslation();
+    const { t } = useTranslation()
+
+    const handleClick = async (id) => {
+        const payload = {
+            email: getCookie('email'),
+            activityId : id,
+            action: registeredActivities.includes(id) ? 'delete' : 'add'
+        }
+        const res = await updateData(payload, ROUTES.ACTIVITIES)
+
+        if(res.code) {
+            toggleRegistration(id)
+        }
+        
+    }
 
     return (
 
@@ -86,7 +102,7 @@ export function ActivityPage() {
                         <p><img src={drive_logo} alt='drive'/>{t('activity.drive1')} <a href={drive}>{t('activity.drive2')}</a> {t('activity.drive3')}</p>
                     </div>
                     { new Date(date) > new Date() &&
-                    <button onClick={() => toggleRegistration(id)} className={registeredActivities.includes(id) ? 'unsuscribe': 'suscribe'}>
+                    <button onClick={() => handleClick(id)} className={registeredActivities.includes(id) ? 'unsuscribe': 'suscribe'}>
                         {registeredActivities.includes(id) ? t('activity.unsuscribe') : t('activity.suscribe')}
                     </button>
                     }

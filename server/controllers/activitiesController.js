@@ -1,4 +1,4 @@
-const { readJsonFile, writeJsonFile, deleteJsonEntry } = require('../utils/databaseUtils');
+const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = require('../utils/databaseUtils');
 const { generateActivityId } = require('../utils/identifierUtils')
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');
@@ -52,7 +52,7 @@ exports.addActivity = async (req, res) => {
 
     const activities = await readJsonFile(activitiesPath)
 
-    const newActivity = { ...activity }
+    const newActivity = { ...activity, users: [] }
     newActivity.id = parseInt(generateActivityId(activities))
     newActivity.drive = drive
 
@@ -63,6 +63,43 @@ exports.addActivity = async (req, res) => {
     await writeJsonFile(activitiesPath, activities)
 
     res.status(201).json({ success: true, message: 'Activity Accepted' })
+
+  } 
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+// PUT request handler add or remove user in an activity
+exports.updateUsersActivity = async (req, res) => {
+  try {
+    const { email , activityId, action} = req.body
+    if (!email || !activityId || !action) {
+      return res.status(404).json({ error: 'Error in params' })
+    }
+
+    const filterFn = activity => activity.id === activityId
+    
+    const updateFn = (activity) => {
+
+      if (action === 'add') {
+        if (!activity.users.includes(email)) {
+          activity.users.push(email)
+        }
+        return activity
+      }
+      else if (action === 'delete') {
+        activity.users = activity.users.filter(emailItem => emailItem !== email)
+        return activity
+      }
+      else {
+        return activity
+      }
+    }
+      
+    await updateJsonEntries(activitiesPath, filterFn, updateFn)
+
+    res.status(201).json({ success: true, message: 'Activity user Added' })
 
   } 
   catch (error) {

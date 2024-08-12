@@ -74,7 +74,7 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
             else if (inputType === 'uc3m-student' || inputType === 'gender' || inputType === 'country' || inputType === 'student' || inputType === 'sports'
                 || inputType === 'language' || inputType === 'theme' || inputType === 'activity-difficulty') {
                 {
-                    return (inputType === 'uc3m-student' || inputType === 'language' || inputType === 'theme')
+                    return (inputType === 'uc3m-student' || inputType === 'language' || inputType === 'theme' || inputType === 'activity-difficulty')
                     ?  <SelectInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} error={error[lng]} errors={errors} register={register} 
                     options={options[inputType]} control={control} watch={watch} setValue={setValue} className={className}/>
                     : <SelectInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} errors={errors} register={register} 

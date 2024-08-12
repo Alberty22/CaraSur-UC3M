@@ -1,4 +1,4 @@
-const { readJsonFile, writeJsonFile, updateJsonEntries } = require('../utils/databaseUtils');
+const { readJsonFile, writeJsonFile, updateJsonEntries, updateUserRef } = require('../utils/databaseUtils');
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
 
@@ -87,6 +87,7 @@ exports.updateUser = async (req, res) => {
       const updateFn = (user) => {
         if(accountDetails) {
           if(accountDetails?.email !== user.email) {
+            updateUserRef(email, accountDetails.email)
             user.email = accountDetails.email
           }
           
