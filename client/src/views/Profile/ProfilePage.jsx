@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { ROUTES } from '../../config/apiRoutes.js';
 import { getCookie, updateCookie } from '../../utils/cookies.js';
 import { updateData } from '../../utils/communications.js';
+import { toBase64, changeFileName } from '../../utils/photo.js';
 
 import user_img from '../../assets/images/icons/User_primary.webp';
 import inputs_profile from '../../assets/others/inputs-profile.json';
@@ -66,12 +67,20 @@ export function ProfilePage () {
     const { popupContent, handleOpen } = usePopup();
 
     const handleSubmit = async (data, id) => {
-        
+        const {idPhoto, ...others} = data
         const payload = {
             email: getCookie('email'),
-            [id] : {...data}
+            [id] : {...others},
         }
-
+        if(idPhoto) {
+            payload.idPhoto = {
+                "base64": await toBase64(idPhoto),
+                "name": changeFileName(idPhoto.name, getCookie('email')),
+                "type": idPhoto.type,
+                "size": idPhoto.size
+            }
+        }
+        
         const res = await updateData(payload, ROUTES.PROFILE)
         
         if(res.code) {

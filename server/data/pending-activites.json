@@ -8,15 +8,5 @@
     "difficulty": "2",
     "chat": "",
     "drive": ""
-  },
-  {
-    "id": "2",
-    "title": "Prueba",
-    "description": "Esto es una descripción",
-    "date": "2024-08-13",
-    "time": "00:20",
-    "difficulty": "1",
-    "chat": "http://localhost:5000/es/activities/new",
-    "drive": ""
   }
 ]

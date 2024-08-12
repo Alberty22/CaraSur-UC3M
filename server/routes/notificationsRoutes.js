@@ -5,7 +5,7 @@ const notificationsController = require('../controllers/notificationsController'
 // GET request for notifications
 router.get('/:email', notificationsController.getUserNotifications);
 
-router.delete('/:email', () => {});
+router.delete('/:email', notificationsController.deleteNotifications);
 
 router.post('/', notificationsController.postNotifications);
 

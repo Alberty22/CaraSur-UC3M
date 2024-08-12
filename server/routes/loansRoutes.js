@@ -11,7 +11,7 @@ router.get('/pending', loansController.getPendingLoans);
 router.post('/pending', loansController.postPendingLoans);
 
 // DELETE request for pending loans
-router.delete('/pending', () => {});
+router.put('/pending', loansController.deletePendingLoans);
 
 // GET request for proccesed loans
 router.get('/proccesed', loansController.getProccesedLoans);

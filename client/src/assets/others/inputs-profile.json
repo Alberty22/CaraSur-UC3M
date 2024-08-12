@@ -75,7 +75,7 @@
             }
         },
         {
-            "inputKey": "id-photo",
+            "inputKey": "idPhoto",
             "inputType":"image",
             "placeholder": {
                 "es": "Foto DNI/NIE",
@@ -111,7 +111,7 @@
             }
         },
         {
-            "inputKey": "uc3m-student",
+            "inputKey": "UC3MStudent",
             "inputType":"uc3m-student",
             "placeholder": {
                 "es": "Estudiante UC3M",

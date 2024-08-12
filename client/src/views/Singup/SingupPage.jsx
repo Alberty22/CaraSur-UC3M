@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import { usePopup } from '../../hooks/usePopups.js';
 import useMobileQuery from '../../hooks/useMobileQuery.js';
 
-import { toBase64 } from '../../utils/photo.js';
+import { toBase64, changeFileName } from '../../utils/photo.js';
 import { sendData } from '../../utils/communications.js';
 
 import { ROUTES } from '../../config/apiRoutes.js';
@@ -76,7 +76,7 @@ export function SingupPage() {
                 },
                 "idPhoto": {
                     "base64": base64Photo,
-                    "name": file.name,
+                    "name": changeFileName(file.name, formData.email),
                     "type": file.type,
                     "size": file.size
                 },

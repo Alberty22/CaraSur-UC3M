@@ -1,17 +1,19 @@
-import './AdminActivitiesPage.css'
-import { Breadcrumbs } from '../../../components/others/Breadcrumbs'
-import { Activities } from '../../../components/Activities/Activities'
-import Popup from '../../../components/others/Popup'
-import { Form } from '../../../components/Form/Form'
+import './AdminActivitiesPage.css';
 
-import { useTranslation } from 'react-i18next'
-import { useState, useEffect } from 'react'
-import { useFetch } from '../../../hooks/useFetch'
-import { usePopup } from '../../../hooks/usePopups'
+import { Breadcrumbs } from '../../../components/others/Breadcrumbs';
+import { Activities } from '../../../components/Activities/Activities';
+import Popup from '../../../components/others/Popup';
+import { Form } from '../../../components/Form/Form';
 
-import { ROUTES } from '../../../config/apiRoutes'
+import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
+import { useFetch } from '../../../hooks/useFetch';
+import { usePopup } from '../../../hooks/usePopups';
 
-import admin_activities from '../../../assets/others/admin-activities.json'
+import { ROUTES } from '../../../config/apiRoutes';
+import { sendData } from '../../../utils/communications';
+
+import admin_activities from '../../../assets/others/admin-activities.json';
 
 
 export function AdminActivitiesPage() {
@@ -31,18 +33,29 @@ export function AdminActivitiesPage() {
         }
     }, [data]);
 
-    const handleAccept = (index) => {
-        setPendingActivities((prev) => {
-            const updated = [...prev]
-            return updated.filter(activity => activity.id !== index);
-        });
+    const handleSubmit = async (data, index) => {
+        const payload = {
+            activity : pendingActivities.filter(activity => activity.id !== index)[0],
+            drive: data['drive-url']
+        }
+        console.log(payload)
+        const res = await sendData(payload, ROUTES.ACTIVITIES)
+
+        if(res.code) {
+            setPendingActivities((prev) => {
+                const updated = [...prev]
+                return updated.filter(activity => activity.id !== index)
+            })
+            handleClose()
+        }
+        else {
+            handleClose()
+        }
+        
     }
 
     const handleClick = (index) => {
-        
-        handleOpen(<Form inputs={admin_activities} onSubmit={(data) => {
-            console.log(data); handleClose(); handleAccept(index)
-        }} type={t('adminActivities.aprove')} />)
+        handleOpen(<Form inputs={admin_activities} onSubmit={(data) => {handleSubmit(data, index)}} type={t('adminActivities.aprove')} />)
     }
 
     return (

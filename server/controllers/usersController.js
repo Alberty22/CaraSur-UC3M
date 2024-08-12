@@ -72,9 +72,9 @@ exports.addUser = async (req, res) => {
 // PUT request handler to update user information
 exports.updateUser = async (req, res) => {
   try {
-    const { email, accountDetails, userDetails, userOptionalDetails, preferences } = req.body
+    const { email, accountDetails, userDetails, userOptionalDetails, preferences, idPhoto } = req.body
 
-    if ((!accountDetails && !userDetails && !userOptionalDetails && !preferences) || !email) {
+    if ((!accountDetails && !userDetails && !userOptionalDetails && !preferences && !idPhoto) || !email) {
       return res.status(404).json({ error: 'Error in params' })
     }
 
@@ -85,17 +85,27 @@ exports.updateUser = async (req, res) => {
       const filterFn = user => user.email === email
     
       const updateFn = (user) => {
-        if(email !== user.email) {
-          user.email = accountDetails.email
+        if(accountDetails) {
+          if(accountDetails?.email !== user.email) {
+            user.email = accountDetails.email
+          }
+          
         }
         if(userDetails) {
           user.details.userDetails = userDetails
         }
         if(userOptionalDetails) {
-          user.details.userOptionalDetails = userOptionalDetails
+            for (let key in userOptionalDetails) {
+                if (userOptionalDetails[key] !== "") {
+                  user.details.userOptionalDetails[key] = userOptionalDetails[key]
+                }
+            }
         }
         if(preferences) {
           user.details.preferences = preferences
+        }
+        if (idPhoto) {
+          user.details.idPhoto = idPhoto
         }
         return user
       }

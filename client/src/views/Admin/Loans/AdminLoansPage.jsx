@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useFetch } from '../../../hooks/useFetch'
 
 import { ROUTES } from '../../../config/apiRoutes'
-import { sendData } from '../../../utils/communications'
+import { sendData, updateData } from '../../../utils/communications'
 
 
 const addDays = (dateString, days) => {
@@ -65,14 +65,19 @@ export function AdminLoansPage() {
         }   
     }
 
-    const handleDecline = (index) => {
-        setPendingLoans((prev) => {
-            const updated = [...prev]
-            updated.splice(index, 1)
-            return updated
-        });
+    const handleDecline = async (index) => {
+        const loan = pendingLoans[index]
+        const res = await updateData(loan, ROUTES.PENDING_LOANS)
+
+        if(res.code) {
+            setPendingLoans((prev) => {
+                const updated = [...prev]
+                updated.splice(index, 1)
+                return updated
+            })
+        }
         
-    };
+    }
 
     return (
         <main className='admin-loans-page'>

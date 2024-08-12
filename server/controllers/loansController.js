@@ -36,11 +36,10 @@ exports.getPendingLoans = async (req, res) => {
   }
 }
 
-// POST request handler to retrieve pending loans
+// POST request handler to add pending loans
 exports.postPendingLoans = async (req, res) => {
-  const { email, loansReq } = req.body
-
   try {
+    const { email, loansReq } = req.body
 
     if (!email || !loansReq ) {
       return res.status(404).json({ error: 'Error in loan' })
@@ -71,6 +70,27 @@ exports.postPendingLoans = async (req, res) => {
   }
 }
 
+// DELETE request handler to remove pending loans
+exports.deletePendingLoans = async (req, res) => {
+  try {
+    
+    const loan = req.body
+
+    if (!loan) {
+      return res.status(404).json({ error: 'Error in loan' })
+    }
+
+    await deleteJsonEntry(pendingLoansPath, loan)
+
+    res.status(201).json({ success: true, message: 'Loan removed' })
+
+  } 
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+
 // GET request handler to retrieve pending loans
 exports.getProccesedLoans = async (req, res) => {
   
@@ -84,10 +104,11 @@ exports.getProccesedLoans = async (req, res) => {
   }
 }
 
+// POST request handler to add proccesed loans
 exports.postProccesedLoans = async (req, res) => {
-  const loan = req.body
-  
   try {
+    const loan = req.body
+
     if (!loan) {
       return res.status(404).json({ error: 'Error in loan' })
     }
@@ -119,9 +140,9 @@ exports.postProccesedLoans = async (req, res) => {
       return user
     }
 
-    await updateJsonEntries(usersPath, filterFn, updateFn);
+    await updateJsonEntries(usersPath, filterFn, updateFn)
 
-    return res.status(201).json({ success: true, message: 'Loan proccesed' });
+    return res.status(201).json({ success: true, message: 'Loan proccesed' })
   }
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })

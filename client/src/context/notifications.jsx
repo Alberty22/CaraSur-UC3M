@@ -6,39 +6,41 @@ import { useAuth } from "../hooks/useAuth.js"
 export const NotificationContext = createContext()
 
 export function NotificationsProvider ({ children }) {
-    const [notifications, setNotifications] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [notifications, setNotifications] = useState({})
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     const { isAuthenticated } = useAuth()
 
     const fetchNotifications = useCallback(async () => {
         try {
-        const response = await fetch(`${ROUTES.NOTIFICATIONS}/${encodeURIComponent(getCookie('email'))}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const res = await fetch(`${ROUTES.NOTIFICATIONS}/${encodeURIComponent(getCookie('email'))}`)
+            if (!res.ok) {
+                throw new Error('Network response was not ok')
+            }
+            const data = await res.json()
+            setNotifications(Object.values(data))
+        } 
+        catch (error) {
+            setError(error)
+        } 
+        finally {
+            setLoading(false)
         }
-        const data = await response.json();
-        setNotifications(Object.values(data));
-        } catch (error) {
-        setError(error);
-        } finally {
-        setLoading(false);
-        }
-    }, []);
+    }, [])
 
     useEffect(() => {
         if(isAuthenticated) {
             fetchNotifications();
             const intervalId = setInterval(async () => {
-                fetchNotifications();
+                fetchNotifications()
                 
-            }, 60000);
+            }, 60000)
         
-            return () => clearInterval(intervalId);
+            return () => clearInterval(intervalId)
         }
         
-    }, [fetchNotifications, isAuthenticated]);
+    }, [fetchNotifications, isAuthenticated])
 
     return (
         <NotificationContext.Provider value={{ notifications, setNotifications }}>
