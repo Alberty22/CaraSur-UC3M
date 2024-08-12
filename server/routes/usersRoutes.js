@@ -15,6 +15,6 @@ router.post('/login', () => {});
 router.get('/information/:email', usersController.getUserDetails);
 
 // PUT request to update information
-router.put('/information', () => {});
+router.put('/information', usersController.updateUser);
 
 module.exports = router;

@@ -29,13 +29,13 @@ exports.postNotifications = async (req, res) => {
     }
 
     const emailsList = emails.map(email => email.email)
-    let filterFn;
+    let filterFn
     
     if (emailsList.includes("all")) {
-      filterFn = () => true;
+      filterFn = () => true
     } 
     else  {
-      filterFn = user => emailsList.includes(user.email);
+      filterFn = user => emailsList.includes(user.email)
     }
     
     const updateFn = (user) => {

@@ -4,7 +4,7 @@
     "role": "admin",
     "details": {
       "userDetails": {
-        "name": "Alberto",
+        "name": "Sergio",
         "surname": "Arribas",
         "id": "12345123E",
         "telephone": "123456123",
@@ -12,10 +12,10 @@
         "UC3MStudent": "yes"
       },
       "userOptionalDetails": {
-        "gender": "",
-        "birthdate": "",
-        "country": "",
-        "student": "",
+        "gender": "man",
+        "birthdate": "2024-08-28",
+        "country": "Australia",
+        "student": "yes",
         "sports": ""
       },
       "idPhoto": {
@@ -25,7 +25,7 @@
         "size": 6963
       },
       "preferences": {
-        "language": "es",
+        "language": "en",
         "theme": "light"
       },
       "payDetails": {
@@ -83,12 +83,21 @@
         "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F105.png?alt=media&token=82f9a4cf-631a-41b9-afa0-dd2356c05766",
         "loanDate": "2024-08-11",
         "returnDate": "2024-08-21"
+      },
+      "6": {
+        "id": "6",
+        "product": 16,
+        "name": "Disipador",
+        "quantity": 1,
+        "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F16.png?alt=media&token=8653af46-fe31-497b-8df4-f84ab394055b",
+        "loanDate": "2024-08-12",
+        "returnDate": "2024-08-22"
       }
     }
   },
   {
     "email": "patata@gmail.com",
-    "role": "admin",
+    "role": "user",
     "details": {
       "userDetails": {
         "name": "Alberto",

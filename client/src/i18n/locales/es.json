@@ -190,7 +190,9 @@
       "theme": "Tema",
       "adminEmail": "Correo de administrador",
       "billing" : "Cuenta",
-      "pay": "Último pago"
+      "pay": "Último pago",
+      "ok": "Todo ha salido correctamente",
+      "failed": "Se ha producido un error"
       
     },
 

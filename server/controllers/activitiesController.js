@@ -1,4 +1,5 @@
 const { readJsonFile, writeJsonFile } = require('../utils/databaseUtils');
+const { generateActivityId } = require('../utils/identifierUtils')
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');
 const pendingActivitiesPath = path.join(__dirname, '../data/pending-activites.json');
@@ -40,8 +41,13 @@ exports.getPendingActivities = async (req, res) => {
   }
 }
 
-// POST request handler
+// POST request handler 
 exports.addActivity = async (req, res) => {
+  
+}
+
+// POST request handler to suggest a new activity
+exports.addPendingActivity = async (req, res) => {
   const activity = req.body
   try {
 
@@ -51,32 +57,19 @@ exports.addActivity = async (req, res) => {
 
     const activities = await readJsonFile(pendingActivitiesPath)
 
+    const newActivity= {
+      "id": generateActivityId(activities),
+      ...activity
+    }
 
-    await writeJsonFile(pendingActivitiesPath, activity)
+    activities.push(newActivity)
 
-    res.status(201).json({ success: true, message: 'Product Added' })
+    await writeJsonFile(pendingActivitiesPath, activities)
+
+    res.status(201).json({ success: true, message: 'Activity Added' })
 
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
-  }
-}
-
-// POST request handler
-exports.addPendingActivity = async (req, res) => {
-  try {
-    const { name } = req.body;
-    if (!name) return res.status(400).json({ error: 'Name is required' });
-
-    const activities = await readJsonFile(activitiesPath);
-    const newActivity = { id: activities.length + 1, name };
-    activities.push(newActivity);
-    await writeJsonFile(activitiesPath, activities);
-    res.status(201).json(newActivity);
-
-  } 
-  
-  catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

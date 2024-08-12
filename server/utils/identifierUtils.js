@@ -17,8 +17,15 @@ const generateProductId = (equipment) => {
     return (lastEquipmentId + 1).toString()
 }
 
+const generateActivityId = (activities) => {
+    const activititesIds = activities.map(activity => activity.id)
+    const lastActivityId = activititesIds.length > 0 ? Math.max(...activititesIds.map(id => parseInt(id))) : 0
+    return (lastActivityId + 1).toString()
+}
+
 module.exports = {
     generateNotificationId,
     generateLoanId,
-    generateProductId
+    generateProductId,
+    generateActivityId
   }

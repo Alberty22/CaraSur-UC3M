@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "product": 14,
+    "name": "Cordino",
+    "user": "alberto@gmail.com",
+    "quantity": 1,
+    "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=da8c5606-1779-4085-bcef-d627172d5b9c",
+    "loanDate": "2024-08-12",
+    "returnDate": "pending"
+  }
+]

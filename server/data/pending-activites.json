@@ -1,12 +1,22 @@
 [
-    {
-        "id": 1,
-        "title": "Trekking Invernal",
-        "description": "Aventura invernal en Sierra Nevada con trekking entre paisajes nevados.",
-        "date": "2023-11-04",
-        "time": "10:00",
-        "difficulty": "2",
-        "chat": "",
-        "drive": ""
-    }
+  {
+    "id": 1,
+    "title": "Trekking Invernal",
+    "description": "Aventura invernal en Sierra Nevada con trekking entre paisajes nevados.",
+    "date": "2023-11-04",
+    "time": "10:00",
+    "difficulty": "2",
+    "chat": "",
+    "drive": ""
+  },
+  {
+    "id": "2",
+    "title": "Prueba",
+    "description": "Esto es una descripción",
+    "date": "2024-08-13",
+    "time": "00:20",
+    "difficulty": "1",
+    "chat": "http://localhost:5000/es/activities/new",
+    "drive": ""
+  }
 ]

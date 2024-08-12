@@ -36,14 +36,14 @@ const updateJsonEntries = async (filePath, filterFn, updateFn) => {
         return updateFn(item)
       }
       return item
-    });
+    })
 
     // Escribir el archivo JSON actualizado
     await writeJsonFile(filePath, updatedData)
   } catch (error) {
-    console.error('Error al modificar las entradas en el archivo JSON:', error)
+    console.error('Error updating JSON:', error)
   }
-};
+}
 
 const deleteJsonEntry = async (filePath, entryToDelete) => {
   try {

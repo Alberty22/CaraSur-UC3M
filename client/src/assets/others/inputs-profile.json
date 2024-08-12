@@ -1,5 +1,5 @@
 {
-    "profile-account-popup": [
+    "accountDetails": [
         {
             "inputKey": "email",
             "inputType":"email",
@@ -37,7 +37,7 @@
             }
         }
     ],
-    "profile-user-popup": [
+    "userDetails": [
         {
             "inputKey": "name",
             "inputType":"text",
@@ -125,7 +125,7 @@
 
     ],
 
-    "profile-optional-popup": [
+    "userOptionalDetails": [
         {
             "inputKey": "gender",
             "inputType":"gender",
@@ -174,7 +174,7 @@
 
     ],
 
-    "profile-preferences-popup": [
+    "preferences": [
         {
             "inputKey": "language",
             "inputType":"language",
@@ -182,7 +182,10 @@
                 "es": "Idioma",
                 "en": "Language"
             },
-            "error":""
+            "error": {
+                "es": "Idioma es requerido",
+                "en": "Language is required"
+            }
         },
         {
             "inputKey": "theme",
@@ -191,7 +194,10 @@
                 "es": "Tema",
                 "en": "Theme"
             },
-            "error":""
+            "error": {
+                "es": "Tema es requerido",
+                "en": "Theme is required"
+            }
         }
     ]
 }

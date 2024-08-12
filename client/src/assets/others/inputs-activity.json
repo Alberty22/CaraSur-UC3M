@@ -33,6 +33,18 @@
         }
     },
     {
+        "inputKey": "activity-difficulty",
+        "inputType":"activity-difficulty",
+        "placeholder": {
+                "es": "Dificultad de la actividad",
+                "en": "Activity difficulty"
+            },
+        "error": {
+                "es": "Dificultad es requerida",
+                "en": "Difficulty is required"
+        }
+    },
+    {
         "inputKey": "activity-group",
         "inputType":"url",
         "placeholder": {

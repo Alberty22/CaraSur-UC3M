@@ -14,4 +14,7 @@ router.get('/stock', activitiesController.getStockActivities);
 // GET request for pending activities
 router.get('/pending', activitiesController.getPendingActivities);
 
+// POST request to suggest an activity
+router.post('/pending', activitiesController.addPendingActivity)
+
 module.exports = router;

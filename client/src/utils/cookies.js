@@ -44,3 +44,23 @@ export function checkRole() {
     
     return role === 'admin' ? true : false
 }
+
+export function updateCookie(name, value) {
+    let cookieValue = getCookie(name);
+    if (!cookieValue) {
+        console.log("Cookie not found!")
+        return
+    }
+
+    let cookieParts = cookieValue.split(';');
+    let currentExpires = "";
+
+    for (let part of cookieParts) {
+        if (part.trim().startsWith("expires=")) {
+            currentExpires = part.trim();
+            break;
+        }
+    }
+    
+    document.cookie = name + "=" + value + ";" + currentExpires + "; path=/";
+}

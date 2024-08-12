@@ -20,7 +20,8 @@ export function useFetch({ url, fetchOnce = false }) {
         }
         }, [url])
 
-    const initialUrl = useRef(url);
+    const initialUrl = useRef(url)
+
     useEffect(() => {
         if (fetchOnce && url !== initialUrl.current) {
             return;
@@ -29,5 +30,5 @@ export function useFetch({ url, fetchOnce = false }) {
         console.log("fetch")
     }, [url, fetchData, fetchOnce]);
 
-    return { data, loading, error };
+    return { data, loading, error, refetch: fetchData };
 }

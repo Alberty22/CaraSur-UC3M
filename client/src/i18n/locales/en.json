@@ -188,7 +188,9 @@
       "theme": "Theme",
       "adminEmail": "Administrator Email",
       "billing": "Account",
-      "pay": "Last payment"
+      "pay": "Last payment",
+      "ok": "Everything went well",
+      "failed": "An error occurred"
     },
 
     "loans": {

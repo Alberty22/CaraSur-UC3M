@@ -1,23 +1,29 @@
-import './ProfilePage.css'
+import './ProfilePage.css';
 
-import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx'
-import { Form } from '../../components/Form/Form'
-import { UserInformation } from '../../components/others/UserInformation.jsx'
-import Popup from '../../components/others/Popup.jsx'
+import { Breadcrumbs } from '../../components/others/Breadcrumbs.jsx';
+import { Form } from '../../components/Form/Form';
+import { UserInformation } from '../../components/others/UserInformation.jsx';
+import Popup from '../../components/others/Popup.jsx';
+import { FailedSection } from '../../components/others/FailedSection.jsx';
+import { OkSection } from '../../components/others/OkSection.jsx';
 
-import { useFetch } from '../../hooks/useFetch.js'
-import { usePopup } from '../../hooks/usePopups.js'
-import { useTranslation } from 'react-i18next'
+import { useFetch } from '../../hooks/useFetch.js';
+import { usePopup } from '../../hooks/usePopups.js';
+import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
-import { ROUTES } from '../../config/apiRoutes.js'
-import { getCookie } from '../../utils/cookies.js'
+import { ROUTES } from '../../config/apiRoutes.js';
+import { getCookie, updateCookie } from '../../utils/cookies.js';
+import { updateData } from '../../utils/communications.js';
 
-import user_img from '../../assets/images/icons/User_primary.webp'
+import user_img from '../../assets/images/icons/User_primary.webp';
 import inputs_profile from '../../assets/others/inputs-profile.json';
+
 
 export function ProfilePage () {
 
-    const { data } = useFetch({ url: `${ROUTES.PROFILE}/${encodeURIComponent(getCookie('email'))}` })
+    const { data, refetch } = useFetch({ url: `${ROUTES.PROFILE}/${encodeURIComponent(getCookie('email'))}`})
     const userData = data ? data : []
 
     const { t } = useTranslation()
@@ -30,34 +36,60 @@ export function ProfilePage () {
     const optionalInformation = () => {
         return Object.fromEntries(
             Object.entries(userData?.userOptionalDetails || {}).map(
-                ([key, value]) => [key, value === '' || t(`form.${key}.${value}`)]
+                ([key, value]) => [key, value === '' || ((key === 'country' || key ==='birthdate') ? `${value}` : t(`form.${key}.${value}`))]
             )
         )
     }
     const information = [
         {
-            "id":"profile-account-popup",
+            "id":"accountDetails",
             "titleSection": t('profile.title1'),
             "information": userData?.accountDetails
         },
         {
-            "id":"profile-user-popup",
+            "id":"userDetails",
             "titleSection": t('profile.title2'),
             "information": userInformation()
         },
         {
-            "id":"profile-optional-popup",
+            "id":"userOptionalDetails",
             "titleSection": t('profile.title3'),
             "information": optionalInformation()
         },
         {
-            "id":"profile-preferences-popup",
+            "id":"preferences",
             "titleSection": t('profile.title4'),
             "information": {"language": userData?.preferences?.language, "theme": t(`form.theme.${userData?.preferences?.theme}`)}
         }
     ]
     
-    const { popupContent, handleClose } = usePopup();
+    const { popupContent, handleOpen } = usePopup();
+
+    const handleSubmit = async (data, id) => {
+        
+        const payload = {
+            email: getCookie('email'),
+            [id] : {...data}
+        }
+
+        const res = await updateData(payload, ROUTES.PROFILE)
+        
+        if(res.code) {
+            refetch()
+            handleOpen(<OkSection className='white' message={t('profile.ok')} />)
+            if(id === 'accountDetails') {
+                updateCookie("email", data?.email)
+            }
+
+            if (id === 'userDetails'){
+                updateCookie("name",data?.name)
+            }
+            
+        }
+        else {
+            handleOpen(<FailedSection className='white' message={t('profile.failed')} />)
+        }
+    }
 
     return(
         <>
@@ -71,7 +103,7 @@ export function ProfilePage () {
                     { userData.length !== 0 &&
                         information.map((section) => {
                             return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} 
-                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => {console.log(data); handleClose()}} type={t('profile.action')} />}
+                                popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => handleSubmit(data, section.id)} type={t('profile.action')} />}
                             />
                         })
                     } 

@@ -52,5 +52,14 @@
     "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F105.png?alt=media&token=82f9a4cf-631a-41b9-afa0-dd2356c05766",
     "loanDate": "2024-08-11",
     "returnDate": "2024-08-21"
+  },
+  {
+    "product": 16,
+    "name": "Disipador",
+    "user": "alberto@gmail.com",
+    "quantity": 1,
+    "image": "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2F16.png?alt=media&token=8653af46-fe31-497b-8df4-f84ab394055b",
+    "loanDate": "2024-08-12",
+    "returnDate": "2024-08-22"
   }
 ]

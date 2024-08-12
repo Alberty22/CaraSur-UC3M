@@ -24,7 +24,7 @@ export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=
         <div className='form-container'>
             <form className={className} onSubmit={handleSubmit(onSubmit)}>
                 {
-                    <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} getValues={getValues} control={control} watch={watch} isLogin={isLogin}/>
+                    <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} getValues={getValues} control={control} watch={watch} isLogin={isLogin} className={className}/>
                 }
                 { optionalInputs.length > 0 &&
                 <>

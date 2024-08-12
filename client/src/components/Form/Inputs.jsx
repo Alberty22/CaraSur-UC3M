@@ -9,7 +9,7 @@ import { Checkbox } from './Checkbox';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-export function Inputs({inputs , register, errors , setValue, getValues, control, watch, isLogin=false}) {
+export function Inputs({inputs , register, errors , setValue, getValues, control, watch, isLogin=false, className='form'}) {
 
     const { t } = useTranslation();
     const { lng } = useParams()
@@ -46,6 +46,11 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
         ],
         "theme": [
             {"value": "light", "text": t('form.theme.light')},
+        ],
+        "activity-difficulty":[
+            {"value": "1", "text": "1"},
+            {"value": "2", "text": "2"},
+            {"value": "3", "text": "3"}
         ]
     }
 
@@ -67,13 +72,13 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
             }
             
             else if (inputType === 'uc3m-student' || inputType === 'gender' || inputType === 'country' || inputType === 'student' || inputType === 'sports'
-                || inputType === 'language' || inputType === 'theme') {
+                || inputType === 'language' || inputType === 'theme' || inputType === 'activity-difficulty') {
                 {
-                    return inputType === 'uc3m-student'
+                    return (inputType === 'uc3m-student' || inputType === 'language' || inputType === 'theme')
                     ?  <SelectInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} error={error[lng]} errors={errors} register={register} 
-                    options={options[inputType]} control={control} watch={watch} setValue={setValue}/>
+                    options={options[inputType]} control={control} watch={watch} setValue={setValue} className={className}/>
                     : <SelectInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} errors={errors} register={register} 
-                    options={options[inputType]} control={control} watch={watch} setValue={setValue} optional={true}/>
+                    options={options[inputType]} control={control} watch={watch} setValue={setValue} optional={true} className={className}/>
                 }
                 
             }   

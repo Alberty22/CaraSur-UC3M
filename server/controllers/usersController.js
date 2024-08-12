@@ -1,4 +1,4 @@
-const { readJsonFile, writeJsonFile } = require('../utils/databaseUtils');
+const { readJsonFile, writeJsonFile, updateJsonEntries } = require('../utils/databaseUtils');
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
 
@@ -29,7 +29,7 @@ exports.getUserDetails = async (req, res) => {
     const users = await readJsonFile(usersPath)
     const user = users.find(user => user.email === email)
     if (user) {
-      const { idPhoto, payDetails, ...filteredDetails } = user.details
+      const { idPhoto, ...filteredDetails } = user.details
       res.json({
         "accountDetails": {email: user.email, password: '*******'},
         ...filteredDetails
@@ -62,6 +62,51 @@ exports.addUser = async (req, res) => {
     await writeJsonFile(usersPath, users)
 
     res.status(201).json({ success: true, message: 'User added successfully' })
+  } 
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+
+// PUT request handler to update user information
+exports.updateUser = async (req, res) => {
+  try {
+    const { email, accountDetails, userDetails, userOptionalDetails, preferences } = req.body
+
+    if ((!accountDetails && !userDetails && !userOptionalDetails && !preferences) || !email) {
+      return res.status(404).json({ error: 'Error in params' })
+    }
+
+    const users = await readJsonFile(usersPath)
+    const user = users.find(user => user.email === email)
+
+    if (user) {
+      const filterFn = user => user.email === email
+    
+      const updateFn = (user) => {
+        if(email !== user.email) {
+          user.email = accountDetails.email
+        }
+        if(userDetails) {
+          user.details.userDetails = userDetails
+        }
+        if(userOptionalDetails) {
+          user.details.userOptionalDetails = userOptionalDetails
+        }
+        if(preferences) {
+          user.details.preferences = preferences
+        }
+        return user
+      }
+
+      await updateJsonEntries(usersPath, filterFn, updateFn)
+
+      res.status(201).json({ success: true, message: 'User updated successfully' })
+      
+    } else {
+      res.status(404).json({ error: 'User not found' })
+    }
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
