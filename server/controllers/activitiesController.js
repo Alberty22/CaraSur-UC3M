@@ -1,5 +1,6 @@
 const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = require('../utils/databaseUtils');
-const { generateActivityId } = require('../utils/identifierUtils')
+const { addDocumentWithID, deleteDocumentWithID } = require('../utils/firebaseUtils');
+const { generateActivityId } = require('../utils/identifierUtils');
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');
 const pendingActivitiesPath = path.join(__dirname, '../data/pending-activites.json');
@@ -43,6 +44,7 @@ exports.getPendingActivities = async (req, res) => {
 
 // POST request handler 
 exports.addActivity = async (req, res) => {
+  console.log(req.body)
   try {
     const {activity, drive} = req.body
 
@@ -58,8 +60,10 @@ exports.addActivity = async (req, res) => {
 
     activities.push(newActivity)
 
-    await deleteJsonEntry(pendingActivitiesPath, activity)
+    await deleteDocumentWithID('pending-activities', activity.id.toString())
+    await addDocumentWithID('activities', newActivity.id.toString(), newActivity)
 
+    await deleteJsonEntry(pendingActivitiesPath, activity)
     await writeJsonFile(activitiesPath, activities)
 
     res.status(201).json({ success: true, message: 'Activity Accepted' })
@@ -124,7 +128,7 @@ exports.addPendingActivity = async (req, res) => {
 
     activities.push(newActivity)
 
-    
+    await addDocumentWithID('pending-activities', newActivity.id.toString(), newActivity)
     await writeJsonFile(pendingActivitiesPath, activities)
 
     res.status(201).json({ success: true, message: 'Activity Added' })
@@ -146,6 +150,7 @@ exports.deleteActivity = async (req, res) => {
       return res.status(404).json({ error: 'Error in activity' })
     }
 
+    await deleteDocumentWithID('pending-activities', activity.id.toString())
     await deleteJsonEntry(pendingActivitiesPath, activity)
 
     res.status(201).json({ success: true, message: 'Activity removed' })

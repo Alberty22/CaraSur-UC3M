@@ -59,8 +59,7 @@ function AdminActivitiesPage() {
     }
 
     const handleDecline = async (index) => {
-        console.log(pendingActivities.filter(activity => activity.id === index)[0])
-        const payload = pendingActivities.filter(activity => activity.id !== index)[0]
+        const payload = pendingActivities.filter(activity => activity.id === index)[0]
             
         const res = await updateData(payload, ROUTES.PENDING_ACTIVITIES)
 

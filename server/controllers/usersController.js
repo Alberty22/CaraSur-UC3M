@@ -1,7 +1,9 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, updateUserRef } = require('../utils/databaseUtils');
+const { updloadUserFirebase, updateUserFirebase } = require('../utils/firebaseUtils');
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
 const { auth } = require('../firebaseAdmin');
+
 
 
 // GET request handler to retrieve all users
@@ -59,14 +61,19 @@ exports.addUser = async (req, res) => {
       loans:  {}
     };
 
-    users.push(newUser)
-
-    await writeJsonFile(usersPath, users)
-
     const userRecord = await auth.createUser({
       email: user.email,
       password: user.password,
     })
+
+    const status = await updloadUserFirebase("users", newUser.email, newUser)
+    if(!status) {
+      return res.status(404).json({ error: 'Error uploading data' })
+    }
+
+    users.push(newUser)
+
+    await writeJsonFile(usersPath, users)
 
     res.status(201).json({ success: true, message: 'User added successfully' })
   } 
@@ -78,7 +85,6 @@ exports.addUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { email, token} = req.body
   try {
-    // Verificar el token ID
     const decodedToken = await auth.verifyIdToken(token)
     const uid = decodedToken.uid
 
@@ -143,6 +149,8 @@ exports.updateUser = async (req, res) => {
         }
         return user
       }
+
+      await updateUserFirebase("users", email, req.body)
 
       await updateJsonEntries(usersPath, filterFn, updateFn)
 

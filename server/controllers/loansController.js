@@ -1,4 +1,5 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
+const { addDocument, deleteDocument } = require('../utils/firebaseUtils');
 const { generateLoanId } = require('../utils/identifierUtils');
 const { getActualDate } = require('../utils/datesUtils');
 const { updateEquipmentQuantity } = require('../utils/equipmentUtils')
@@ -63,6 +64,8 @@ exports.postPendingLoans = async (req, res) => {
       loans.push(newLoan)
 
       equipment = updateEquipmentQuantity(equipment, loan.id, loan.quantity, 'subtract')
+
+      await addDocument('pending-loans', newLoan)
       if(!equipment) {
         return
       }
@@ -93,6 +96,7 @@ exports.deletePendingLoans = async (req, res) => {
       return res.status(404).json({ error: 'Error in loan' })
     }
 
+    await deleteDocument('pending-loans', loan)
     await deleteJsonEntry(pendingLoansPath, loan)
 
     const equipment = await readJsonFile(equipmentPath)
@@ -135,12 +139,14 @@ exports.postProccesedLoans = async (req, res) => {
 
     loans.push(loan)
 
+    await addDocument('proccesed-loans', loan)
     await writeJsonFile(proccessedLoansPath, loans)
 
     // Delete loan from pending loans
     const modifiedLoan = { ...loan }
     modifiedLoan.returnDate = "pending"
 
+    await deleteDocument('pending-loans', modifiedLoan)
     await deleteJsonEntry(pendingLoansPath, modifiedLoan)
 
     //Update user loans
@@ -176,6 +182,7 @@ exports.deleteProccesedLoans = async (req, res) => {
       return res.status(404).json({ error: 'Error in loan' })
     }
 
+    await deleteDocument('proccesed-loans', loan)
     await deleteJsonEntry(proccessedLoansPath, loan)
     
 
@@ -188,6 +195,7 @@ exports.deleteProccesedLoans = async (req, res) => {
       return user
     }
 
+    //TODO actualizar tienda
     await updateJsonEntries(usersPath, filterFn, updateFn)
 
     const equipment = await readJsonFile(equipmentPath)
