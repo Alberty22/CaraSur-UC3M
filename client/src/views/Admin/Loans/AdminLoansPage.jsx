@@ -22,7 +22,7 @@ const addDays = (dateString, days) => {
 };
 
 
-export function AdminLoansPage() {
+function AdminLoansPage() {
 
     const { t } = useTranslation();
 
@@ -167,3 +167,5 @@ export function AdminLoansPage() {
         </main>
     )
 }
+
+export default AdminLoansPage;

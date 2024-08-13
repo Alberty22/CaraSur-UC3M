@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { usePopup } from '../../../hooks/usePopups';
 
 
-export function AdminEquipmentPage() {
+function AdminEquipmentPage() {
 
     const { t } = useTranslation();
 
@@ -32,3 +32,5 @@ export function AdminEquipmentPage() {
         </>
     )
 }
+
+export default AdminEquipmentPage;

@@ -9,7 +9,7 @@ router.get('/', usersController.getUsers);
 router.post('/signup', usersController.addUser);
 
 // POST request to check user
-router.post('/login', () => {});
+router.post('/login', usersController.loginUser);
 
 // GET request for user information
 router.get('/information/:email', usersController.getUserDetails);

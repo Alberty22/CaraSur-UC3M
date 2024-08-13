@@ -1,13 +1,16 @@
-import './AdminPage.css'
-import { Breadcrumbs } from '../../components/others/Breadcrumbs'
-import { Link } from 'react-router-dom'
-import admin_icon from '../../assets/images/icons/Setting.webp'
-import users_icon from '../../assets/images/icons/User_white.webp'
-import material_icon from '../../assets/images/icons/Materials.webp'
-import loans_icon from '../../assets/images/icons/Loans.webp'
-import activities_icon from '../../assets/images/icons/Activities.webp'
-import notifications_icon from '../../assets/images/icons/Notifications.webp'
-import { useTranslation } from 'react-i18next'
+import './AdminPage.css';
+
+import { Breadcrumbs } from '../../components/others/Breadcrumbs';
+import { Link } from 'react-router-dom';
+
+import { useTranslation } from 'react-i18next';
+
+import admin_icon from '../../assets/images/icons/Setting.webp';
+import users_icon from '../../assets/images/icons/User_white.webp';
+import material_icon from '../../assets/images/icons/Materials.webp';
+import loans_icon from '../../assets/images/icons/Loans.webp';
+import activities_icon from '../../assets/images/icons/Activities.webp';
+import notifications_icon from '../../assets/images/icons/Notifications.webp';
 
 const AdminCapability = ({ title, logo , route}) => {
     return(
@@ -20,7 +23,7 @@ const AdminCapability = ({ title, logo , route}) => {
     )
 }
 
-export function AdminPage() {
+function AdminPage() {
 
     const { t } = useTranslation();
 
@@ -75,3 +78,5 @@ export function AdminPage() {
         </main>
     )
 }
+
+export default AdminPage;

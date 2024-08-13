@@ -15,7 +15,7 @@ import { sendData } from '../../utils/communications';
 
 import inputs_activity from '../../assets/others/inputs-activity.json';
 
-export function NewActivity(){
+function NewActivity(){
 
     const { t } = useTranslation()
     const { popupContent, handleOpen } = usePopup()
@@ -59,3 +59,5 @@ export function NewActivity(){
         </>
     )
 }
+
+export default NewActivity;

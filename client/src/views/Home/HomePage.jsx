@@ -16,7 +16,7 @@ import { useAuth } from '../../hooks/useAuth.js';
 
 
 
-export function HomePage() {
+function HomePage() {
     
     const { isAuthenticated } = useAuth()
 
@@ -56,3 +56,5 @@ export function HomePage() {
         </main>
       );
 }
+
+export default HomePage;

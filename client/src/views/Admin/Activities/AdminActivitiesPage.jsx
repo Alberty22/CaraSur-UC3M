@@ -16,7 +16,7 @@ import { sendData, updateData } from '../../../utils/communications';
 import admin_activities from '../../../assets/others/admin-activities.json';
 
 
-export function AdminActivitiesPage() {
+function AdminActivitiesPage() {
 
     const { t } = useTranslation();
 
@@ -92,3 +92,5 @@ export function AdminActivitiesPage() {
         
     )
 }
+
+export default AdminActivitiesPage;

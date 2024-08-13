@@ -88,7 +88,7 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
             }
             
             else {
-                return <TextInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} error={error[lng]} errors={errors} register={register} />
+                return <TextInput key={inputKey} inputKey={inputKey} inputType={inputType} placeholder={placeholder[lng]} error={error[lng]} errors={errors} register={register} isLogin={isLogin}/>
             }
                         
         })

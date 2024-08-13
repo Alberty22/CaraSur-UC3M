@@ -108,7 +108,9 @@
       "google": "Iniciar sesión con Google",
       "separator": "o",
       "action": "Iniciar sesión",
-      "forgot": "¿Has olvidado tu contraseña?"
+      "forgot": "¿Has olvidado tu contraseña?",
+      "failed1": "El correo o la contraseña son incorrectos",
+      "failed2": "Se ha producido un error"
     },
 
     "signup": {
@@ -178,7 +180,7 @@
       "name": "Nombre",
       "surname": "Apellidos",
       "id": "DNI/NIE",
-      "phone": "Teléfono",
+      "telephone": "Teléfono",
       "postal": "Dirección postal",
       "UC3MStudent": "Estudiante UC3M",
       "gender": "Sexo",
@@ -356,6 +358,7 @@
         "special":"La clave debe contener al menos un número y un caracter especial",
         "repeat": "Las claves deben coincidir"
       },
+      "email": "Este correo ya esta en uso",
       "id":"No cumple con el formato DNI/NIE",
       "postal":"No cumple con el formato de código postal",
       "telephone":"No cumple con el formato de télefono",

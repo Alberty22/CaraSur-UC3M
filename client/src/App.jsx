@@ -6,22 +6,22 @@ import { Footer } from './components/Footer/Footer.jsx';
 import { Header } from './components/Header/Header.jsx';
 import { ScrollToTop } from './components/others/ScrollToTop.jsx';
 
-import { HomePage } from './views/Home/HomePage.jsx';
-import { LoginPage } from './views/Login/LoginPage.jsx';
-import { SingupPage } from './views/Singup/SingupPage.jsx';
-import { ProfilePage } from './views/Profile/ProfilePage.jsx';
-import { LoansPage } from './views/Loans/LoansPage.jsx';
-import { EquipmentPage } from './views/Equipment/EquipmentPage.jsx';
-import { ActivitiesPage } from './views/Activities/ActivitiesPage.jsx';
-import { ActivityPage } from './views/Activities/ActivityPage.jsx';
-import { NewActivity } from './views/Activities/NewActivity.jsx';
-import { AdminPage } from './views/Admin/AdminPage.jsx';
-import { AdminSettingsPage } from './views/Admin/Settings/AdminSettingsPage.jsx';
-import { AdminUsersPage } from './views/Admin/Users/AdminUsersPage.jsx';
-import { AdminEquipmentPage } from './views/Admin/Equipment/AdminEquipmentPage.jsx';
-import { AdminLoansPage } from './views/Admin/Loans/AdminLoansPage.jsx';
-import { AdminActivitiesPage } from './views/Admin/Activities/AdminActivitiesPage.jsx';
-import { AdminNotificationsPage } from './views/Admin/Notifications/AdminNotificationsPage.jsx';
+import HomePage from './views/Home/HomePage.jsx';
+import LoginPage from './views/Login/LoginPage.jsx';
+import SignupPage from './views/Signup/SignupPage.jsx';
+import ProfilePage from './views/Profile/ProfilePage.jsx';
+import LoansPage from './views/Loans/LoansPage.jsx';
+import EquipmentPage from './views/Equipment/EquipmentPage.jsx';
+import ActivitiesPage from './views/Activities/ActivitiesPage.jsx';
+import ActivityPage from './views/Activities/ActivityPage.jsx';
+import NewActivity from './views/Activities/NewActivity.jsx';
+import AdminPage from './views/Admin/AdminPage.jsx';
+import AdminSettingsPage from './views/Admin/Settings/AdminSettingsPage.jsx';
+import AdminUsersPage from './views/Admin/Users/AdminUsersPage.jsx';
+import AdminEquipmentPage from './views/Admin/Equipment/AdminEquipmentPage.jsx';
+import AdminLoansPage from './views/Admin/Loans/AdminLoansPage.jsx';
+import AdminActivitiesPage from './views/Admin/Activities/AdminActivitiesPage.jsx';
+import AdminNotificationsPage from './views/Admin/Notifications/AdminNotificationsPage.jsx';
 
 import { NotificationsProvider } from './context/notifications.jsx';
 import { EquipmentFiltersProvider } from './context/equipmentFilters.jsx';
@@ -47,8 +47,8 @@ function App() {
       <Routes>
         <Route path='/:lng' element={<HomePage />} />
         <Route path='/:lng/login' element={<LoginPage />} />
-        <Route path='/:lng/singup' element={<SingupPage />} />
-        <Route path='/:lng/singup/next-step' element={<SingupPage />} />
+        <Route path='/:lng/singup' element={<SignupPage />} />
+        <Route path='/:lng/singup/next-step' element={<SignupPage />} />
         <Route path='/:lng/activities' element={<ProtectedRoute><ActivityFiltersProvider>
                                             <ActivitiesPage />
                                           </ActivityFiltersProvider></ProtectedRoute>} />

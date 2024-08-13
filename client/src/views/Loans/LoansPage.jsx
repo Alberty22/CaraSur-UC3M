@@ -8,7 +8,7 @@ import { useFetch } from '../../hooks/useFetch'
 import { ROUTES } from '../../config/apiRoutes'
 import { getCookie } from '../../utils/cookies'
 
-export function LoansPage() {
+function LoansPage() {
     const { data } = useFetch({ url:`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`})
     const loans = data ? Object.values(data) : []
     return (
@@ -27,3 +27,5 @@ export function LoansPage() {
         </main>
     )
 }
+
+export default LoansPage;

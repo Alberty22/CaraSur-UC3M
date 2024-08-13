@@ -15,7 +15,7 @@ import { ROUTES } from '../../../config/apiRoutes'
 import { sendData } from '../../../utils/communications'
 
 
-export function AdminNotificationsPage() {
+function AdminNotificationsPage() {
     const [query, setQuery] = useState('')
     const [results, setResults] = useState([])
     const [selectedUsers, setSelectedUsers] = useState([])
@@ -156,3 +156,5 @@ export function AdminNotificationsPage() {
         
     )
 }
+
+export default AdminNotificationsPage;

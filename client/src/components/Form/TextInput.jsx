@@ -1,8 +1,22 @@
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 
-export function TextInput({inputKey, inputType, placeholder, error, errors, register}) {
+import { ROUTES } from "../../config/apiRoutes";
+import { useFetch } from "../../hooks/useFetch";
+
+export function TextInput({inputKey, inputType, placeholder, error, errors, register, isLogin}) {
 
     const { t } = useTranslation()
+
+    const { data } = useFetch({url: ROUTES.USERS})
+    const users = data ? data : []
+
+    const validateEmail = async (email) => {
+        if (users.some(user => user.email === email)) {
+          return t('formErrors.email');
+        }
+        return true;
+      }
+
 
     return (
         <>
@@ -25,6 +39,9 @@ export function TextInput({inputKey, inputType, placeholder, error, errors, regi
                 ...inputKey === 'billing-account' && {
                     pattern: { value: /^ES\d{22}$/, 
                         message: t('formErrors.billing')},
+                },
+                ...(!isLogin &&  inputKey === 'email') && {
+                    validate: async (value) => await validateEmail(value)
                 }
                 
                 })}/>

@@ -107,7 +107,9 @@
       "google": "Log in with Google",
       "separator": "or",
       "action": "Log In",
-      "forgot": "Forgot password?"
+      "forgot": "Forgot password?",
+      "failed1": "The email or password is incorrect",
+      "failed2": "An error occurred"
     },
 
     "signup": {
@@ -176,7 +178,7 @@
       "name": "Name",
       "surname": "Surname",
       "id": "DNI/NIE",
-      "phone": "Phone",
+      "telephone": "Phone",
       "postal": "Postal Address",
       "UC3MStudent": "UC3M Student",
       "gender": "Gender",
@@ -352,6 +354,7 @@
         "special": "Password must include at least one number and one special character",
         "repeat": "Passwords must be identical"
       },
+      "email": "This email is already in use",
       "id": "Invalid DNI/NIE format",
       "postal": "Invalid postal code format",
       "telephone": "Invalid phone number format",

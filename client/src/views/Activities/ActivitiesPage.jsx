@@ -11,7 +11,7 @@ import { useFetch } from '../../hooks/useFetch'
 
 import { ROUTES } from '../../config/apiRoutes.js'
 
-export function ActivitiesPage() {
+function ActivitiesPage() {
 
     const { data } = useFetch({ url: ROUTES.ACTIVITIES })
     const activities = data ? data : []
@@ -46,3 +46,5 @@ export function ActivitiesPage() {
 
     )
 }
+
+export default ActivitiesPage;

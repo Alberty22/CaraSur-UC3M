@@ -22,7 +22,7 @@ import user_img from '../../assets/images/icons/User_primary.webp';
 import inputs_profile from '../../assets/others/inputs-profile.json';
 
 
-export function ProfilePage () {
+function ProfilePage () {
 
     const { data, refetch } = useFetch({ url: `${ROUTES.PROFILE}/${encodeURIComponent(getCookie('email'))}`})
     const userData = data ? data : []
@@ -127,3 +127,5 @@ export function ProfilePage () {
         </>
     )
 }
+
+export default ProfilePage;

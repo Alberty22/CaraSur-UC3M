@@ -1,6 +1,8 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, updateUserRef } = require('../utils/databaseUtils');
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
+const { auth } = require('../firebaseAdmin');
+
 
 // GET request handler to retrieve all users
 exports.getUsers = async (req, res) => {
@@ -61,10 +63,41 @@ exports.addUser = async (req, res) => {
 
     await writeJsonFile(usersPath, users)
 
+    const userRecord = await auth.createUser({
+      email: user.email,
+      password: user.password,
+    })
+
     res.status(201).json({ success: true, message: 'User added successfully' })
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+exports.loginUser = async (req, res) => {
+  const { email, token} = req.body
+  try {
+    // Verificar el token ID
+    const decodedToken = await auth.verifyIdToken(token)
+    const uid = decodedToken.uid
+
+    const users = await readJsonFile(usersPath)
+    const user = users.find(user => user.email === email)
+
+    if (user) {
+      const { role, details } = user
+      return res.json({ success: true, message: { role: role, name:details.userDetails.name }})
+    } 
+    else {
+      return res.status(404).json({ error: 'User not found' })
+    }
+
+    
+  } 
+  catch (error) {
+    console.error("Error verifying token:", error);
+    res.status(401).json({ error: 'Invalid token' });
   }
 }
 

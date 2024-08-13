@@ -1,17 +1,27 @@
-import './LoginPage.css'
-import google_logo from '../../assets/images/logos/google.webp'
-import mountain_path from '../../assets/images/visuals/mountain-path.png'
-import useMobileQuery from '../../hooks/useMobileQuery.js';
+import './LoginPage.css';
+
 import { FormSection } from '../../components/Sections/FormSection.jsx';
 import { Form } from '../../components/Form/Form.jsx';
-import inputsLogin from '../../assets/others/inputs-login.json'
+import Popup from '../../components/others/Popup.jsx';
+import { FailedSection } from '../../components/others/FailedSection.jsx';
 
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth.js';
-
 import { useTranslation } from 'react-i18next';
+import useMobileQuery from '../../hooks/useMobileQuery.js';
+import { usePopup } from '../../hooks/usePopups.js';
 
-export function LoginPage() {
+import { ROUTES } from '../../config/apiRoutes.js';
+import { sendData } from '../../utils/communications.js';
+
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase/firebaseConfig.js';
+
+import inputsLogin from '../../assets/others/inputs-login.json';
+import google_logo from '../../assets/images/logos/google.webp';
+import mountain_path from '../../assets/images/visuals/mountain-path.png';
+
+function LoginPage() {
 
     const { isAuthenticated, login } = useAuth()
     const navigate = useNavigate()
@@ -20,12 +30,35 @@ export function LoginPage() {
     const { t } = useTranslation()
     const { lng } = useParams()
 
+    const { popupContent, handleOpen } = usePopup();
+
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
-    const onSubmit = data => {
-        login(data)
-        navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
-    };
+    const onSubmit = async (data) => {
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password)
+            const user = userCredential.user
+      
+            const idToken = await user.getIdToken()
+
+            const payload = {email: user.email, token: idToken}
+            const res = await sendData(payload, ROUTES.LOGIN)
+            if(res.code) {
+                login({name: res.result.name, email:data.email, role:res.result.role, rememberMe:data.rememberMe})
+                navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
+            }
+            else {
+                handleOpen(<FailedSection message={t('login.failed2')} />)
+            }
+
+            
+        }
+        catch {
+            handleOpen(<FailedSection message={t('login.failed1')} />)
+        }
+    
+    }
 
     
 
@@ -54,7 +87,14 @@ export function LoginPage() {
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='right'/>
             </FormSection>  
         </main>
+        { popupContent &&
+            <Popup className='popup-product'>
+                {popupContent}
+            </Popup>
+        }
         </>
         
     )
 }   
+
+export default LoginPage;

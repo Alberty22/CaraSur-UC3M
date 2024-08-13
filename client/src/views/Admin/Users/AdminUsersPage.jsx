@@ -12,7 +12,7 @@ import { requestData } from '../../../utils/communications';
 
 import user_img from '../../../assets/images/icons/User_primary.webp';
 
-export function AdminUsersPage() {
+function AdminUsersPage() {
 
     const [query, setQuery] = useState('')
     const [results, setResults] = useState({})
@@ -71,3 +71,5 @@ export function AdminUsersPage() {
         </main>
     )
 }
+
+export default AdminUsersPage;

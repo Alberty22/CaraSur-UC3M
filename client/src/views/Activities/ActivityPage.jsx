@@ -32,7 +32,7 @@ const formattedDate = (date, monthsList) => {
       return `${day} ${months[month]} ${year}`;
 }
 
-export function ActivityPage() {
+function ActivityPage() {
     const location = useLocation();
     const { activityId } = useParams()
     
@@ -115,3 +115,5 @@ export function ActivityPage() {
             
     )
 }
+
+export default ActivityPage;

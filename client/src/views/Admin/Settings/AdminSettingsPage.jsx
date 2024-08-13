@@ -19,7 +19,7 @@ import { updateData } from '../../../utils/communications';
 
 import admin_settings from '../../../assets/others/admin-settings.json';
 
-export function AdminSettingsPage() {
+function AdminSettingsPage() {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
@@ -118,3 +118,5 @@ export function AdminSettingsPage() {
         </>
     )
 }
+
+export default AdminSettingsPage;

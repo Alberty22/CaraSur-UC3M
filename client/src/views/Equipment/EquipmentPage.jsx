@@ -18,7 +18,7 @@ import swipe_icon from '../../assets/images/icons/Expand_left.webp'
 import filters_icon from '../../assets/images/icons/Filter.webp'
 import cart_icon from '../../assets/images/icons/Cart.webp'
 
-export function EquipmentPage() {
+function EquipmentPage() {
 
     const { data, refetch } = useFetch({ url:ROUTES.EQUIPMENT })
     const inventory = data ? data : []
@@ -94,3 +94,5 @@ export function EquipmentPage() {
         
     )
 }
+
+export default EquipmentPage;

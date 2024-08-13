@@ -1,4 +1,4 @@
-import './SingupPage.css'
+import './SignupPage.css'
 
 import { FormSection } from '../../components/Sections/FormSection.jsx';
 import { Form } from '../../components/Form/Form.jsx';
@@ -24,7 +24,7 @@ import { getActualDate } from '../../utils/date.js';
 import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 
-export function SingupPage() {
+function SignupPage() {
 
     const isMobile = useMobileQuery('(max-width: 1024px)')
 
@@ -142,4 +142,6 @@ export function SingupPage() {
         </>
         
     )
-}   
+} 
+
+export default SignupPage;
