@@ -116,7 +116,7 @@ exports.addPendingActivity = async (req, res) => {
     }
 
     const activities = await readJsonFile(pendingActivitiesPath)
-
+    
     const newActivity= {
       "id": parseInt(generateActivityId(activities)),
       ...activity
@@ -124,9 +124,31 @@ exports.addPendingActivity = async (req, res) => {
 
     activities.push(newActivity)
 
+    
     await writeJsonFile(pendingActivitiesPath, activities)
 
     res.status(201).json({ success: true, message: 'Activity Added' })
+
+  } 
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+
+// DELETE request handler to remove proccesed loans
+exports.deleteActivity = async (req, res) => {
+  try {
+    
+    const activity = req.body
+
+    if (!activity) {
+      return res.status(404).json({ error: 'Error in activity' })
+    }
+
+    await deleteJsonEntry(pendingActivitiesPath, activity)
+
+    res.status(201).json({ success: true, message: 'Activity removed' })
 
   } 
   catch (error) {

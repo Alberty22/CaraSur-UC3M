@@ -20,4 +20,7 @@ router.get('/pending', activitiesController.getPendingActivities)
 // POST request to suggest an activity
 router.post('/pending', activitiesController.addPendingActivity)
 
+// PUT request decline an acitvity
+router.put('/pending', activitiesController.deleteActivity)
+
 module.exports = router;

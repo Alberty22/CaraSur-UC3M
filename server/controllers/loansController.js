@@ -1,8 +1,10 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
 const { generateLoanId } = require('../utils/identifierUtils');
-const { getActualDate } = require('../utils/datesUtils.js');
+const { getActualDate } = require('../utils/datesUtils');
+const { updateEquipmentQuantity } = require('../utils/equipmentUtils')
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
+const equipmentPath = path.join(__dirname, '../data/equipment.json');
 const pendingLoansPath = path.join(__dirname, '../data/pending-loans.json');
 const proccessedLoansPath = path.join(__dirname, '../data/proccesed-loans.json');
 
@@ -46,8 +48,9 @@ exports.postPendingLoans = async (req, res) => {
     }
 
     const loans = await readJsonFile(pendingLoansPath)
+    let equipment = await readJsonFile(equipmentPath)
 
-    loansReq.forEach((loan) => {
+    loansReq.forEach(async (loan) => {
       const newLoan = {
         "product": loan.id,
         "name": loan.object,
@@ -58,9 +61,19 @@ exports.postPendingLoans = async (req, res) => {
         "returnDate": "pending"
       }
       loans.push(newLoan)
-    })
 
+      equipment = updateEquipmentQuantity(equipment, loan.id, loan.quantity, 'subtract')
+      if(!equipment) {
+        return
+      }
+    })
+    
+    if(!equipment) {
+      return res.status(404).json({ error: 'Error in loan' })
+    }
+    
     await writeJsonFile(pendingLoansPath, loans)
+    await writeJsonFile(equipmentPath, equipment)
 
     res.status(201).json({ success: true, message: 'Loan send' })
 
@@ -81,6 +94,10 @@ exports.deletePendingLoans = async (req, res) => {
     }
 
     await deleteJsonEntry(pendingLoansPath, loan)
+
+    const equipment = await readJsonFile(equipmentPath)
+    const newEquipment = updateEquipmentQuantity(equipment, loan.product, loan.quantity, 'add')
+    await writeJsonFile(equipmentPath, newEquipment)
 
     res.status(201).json({ success: true, message: 'Loan removed' })
 
@@ -144,6 +161,42 @@ exports.postProccesedLoans = async (req, res) => {
 
     return res.status(201).json({ success: true, message: 'Loan proccesed' })
   }
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
+
+// DELETE request handler to remove proccesed loans
+exports.deleteProccesedLoans = async (req, res) => {
+  try {
+    
+    const loan = req.body
+
+    if (!loan) {
+      return res.status(404).json({ error: 'Error in loan' })
+    }
+
+    await deleteJsonEntry(proccessedLoansPath, loan)
+    
+
+    const filterFn = user => user.email === loan.user
+    
+    const updateFn = (user) => {
+
+      user.loans = Object.fromEntries(Object.entries(user.loans).filter(([key, value]) => (value.product !== loan.product) || (value.returnDate !== loan.returnDate)))
+      
+      return user
+    }
+
+    await updateJsonEntries(usersPath, filterFn, updateFn)
+
+    const equipment = await readJsonFile(equipmentPath)
+    const newEquipment = updateEquipmentQuantity(equipment, loan.product, loan.quantity, 'add')
+    await writeJsonFile(equipmentPath, newEquipment)
+
+    res.status(201).json({ success: true, message: 'Loan removed' })
+
+  } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
   }

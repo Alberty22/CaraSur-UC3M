@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Controller } from "react-hook-form";
 
 import countryList from 'react-select-country-list'
 
-export function SelectInput({inputKey, inputType, placeholder, error, errors, options, optional, control, setValue, className='form'}) {
+export function SelectInput({inputKey, inputType, placeholder, error, errors, options, optional, control, setValue, watch, className='form'}) {
 
     const [selectedValue, setSelectedValue] = useState("");
+
+    const watchedValue = watch(inputKey)
+
+    useEffect(() => {
+        setSelectedValue(watchedValue || "")
+    }, [watchedValue]);
 
     return (
         <>

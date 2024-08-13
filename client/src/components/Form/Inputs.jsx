@@ -84,7 +84,7 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
             }   
 
             else if (inputType === 'image') {
-                return <ImageInput key={inputKey} inputKey={inputKey} placeholder={placeholder[lng]} control={control} setValue={setValue} error={error[lng]} errors={errors}/>
+                return <ImageInput key={inputKey} inputKey={inputKey} placeholder={placeholder[lng]} control={control} setValue={setValue} error={error[lng]} watch={watch} errors={errors}/>
             }
             
             else {

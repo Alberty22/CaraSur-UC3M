@@ -11,7 +11,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import { usePopup } from '../../../hooks/usePopups';
 
 import { ROUTES } from '../../../config/apiRoutes';
-import { sendData } from '../../../utils/communications';
+import { sendData, updateData } from '../../../utils/communications';
 
 import admin_activities from '../../../assets/others/admin-activities.json';
 
@@ -35,10 +35,10 @@ export function AdminActivitiesPage() {
 
     const handleSubmit = async (data, index) => {
         const payload = {
-            activity : pendingActivities.filter(activity => activity.id !== index)[0],
+            activity : pendingActivities.filter(activity => activity.id === index)[0],
             drive: data['drive-url']
         }
-        console.log(payload)
+        
         const res = await sendData(payload, ROUTES.ACTIVITIES)
 
         if(res.code) {
@@ -54,8 +54,23 @@ export function AdminActivitiesPage() {
         
     }
 
-    const handleClick = (index) => {
+    const handleAprove = (index) => {
         handleOpen(<Form inputs={admin_activities} onSubmit={(data) => {handleSubmit(data, index)}} type={t('adminActivities.aprove')} />)
+    }
+
+    const handleDecline = async (index) => {
+        console.log(pendingActivities.filter(activity => activity.id === index)[0])
+        const payload = pendingActivities.filter(activity => activity.id !== index)[0]
+            
+        const res = await updateData(payload, ROUTES.PENDING_ACTIVITIES)
+
+        if(res.code) {
+            setPendingActivities((prev) => {
+                const updated = [...prev]
+                return updated.filter(activity => activity.id !== index)
+            })
+        }
+        
     }
 
     return (
@@ -63,7 +78,7 @@ export function AdminActivitiesPage() {
         <main className='admin-activities-page'>
             <Breadcrumbs />
             <section>
-                <Activities activities={pendingActivities} admin={true} handleClick={handleClick}/>
+                <Activities activities={pendingActivities} admin={true} handleAprove={handleAprove} handleDecline={handleDecline}/>
             </section>
 
               

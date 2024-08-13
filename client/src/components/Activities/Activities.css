@@ -53,6 +53,9 @@
     border-radius: 15px;
     padding: 20px 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
@@ -88,6 +91,10 @@
         
     }
 
+    .activities li {
+        overflow-x: auto;
+    }
+
     .activities .date .month {
         font-size: 0.7rem;
     }
@@ -110,12 +117,13 @@
 
     .activities button + button {
         padding: 15px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         margin-left: 10px;
     }
     
     .activities button a{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
+        max-height: 40px;
     }
 
     
@@ -160,5 +168,6 @@
     
     .activities button a{
         font-size: 1rem;
+        max-height: 48px;
     }
 }

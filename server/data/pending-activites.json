@@ -1,11 +1,11 @@
 [
   {
-    "id": 1,
+    "id": 2,
     "title": "Prueba",
     "description": "Esto es una descripción",
     "date": "2024-08-13",
-    "time": "21:54",
-    "difficulty": "2",
+    "time": "03:22",
+    "difficulty": "1",
     "chat": "http://localhost:5000/es/activities/new",
     "drive": ""
   }

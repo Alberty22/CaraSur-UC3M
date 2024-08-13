@@ -39,7 +39,7 @@ function CartItem ({ photo, object, quantity, addToCart, removeOneFromCart }) {
 
 
 
-export function Cart() {
+export function Cart({ refetch }) {
 
     const { cart, clearCart, addToCart, removeOneFromCart } = useCart()
 
@@ -53,7 +53,9 @@ export function Cart() {
             const res = await sendData({loansReq:cart, email:getCookie('email')}, ROUTES.PENDING_LOANS)
             console.log(res)
             if(res.code) {
+                refetch()
                 handleOpen(<OkSection message={t('equipment.ok')} />)
+                
                 clearCart()
             }
             else{

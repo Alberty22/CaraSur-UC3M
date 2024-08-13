@@ -13,7 +13,8 @@ export const ROUTES = {
   EQUIPMENT:`${API_BASE_URL}/equipment`, //get de equipment post de equipment put para el carrito
   PENDING_LOANS:`${API_BASE_URL}/loans/pending`, //get loans delete
   PROCCESED_LOANS:`${API_BASE_URL}/loans/proccesed`, //get loans general post
-  USER_LOANS:`${API_BASE_URL}/loans` //get loans usuario
+  USER_LOANS:`${API_BASE_URL}/loans`, //get loans usuario
+  ADMIN : `${API_BASE_URL}/admin`
   
 }
 

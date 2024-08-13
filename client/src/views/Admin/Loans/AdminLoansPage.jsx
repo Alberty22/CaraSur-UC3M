@@ -79,6 +79,20 @@ export function AdminLoansPage() {
         
     }
 
+    const handleConfirm = async (index) => {
+        const loan = processedLoans[index]
+
+        const res = await updateData(loan, ROUTES.PROCCESED_LOANS)
+
+        if(res.code) {
+            setProcessedLoans((prev) => {
+                const updated = [...prev]
+                updated.splice(index, 1)
+                return updated
+            })
+        }
+    }
+
     return (
         <main className='admin-loans-page'>
             <Breadcrumbs />
@@ -138,6 +152,7 @@ export function AdminLoansPage() {
                                 <td>{loan.user}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{loan.returnDate}</td>
+                                <td className='button'><button onClick={() => handleConfirm(index)}>{t('adminLoans.accept')}</button></td>
                             </tr>
                         )
                     })

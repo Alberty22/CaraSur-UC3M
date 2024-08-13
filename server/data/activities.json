@@ -108,18 +108,5 @@
     "difficulty": "2",
     "chat": "",
     "drive": ""
-  },
-  {
-    "id": 12,
-    "title": "Prueba",
-    "description": "Esto es una descripción",
-    "date": "2024-08-14",
-    "time": "19:03",
-    "difficulty": "2",
-    "chat": "http://localhost:5000/es/activities/new",
-    "drive": "http://localhost:5000/es/admin/activities",
-    "users": [
-      "daf@adsf.com"
-    ]
   }
 ]

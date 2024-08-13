@@ -2,6 +2,7 @@ import './AddProduct.css'
 
 import { OkSection } from '../others/OkSection';
 import { FailedSection } from '../others/FailedSection';
+import { ImageInput } from '../Form/ImageInput';
 
 import { usePopup } from '../../hooks/usePopups';
 import { useForm } from 'react-hook-form';
@@ -9,15 +10,17 @@ import { useTranslation } from 'react-i18next';
 
 import { ROUTES } from '../../config/apiRoutes';
 import { sendData } from '../../utils/communications';
+import { toBase64, changeFileName } from '../../utils/photo';
 
 export function AddProduct() {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'onChange' })
+  const { register, handleSubmit, reset, formState: { errors }, setValue, control, watch } = useForm({ mode: 'onChange' })
 
   const { t } = useTranslation()
 
   const { handleOpen } = usePopup();
             
   const onSubmit = async data => {
+    console.log(data)
     const product = {
       "description": data.productDescription || null,
       "size": data.productSize || null,
@@ -29,10 +32,16 @@ export function AddProduct() {
                 : data.productWidth ? `${data.productWidth}cm` : null,
       "model": data.productBrand || null,
       "condition": data.productCondition || null,
-      "photo": data.productImage.size === 0 ? data.productImage : "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=da8c5606-1779-4085-bcef-d627172d5b9c",
+      "photo": data.productImage.size !== 0 
+              ? {
+                "base64": await toBase64(data.productImage),
+                "name": data.productImage.name,
+                "type": data.productImage.type,
+                "size": data.productImage.size
+              } 
+              : "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=da8c5606-1779-4085-bcef-d627172d5b9c",
       "available": data.available || null
     }
-    console.log(product)
     const res = await sendData(product, ROUTES.EQUIPMENT)
 
     if(res.code) {
@@ -157,11 +166,7 @@ export function AddProduct() {
         </div>
         
         <div>
-            <label>{t('adminEquipment.addProduct.photo')}:</label>
-            <input 
-              type="file" 
-              {...register('productImage')}  
-            />
+            <ImageInput inputKey="productImage" placeholder={t('adminEquipment.addProduct.photo')} control={control} setValue={setValue} watch={watch} errors={errors}/>
         </div>
         <div>
           <button type="submit">{t('adminEquipment.addProduct.add')}</button>

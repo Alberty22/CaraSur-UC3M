@@ -4,7 +4,8 @@ const activitiesRoutes = require('./routes/activitiesRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const equipmentRoutes = require('./routes/equipmentRoutes');
 const loansRoutes = require('./routes/loansRoutes');
-const notificationsRoutes = require('./routes/notificationsRoutes')
+const notificationsRoutes = require('./routes/notificationsRoutes');
+const adminRoutes = require('./routes/adminRoutes')
 
 const errorHandler = require('./middleware/errorHandler');
 
@@ -21,6 +22,7 @@ app.use('/server/users', usersRoutes);
 app.use('/server/equipment', equipmentRoutes);
 app.use('/server/loans', loansRoutes);
 app.use('/server/notifications', notificationsRoutes);
+app.use('/server/admin', adminRoutes);
 
 
 

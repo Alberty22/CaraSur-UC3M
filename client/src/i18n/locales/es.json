@@ -178,7 +178,7 @@
       "name": "Nombre",
       "surname": "Apellidos",
       "id": "DNI/NIE",
-      "telephone": "Teléfono",
+      "phone": "Teléfono",
       "postal": "Dirección postal",
       "UC3MStudent": "Estudiante UC3M",
       "gender": "Sexo",
@@ -334,7 +334,8 @@
 
     "adminActivities": {
       "aprove": "Aprobar",
-      "seeMore": "Ir"
+      "seeMore": "Ir",
+      "decline": "Rechazar"
     },
 
     "adminNotifications": {

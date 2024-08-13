@@ -1,20 +1,23 @@
-import './AdminSettingsPage.css'
+import './AdminSettingsPage.css';
 
-import { Breadcrumbs } from '../../../components/others/Breadcrumbs'
-import { UserInformation } from '../../../components/others/UserInformation'
-import { Form } from '../../../components/Form/Form'
-import { ResultList } from '../../../components/others/ResultList'
-import Popup from '../../../components/others/Popup'
+import { Breadcrumbs } from '../../../components/others/Breadcrumbs';
+import { UserInformation } from '../../../components/others/UserInformation';
+import { Form } from '../../../components/Form/Form';
+import { ResultList } from '../../../components/others/ResultList';
+import Popup from '../../../components/others/Popup';
+import { OkSection } from '../../../components/others/OkSection';
+import { FailedSection } from '../../../components/others/FailedSection';
 
-import { usePopup } from '../../../hooks/usePopups'
-import { Searchbar } from '../../../components/others/Searchbar'
-import { useState } from 'react'
+import { usePopup } from '../../../hooks/usePopups';
+import { Searchbar } from '../../../components/others/Searchbar';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useFetch } from '../../../hooks/useFetch'
+import { useFetch } from '../../../hooks/useFetch';
 
-import { ROUTES } from '../../../config/apiRoutes'
+import { ROUTES } from '../../../config/apiRoutes';
+import { updateData } from '../../../utils/communications';
 
-import admin_settings from '../../../assets/others/admin-settings.json'
+import admin_settings from '../../../assets/others/admin-settings.json';
 
 export function AdminSettingsPage() {
 
@@ -23,6 +26,8 @@ export function AdminSettingsPage() {
 
     const { data } = useFetch({url: ROUTES.USERS})
     const users = data ? data : []
+
+    const { data:admin, refetch} = useFetch({url: ROUTES.ADMIN})
 
     const { t } = useTranslation();
 
@@ -48,9 +53,32 @@ export function AdminSettingsPage() {
         alert(`Botón presionado en: ${result.title} ${state}`);
     };
 
-    const { popupContent, handleClose } = usePopup();
+    const { popupContent, handleClose, handleOpen } = usePopup();
 
-    
+    const handleSubmit = async (data) => {
+        let payload
+        if(data.email) {
+            payload = {
+                email: data.email
+            }
+        }
+        if(data['billing-account']) {
+            payload = {
+                billingAcount: data['billing-account']
+            }
+        }
+        
+        const res = await updateData(payload, ROUTES.ADMIN)
+        
+        if(res.code) {
+            refetch()
+            handleOpen(<OkSection className='white' message={t('profile.ok')} />)
+            
+        }
+        else {
+            handleOpen(<FailedSection className='white' message={t('profile.failed')} />)
+        }
+    }
 
     return(
         <>
@@ -58,10 +86,10 @@ export function AdminSettingsPage() {
             <Breadcrumbs />
             <section>
                 <div>
-                    <UserInformation information={{"adminEmail": "correo"}} sectionTitle={t('adminSettings.title1')}
-                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
-                    <UserInformation information={{"billing": "000000"}} sectionTitle={t('adminSettings.title2')}
-                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {console.log(data); handleClose()}} type={t('adminSettings.action')} />}/>
+                    <UserInformation information={{"adminEmail": admin?.email}} sectionTitle={t('adminSettings.title1')}
+                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')} />}/>
+                    <UserInformation information={{"billing": admin?.billingAcount}} sectionTitle={t('adminSettings.title2')}
+                    popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')} />}/>
                 </div>
                 <div>
                     <section className='information-section' style={{minHeight: "370px"}}>

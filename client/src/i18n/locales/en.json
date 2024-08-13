@@ -176,7 +176,7 @@
       "name": "Name",
       "surname": "Surname",
       "id": "DNI/NIE",
-      "telephone": "Phone",
+      "phone": "Phone",
       "postal": "Postal Address",
       "UC3MStudent": "UC3M Student",
       "gender": "Gender",
@@ -330,7 +330,8 @@
 
     "adminActivities": {
       "aprove": "Aprove",
-      "seeMore": "Go"
+      "seeMore": "Go",
+      "decline": "Decline"
     },
 
     "adminNotifications": {

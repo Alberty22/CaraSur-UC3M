@@ -1,6 +1,7 @@
 .loans-page {
     width: 100%;
     height: auto;
+    min-height: 60vh;
     background-color: #f7f7f7;
     display: flex;
     overflow-y: auto;
@@ -25,6 +26,10 @@
 
 @media (max-width: 768px) {
 
+    .loans-page {
+        min-height: 90vh;
+    }
+
     .loans-page > section:last-child {
         width: 90%;
         margin-top: 20px;
@@ -37,6 +42,7 @@
 
 
 @media (min-width: 768px) and (max-width: 1024px)  {
+
     .loans-page > section:last-child {
         width: 90%;
         margin-top: 20px;

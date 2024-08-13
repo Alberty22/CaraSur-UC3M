@@ -14,15 +14,20 @@ export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=
 
     const { t } = useTranslation()
 
-    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues } = useForm()
+    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues, reset } = useForm()
 
     const handleClick = () => {
         setOptional(!optional)
     }
 
+    const handleFormSubmit = (data) => {
+        onSubmit(data)
+        reset()
+      }
+
     return(
         <div className='form-container'>
-            <form className={className} onSubmit={handleSubmit(onSubmit)}>
+            <form className={className} onSubmit={handleSubmit(handleFormSubmit)}>
                 {
                     <Inputs inputs={inputs} register={register} errors={errors} setValue={setValue} getValues={getValues} control={control} watch={watch} isLogin={isLogin} className={className}/>
                 }

@@ -2,7 +2,7 @@ import './Activities.css'
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-export function Activities({ activities, admin=false, handleClick}) {
+export function Activities({ activities, admin=false, handleAprove, handleDecline}) {
 
     const { t } = useTranslation();
     const { lng } = useParams()
@@ -31,7 +31,10 @@ export function Activities({ activities, admin=false, handleClick}) {
                                 <button>
                                     <Link to={`/${lng}/activities/${activity.id}-${activity.title}`} state={activity}>{t('adminActivities.seeMore')}</Link>
                                 </button>
-                                <button onClick={() => handleClick(activity.id)}>
+                                <button onClick={() => handleDecline(activity.id)}>
+                                    {t('adminActivities.decline')}
+                                </button>
+                                <button onClick={() => handleAprove(activity.id)}>
                                     {t('adminActivities.aprove')}
                                 </button>
                                 

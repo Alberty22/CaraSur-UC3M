@@ -19,6 +19,9 @@ router.get('/proccesed', loansController.getProccesedLoans);
 // POST request for proccesed loans
 router.post('/proccesed', loansController.postProccesedLoans);
 
+// DELETE request for pending loans
+router.put('/proccesed', loansController.deleteProccesedLoans);
+
 // GET request for loans
 router.get('/:email', loansController.getUserLoans);
 

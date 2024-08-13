@@ -20,7 +20,7 @@ import cart_icon from '../../assets/images/icons/Cart.webp'
 
 export function EquipmentPage() {
 
-    const { data } = useFetch({ url:ROUTES.EQUIPMENT })
+    const { data, refetch } = useFetch({ url:ROUTES.EQUIPMENT })
     const inventory = data ? data : []
 
     const inventory_unique = {
@@ -75,7 +75,7 @@ export function EquipmentPage() {
                 
                 
                     {openSidebars?.cartSidebar &&
-                        <CartSidebar>
+                        <CartSidebar refetch={refetch}>
                             <button onClick={() => handleCloseSidebar('cartSidebar')}>
                                 <img src={swipe_icon} alt='cerrar' />
                             </button>

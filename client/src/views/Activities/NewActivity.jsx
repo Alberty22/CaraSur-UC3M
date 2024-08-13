@@ -7,6 +7,8 @@ import Popup from '../../components/others/Popup';
 
 import { useTranslation } from 'react-i18next';
 import { usePopup } from '../../hooks/usePopups';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { ROUTES } from '../../config/apiRoutes';
 import { sendData } from '../../utils/communications';
@@ -32,6 +34,7 @@ export function NewActivity(){
         const res = await sendData(activity, ROUTES.PENDING_ACTIVITIES)
         if(res.code) {
             handleOpen(<OkSection message={t('adminNotifications.ok')} />)
+            
         }
         else {
             handleOpen(<FailedSection message={t('adminNotifications.failed')} />)
