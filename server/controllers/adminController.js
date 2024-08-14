@@ -1,5 +1,6 @@
 const { readJsonFile, writeJsonFile} = require('../utils/databaseUtils');
 const { updateDocumentWithID } = require('../utils/firebase/firebaseUpdateUtils');
+const { sendUsersToAll } = require('./sse/usersHandler');
 const path = require('path');
 const adminPath = path.join(__dirname, '../data/admin.json');
 
@@ -45,3 +46,23 @@ exports.updateAdmin = async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' })
     }
   }
+
+exports.postAdminRole = async (req, res) => {
+  try {
+      const { email, role } = req.body
+  
+      if (!email) {
+          return res.status(404).json({ error: 'Error in params' })
+      }
+      
+      await updateDocumentWithID("users", email, {role: role})
+
+      sendUsersToAll('get')
+
+      res.status(201).json({ success: true, message: 'Admin updated successfully' })
+      
+  } 
+  catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+}

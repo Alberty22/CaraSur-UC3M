@@ -171,7 +171,7 @@ const updateDocumentWithID = async(collection, documentId, data) => {
       
     } 
     catch (error) {
-      console.error(error);
+      console.error(error)
     }
 }
 

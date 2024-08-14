@@ -17,6 +17,7 @@ import { useUsers } from '../../../hooks/useUsers';
 
 import { ROUTES } from '../../../config/apiRoutes';
 import { updateData } from '../../../utils/communications';
+import { sendData } from '../../../utils/communications';
 
 import admin_settings from '../../../assets/others/admin-settings.json';
 
@@ -29,29 +30,35 @@ function AdminSettingsPage() {
 
     const { data:admin, refetch} = useFetch({url: ROUTES.ADMIN})
 
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
     const filterSearch = () => {
         const filteredUsers = users.filter(user => {
-            return query === '' || user.email.toLowerCase().includes(query.toLowerCase());
+            return query === '' || user.email.toLowerCase().includes(query.toLowerCase())
         })
         
-        setResults(filteredUsers);
+        setResults(filteredUsers)
     }
 
     const handleSearchClick = () => {
         filterSearch()
-      };
+      }
     
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
-        setQuery(newSearch);
+        setQuery(newSearch)
         filterSearch()
-    };
-    
-    const handleButtonClick = (result, state) => {
-        alert(`Botón presionado en: ${result.title} ${state}`);
-    };
+    }
+
+    const handleButtonClick = async (result, state) => {
+        const payload = {
+            email: result.email,
+            role: state ? 'admin' : 'user'
+        }
+        const res = await sendData(payload, ROUTES.ADMIN)
+        setQuery('')
+        setResults('')
+    }
 
     const { popupContent, handleClose, handleOpen } = usePopup();
 

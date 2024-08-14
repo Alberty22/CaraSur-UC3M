@@ -295,7 +295,8 @@
       "title2":"Detalles del usuario",
       "title3":"Detalles opcionales",
       "title4":"Pagos",
-      "search": "Introduce un correo de un usuario"
+      "search": "Introduce un correo de un usuario",
+      "error": "El usuario no existe"
     },
 
     "adminEquipment": {

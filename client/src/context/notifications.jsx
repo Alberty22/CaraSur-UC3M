@@ -1,12 +1,17 @@
 import { createContext, useState, useEffect, useCallback } from "react";
+import { useAuth } from "../hooks/useAuth.js";
+import { usePageVisibility } from "../hooks/usePageVisibility.js";
+
 import { ROUTES } from '../config/apiRoutes.js';
 import { getCookie } from "../utils/cookies.js";
-import { useAuth } from "../hooks/useAuth.js"
 
 export const NotificationContext = createContext()
 
 export function NotificationsProvider ({ children }) {
     const [notifications, setNotifications] = useState({})
+    const isVisible = usePageVisibility()
+    const [eventSource, setEventSource] = useState(null)
+
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -31,20 +36,33 @@ export function NotificationsProvider ({ children }) {
 
     useEffect(() => {
         if(isAuthenticated){
-            const eventSource = new EventSource(`http://localhost:5000/notifications/${encodeURIComponent(getCookie('email'))}`)
 
-            eventSource.onmessage = async (event) => {
-                const newMessage = JSON.parse(event.data)
-                
-                if(newMessage.message === 'get'){
-                    fetchNotifications()
-                } 
+            if (isVisible && !eventSource) {
+                const es = new EventSource(`http://localhost:5000/notifications/${encodeURIComponent(getCookie('email'))}`)
+
+                es.onmessage = async (event) => {
+                    const newMessage = JSON.parse(event.data)
+                    
+                    if(newMessage.message === 'get'){
+                        fetchNotifications()
+                    } 
+                }
+
+                setEventSource(es)
+                return () => {
+                    if (es) {
+                        es.close()
+                    }
+                    
+                }
             }
-            return () => {
-                eventSource.close()
+            
+            if (!isVisible && eventSource) {
+                eventSource.close();
+                setEventSource(null);
             }
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, isVisible, eventSource])
 
     return (
         <NotificationContext.Provider value={{ notifications, setNotifications }}>

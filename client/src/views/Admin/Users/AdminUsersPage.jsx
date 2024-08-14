@@ -15,6 +15,7 @@ import user_img from '../../../assets/images/icons/User_primary.webp';
 function AdminUsersPage() {
 
     const [query, setQuery] = useState('')
+    const [error, setError] = useState('')
     const [results, setResults] = useState({})
 
     const { t } = useTranslation()
@@ -23,6 +24,13 @@ function AdminUsersPage() {
         if(query !== ''){
             const data = await requestData(`${ROUTES.PROFILE}/${encodeURIComponent(query)}`)
             const user = data ? data : {}
+            
+            if(Object.keys(user).length === 0) {
+                setError(t('adminUsers.error'))
+            }
+            else {
+                setError('')
+            }
             setResults(user)
         }
         
@@ -31,19 +39,21 @@ function AdminUsersPage() {
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
         setQuery(newSearch)
+        setError('')
     }
 
     const userInformation = () => {
         const {UC3MStudent, ...others} = results?.userDetails || {}
-        return { ...others, UC3MStudent: t(`form.uc3m-student.${UC3MStudent}`)}
+        return { name:others.name, surname:others.surname, id:others.id ,postal:others.postal, telephone:others.telephone, UC3MStudent: t(`form.uc3m-student.${UC3MStudent}`)}
     }
 
     const optionalInformation = () => {
-        return Object.fromEntries(
+        const data =  Object.fromEntries(
             Object.entries(results?.userOptionalDetails || {}).map(
                 ([key, value]) => [key, value === '' || t(`form.${key}.${value}`)]
             )
         )
+        return {gender:data.gender, birthdate:data.birthdate, country:data.country, student:data.student, sports:data.sports}
     }
 
     return (
@@ -52,8 +62,8 @@ function AdminUsersPage() {
             <div className='search-container'>
                     <Searchbar handleSearchChange={handleSearchChange} handleSearchClick={handleSearchClick} searchQuery={query} placeholder={t('adminUsers.search')} />     
             </div>
-            { Object.keys(results).length !== 0 &&
-                <section>
+            { Object.keys(results).length !== 0 
+            ?<section>
                 
                 <div className='user-image'>
                     <img src={user_img} alt='Imagen de usuario'></img>
@@ -66,6 +76,7 @@ function AdminUsersPage() {
                 </div>
                 
             </section>
+            : query !== '' && <h3 style={{marginLeft:'10vw'}}>{error}</h3>
             }
             
         </main>

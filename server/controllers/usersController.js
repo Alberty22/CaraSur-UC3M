@@ -33,10 +33,16 @@ exports.getUserDetails = async (req, res) => {
       return acc;
     }, {})
 
-    res.json({
-      "accountDetails": {email: email, password: '*******'},
-      ...details
-    })
+    if(details) {
+      res.json({
+        "accountDetails": {email: email, password: '*******'},
+        ...details
+      })
+    }
+    else {
+      res.json({})
+    }
+    
   }
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
@@ -83,7 +89,7 @@ exports.loginUser = async (req, res) => {
     const uid = decodedToken.uid
 
     
-    const { role, name } = getRoleAndName(email)
+    const { role, name } = await getRoleAndName(email)
     res.status(201).json({ success: true, message: { role: role, name:name }})
   } 
   catch (error) {

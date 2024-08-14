@@ -62,14 +62,14 @@ const getUserDetails = async (email) => {
       const userDoc = await userDocRef.get()
   
       if (!userDoc.exists) {
-        return []
+        return
       }
   
       const detailsCollectionRef = userDocRef.collection('details')
       const detailsSnapshot = await detailsCollectionRef.get()
   
       if (detailsSnapshot.empty) {
-        return []
+        return
       }
   
       const details = detailsSnapshot.docs

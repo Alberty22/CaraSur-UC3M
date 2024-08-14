@@ -291,7 +291,8 @@
     "title2": "User Details",
     "title3": "Optional Details",
     "title4": "Payments",
-    "search": "Enter a user's email"
+    "search": "Enter a user's email",
+    "error": "User does not exist"
   },
 
   "adminEquipment": {
