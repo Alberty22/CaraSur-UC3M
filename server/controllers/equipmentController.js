@@ -1,5 +1,7 @@
 const { readJsonFile, writeJsonFile } = require('../utils/databaseUtils');
-const { generateProductId } = require('../utils/identifierUtils')
+const { generateProductId } = require('../utils/identifierUtils');
+const { addDocumentWithID } = require('../utils/firebaseUtils');
+const { uploadBase64Image } = require('../utils/objectUtils')
 const path = require('path');
 const equipmentPath = path.join(__dirname, '../data/equipment.json');
 
@@ -42,8 +44,23 @@ exports.postEquipment = async (req, res) => {
       "available": parseInt(product.available) || null
     }
     
+    if (product.photo) {
+      const filePath = `equipment/${newProduct.id}.png`;
+      try {
+        const photoURL = await uploadBase64Image(product.photo.base64, filePath)
+        newProduct.photo = photoURL
+      } 
+      catch (error) {
+        console.error(error)
+        newProduct.photo = "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=e557dcc8-3ee0-410c-8542-357ae3d543a0"
+      }
+    } else {
+      newProduct.photo = "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=e557dcc8-3ee0-410c-8542-357ae3d543a0"
+    }
+    
     equipment.push(newProduct)
 
+    await addDocumentWithID('equipment', newProduct.id.toString(), newProduct)
     await writeJsonFile(equipmentPath, equipment)
 
     res.status(201).json({ success: true, message: 'Product Added' })

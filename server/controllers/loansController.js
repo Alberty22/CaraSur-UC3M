@@ -1,5 +1,5 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
-const { addDocument, deleteDocument } = require('../utils/firebaseUtils');
+const { addDocument, deleteDocument, updateEquipment, addUserLoan, deleteUserLoan } = require('../utils/firebaseUtils');
 const { generateLoanId } = require('../utils/identifierUtils');
 const { getActualDate } = require('../utils/datesUtils');
 const { updateEquipmentQuantity } = require('../utils/equipmentUtils')
@@ -41,6 +41,7 @@ exports.getPendingLoans = async (req, res) => {
 
 // POST request handler to add pending loans
 exports.postPendingLoans = async (req, res) => {
+
   try {
     const { email, loansReq } = req.body
 
@@ -50,6 +51,9 @@ exports.postPendingLoans = async (req, res) => {
 
     const loans = await readJsonFile(pendingLoansPath)
     let equipment = await readJsonFile(equipmentPath)
+
+    const ids = []
+    const quantities = []
 
     loansReq.forEach(async (loan) => {
       const newLoan = {
@@ -62,19 +66,19 @@ exports.postPendingLoans = async (req, res) => {
         "returnDate": "pending"
       }
       loans.push(newLoan)
-
-      equipment = updateEquipmentQuantity(equipment, loan.id, loan.quantity, 'subtract')
+      ids.push(loan.id)
+      quantities.push(loan.quantity)
 
       await addDocument('pending-loans', newLoan)
-      if(!equipment) {
-        return
-      }
+      await updateEquipment("equipment",  loan.id.toString(), 'available', loan.quantity, 'subtract')
+
     })
     
     if(!equipment) {
       return res.status(404).json({ error: 'Error in loan' })
     }
     
+    equipment = await updateEquipmentQuantity(equipment, ids, quantities, 'subtract')
     await writeJsonFile(pendingLoansPath, loans)
     await writeJsonFile(equipmentPath, equipment)
 
@@ -100,7 +104,8 @@ exports.deletePendingLoans = async (req, res) => {
     await deleteJsonEntry(pendingLoansPath, loan)
 
     const equipment = await readJsonFile(equipmentPath)
-    const newEquipment = updateEquipmentQuantity(equipment, loan.product, loan.quantity, 'add')
+    const newEquipment = await updateEquipmentQuantity(equipment, [loan.product], [loan.quantity], 'add')
+    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
     await writeJsonFile(equipmentPath, newEquipment)
 
     res.status(201).json({ success: true, message: 'Loan removed' })
@@ -163,6 +168,7 @@ exports.postProccesedLoans = async (req, res) => {
       return user
     }
 
+    await addUserLoan(userEmail, userLoan)
     await updateJsonEntries(usersPath, filterFn, updateFn)
 
     return res.status(201).json({ success: true, message: 'Loan proccesed' })
@@ -183,6 +189,7 @@ exports.deleteProccesedLoans = async (req, res) => {
     }
 
     await deleteDocument('proccesed-loans', loan)
+    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
     await deleteJsonEntry(proccessedLoansPath, loan)
     
 
@@ -195,11 +202,12 @@ exports.deleteProccesedLoans = async (req, res) => {
       return user
     }
 
-    //TODO actualizar tienda
+    const {id, user, ...deleteLoan } = loan
+    await deleteUserLoan(user, deleteLoan)
     await updateJsonEntries(usersPath, filterFn, updateFn)
 
     const equipment = await readJsonFile(equipmentPath)
-    const newEquipment = updateEquipmentQuantity(equipment, loan.product, loan.quantity, 'add')
+    const newEquipment = await updateEquipmentQuantity(equipment, [loan.product], [loan.quantity], 'add')
     await writeJsonFile(equipmentPath, newEquipment)
 
     res.status(201).json({ success: true, message: 'Loan removed' })

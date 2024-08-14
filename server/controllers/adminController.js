@@ -1,4 +1,5 @@
 const { readJsonFile, writeJsonFile} = require('../utils/databaseUtils');
+const { updateDocumentWithID } = require('../utils/firebaseUtils');
 const path = require('path');
 const adminPath = path.join(__dirname, '../data/admin.json');
 
@@ -16,6 +17,7 @@ exports.getAdmin = async (req, res) => {
 
 // PUT request handler to update user information
 exports.updateAdmin = async (req, res) => {
+    
     try {
         const { email, billingAcount } = req.body
     
@@ -33,6 +35,7 @@ exports.updateAdmin = async (req, res) => {
             admin.billingAcount = billingAcount
         }
         
+        await updateDocumentWithID("admin", "admin", {email: email , billingAcount: billingAcount})
         await writeJsonFile(adminPath, admin)
 
         res.status(201).json({ success: true, message: 'Admin updated successfully' })

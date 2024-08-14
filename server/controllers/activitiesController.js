@@ -1,5 +1,5 @@
 const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = require('../utils/databaseUtils');
-const { addDocumentWithID, deleteDocumentWithID } = require('../utils/firebaseUtils');
+const { addDocumentWithID, deleteDocumentWithID, modifyUserArray } = require('../utils/firebaseUtils');
 const { generateActivityId } = require('../utils/identifierUtils');
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');
@@ -9,7 +9,7 @@ const pendingActivitiesPath = path.join(__dirname, '../data/pending-activites.js
 exports.getActivities = async (req, res) => {
   try {
     const activities = await readJsonFile(activitiesPath);
-    res.json(activities);
+    res.json(activities)
 
   } 
   
@@ -44,7 +44,7 @@ exports.getPendingActivities = async (req, res) => {
 
 // POST request handler 
 exports.addActivity = async (req, res) => {
-  console.log(req.body)
+  
   try {
     const {activity, drive} = req.body
 
@@ -100,7 +100,8 @@ exports.updateUsersActivity = async (req, res) => {
         return activity
       }
     }
-      
+    
+    await modifyUserArray(activityId.toString(), action, email)
     await updateJsonEntries(activitiesPath, filterFn, updateFn)
 
     res.status(201).json({ success: true, message: 'Activity user Added' })

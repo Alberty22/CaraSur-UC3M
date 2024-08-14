@@ -108,5 +108,27 @@
     "difficulty": "2",
     "chat": "",
     "drive": ""
+  },
+  {
+    "id": 12,
+    "title": "Prueba",
+    "description": "Esto es una descripción",
+    "date": "2024-08-13",
+    "time": "23:50",
+    "difficulty": "3",
+    "chat": "http://localhost:5000/es/activities/new",
+    "drive": "http://localhost:5000/es/admin/activities",
+    "users": []
+  },
+  {
+    "id": 13,
+    "title": "Prueba",
+    "description": "Esto es una descripción",
+    "date": "2024-08-22",
+    "time": "23:53",
+    "difficulty": "3",
+    "chat": "http://localhost:5000/es/activities/new",
+    "drive": "http://localhost:5000/es/admin/activities",
+    "users": []
   }
 ]

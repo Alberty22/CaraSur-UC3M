@@ -18,7 +18,7 @@ export function AsideSection({ markedDates }) {
                     {
                        location.pathname === `/${lng}/activities`
                        ? <Link to='new'>{t('activities.asideSection.button')}</Link>
-                       : <Link to={`${lng}/activities/new`}>{t('activities.asideSection.button')} </Link>
+                       : <Link to={`/${lng}/activities/new`}>{t('activities.asideSection.button')} </Link>
                     }
                     
                 </button>

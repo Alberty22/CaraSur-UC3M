@@ -1,4 +1,5 @@
-const { readJsonFile, writeJsonFile, updateJsonEntries } = require('../utils/databaseUtils');
+const { readJsonFile, updateJsonEntries } = require('../utils/databaseUtils');
+const { addUserNotifications, deleteUserNotifications } = require('../utils/firebaseUtils');
 const { generateNotificationId } = require('../utils/identifierUtils');
 const path = require('path');
 const usersPath = path.join(__dirname, '../data/users.json');
@@ -48,6 +49,13 @@ exports.postNotifications = async (req, res) => {
       return user
     }
 
+    const promises = emails.map(email => addUserNotifications(email.email, message));
+    try {
+        await Promise.all(promises);
+    } catch (error) {
+        console.error('One or more notifications failed:', error);
+    }
+    
     await updateJsonEntries(usersPath, filterFn, updateFn);
 
     return res.status(201).json({ success: true, message: 'Notifications send' })
@@ -73,6 +81,7 @@ exports.deleteNotifications = async (req, res) => {
       return user
     }
 
+    await deleteUserNotifications(email)
     await updateJsonEntries(usersPath, filterFn, updateFn)
 
     return res.status(201).json({ success: true, message: 'Notifications cleared' });

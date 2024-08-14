@@ -87,7 +87,7 @@ function AdminSettingsPage() {
             <section>
                 <div>
                     <UserInformation information={{"adminEmail": admin?.email}} sectionTitle={t('adminSettings.title1')}
-                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')} />}/>
+                    popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')}  isLogin={true}/>}/>
                     <UserInformation information={{"billing": admin?.billingAcount}} sectionTitle={t('adminSettings.title2')}
                     popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')} />}/>
                 </div>

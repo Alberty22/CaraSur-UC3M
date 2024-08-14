@@ -32,14 +32,14 @@ export function AddProduct() {
                 : data.productWidth ? `${data.productWidth}cm` : null,
       "model": data.productBrand || null,
       "condition": data.productCondition || null,
-      "photo": data.productImage.size !== 0 
+      "photo": data.productImage
               ? {
                 "base64": await toBase64(data.productImage),
                 "name": data.productImage.name,
                 "type": data.productImage.type,
                 "size": data.productImage.size
               } 
-              : "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=da8c5606-1779-4085-bcef-d627172d5b9c",
+              : null,
       "available": data.available || null
     }
     const res = await sendData(product, ROUTES.EQUIPMENT)

@@ -1,4 +1,5 @@
-const { db, auth } = require('../firebaseAdmin');
+const { query } = require('express');
+const { db, auth, FieldValue } = require('../firebaseAdmin');
 const { filterObject } = require('./objectUtils');
 
 async function deleteDocumentAndSubcollections(docRef) {
@@ -103,7 +104,7 @@ const updloadUserFirebase = async (colection, documentId, data)  => {
 
         await docRef.set(others)
         
-        const notificacionesRef = docRef.collection('notificaciones')
+        const notificacionesRef = docRef.collection('notifications')
         const detailsRef = docRef.collection('details')
         const loansRef = docRef.collection('loans')
         
@@ -116,7 +117,7 @@ const updloadUserFirebase = async (colection, documentId, data)  => {
             const detallesPromises = Object.keys(details).map(async (key) => {
               await detailsRef.doc(key).set(details[key]);
             })
-            await Promise.all(detallesPromises);
+            await Promise.all(detallesPromises)
           }
 
         await loansRef.doc("empty").set({})
@@ -126,6 +127,27 @@ const updloadUserFirebase = async (colection, documentId, data)  => {
         return false
     }
   }
+
+  const updateEmailInCollection = async (collection, oldEmail, newEmail) => {
+    try {
+        const collectionRef = db.collection(collection)
+        
+        const querySnapshot = await collectionRef.where('user', '==', oldEmail).get()
+        
+        if (querySnapshot.empty) {
+            return
+        }
+
+        const updatePromises = querySnapshot.docs.map(doc => {
+            return doc.ref.update({ user: newEmail })
+        })
+
+        await Promise.all(updatePromises)
+
+    } catch (error) {
+        console.error(error)
+    }
+};
 
 //Function to update user information
 const updateUserFirebase = async (collection, documentId, data) => {
@@ -160,13 +182,107 @@ const updateUserFirebase = async (collection, documentId, data) => {
             copyDocumentWithCollections(docRef,newDocRef)
             
             updateUserAuth(email, accountDetails.email, accountDetails.password)
+
+            updateEmailInCollection('pending-loans', email, accountDetails.email)
+            updateEmailInCollection('proccesed-loans', email, accountDetails.email)
         }
 
-        return true;
+        return true
     } catch (error) {
         console.error("Error updating user data:", error);
         return false;
     }
+}
+
+//Function to add data to a collection
+const addUserLoan = async (email, data) => {
+    try {
+        const collectionRef = db.collection('users').doc(email).collection('loans')
+       
+        await collectionRef.add(data)
+       
+      } 
+      catch (error) {
+        console.error(error)
+      }
+}
+
+//Function to delete data from a collection
+const deleteUserLoan = async (email, queryData) => {
+    try {
+        const collectionRef = db.collection('users').doc(email).collection('loans')
+        
+        let query = collectionRef
+        for (const [key, value] of Object.entries(queryData)) {
+            query = query.where(key, '==', value)
+        }
+
+        const snapshot = await query.get()
+        
+        if (snapshot.empty) {
+            return
+        }
+
+        const batch = db.batch()
+        snapshot.forEach(doc => {
+            batch.delete(doc.ref)
+        });
+
+        
+        await batch.commit();
+        
+    } 
+    catch (error) {
+        console.error(error)
+    }
+}
+
+//Function to add notifications
+const addUserNotifications = async (email, data) => {
+    try {
+        if (email === 'all') {
+            const usersSnapshot = await db.collection('users').get();
+
+            const promises = usersSnapshot.docs.map(async (userDoc) => {
+                const collectionRef = userDoc.ref.collection('notifications');
+                const docRef = await collectionRef.add({ text: data });
+                const docId = docRef.id;
+                await docRef.update({ id: docId });
+            });
+
+            await Promise.all(promises);
+        } else {
+            const collectionRef = db.collection('users').doc(email).collection('notifications');
+            const docRef = await collectionRef.add({ text: data });
+            const docId = docRef.id;
+            await docRef.update({ id: docId });
+        }
+    } 
+    catch (error) {
+        console.error(error);
+    }
+}
+
+//Function to delete notifications
+const deleteUserNotifications = async (email) => {
+    try {
+        const collectionRef = db.collection('users').doc(email).collection('notifications')
+       
+        const snapshot = await collectionRef.get();
+        const batch = db.batch();
+
+        snapshot.forEach(doc => {
+            batch.delete(doc.ref);
+        })
+
+        await batch.commit()
+ 
+        await collectionRef.doc('empty').set({});
+       
+      } 
+      catch (error) {
+        console.error(error)
+      }
 }
 
 //Function to add data to a collection
@@ -185,7 +301,7 @@ const addDocument = async (collection, data) => {
 //Function to delete data from a collection
 const deleteDocument = async (collection, queryData) => {
     try {
-        const collectionRef = db.collection(collection);
+        const collectionRef = db.collection(collection)
         
         let query = collectionRef;
         for (const [key, value] of Object.entries(queryData)) {
@@ -198,13 +314,13 @@ const deleteDocument = async (collection, queryData) => {
             return
         }
 
-        const batch = db.batch();
+        const batch = db.batch()
         snapshot.forEach(doc => {
-            batch.delete(doc.ref);
+            batch.delete(doc.ref)
         });
 
         
-        await batch.commit();
+        await batch.commit()
         
     } 
     catch (error) {
@@ -213,10 +329,10 @@ const deleteDocument = async (collection, queryData) => {
 }
 
 //Function to add data to a collection
-const addDocumentWithID = async (collection, id, data) => {
+const addDocumentWithID = async (collection, documentId, data) => {
     try {
         const collectionRef = db.collection(collection)
-        await collectionRef.doc(id).set(data)
+        await collectionRef.doc(documentId).set(data)
         
     } 
     catch (error) {
@@ -225,9 +341,9 @@ const addDocumentWithID = async (collection, id, data) => {
 }
 
 //Function to delete data from a collection
-const deleteDocumentWithID = async (collection, id) => {
+const deleteDocumentWithID = async (collection, documentId) => {
     try {
-        const documentRef = db.collection(collection).doc(id)
+        const documentRef = db.collection(collection).doc(documentId)
 
         const docSnapshot = await documentRef.get()
         if (!docSnapshot.exists) {
@@ -242,13 +358,100 @@ const deleteDocumentWithID = async (collection, id) => {
     }
 }
 
+//Function to update data
+const updateDocumentWithID = async(collection, documentId, data) => {
+    try {
+      // Obtén una referencia al documento
+      const docRef = db.collection(collection).doc(documentId);
+      
+      // Actualiza el documento con los datos proporcionados
+      await docRef.update(filterObject(data))
+      
+    } 
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+//Function to add or remove users from an activity
+const modifyUserArray = async (documentId, action, email) => {
+    const docRef = db.collection('activities').doc(documentId);
+  
+    try {
+        if (action === 'add') {
+            await docRef.update({
+            users: FieldValue.arrayUnion(email)
+            })
+        
+        } 
+      
+        else if (action === 'delete') {
+            await docRef.update({
+            users: FieldValue.arrayRemove(email)
+            })
+            
+        } 
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+const updateEquipment = async (collection, documentId, fieldName, amount, action) => {
+    const documentRef = db.collection(collection).doc(documentId);
+
+    try {
+      const doc = await documentRef.get();
+      
+      if (!doc.exists) {
+        console.log('No such document');
+        return;
+      }
+
+      const currentValue = doc.data()[fieldName];
+      
+      if (typeof currentValue !== 'number') {
+        return
+      }
+  
+      let newValue;
+      if (action === 'add') {
+        newValue = currentValue + amount;
+      } 
+      else if (action === 'subtract') {
+        newValue = currentValue - amount
+
+        if (newValue < 0) {
+            return
+          }
+      } 
+      else {
+        return
+      }
+  
+      await documentRef.update({[fieldName]: newValue})
+  
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
 
 
 module.exports = {
     updloadUserFirebase,
     updateUserFirebase,
+    addUserLoan,
+    deleteUserLoan,
+    addUserNotifications,
+    deleteUserNotifications,
     addDocument,
     deleteDocument,
     addDocumentWithID,
-    deleteDocumentWithID
+    deleteDocumentWithID,
+    updateDocumentWithID,
+    modifyUserArray,
+    updateEquipment
+    
 }
