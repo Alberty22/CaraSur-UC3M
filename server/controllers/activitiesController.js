@@ -2,6 +2,9 @@ const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = requ
 const { addDocumentWithID, deleteDocumentWithID } = require('../utils/firebase/firebasePostUtils');
 const { modifyUserArray } = require('../utils/firebase/firebaseUpdateUtils');
 const { generateActivityId } = require('../utils/identifierUtils');
+const { getAdminsEmails } = require('../utils/firebase/firebaseGetUtils');
+const { adminActionEmail } = require('../utils/emailsUtils');
+
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');
 const pendingActivitiesPath = path.join(__dirname, '../data/pending-activites.json');
@@ -132,6 +135,13 @@ exports.addPendingActivity = async (req, res) => {
 
     await addDocumentWithID('pending-activities', newActivity.id.toString(), newActivity)
     await writeJsonFile(pendingActivitiesPath, activities)
+
+    const adminEmails = await getAdminsEmails()
+    adminEmails.forEach(email => {
+      adminActionEmail(email, 'Se ha propuesto una nueva actividad','http://localhost:5000/es/admin/activities').catch(error => {
+          console.error(`Failed to send email to ${email}:`, error);
+        })
+    })
 
     res.status(201).json({ success: true, message: 'Activity Added' })
 

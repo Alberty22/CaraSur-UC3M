@@ -1,4 +1,4 @@
-const { bucket } = require('../firebaseAdmin');
+const { bucket } = require('../services/firebaseAdmin');
 
 const filterObject = (obj) => {
 

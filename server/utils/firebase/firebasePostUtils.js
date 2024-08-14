@@ -1,4 +1,4 @@
-const { db } = require('../../firebaseAdmin');
+const { db } = require('../../services/firebaseAdmin');
 
 //Function to upload users
 const updloadUserFirebase = async (colection, documentId, data)  => {

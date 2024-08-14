@@ -4,8 +4,9 @@ const { updateUserFirebase } = require('../utils/firebase/firebaseUpdateUtils');
 const { sendUsersToAll } = require('./sse/usersHandler');
 const { notificationClients } = require('./sse/notificationsHandler');
 const { loansClients } = require('./sse/loansHandler');
+const { sendWelcomeEmail } = require('../utils/emailsUtils');
 
-const { auth } = require('../firebaseAdmin');
+const { auth } = require('../services/firebaseAdmin');
 
 
 
@@ -74,6 +75,8 @@ exports.addUser = async (req, res) => {
     }
 
     sendUsersToAll('get')
+
+    sendWelcomeEmail(newUser.email)
 
     res.status(201).json({ success: true, message: 'User added successfully' })
   } 

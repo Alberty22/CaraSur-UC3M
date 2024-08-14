@@ -15,7 +15,7 @@ const adminRoutes = require('./routes/adminRoutes')
 const errorHandler = require('./middleware/errorHandler');
 
 
-
+const { setup } = require('./utils/serverSetup')
 
 const path = require('path');
 const app = express();
@@ -35,8 +35,7 @@ app.use('/server/loans', loansRoutes);
 app.use('/server/notifications', notificationsRoutes);
 app.use('/server/admin', adminRoutes);
 
-
-
+setup()
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

@@ -6,7 +6,7 @@ import { useAuth } from "../hooks/useAuth.js"
 export const UserLoansContext = createContext()
 
 export function UserLoansProvider ({ children }) {
-    const [loans, setLoans] = useState({})
+    const [loans, setLoans] = useState(undefined)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 

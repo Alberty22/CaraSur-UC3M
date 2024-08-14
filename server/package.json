@@ -10,7 +10,9 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "firebase-admin": "^12.3.1"
+    "firebase-admin": "^12.3.1",
+    "nodemailer": "^6.9.14"
   }
 }

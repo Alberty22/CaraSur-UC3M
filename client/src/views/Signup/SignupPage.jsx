@@ -5,8 +5,8 @@ import { Form } from '../../components/Form/Form.jsx';
 import Popup from '../../components/others/Popup.jsx';
 import { FailedSection } from '../../components/others/FailedSection.jsx';
 
-import inputSingup1 from '../../assets/others/inputs-singup1.json'
-import inputSingup2 from '../../assets/others/inputs-singup2.json'
+import inputSignup1 from '../../assets/others/inputs-signup1.json'
+import inputSignup2 from '../../assets/others/inputs-signup2.json'
 
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -112,8 +112,8 @@ function SignupPage() {
                 </div>
                 
                 { !stepSingup
-                    ? <Form inputs={inputSingup1} onSubmit={onSubmit1} type={t('signup.action')} group='right' />
-                    : <Form inputs={inputSingup2.required} optionalInputs={inputSingup2.optional} onSubmit={onSubmit2} type={t('signup.action')} group='right' />
+                    ? <Form inputs={inputSignup1} onSubmit={onSubmit1} type={t('signup.action')} group='right' />
+                    : <Form inputs={inputSignup2.required} optionalInputs={inputSignup2.optional} onSubmit={onSubmit2} type={t('signup.action')} group='right' />
                 }
                 
                 { !stepSingup &&

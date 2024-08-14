@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFetch } from '../../../hooks/useFetch';
 import { useUsers } from '../../../hooks/useUsers';
+import { useProfile } from '../../../hooks/useProfile';
 
 import { ROUTES } from '../../../config/apiRoutes';
 import { updateData } from '../../../utils/communications';
@@ -28,7 +29,7 @@ function AdminSettingsPage() {
 
     const {users} = useUsers()
 
-    const { data:admin, refetch} = useFetch({url: ROUTES.ADMIN})
+    const { adminDetails, setfetchAdmin} = useProfile()
 
     const { t } = useTranslation()
 
@@ -78,7 +79,7 @@ function AdminSettingsPage() {
         const res = await updateData(payload, ROUTES.ADMIN)
         
         if(res.code) {
-            refetch()
+            setfetchAdmin(true)
             handleOpen(<OkSection className='white' message={t('profile.ok')} />)
             
         }
@@ -93,9 +94,9 @@ function AdminSettingsPage() {
             <Breadcrumbs />
             <section>
                 <div>
-                    <UserInformation information={{"adminEmail": admin?.email}} sectionTitle={t('adminSettings.title1')}
+                    <UserInformation information={{"adminEmail": adminDetails?.email}} sectionTitle={t('adminSettings.title1')}
                     popupContent={<Form inputs={admin_settings['admin-account-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')}  isLogin={true}/>}/>
-                    <UserInformation information={{"billing": admin?.billingAcount}} sectionTitle={t('adminSettings.title2')}
+                    <UserInformation information={{"billing": adminDetails?.billingAcount}} sectionTitle={t('adminSettings.title2')}
                     popupContent={<Form inputs={admin_settings['admin-billing-popup']} onSubmit={(data) => {handleSubmit(data); handleClose()}} type={t('adminSettings.action')} />}/>
                 </div>
                 <div>

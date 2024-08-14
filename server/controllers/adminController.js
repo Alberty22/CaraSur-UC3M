@@ -1,15 +1,13 @@
-const { readJsonFile, writeJsonFile} = require('../utils/databaseUtils');
 const { updateDocumentWithID } = require('../utils/firebase/firebaseUpdateUtils');
+const { getData } = require('../utils/firebase/firebaseGetUtils');
 const { sendUsersToAll } = require('./sse/usersHandler');
 const path = require('path');
-const adminPath = path.join(__dirname, '../data/admin.json');
 
 // GET request handler to retrieve all users
 exports.getAdmin = async (req, res) => {
     try {
-      const admin = await readJsonFile(adminPath)
-  
-      res.json(admin)
+      const admin = await getData("admin", "admin")
+      res.status(201).json(admin)
     } 
     catch (error) {
       res.status(500).json({ error: 'Internal Server Error' })
@@ -26,8 +24,6 @@ exports.updateAdmin = async (req, res) => {
             return res.status(404).json({ error: 'Error in params' })
         }
         
-        const admin = await readJsonFile(adminPath)
-
         if(email) {
             admin.email = email
         }
@@ -37,7 +33,6 @@ exports.updateAdmin = async (req, res) => {
         }
         
         await updateDocumentWithID("admin", "admin", {email: email , billingAcount: billingAcount})
-        await writeJsonFile(adminPath, admin)
 
         res.status(201).json({ success: true, message: 'Admin updated successfully' })
         

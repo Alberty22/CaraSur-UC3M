@@ -1,4 +1,4 @@
-const { db, auth, FieldValue } = require('../../firebaseAdmin');
+const { db, auth, FieldValue } = require('../../services/firebaseAdmin');
 const { filterObject } = require('../objectUtils');
 
 async function deleteDocumentAndSubcollections(docRef) {

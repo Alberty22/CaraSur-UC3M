@@ -1,11 +1,12 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
 const { addDocument, deleteDocument, addUserLoan, deleteUserLoan } = require('../utils/firebase/firebasePostUtils');
-const { getUserLoans } = require('../utils/firebase/firebaseGetUtils')
+const { getUserLoans, getAdminsEmails } = require('../utils/firebase/firebaseGetUtils')
 const { updateEquipment } = require('../utils/firebase/firebaseUpdateUtils');
-const { sendLoansToClient } = require('../controllers/sse/loansHandler')
-const { generateLoanId } = require('../utils/identifierUtils');
+const { sendLoansToClient } = require('../controllers/sse/loansHandler');
 const { getActualDate } = require('../utils/datesUtils');
-const { updateEquipmentQuantity } = require('../utils/equipmentUtils')
+const { updateEquipmentQuantity } = require('../utils/equipmentUtils');
+const { adminActionEmail, loanEmail } = require('../utils/emailsUtils');
+
 const path = require('path');
 const equipmentPath = path.join(__dirname, '../data/equipment.json');
 const pendingLoansPath = path.join(__dirname, '../data/pending-loans.json');
@@ -71,7 +72,6 @@ exports.postPendingLoans = async (req, res) => {
       await addDocument('pending-loans', newLoan)
       await updateEquipment("equipment",  loan.id.toString(), 'available', loan.quantity, 'subtract')
       
-
     })
     
     if(!equipment) {
@@ -82,6 +82,14 @@ exports.postPendingLoans = async (req, res) => {
     await writeJsonFile(pendingLoansPath, loans)
     await writeJsonFile(equipmentPath, equipment)
 
+    const adminEmails = await getAdminsEmails()
+    adminEmails.forEach(email => {
+      adminActionEmail(email, 'Se ha solicitado un nuevo artículo, acepta el préstamo','http://localhost:5000/es/admin/loans').catch(error => {
+          console.error(`Failed to send email to ${email}:`, error);
+        })
+    })
+  
+    
     res.status(201).json({ success: true, message: 'Loan send' })
 
   } 
@@ -158,6 +166,8 @@ exports.postProccesedLoans = async (req, res) => {
 
     await addUserLoan(userEmail, userLoan)
     sendLoansToClient(loan.user, 'get')
+
+    loanEmail(userEmail, userLoan.name)
 
     return res.status(201).json({ success: true, message: 'Loan proccesed' })
   }

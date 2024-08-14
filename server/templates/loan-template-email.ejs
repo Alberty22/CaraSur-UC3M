@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agradecimiento por Solicitar Préstamo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .address {
+            background: #e9ecef;
+            padding: 10px;
+            border-left: 5px solid #0056b3;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Gracias por Solicitar el Préstamo!</h1>
+        <p>Gracias por solicitar el préstamo de <%= product %>. Nos complace informarte que tu solicitud ha sido recibida y está en proceso.</p>
+        <p>Por favor, acude a recoger el producto en la siguiente dirección:</p>
+        <div class="address">
+            <strong>Dirección:</strong><br>
+            Escuela Politécnica Superior<br>
+            Avda. de la Universidad, 30<br>
+            28911 Leganés (Madrid)<br>
+            España
+        </div>
+        <p><strong>Edificio:</strong> Sabatini</p>
+        <p><strong>Despacho:</strong> 2.3.D.02B</p>
+        <p>Si necesitas más información o tienes alguna pregunta, no dudes en ponerte en contacto con nosotros.</p>
+        <p>¡Gracias por tu atención!</p>
+        <div class="footer">
+            <p>Atentamente,<br>
+            Club Carasur</p>
+        </div>
+    </div>
+</body>
+</html>

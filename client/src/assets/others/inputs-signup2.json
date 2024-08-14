@@ -1,0 +1,158 @@
+{
+    "required": [
+         {
+             "inputKey": "name",
+             "inputType":"text",
+             "placeholder": {
+                 "es": "Nombre",
+                 "en": "Name"
+             },
+             "error": {
+                 "es": "Nombre es requerido",
+                 "en": "Name is required"
+             }
+         },
+         {
+             "inputKey": "surname",
+             "inputType":"text",
+             "placeholder": {
+                 "es": "Apellidos",
+                 "en": "Surname"
+             },
+             "error": {
+                 "es": "Apellidos son requeridos",
+                 "en": "Surname is required"
+             }
+         },
+         {
+             "inputKey": "id",
+             "inputType":"text",
+             "placeholder": {
+                 "es": "DNI/NIE",
+                 "en": "DNI/NIE"
+             },
+             "error": {
+                 "es": "DNI/NIE es requerido",
+                 "en": "DNI/NIE is required"
+             }
+         },
+         {
+             "inputKey": "id-photo",
+             "inputType":"image",
+             "placeholder": {
+                 "es": "Foto DNI/NIE",
+                 "en": "Photo DNI/NIE"
+             },
+             "error": {
+                 "es": "DNI/NIE es requerido",
+                 "en": "DNI/NIE is required"
+             }
+         },
+         {
+             "inputKey": "postal",
+             "inputType":"number",
+             "placeholder": {
+                 "es": "Código postal",
+                 "en": "Postal Code"
+             },
+             "error": {
+                 "es": "Dirección postal es requerida",
+                 "en": "Postal code is required"
+             }
+         },
+         {
+             "inputKey": "phone",
+             "inputType":"tel",
+             "placeholder": {
+                 "es": "Teléfono",
+                 "en": "Thelephone"
+             },
+             "error": {
+                 "es": "Número de teléfono es requerido",
+                 "en": "Telephone is required"
+             }
+         },
+         {
+             "inputKey": "uc3m-student",
+             "inputType":"uc3m-student",
+             "placeholder": {
+                 "es": "Estudiante UC3M",
+                 "en": "UC3M Student"
+             },
+             "error": {
+                 "es": "Estudiante UC3M es requerido",
+                 "en": "UC3M student is required"
+             }
+         },
+         {
+             "inputKey": {
+                 "inputKey1": "privacy",
+                 "inputKey2": "regulations"
+             },
+             "inputType":"policy",
+             "placeholder": {
+                 "placeholder1": {
+                 "es": "Aceptas la Política de Privacidad",
+                 "en": "Agree to the Privacy Policy"
+                 },
+                 "placeholder2": {
+                     "es": "Aceptas la Normativa del club",
+                     "en": "Agree to the Club Regulations"
+                 }
+             },
+             "error": {
+                 "es": "Requerido",
+                 "en": "Required"
+             }
+         }
+ 
+    ],
+    "optional": [
+         {
+             "inputKey": "gender",
+             "inputType":"gender",
+             "placeholder": {
+                 "es": "Género (opcional)",
+                 "en": "Gender (optional)"
+             },
+             "error":""
+         },
+         {
+             "inputKey": "birthdate",
+             "inputType":"date",
+             "placeholder": {
+                 "es": "Fecha de nacimiento (opcional)",
+                 "en": "Birthdate (optional)"
+             },
+             "error":""
+         },
+         {
+             "inputKey": "country",
+             "inputType":"country",
+             "placeholder": {
+                 "es": "País de origen (opcional)",
+                 "en": "Country of origin (optional)"
+             },
+             "error":""
+         },
+         {
+             "inputKey": "student",
+             "inputType":"student",
+             "placeholder": {
+                 "es": "Estudiante (opcional)",
+                 "en": "Student (optional)"
+             },
+             "error":""
+         },
+         {
+             "inputKey": "sports",
+             "inputType":"sports",
+             "placeholder": {
+                 "es": "Deportes que te interesa (opcional)",
+                 "en": "Sports you're interested in (optional)"
+             },
+             "error":""
+         }
+    ]
+     
+ }

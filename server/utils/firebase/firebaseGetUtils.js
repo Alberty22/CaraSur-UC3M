@@ -1,4 +1,4 @@
-const { db } = require('../../firebaseAdmin');
+const { db } = require('../../services/firebaseAdmin');
 
 const getUserNotifications = async (email) => {
     try {
@@ -146,6 +146,49 @@ const getUserLoans = async (email) => {
     }
 }
 
+const getData = async(colection, documentId) =>{
+  try {
+    const documentRef = db.collection(colection).doc(documentId);
+    const documentSnap = await documentRef.get();
+
+    if (!documentSnap.exists) {
+      return
+    }
+
+    return documentSnap.data();
+  } 
+  catch (error) {
+    console.error('Error al obtener el documento:', error);
+    throw new Error('Error al obtener el documento');
+  }
+}
+
+const getAdminsEmails = async () => {
+  try {
+      const adminsSnapshot = await db.collection('users')
+          .where('role', '==', 'admin')
+          .get();
+  
+      if (adminsSnapshot.empty) {
+          return []
+      }
+  
+      const emailsList = [];
+      adminsSnapshot.forEach(doc => {
+          const data = doc.data();
+          if (data.email) {
+              emailsList.push(data.email);
+          }
+      })
+  
+      return emailsList
+  } 
+  catch (error) {
+      console.error('Error fetching admin emails:', error)
+      throw error
+  }
+}
+
 
   
 module.exports = { 
@@ -153,5 +196,7 @@ module.exports = {
     getUsers,
     getUserDetails,
     getRoleAndName,
-    getUserLoans
+    getUserLoans,
+    getData,
+    getAdminsEmails
 };
