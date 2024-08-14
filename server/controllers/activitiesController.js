@@ -1,5 +1,6 @@
 const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = require('../utils/databaseUtils');
-const { addDocumentWithID, deleteDocumentWithID, modifyUserArray } = require('../utils/firebaseUtils');
+const { addDocumentWithID, deleteDocumentWithID } = require('../utils/firebase/firebasePostUtils');
+const { modifyUserArray } = require('../utils/firebase/firebaseUpdateUtils');
 const { generateActivityId } = require('../utils/identifierUtils');
 const path = require('path');
 const activitiesPath = path.join(__dirname, '../data/activities.json');

@@ -1,20 +1,13 @@
-const { readJsonFile, updateJsonEntries } = require('../utils/databaseUtils');
-const { addUserNotifications, deleteUserNotifications } = require('../utils/firebaseUtils');
-const { generateNotificationId } = require('../utils/identifierUtils');
-const path = require('path');
-const usersPath = path.join(__dirname, '../data/users.json');
+const { addUserNotifications, deleteUserNotifications } = require('../utils/firebase/firebasePostUtils');
+const { getUserNotifications } = require('../utils/firebase/firebaseGetUtils')
+const { sendNotificationToAll, sendNotificationToClient } = require('./sse/notificationsHandler');
 
 // GET request handler to retrieve notifications
 exports.getUserNotifications = async (req, res) => {
     const { email } = req.params
     try {
-      const users = await readJsonFile(usersPath)
-      const user = users.find(user => user.email === email)
-      if (user) {
-        res.json(user.notifications);
-      } else {
-        res.status(404).json({ error: 'User not found' })
-      }
+      const notifications = await getUserNotifications(email)
+      res.json(notifications)
     } 
     catch (error) {
       res.status(500).json({ error: 'Internal Server Error' })
@@ -30,25 +23,6 @@ exports.postNotifications = async (req, res) => {
       return res.status(404).json({ error: 'Error in params' })
     }
 
-    const emailsList = emails.map(email => email.email)
-    let filterFn
-    
-    if (emailsList.includes("all")) {
-      filterFn = () => true
-    } 
-    else  {
-      filterFn = user => emailsList.includes(user.email)
-    }
-    
-    const updateFn = (user) => {
-      const newNotificationId = generateNotificationId(user)
-      user.notifications[newNotificationId] = {
-        id: newNotificationId,
-        text: message
-      }
-      return user
-    }
-
     const promises = emails.map(email => addUserNotifications(email.email, message));
     try {
         await Promise.all(promises);
@@ -56,8 +30,13 @@ exports.postNotifications = async (req, res) => {
         console.error('One or more notifications failed:', error);
     }
     
-    await updateJsonEntries(usersPath, filterFn, updateFn);
-
+    if(emails.some(item => item.email === 'all')){
+      sendNotificationToAll('get')
+    }
+    else {
+      emails.forEach(item => sendNotificationToClient(item.email, 'get'));
+    }
+    
     return res.status(201).json({ success: true, message: 'Notifications send' })
   }
   catch (error) {
@@ -65,25 +44,17 @@ exports.postNotifications = async (req, res) => {
   }
 }
 
+// PUT request handler to delete notifications
 exports.deleteNotifications = async (req, res) => {
   try {
     const { email } = req.params
-    const users = await readJsonFile(usersPath)
 
-    if (!email || !(users.find(user => user.email === email))) {
+    if (!email ) {
       return res.status(404).json({ error: 'Error in params' })
     }
 
-    const filterFn = user => user.email === email
-  
-    const updateFn = (user) => {
-      user.notifications = {}
-      return user
-    }
-
     await deleteUserNotifications(email)
-    await updateJsonEntries(usersPath, filterFn, updateFn)
-
+    
     return res.status(201).json({ success: true, message: 'Notifications cleared' });
   } 
   catch (error) {

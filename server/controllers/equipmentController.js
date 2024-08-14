@@ -1,6 +1,6 @@
 const { readJsonFile, writeJsonFile } = require('../utils/databaseUtils');
 const { generateProductId } = require('../utils/identifierUtils');
-const { addDocumentWithID } = require('../utils/firebaseUtils');
+const { addDocumentWithID } = require('../utils/firebase/firebasePostUtils');
 const { uploadBase64Image } = require('../utils/objectUtils')
 const path = require('path');
 const equipmentPath = path.join(__dirname, '../data/equipment.json');

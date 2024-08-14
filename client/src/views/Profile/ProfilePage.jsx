@@ -12,6 +12,7 @@ import { usePopup } from '../../hooks/usePopups.js';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useProfile } from '../../hooks/useProfile.js';
 
 import { ROUTES } from '../../config/apiRoutes.js';
 import { getCookie, updateCookie } from '../../utils/cookies.js';
@@ -24,28 +25,28 @@ import inputs_profile from '../../assets/others/inputs-profile.json';
 
 function ProfilePage () {
 
-    const { data, refetch } = useFetch({ url: `${ROUTES.PROFILE}/${encodeURIComponent(getCookie('email'))}`})
-    const userData = data ? data : []
+    const { userDetails, setfetchData} = useProfile()
 
     const { t } = useTranslation()
 
     const userInformation = () => {
-        const {UC3MStudent, ...others} = userData?.userDetails || {}
-        return { ...others, UC3MStudent: t(`form.uc3m-student.${UC3MStudent}`)}
+        const {UC3MStudent, ...others} = userDetails?.userDetails || {}
+        return { name:others.name, surname:others.surname, id:others.id ,postal:others.postal, telephone:others.telephone, UC3MStudent: t(`form.uc3m-student.${UC3MStudent}`)}
     }
 
     const optionalInformation = () => {
-        return Object.fromEntries(
-            Object.entries(userData?.userOptionalDetails || {}).map(
+        const data =  Object.fromEntries(
+            Object.entries(userDetails?.userOptionalDetails || {}).map(
                 ([key, value]) => [key, value === '' || ((key === 'country' || key ==='birthdate') ? `${value}` : t(`form.${key}.${value}`))]
             )
         )
+        return {gender:data.gender, birthdate:data.birthdate, country:data.country, student:data.student, sports:data.sports}
     }
     const information = [
         {
             "id":"accountDetails",
             "titleSection": t('profile.title1'),
-            "information": userData?.accountDetails
+            "information": userDetails.accountDetails
         },
         {
             "id":"userDetails",
@@ -60,7 +61,7 @@ function ProfilePage () {
         {
             "id":"preferences",
             "titleSection": t('profile.title4'),
-            "information": {"language": userData?.preferences?.language, "theme": t(`form.theme.${userData?.preferences?.theme}`)}
+            "information": {"language": userDetails?.preferences?.language, "theme": t(`form.theme.${userDetails?.preferences?.theme}`)}
         }
     ]
     
@@ -84,15 +85,17 @@ function ProfilePage () {
         const res = await updateData(payload, ROUTES.PROFILE)
         
         if(res.code) {
-            refetch()
+            
             handleOpen(<OkSection className='white' message={t('profile.ok')} />)
             if(id === 'accountDetails') {
-                updateCookie("email", data?.email)
+                await updateCookie("email", data?.email)
             }
 
             if (id === 'userDetails'){
-                updateCookie("name",data?.name)
+                await updateCookie("name",data?.name)
             }
+            setfetchData(true)
+            
             
         }
         else {
@@ -109,7 +112,7 @@ function ProfilePage () {
                     <img src={user_img} alt='Imagen de usuario'></img>
                 </div>
                 <section className='user-info'>
-                    { userData.length !== 0 &&
+                    { Object.keys(userDetails).length !== 0 &&
                         information.map((section) => {
                             return <UserInformation key={section.titleSection} information={section.information} sectionTitle={section.titleSection} 
                                 popupContent={<Form inputs={inputs_profile[section.id]} onSubmit={(data) => handleSubmit(data, section.id)} type={t('profile.action')} />}

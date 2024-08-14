@@ -45,7 +45,7 @@ export function checkRole() {
     return role === 'admin' ? true : false
 }
 
-export function updateCookie(name, value) {
+export async function updateCookie(name, value) {
     let cookieValue = getCookie(name);
     if (!cookieValue) {
         console.log("Cookie not found!")

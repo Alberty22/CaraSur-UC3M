@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { usePopup } from '../../../hooks/usePopups'
 import { useFetch } from '../../../hooks/useFetch'
+import { useUsers } from '../../../hooks/useUsers'
 
 import { ROUTES } from '../../../config/apiRoutes'
 import { sendData } from '../../../utils/communications'
@@ -25,11 +26,11 @@ function AdminNotificationsPage() {
     const { t } = useTranslation()
     const { popupContent, handleOpen } = usePopup();
 
-    const { data } = useFetch({url: ROUTES.USERS})
-    const users = data ? data.map(({ role, ...rest }) => rest) : []
+    const {users} = useUsers()
+    const simpleUsers = users ? users.map(({ role, ...rest }) => rest) : []
 
     const filterSearch = () => {
-        const filteredUsers = users.filter(user => {
+        const filteredUsers = simpleUsers.filter(user => {
             return query === '' || user.email.toLowerCase().includes(query.toLowerCase())
         });
         setResults(filteredUsers)

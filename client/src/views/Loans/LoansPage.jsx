@@ -1,24 +1,21 @@
-import './LoansPage.css'
+import './LoansPage.css';
 
-import { Breadcrumbs } from '../../components/others/Breadcrumbs'
-import { LoanItem } from '../../components/others/LoanItem'
+import { Breadcrumbs } from '../../components/others/Breadcrumbs';
+import { LoanItem } from '../../components/others/LoanItem';
 
-import { useFetch } from '../../hooks/useFetch'
+import { useUserLoans } from '../../hooks/useUserLoans';
 
-import { ROUTES } from '../../config/apiRoutes'
-import { getCookie } from '../../utils/cookies'
 
 function LoansPage() {
-    const { data } = useFetch({ url:`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`})
-    const loans = data ? Object.values(data) : []
+    const { loans } = useUserLoans()
     return (
         <main className='loans-page'>
             <Breadcrumbs />
             <section>
                 { loans !== undefined &&
-                    loans.map((loan) => {
+                    loans.map((loan, index) => {
                         return (
-                            <LoanItem key={loan.product} information={loan}></LoanItem>
+                            <LoanItem key={index} information={loan}></LoanItem>
                         )
                     })
                 }

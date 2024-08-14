@@ -1,10 +1,12 @@
 const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
-const { addDocument, deleteDocument, updateEquipment, addUserLoan, deleteUserLoan } = require('../utils/firebaseUtils');
+const { addDocument, deleteDocument, addUserLoan, deleteUserLoan } = require('../utils/firebase/firebasePostUtils');
+const { getUserLoans } = require('../utils/firebase/firebaseGetUtils')
+const { updateEquipment } = require('../utils/firebase/firebaseUpdateUtils');
+const { sendLoansToClient } = require('../controllers/sse/loansHandler')
 const { generateLoanId } = require('../utils/identifierUtils');
 const { getActualDate } = require('../utils/datesUtils');
 const { updateEquipmentQuantity } = require('../utils/equipmentUtils')
 const path = require('path');
-const usersPath = path.join(__dirname, '../data/users.json');
 const equipmentPath = path.join(__dirname, '../data/equipment.json');
 const pendingLoansPath = path.join(__dirname, '../data/pending-loans.json');
 const proccessedLoansPath = path.join(__dirname, '../data/proccesed-loans.json');
@@ -13,13 +15,10 @@ const proccessedLoansPath = path.join(__dirname, '../data/proccesed-loans.json')
 exports.getUserLoans = async (req, res) => {
     const { email } = req.params
     try {
-      const users = await readJsonFile(usersPath)
-      const user = users.find(user => user.email === email)
-      if (user) {
-        res.json(user.loans);
-      } else {
-        res.status(404).json({ error: 'User not found' })
-      }
+      const loans = await getUserLoans(email)
+     
+      res.status(201).json(loans)
+      
     } 
     catch (error) {
       res.status(500).json({ error: 'Internal Server Error' })
@@ -71,6 +70,7 @@ exports.postPendingLoans = async (req, res) => {
 
       await addDocument('pending-loans', newLoan)
       await updateEquipment("equipment",  loan.id.toString(), 'available', loan.quantity, 'subtract')
+      
 
     })
     
@@ -154,22 +154,10 @@ exports.postProccesedLoans = async (req, res) => {
     await deleteDocument('pending-loans', modifiedLoan)
     await deleteJsonEntry(pendingLoansPath, modifiedLoan)
 
-    //Update user loans
     const { user:userEmail, ...userLoan} = loan
 
-    const filterFn = user => user.email === userEmail
-    
-    const updateFn = (user) => {
-      const newLoanId = generateLoanId(user)
-      user.loans[newLoanId] = {
-        id: newLoanId,
-        ...userLoan
-      }
-      return user
-    }
-
     await addUserLoan(userEmail, userLoan)
-    await updateJsonEntries(usersPath, filterFn, updateFn)
+    sendLoansToClient(loan.user, 'get')
 
     return res.status(201).json({ success: true, message: 'Loan proccesed' })
   }
@@ -190,26 +178,17 @@ exports.deleteProccesedLoans = async (req, res) => {
 
     await deleteDocument('proccesed-loans', loan)
     await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
+
     await deleteJsonEntry(proccessedLoansPath, loan)
-    
-
-    const filterFn = user => user.email === loan.user
-    
-    const updateFn = (user) => {
-
-      user.loans = Object.fromEntries(Object.entries(user.loans).filter(([key, value]) => (value.product !== loan.product) || (value.returnDate !== loan.returnDate)))
-      
-      return user
-    }
 
     const {id, user, ...deleteLoan } = loan
     await deleteUserLoan(user, deleteLoan)
-    await updateJsonEntries(usersPath, filterFn, updateFn)
 
     const equipment = await readJsonFile(equipmentPath)
     const newEquipment = await updateEquipmentQuantity(equipment, [loan.product], [loan.quantity], 'add')
     await writeJsonFile(equipmentPath, newEquipment)
 
+    sendLoansToClient(loan.user, 'get')
     res.status(201).json({ success: true, message: 'Loan removed' })
 
   } 

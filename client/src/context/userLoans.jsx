@@ -3,23 +3,23 @@ import { ROUTES } from '../config/apiRoutes.js';
 import { getCookie } from "../utils/cookies.js";
 import { useAuth } from "../hooks/useAuth.js"
 
-export const NotificationContext = createContext()
+export const UserLoansContext = createContext()
 
-export function NotificationsProvider ({ children }) {
-    const [notifications, setNotifications] = useState({})
+export function UserLoansProvider ({ children }) {
+    const [loans, setLoans] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     const { isAuthenticated } = useAuth()
 
-    const fetchNotifications = useCallback(async () => {
+    const fetchLoans = useCallback(async () => {
         try {
-            const res = await fetch(`${ROUTES.NOTIFICATIONS}/${encodeURIComponent(getCookie('email'))}`)
+            const res = await fetch(`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`)
             if (!res.ok) {
                 throw new Error('Network response was not ok')
             }
             const data = await res.json()
-            setNotifications(data)
+            setLoans(data)
         } 
         catch (error) {
             setError(error)
@@ -31,13 +31,14 @@ export function NotificationsProvider ({ children }) {
 
     useEffect(() => {
         if(isAuthenticated){
-            const eventSource = new EventSource(`http://localhost:5000/notifications/${encodeURIComponent(getCookie('email'))}`)
+            const eventSource = new EventSource(`http://localhost:5000/loans/${encodeURIComponent(getCookie('email'))}`)
 
             eventSource.onmessage = async (event) => {
                 const newMessage = JSON.parse(event.data)
                 
                 if(newMessage.message === 'get'){
-                    fetchNotifications()
+                    console.log("fetch loans")
+                    fetchLoans()
                 } 
             }
             return () => {
@@ -47,8 +48,8 @@ export function NotificationsProvider ({ children }) {
     }, [isAuthenticated])
 
     return (
-        <NotificationContext.Provider value={{ notifications, setNotifications }}>
+        <UserLoansContext.Provider value={{ loans, setLoans }}>
             {children}
-        </NotificationContext.Provider>
+        </UserLoansContext.Provider>
     )
 }

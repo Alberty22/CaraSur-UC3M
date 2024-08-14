@@ -1,5 +1,5 @@
 const { readJsonFile, writeJsonFile} = require('../utils/databaseUtils');
-const { updateDocumentWithID } = require('../utils/firebaseUtils');
+const { updateDocumentWithID } = require('../utils/firebase/firebaseUpdateUtils');
 const path = require('path');
 const adminPath = path.join(__dirname, '../data/admin.json');
 

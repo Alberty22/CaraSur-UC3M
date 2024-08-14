@@ -1,7 +1,10 @@
-const { readJsonFile, writeJsonFile, updateJsonEntries, updateUserRef } = require('../utils/databaseUtils');
-const { updloadUserFirebase, updateUserFirebase } = require('../utils/firebaseUtils');
-const path = require('path');
-const usersPath = path.join(__dirname, '../data/users.json');
+const { getUserDetails, getUsers, getRoleAndName } = require('../utils/firebase/firebaseGetUtils');
+const { updloadUserFirebase } = require('../utils/firebase/firebasePostUtils');
+const { updateUserFirebase } = require('../utils/firebase/firebaseUpdateUtils');
+const { sendUsersToAll } = require('./sse/usersHandler');
+const { notificationClients } = require('./sse/notificationsHandler');
+const { loansClients } = require('./sse/loansHandler');
+
 const { auth } = require('../firebaseAdmin');
 
 
@@ -9,15 +12,7 @@ const { auth } = require('../firebaseAdmin');
 // GET request handler to retrieve all users
 exports.getUsers = async (req, res) => {
   try {
-    const users = await readJsonFile(usersPath)
-    
-    const simplifiedUsers = users.map(user => {
-      const { email, role, ...others } = user
-      return {
-        email: email,
-        role: role
-      }
-    })
+    const simplifiedUsers = await getUsers()
 
     res.json(simplifiedUsers)
   } 
@@ -30,18 +25,19 @@ exports.getUsers = async (req, res) => {
 exports.getUserDetails = async (req, res) => {
   const { email } = req.params
   try {
-    const users = await readJsonFile(usersPath)
-    const user = users.find(user => user.email === email)
-    if (user) {
-      const { idPhoto, ...filteredDetails } = user.details
-      res.json({
-        "accountDetails": {email: user.email, password: '*******'},
-        ...filteredDetails
-      });
-    } else {
-      res.status(404).json({ error: 'User not found' })
-    }
-  } 
+
+    const data = await getUserDetails(email)
+    const details = data.reduce((acc, item) => {
+      const key = Object.keys(item)[0];
+      acc[key] = item[key];
+      return acc;
+    }, {})
+
+    res.json({
+      "accountDetails": {email: email, password: '*******'},
+      ...details
+    })
+  }
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
   }
@@ -51,7 +47,6 @@ exports.getUserDetails = async (req, res) => {
 exports.addUser = async (req, res) => {
   try {
     const user = req.body
-    const users = await readJsonFile(usersPath)
 
     const newUser = {
       email: user.email,
@@ -67,13 +62,12 @@ exports.addUser = async (req, res) => {
     })
 
     const status = await updloadUserFirebase("users", newUser.email, newUser)
+    
     if(!status) {
       return res.status(404).json({ error: 'Error uploading data' })
     }
 
-    users.push(newUser)
-
-    await writeJsonFile(usersPath, users)
+    sendUsersToAll('get')
 
     res.status(201).json({ success: true, message: 'User added successfully' })
   } 
@@ -88,18 +82,9 @@ exports.loginUser = async (req, res) => {
     const decodedToken = await auth.verifyIdToken(token)
     const uid = decodedToken.uid
 
-    const users = await readJsonFile(usersPath)
-    const user = users.find(user => user.email === email)
-
-    if (user) {
-      const { role, details } = user
-      return res.json({ success: true, message: { role: role, name:details.userDetails.name }})
-    } 
-    else {
-      return res.status(404).json({ error: 'User not found' })
-    }
-
     
+    const { role, name } = getRoleAndName(email)
+    res.status(201).json({ success: true, message: { role: role, name:name }})
   } 
   catch (error) {
     console.error("Error verifying token:", error);
@@ -117,48 +102,25 @@ exports.updateUser = async (req, res) => {
       return res.status(404).json({ error: 'Error in params' })
     }
 
-    const users = await readJsonFile(usersPath)
-    const user = users.find(user => user.email === email)
+    await updateUserFirebase("users", email, req.body)
 
-    if (user) {
-      const filterFn = user => user.email === email
-    
-      const updateFn = (user) => {
-        if(accountDetails) {
-          if(accountDetails?.email !== user.email) {
-            updateUserRef(email, accountDetails.email)
-            user.email = accountDetails.email
-          }
-          
+    if(accountDetails) {
+      notificationClients.forEach((client, index) => {
+        if (client.id === email) {
+          notificationClients[index].id = accountDetails.email
         }
-        if(userDetails) {
-          user.details.userDetails = userDetails
+      })
+      loansClients.forEach((client, index) => {
+        if (client.id === email) {
+          loansClients[index].id = accountDetails.email
         }
-        if(userOptionalDetails) {
-            for (let key in userOptionalDetails) {
-                if (userOptionalDetails[key] !== "") {
-                  user.details.userOptionalDetails[key] = userOptionalDetails[key]
-                }
-            }
-        }
-        if(preferences) {
-          user.details.preferences = preferences
-        }
-        if (idPhoto) {
-          user.details.idPhoto = idPhoto
-        }
-        return user
-      }
-
-      await updateUserFirebase("users", email, req.body)
-
-      await updateJsonEntries(usersPath, filterFn, updateFn)
-
-      res.status(201).json({ success: true, message: 'User updated successfully' })
+      })
       
-    } else {
-      res.status(404).json({ error: 'User not found' })
     }
+    sendUsersToAll('get')
+
+    res.status(201).json({ success: true, message: 'User updated successfully' })
+      
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })

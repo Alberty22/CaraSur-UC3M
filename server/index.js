@@ -1,6 +1,9 @@
 const express = require('express');
 
 
+const notificationEventsRoutes = require('./routes/sse/notificationsEventsRoute');
+const usersEventsRoutes = require('./routes/sse/usersEventsRoutes');
+const loansEventsRoutes = require('./routes/sse/loansEventRouter');
 
 const activitiesRoutes = require('./routes/activitiesRoutes');
 const usersRoutes = require('./routes/usersRoutes');
@@ -12,6 +15,8 @@ const adminRoutes = require('./routes/adminRoutes')
 const errorHandler = require('./middleware/errorHandler');
 
 
+
+
 const path = require('path');
 const app = express();
 const port = 5000;
@@ -19,6 +24,9 @@ const port = 5000;
 // Middleware para parsear JSON
 app.use(express.json());
 
+app.use('/notifications', notificationEventsRoutes);
+app.use('/users', usersEventsRoutes);
+app.use('/loans', loansEventsRoutes);
 
 app.use('/server/activities', activitiesRoutes);
 app.use('/server/users', usersRoutes);

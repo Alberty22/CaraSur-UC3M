@@ -2,13 +2,13 @@ import { useTranslation } from "react-i18next";
 
 import { ROUTES } from "../../config/apiRoutes";
 import { useFetch } from "../../hooks/useFetch";
+import { useUsers } from "../../hooks/useUsers";
 
 export function TextInput({inputKey, inputType, placeholder, error, errors, register, isLogin}) {
 
     const { t } = useTranslation()
 
-    const { data } = useFetch({url: ROUTES.USERS})
-    const users = data ? data : []
+    const {users} = useUsers()
 
     const validateEmail = async (email) => {
         if (users.some(user => user.email === email)) {
@@ -16,7 +16,6 @@ export function TextInput({inputKey, inputType, placeholder, error, errors, regi
         }
         return true;
       }
-
 
     return (
         <>

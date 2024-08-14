@@ -13,6 +13,7 @@ import { Searchbar } from '../../../components/others/Searchbar';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFetch } from '../../../hooks/useFetch';
+import { useUsers } from '../../../hooks/useUsers';
 
 import { ROUTES } from '../../../config/apiRoutes';
 import { updateData } from '../../../utils/communications';
@@ -22,10 +23,9 @@ import admin_settings from '../../../assets/others/admin-settings.json';
 function AdminSettingsPage() {
 
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState([])
 
-    const { data } = useFetch({url: ROUTES.USERS})
-    const users = data ? data : []
+    const {users} = useUsers()
 
     const { data:admin, refetch} = useFetch({url: ROUTES.ADMIN})
 
