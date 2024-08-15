@@ -20,7 +20,7 @@ function loansEventsHandler(req, res) {
     }
 
     loansClients.push(newClient)
-    newClient.res.write(`data: ${JSON.stringify({ message: 'get' })}\n\n`)
+    newClient.res.write(`data: ${JSON.stringify({ message: 'first' })}\n\n`)
 
     req.on('close', () => {
         loansClients = loansClients.filter(client => client.id !== clientId);

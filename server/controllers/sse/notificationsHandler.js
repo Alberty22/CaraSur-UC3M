@@ -20,7 +20,7 @@ function notificationEventsHandler(req, res) {
     }
 
     notificationClients.push(newClient)
-    newClient.res.write(`data: ${JSON.stringify({ message: 'get' })}\n\n`)
+    newClient.res.write(`data: ${JSON.stringify({ message: 'first' })}\n\n`)
 
     req.on('close', () => {
         notificationClients = notificationClients.filter(client => client.id !== clientId);

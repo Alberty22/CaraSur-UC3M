@@ -121,7 +121,8 @@
       "separator": "o",
       "action": "Registrarse",
       "forgot": "¿Has olvidado tu contraseña?",
-      "failed": "Se ha producido un error"
+      "success": "Se ha completado el registro",
+      "failed": "Ha ocurrido un error, registro rechazado"
     },
 
     "form": {

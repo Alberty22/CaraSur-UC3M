@@ -9,6 +9,7 @@ export const NotificationContext = createContext()
 
 export function NotificationsProvider ({ children }) {
     const [notifications, setNotifications] = useState({})
+    const [firstFetch, setFirstFecth] =  useState(false)
     const isVisible = usePageVisibility()
     const [eventSource, setEventSource] = useState(null)
 
@@ -43,6 +44,11 @@ export function NotificationsProvider ({ children }) {
                 es.onmessage = async (event) => {
                     const newMessage = JSON.parse(event.data)
                     
+                    if(newMessage.message === 'first' && !firstFetch){
+                        fetchNotifications()
+                        setFirstFecth(true)
+                    } 
+
                     if(newMessage.message === 'get'){
                         fetchNotifications()
                     } 
@@ -62,7 +68,7 @@ export function NotificationsProvider ({ children }) {
                 setEventSource(null);
             }
         }
-    }, [isAuthenticated, isVisible, eventSource])
+    }, [isAuthenticated, isVisible])
 
     return (
         <NotificationContext.Provider value={{ notifications, setNotifications }}>

@@ -120,7 +120,8 @@
       "separator": "or",
       "action": "Sign Up",
       "forgot": "Forgot your password?",
-      "failed": "An error occurred"
+      "success": "Registration completed successfully",
+      "failed": "An error occurred, registration rejected"
     },
 
     "form": {

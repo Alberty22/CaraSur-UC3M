@@ -90,8 +90,10 @@ function SignupPage() {
         const res = await sendData(dataToSend, ROUTES.SIGNUP)
 
         if(res.code) {
-            login({name: dataToSend.details['userDetails'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
-            navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
+            console.log(res)
+            window.location = res.result
+            // login({name: dataToSend.details['userDetails'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
+            // navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
         }
         else {
             setFormData(false)

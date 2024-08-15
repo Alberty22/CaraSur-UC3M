@@ -5,6 +5,7 @@ const { sendUsersToAll } = require('./sse/usersHandler');
 const { notificationClients } = require('./sse/notificationsHandler');
 const { loansClients } = require('./sse/loansHandler');
 const { sendWelcomeEmail } = require('../utils/emailsUtils');
+const { createCheckout } = require('../services/paymentService')
 
 const { auth } = require('../services/firebaseAdmin');
 
@@ -14,8 +15,7 @@ const { auth } = require('../services/firebaseAdmin');
 exports.getUsers = async (req, res) => {
   try {
     const simplifiedUsers = await getUsers()
-
-    res.json(simplifiedUsers)
+    res.status(201).json(simplifiedUsers)
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
@@ -61,24 +61,14 @@ exports.addUser = async (req, res) => {
       details: user.details,
       notifications: {"1": {"id": "1","text": "Bienvenido a club CaraSur"}},
       loans:  {}
-    };
-
-    const userRecord = await auth.createUser({
-      email: user.email,
-      password: user.password,
-    })
-
-    const status = await updloadUserFirebase("users", newUser.email, newUser)
-    
-    if(!status) {
-      return res.status(404).json({ error: 'Error uploading data' })
     }
 
-    sendUsersToAll('get')
-
-    sendWelcomeEmail(newUser.email)
-
-    res.status(201).json({ success: true, message: 'User added successfully' })
+    const url = await createCheckout({email: user.email, password: user.password, newUser:newUser})
+    if(!url) {
+      return res.status(404).json({ error: 'Error at checkout' })
+    }
+    
+    res.status(201).json({ success: true, message: url })
   } 
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })

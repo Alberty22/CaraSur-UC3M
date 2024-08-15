@@ -1,9 +1,11 @@
 const express = require('express');
-
+require('dotenv').config();
 
 const notificationEventsRoutes = require('./routes/sse/notificationsEventsRoute');
 const usersEventsRoutes = require('./routes/sse/usersEventsRoutes');
 const loansEventsRoutes = require('./routes/sse/loansEventRouter');
+
+const paymentRoutes = require('./routes/payment/paymentRoutes') 
 
 const activitiesRoutes = require('./routes/activitiesRoutes');
 const usersRoutes = require('./routes/usersRoutes');
@@ -19,9 +21,15 @@ const { setup } = require('./utils/serverSetup')
 
 const path = require('path');
 const app = express();
+const cors = require('cors');
 const port = 5000;
 
-// Middleware para parsear JSON
+app.use(cors({
+  origin: process.env.URL
+}));
+
+app.use('/server/payment', express.raw({ type: 'application/json' }), paymentRoutes);
+
 app.use(express.json());
 
 app.use('/notifications', notificationEventsRoutes);
@@ -35,7 +43,8 @@ app.use('/server/loans', loansRoutes);
 app.use('/server/notifications', notificationsRoutes);
 app.use('/server/admin', adminRoutes);
 
-setup()
+
+// setup()
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

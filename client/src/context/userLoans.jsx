@@ -7,6 +7,7 @@ export const UserLoansContext = createContext()
 
 export function UserLoansProvider ({ children }) {
     const [loans, setLoans] = useState(undefined)
+    const [firstFetch, setFirstFecth] =  useState(false)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -35,9 +36,13 @@ export function UserLoansProvider ({ children }) {
 
             eventSource.onmessage = async (event) => {
                 const newMessage = JSON.parse(event.data)
-                
+
+                if(newMessage.message === 'first' && !firstFetch){
+                    fetchLoans()
+                    setFirstFecth(true)
+                } 
+
                 if(newMessage.message === 'get'){
-                    console.log("fetch loans")
                     fetchLoans()
                 } 
             }

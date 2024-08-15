@@ -1,7 +1,6 @@
 const { updateDocumentWithID } = require('../utils/firebase/firebaseUpdateUtils');
 const { getData } = require('../utils/firebase/firebaseGetUtils');
 const { sendUsersToAll } = require('./sse/usersHandler');
-const path = require('path');
 
 // GET request handler to retrieve all users
 exports.getAdmin = async (req, res) => {
