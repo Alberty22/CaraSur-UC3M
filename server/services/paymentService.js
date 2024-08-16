@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { encrypt } = require('../utils/securityUtils');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const priceId = 'price_1Pnq4jRqf3jpQcoe8uoTSSDR';
@@ -11,7 +10,7 @@ const generateUniqueSessionId = () => {
 };
 
 const createCheckout = async(userData) => {
-    const {email, password, newUser} = userData
+    const {email, password, newUser} = userData;
     try {
         const sessionId = generateUniqueSessionId();
         await addDataRedis(sessionId, {email, password, newUser});
@@ -26,15 +25,39 @@ const createCheckout = async(userData) => {
             ],
             success_url: 'http://localhost:5000/es/#success',
             cancel_url: 'http://localhost:5000/es/#failed',
-            metadata: { session_id: sessionId }
-        })
-        return session.url
+            metadata: { session_id: sessionId, type:'signup' }
+        });
+        return session.url;
     }
     catch (error) {
-        console.log(error)
-        return
-    }
-    
+        console.log(error);
+        return;
+    }   
 }
 
-module.exports = { createCheckout };
+const renewCheckout = async(data) => {
+    try {
+        const session = await stripe.checkout.sessions.create({
+            mode: 'payment',
+            line_items: [
+                {
+                    price: priceId,
+                    quantity: 1,
+                }
+            ],
+            success_url: 'http://localhost:5000/es/profile/#success',
+            cancel_url: 'http://localhost:5000/es/profile/#failed',
+            metadata: {renew: JSON.stringify(data), type:'renew'}
+        });
+        return session.url;
+    }
+    catch (error) {
+        console.log(error);
+        return;
+    }   
+}
+
+module.exports = { 
+    createCheckout,
+    renewCheckout
+};

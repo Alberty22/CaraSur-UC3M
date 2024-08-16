@@ -238,10 +238,25 @@ const updateEquipment = async (collection, documentId, fieldName, amount, action
     }
   }
 
+//Function to update pay date
+const updatePayDate = async(documentId, data) => {
+    try {
+      // Obtén una referencia al documento
+      const docRef = db.collection('users').doc(documentId).collection('details').doc('payDetails');
+      
+      await docRef.update(filterObject(data))
+      
+    } 
+    catch (error) {
+      console.error(error)
+    }
+}
+
 module.exports = {
     updateUserFirebase,
     updateDocumentWithID,
     modifyUserArray,
-    updateEquipment
+    updateEquipment,
+    updatePayDate
     
 }

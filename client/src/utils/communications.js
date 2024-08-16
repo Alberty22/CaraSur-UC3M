@@ -32,27 +32,27 @@ export const deleteData = async (url) => {
 }
 
 export const sendData = async (data, url) => {
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-  
-      if (!res.ok) {
-        const errorResponse = await res.json();
-        throw new Error(errorResponse.error || 'Error in response')
-      }
-  
-      const result = await res.json()
-      return {code:result.success, result:result.message}
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-    } catch (error) {
-      console.error('Error sending data:', error)
-      return {code:false, result:error}
+    if (!res.ok) {
+      const errorResponse = await res.json();
+      throw new Error(errorResponse.error || 'Error in response')
     }
+
+    const result = await res.json()
+    return {code:result.success, result:result.message}
+
+  } catch (error) {
+    console.error('Error sending data:', error)
+    return {code:false, result:error}
+  }
 }
 
 export const updateData = async (data, url) => {

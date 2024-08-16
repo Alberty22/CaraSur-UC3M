@@ -193,7 +193,8 @@
       "billing": "Account",
       "pay": "Last payment",
       "ok": "Everything went well",
-      "failed": "An error occurred"
+      "failed": "An error occurred",
+      "renew": "Renew subscription"
     },
 
     "loans": {

@@ -7,17 +7,16 @@ import Popup from '../../components/others/Popup.jsx';
 import { FailedSection } from '../../components/others/FailedSection.jsx';
 import { OkSection } from '../../components/others/OkSection.jsx';
 
-import { useFetch } from '../../hooks/useFetch.js';
 import { usePopup } from '../../hooks/usePopups.js';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import { useProfile } from '../../hooks/useProfile.js';
+import { useEffect } from 'react';
 
 import { ROUTES } from '../../config/apiRoutes.js';
 import { getCookie, updateCookie } from '../../utils/cookies.js';
-import { updateData } from '../../utils/communications.js';
+import { updateData, sendData } from '../../utils/communications.js';
 import { toBase64, changeFileName } from '../../utils/photo.js';
+import { checkRenewDate, newRenewDate, getActualDate } from '../../utils/date.js';
 
 import user_img from '../../assets/images/icons/User_primary.webp';
 import inputs_profile from '../../assets/others/inputs-profile.json';
@@ -26,8 +25,22 @@ import inputs_profile from '../../assets/others/inputs-profile.json';
 function ProfilePage () {
 
     const { userDetails, setfetchData} = useProfile()
-
     const { t } = useTranslation()
+
+    useEffect(() => {
+        const hash = location.hash;
+        if (hash) {
+          if (hash.substring(1) === 'success') {
+            handleOpen(<OkSection className='white' message={t('profile.ok')} />)
+            setfetchData(true)
+          }
+          else if(hash.substring(1) === 'failed')
+            handleOpen(<FailedSection className='white' message={t('profile.failed')} />)
+        }
+        else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, [location]);
 
     const userInformation = () => {
         const {UC3MStudent, ...others} = userDetails?.userDetails || {}
@@ -103,14 +116,37 @@ function ProfilePage () {
         }
     }
 
+    const handleRenew = async () => {
+        const payload = {
+            email: getCookie('email'),
+            pay: getActualDate(),
+            expirationDate: newRenewDate(userDetails?.payDetails?.expirationDate),
+        }
+        const res = await sendData(payload, ROUTES.RENEW)
+        if(res.code) {
+            window.location = res.result
+            
+        }
+        else {
+            handleOpen(<FailedSection className='white' message={t('profile.failed')} />)
+        }
+    }
+
     return(
         <>
         <main className='profile-page'>
             <Breadcrumbs />
             <section>
-                <div className='user-image'>
-                    <img src={user_img} alt='Imagen de usuario'></img>
-                </div>
+                <section>
+                    <div className='user-image'>
+                        <img src={user_img} alt='Imagen de usuario'></img>
+                    </div>
+                    { checkRenewDate(userDetails?.payDetails?.expirationDate) &&
+                        <button className='renew' onClick={handleRenew}>{t('profile.renew')}</button>
+                    }
+                    
+                </section>
+                
                 <section className='user-info'>
                     { Object.keys(userDetails).length !== 0 &&
                         information.map((section) => {

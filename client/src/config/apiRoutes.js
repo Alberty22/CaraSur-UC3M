@@ -14,6 +14,7 @@ export const ROUTES = {
   PENDING_LOANS:`${API_BASE_URL}/loans/pending`, 
   PROCCESED_LOANS:`${API_BASE_URL}/loans/proccesed`, 
   USER_LOANS:`${API_BASE_URL}/loans`, 
-  ADMIN : `${API_BASE_URL}/admin`
+  ADMIN : `${API_BASE_URL}/admin`,
+  RENEW: `${API_BASE_URL}/renew`
   
 }

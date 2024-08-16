@@ -37,8 +37,22 @@ const getDataByIdRedis = async (id) => {
     }
 };
 
+const deleteDataByIdRedis = async (id) => {
+    try {
+        const result = await redisClient.del(id);
+        if (result === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 module.exports = {
     addDataRedis,
     getDataByIdRedis,
+    deleteDataByIdRedis
 };

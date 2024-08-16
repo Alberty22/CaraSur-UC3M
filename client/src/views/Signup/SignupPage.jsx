@@ -19,7 +19,7 @@ import { toBase64, changeFileName } from '../../utils/photo.js';
 import { sendData } from '../../utils/communications.js';
 
 import { ROUTES } from '../../config/apiRoutes.js';
-import { getActualDate } from '../../utils/date.js';
+import { getActualDate, newRenewDate } from '../../utils/date.js';
 
 import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
@@ -84,16 +84,13 @@ function SignupPage() {
                     "language": lng,
                     "theme": "light"
                 },
-                "payDetails": {"pay": getActualDate()}
+                "payDetails": {"pay": getActualDate(), "expirationDate": newRenewDate(getActualDate())}
             }
         }
         const res = await sendData(dataToSend, ROUTES.SIGNUP)
 
         if(res.code) {
-            console.log(res)
             window.location = res.result
-            // login({name: dataToSend.details['userDetails'].name, email:dataToSend.email, role:dataToSend.role, rememberMe:false})
-            // navigate(state?.location?.pathname ? `/${lng}/${state?.location?.pathname}` : `/${lng}/`)
         }
         else {
             setFormData(false)

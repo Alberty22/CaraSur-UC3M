@@ -5,14 +5,15 @@ const notificationEventsRoutes = require('./routes/sse/notificationsEventsRoute'
 const usersEventsRoutes = require('./routes/sse/usersEventsRoutes');
 const loansEventsRoutes = require('./routes/sse/loansEventRouter');
 
-const paymentRoutes = require('./routes/payment/paymentRoutes') 
+const paymentRoutes = require('./routes/payment/paymentRoutes');
 
 const activitiesRoutes = require('./routes/activitiesRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const equipmentRoutes = require('./routes/equipmentRoutes');
 const loansRoutes = require('./routes/loansRoutes');
 const notificationsRoutes = require('./routes/notificationsRoutes');
-const adminRoutes = require('./routes/adminRoutes')
+const adminRoutes = require('./routes/adminRoutes');
+const renewRoutes = require('./routes/renewRoutes');
 
 const errorHandler = require('./middleware/errorHandler');
 
@@ -42,7 +43,7 @@ app.use('/server/equipment', equipmentRoutes);
 app.use('/server/loans', loansRoutes);
 app.use('/server/notifications', notificationsRoutes);
 app.use('/server/admin', adminRoutes);
-
+app.use('/server/renew', renewRoutes);
 
 // setup()
 // Middleware para servir archivos estáticos

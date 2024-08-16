@@ -1,23 +1,23 @@
 require('dotenv').config();
 
 const { updloadUserFirebase } = require('../../utils/firebase/firebasePostUtils');
+const { updatePayDate } = require('../../utils/firebase/firebaseUpdateUtils')
 const { sendUsersToAll } = require('../sse/usersHandler');
 const { sendWelcomeEmail } = require('../../utils/emailsUtils');
-const { getDataByIdRedis } = require('../../services/redisService');
+const { getDataByIdRedis, deleteDataByIdRedis } = require('../../services/redisService');
 
 const { auth } = require('../../services/firebaseAdmin');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 exports.confirmCheckout = async (req, res) => {
     const sig = req.headers['stripe-signature'];
 
     const payload = req.body;
 
-    let event
-    event = stripe.webhooks.constructEvent(payload, sig, endpointSecret)
+    let event;
+
+    event = stripe.webhooks.constructEvent(payload, sig, process.env.STRIPE_WEBHOOK_CHECKOUT);
     try {
         
     } catch (err) {
@@ -28,9 +28,23 @@ exports.confirmCheckout = async (req, res) => {
     switch (event.type) {
         case 'checkout.session.completed':
             const checkoutSessionCompleted = event.data.object;
-            const sessionId = checkoutSessionCompleted.metadata.session_id;
+            handleCheckoutSessionCompleted(checkoutSessionCompleted)
 
+            
+            break;
+        default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+
+  res.send();
+}
+
+const handleCheckoutSessionCompleted = async (session) => {
+    const metadata = session.metadata || {};
+    if (metadata.type === 'signup') {
+            const sessionId = session.metadata.session_id;
             const data = await getDataByIdRedis(sessionId)
+            await deleteDataByIdRedis(sessionId)
             
             if (!data) {
                 console.error('No data found for sessionId:', sessionId);
@@ -53,10 +67,19 @@ exports.confirmCheckout = async (req, res) => {
             sendUsersToAll('get')
 
             sendWelcomeEmail(email)
-            break;
-        default:
-        console.log(`Unhandled event type ${event.type}`);
+    } 
+    else if (metadata.type === 'renew') {
+        const data = session.metadata.renew;
+            
+        if (!data) {
+            console.error('No data found for sessionId:', sessionId);
+            return res.status(404).json({ received: false });
+        }
+        
+        const { email, pay, expirationDate } = JSON.parse(data);
+        await updatePayDate(email, {pay: pay, expirationDate: expirationDate})
+      
+    } else {
+      console.log('Checkout completed with unknown type')
     }
-
-  res.send();
-}
+  }

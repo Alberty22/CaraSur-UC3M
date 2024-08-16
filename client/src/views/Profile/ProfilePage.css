@@ -3,12 +3,30 @@
     background-color: #f7f7f7;
 }
 
-.profile-page > section:last-child {
+.profile-page > section:nth-child(2) > section:first-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.renew{
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size:1.2rem;
+    padding: 20px;
+    background-color: #235371;
+    border-radius: 15px;
+}
+
+.profile-page > section:nth-child(2) {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
-
 
 .profile-page .user-image {
     width: 150px;
@@ -36,7 +54,7 @@
 }
 
 @media (max-width: 768px) {
-    .profile-page > section:last-child {
+    .profile-page > section:nth-child(2) {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -51,10 +69,15 @@
         flex-direction: column;
     }
 
+    .renew{
+        font-size:1rem;
+        padding: 15px;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 1024px)  {
-    .profile-page > section:last-child {
+    .profile-page > section:nth-child(2) {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -68,5 +91,10 @@
         height: auto;
         display: flex;
         flex-direction: column;
+    }
+
+    .renew{
+        font-size:1.2rem;
+        padding: 20px;
     }
 }

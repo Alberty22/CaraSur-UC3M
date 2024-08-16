@@ -195,7 +195,8 @@
       "billing" : "Cuenta",
       "pay": "Último pago",
       "ok": "Todo ha salido correctamente",
-      "failed": "Se ha producido un error"
+      "failed": "Se ha producido un error",
+      "renew": "Renovar suscripción"
       
     },
 
