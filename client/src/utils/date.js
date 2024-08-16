@@ -17,8 +17,9 @@ export const checkRenewDate = (date) => {
 
     const checkDate = new Date(date);
     checkDate.setDate(checkDate.getDate() - 5);
-    console.log(date)
+
     console.log(expirationDate)
+    console.log()
     
     return todayDate >= checkDate && todayDate <= expirationDate;
 }
