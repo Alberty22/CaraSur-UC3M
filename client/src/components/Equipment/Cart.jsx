@@ -51,7 +51,6 @@ export function Cart({ refetch }) {
         
         if (cart.length > 0) {
             const res = await sendData({loansReq:cart, email:getCookie('email')}, ROUTES.PENDING_LOANS)
-            console.log(res)
             if(res.code) {
                 refetch()
                 handleOpen(<OkSection message={t('equipment.ok')} />)

@@ -27,7 +27,6 @@ export function useFetch({ url, fetchOnce = false }) {
             return;
         }
         fetchData();
-        console.log("fetch")
     }, [url, fetchData, fetchOnce]);
 
     return { data, loading, error, refetch: fetchData };

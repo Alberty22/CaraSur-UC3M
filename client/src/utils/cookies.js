@@ -48,7 +48,6 @@ export function checkRole() {
 export async function updateCookie(name, value) {
     let cookieValue = getCookie(name);
     if (!cookieValue) {
-        console.log("Cookie not found!")
         return
     }
 

@@ -30,7 +30,6 @@ const createCheckout = async(userData) => {
         return session.url;
     }
     catch (error) {
-        console.log(error);
         return;
     }   
 }
@@ -52,7 +51,6 @@ const renewCheckout = async(data) => {
         return session.url;
     }
     catch (error) {
-        console.log(error);
         return;
     }   
 }

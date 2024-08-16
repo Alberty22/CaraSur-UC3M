@@ -79,7 +79,5 @@ const handleCheckoutSessionCompleted = async (session) => {
         const { email, pay, expirationDate } = JSON.parse(data);
         await updatePayDate(email, {pay: pay, expirationDate: expirationDate})
       
-    } else {
-      console.log('Checkout completed with unknown type')
     }
   }

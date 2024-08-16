@@ -50,7 +50,6 @@ function SignupPage() {
 
         let base64Photo = ''
         const file = data['id-photo']
-        console.log(file)
         if (file) {
             base64Photo = await toBase64(file);
         }

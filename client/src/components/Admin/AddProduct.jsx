@@ -20,7 +20,6 @@ export function AddProduct() {
   const { handleOpen } = usePopup();
             
   const onSubmit = async data => {
-    console.log(data)
     const product = {
       "description": data.productDescription || null,
       "size": data.productSize || null,

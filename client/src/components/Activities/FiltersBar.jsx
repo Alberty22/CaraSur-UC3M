@@ -26,7 +26,6 @@ export function FiltersBar() {
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
         setSearchQuery(newSearch);
-        console.log(newSearch)
 
         setFilters(prevState => ({
             ...prevState,
