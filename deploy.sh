@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Capturar señales para detener Redis
+trap stop_redis EXIT
+
 # Cambiar al directorio del cliente
 cd ./client || exit
 
@@ -28,3 +31,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "El servidor se está ejecutando correctamente."
+
+# Esperar a que el servidor termine
+wait

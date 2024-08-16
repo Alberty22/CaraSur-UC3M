@@ -1,16 +1,18 @@
-import React, { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from './context/auth.jsx'
-import { DropdownProvider } from './context/dropdown.jsx'
-import { PopupProvider } from './context/popup.jsx'
+import React, { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './context/auth.jsx';
+import { DropdownProvider } from './context/dropdown.jsx';
+import { PopupProvider } from './context/popup.jsx';
+import { UsersProvider } from './context/users.jsx';
 import './i18n/config'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+    <UsersProvider>
       <AuthProvider>
         <PopupProvider>
           <DropdownProvider>
@@ -18,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </DropdownProvider>
         </PopupProvider>
       </AuthProvider>
+      </UsersProvider>
     </BrowserRouter>
   </React.StrictMode>
   

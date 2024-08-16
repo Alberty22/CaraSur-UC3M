@@ -24,7 +24,6 @@ import AdminActivitiesPage from './views/Admin/Activities/AdminActivitiesPage.js
 import AdminNotificationsPage from './views/Admin/Notifications/AdminNotificationsPage.jsx';
 
 import { NotificationsProvider } from './context/notifications.jsx';
-import { UsersProvider } from './context/users.jsx';
 import { ProfileProvider } from './context/profile.jsx';
 import { UserLoansProvider } from './context/userLoans.jsx';
 import { EquipmentFiltersProvider } from './context/equipmentFilters.jsx';
@@ -47,7 +46,6 @@ function App() {
         <Header />
       </NotificationsProvider>
       <ScrollToTop />
-      <UsersProvider>
       <UserLoansProvider>
       <ProfileProvider>
         <Routes>
@@ -77,7 +75,6 @@ function App() {
         </Routes>
       </ProfileProvider>
       </UserLoansProvider>
-      </UsersProvider>
       <Footer />
     </>
     
