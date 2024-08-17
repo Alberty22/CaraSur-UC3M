@@ -43,13 +43,17 @@ export function Header() {
     return (
         <>
         <header>
-            { !(isAuthenticated && isMobile) &&
             <div>
-                <Link to={`/${lng}/`}><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
+                { !(isAuthenticated && isMobile) &&
+                <div>
+                    <Link to={`/${lng}/`}><img src={carasur_logo} alt="CaraSur UC3M" /></Link>
+                </div>
+                }
+                <Menu isMenu={isMenu} refList={{menu:menuRef, notifications:notificationsRef, user:userRef}}/>
             </div>
-            }
-            <Menu isMenu={isMenu} refList={{menu:menuRef, notifications:notificationsRef, user:userRef}}/>
         </header>
+        <div className="space">
+        </div>
         <DropdownMenu ref={menuRef}/>
         {
             isAuthenticated &&

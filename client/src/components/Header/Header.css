@@ -1,14 +1,27 @@
 header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+.space {
+  height: 100px;
+  width: 100vw;
+}
+
+header > div{
   
     min-height: 50px;
     height: 100px;
     display: flex;
+    width: 100vw;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
     position:relative;
-    z-index: 2;
+    background-color: #fff;
     
   }
   
@@ -35,6 +48,10 @@ header {
       height: 70px;
       
     }
+
+    .space {
+      height: 70px;
+    }
   
     header div img {
       width: 50px;
@@ -49,6 +66,11 @@ header {
       height: 100px;
       
     }
+
+    .space {
+      height: 100px;
+    }
+
     header div img {
       width: 100px;
       height: 100px;
