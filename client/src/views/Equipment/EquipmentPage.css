@@ -10,6 +10,7 @@
 .equipment-page > header {
     display: flex;
     width: 100%;
+    position: static;
     height: fit-content;
     flex-direction: column;
     justify-content: center;

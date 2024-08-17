@@ -74,6 +74,9 @@
   .navigation .notifications img {
     height: 100%;
     width: 100%;
+    padding-left: 0;
+    min-height: 0px;
+    min-width: 0px;
 
   }
 
@@ -93,6 +96,9 @@
   .navigation .profile img{
     height: 80%;
     width: 80%;
+    padding-left: 0;
+    min-height: 0px;
+    min-width: 0px;
 
   }
 

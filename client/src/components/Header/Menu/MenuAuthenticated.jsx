@@ -1,9 +1,8 @@
+import './Menu.css';
 import notifications_off_icon from "../../../assets/images/icons/Notifications_off.webp"
 import notifications_on_icon from "../../../assets/images/icons/Notifications_on.webp"
 import user_icon from "../../../assets/images/icons/User_white.webp"
-import { useRef } from "react"
 import { useNotifications } from "../../../hooks/useNotifications"
-import { forwardRef } from 'react';
 
 export const MenuAuthenticated = ({ refList }) => {
     const { notifications } = useNotifications()

@@ -1,5 +1,5 @@
 .dropdown-notifications {
-    position: absolute;
+    position: fixed;
     margin: 0;
     top: 100px;
     right: 100px;

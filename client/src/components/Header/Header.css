@@ -10,16 +10,27 @@ header {
   width: 100vw;
 }
 
-header > div{
+.header-container-false{
   
     min-height: 50px;
-    height: 100px;
     display: flex;
     width: 100vw;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position:relative;
     background-color: transparent;
+    
+  }
+
+  .header-container-true{
+  
+    min-height: 50px;
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     position:relative;
     background-color: #fff;
     

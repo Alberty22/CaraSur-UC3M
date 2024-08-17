@@ -1,5 +1,5 @@
 .dropdown-user {
-    position: absolute;
+    position: fixed;
     margin: 0;
     top: 100px;
     right: 10px;

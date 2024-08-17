@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Capturar señales para detener Redis
-trap stop_redis EXIT
-
 # Cambiar al directorio del cliente
 cd ./client || exit
 
