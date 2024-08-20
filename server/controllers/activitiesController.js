@@ -152,7 +152,7 @@ exports.addPendingActivity = async (req, res) => {
 }
 
 
-// DELETE request handler to remove proccesed loans
+// DELETE request handler to remove activity
 exports.deleteActivity = async (req, res) => {
   try {
     

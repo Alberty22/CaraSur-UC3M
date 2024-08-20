@@ -6,12 +6,12 @@ const path = require('path');
 const equipmentPath = path.join(__dirname, '../data/equipment.json');
 
 
-// GET request handler to retrieve pending loans
+// GET request handler to retrieve equipment
 exports.getEquipment = async (req, res) => {
   
     try {
-      const loans = await readJsonFile(equipmentPath)
-      res.json(loans);
+      const equipment = await readJsonFile(equipmentPath)
+      res.json(equipment);
   
     } 
     catch (error) {

@@ -1,15 +1,5 @@
 [
   {
-    "id": "1",
-    "date": "2023-11-04",
-    "chat": "",
-    "description": "Aventura invernal en Sierra Nevada con trekking entre paisajes nevados.",
-    "time": "10:00",
-    "title": "Trekking Invernal",
-    "drive": "",
-    "difficulty": "2"
-  },
-  {
     "id": "10",
     "date": "2023-05-02",
     "difficulty": "2",

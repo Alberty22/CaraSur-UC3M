@@ -12,7 +12,7 @@ export const ROUTES = {
   NOTIFICATIONS:`${API_BASE_URL}/notifications`, 
   EQUIPMENT:`${API_BASE_URL}/equipment`, 
   PENDING_LOANS:`${API_BASE_URL}/loans/pending`, 
-  PROCCESED_LOANS:`${API_BASE_URL}/loans/proccesed`, 
+  PROCCESED_LOANS:`${API_BASE_URL}/loans/processed`, 
   USER_LOANS:`${API_BASE_URL}/loans`, 
   ADMIN : `${API_BASE_URL}/admin`,
   RENEW: `${API_BASE_URL}/renew`

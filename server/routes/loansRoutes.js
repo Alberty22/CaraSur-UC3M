@@ -14,13 +14,13 @@ router.post('/pending', loansController.postPendingLoans);
 router.put('/pending', loansController.deletePendingLoans);
 
 // GET request for proccesed loans
-router.get('/proccesed', loansController.getProccesedLoans);
+router.get('/processed', loansController.getProcessedLoans);
 
 // POST request for proccesed loans
-router.post('/proccesed', loansController.postProccesedLoans);
+router.post('/processed', loansController.postProcessedLoans);
 
 // DELETE request for pending loans
-router.put('/proccesed', loansController.deleteProccesedLoans);
+router.put('/processed', loansController.deleteProcessedLoans);
 
 // GET request for loans
 router.get('/:email', loansController.getUserLoans);

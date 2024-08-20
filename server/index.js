@@ -45,7 +45,7 @@ app.use('/server/notifications', notificationsRoutes);
 app.use('/server/admin', adminRoutes);
 app.use('/server/renew', renewRoutes);
 
-// setup()
+setup()
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
