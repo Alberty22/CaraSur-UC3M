@@ -17,18 +17,20 @@ import { useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth.js';
 import { usePopup } from '../../hooks/usePopups.js';
 import { useTranslation } from 'react-i18next';
+import { useProfile } from '../../hooks/useProfile.js';
 
 
 
 function HomePage() {
     
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
+    const { setfetchData } = useProfile();
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
-    const location = useLocation()
+    const location = useLocation();
 
-    const { popupContent, handleOpen } = usePopup()
+    const { popupContent, handleOpen } = usePopup();
 
     useEffect(() => {
         const hash = location.hash;
@@ -47,6 +49,13 @@ function HomePage() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }, [location]);
+      
+
+    useEffect(() => {
+      if(!isAuthenticated) {
+        setfetchData(true)
+      }
+    }, [isAuthenticated]);
 
     return (
       <>

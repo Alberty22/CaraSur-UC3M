@@ -7,7 +7,6 @@ export function useAuth () {
 
     const login = (data) => {
         saveUserCookies({name: data.name, email:data.email, role: data.role, rememberMe:data?.rememberMe ? data.rememberMe : false})
-        
         setIsAuthenticated(true)
         setIsAdmin(checkRole())
     }

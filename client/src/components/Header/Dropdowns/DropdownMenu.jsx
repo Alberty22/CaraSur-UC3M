@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 export const DropdownMenu = forwardRef((props, ref) => {
     
     const { isAuthenticated, isAdmin, logout } = useAuth()
+    
 
     const { dropdownRef, handleClose } = useDropdown({ id:'menu', maxHeight:'600', toggleRefs:[ref]});
 
@@ -33,7 +34,7 @@ export const DropdownMenu = forwardRef((props, ref) => {
                 {isAdmin &&
                     <li className="link"><Link to={`/${lng}/admin`} onClick={handleClose}>{t('menuLogged.admin')}</Link></li>
                 }
-                <li className="link"><Link to={`/${lng}/`} onClick={() => {handleClose(); logout();}}>{t('menuLogged.logout')}</Link></li>
+                <li className="link"><Link to={`/${lng}/`} onClick={() => {handleClose(); logout(); }}>{t('menuLogged.logout')}</Link></li>
                 </>
                 : <li className='link-area'> <Link to={`/${lng}/login`} onClick={handleClose}><p>{t('menu.loginArea')}</p></Link> </li>
             }

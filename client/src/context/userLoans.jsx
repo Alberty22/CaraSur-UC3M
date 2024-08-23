@@ -42,7 +42,6 @@ export function UserLoansProvider ({ children }) {
                 const es = new EventSource(`http://localhost:5000/loans/${encodeURIComponent(getCookie('email'))}`)
                 es.onmessage = async (event) => {
                     const newMessage = JSON.parse(event.data)
-                    console.log(newMessage.message)
                     if(newMessage.message === 'first' && !firstFetch){
                         fetchLoans()
                         setFirstFecth(true)
@@ -64,7 +63,7 @@ export function UserLoansProvider ({ children }) {
                 setEventSource(null);
             } 
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, isVisible])
 
     return (
         <UserLoansContext.Provider value={{ loans, setLoans }}>

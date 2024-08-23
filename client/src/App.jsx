@@ -42,7 +42,9 @@ function App() {
 
   return (
     <>
+      
       <NotificationsProvider>
+      
         <Header />
       </NotificationsProvider>
       <ScrollToTop />
@@ -73,7 +75,7 @@ function App() {
           <Route path="/" element={<Navigate to="/es/" />} />
           <Route path='*' element={<h1>404 - Ruta inexistente</h1>} />
         </Routes>
-      </ProfileProvider>
+        </ProfileProvider>
       </UserLoansProvider>
       <Footer />
     </>
