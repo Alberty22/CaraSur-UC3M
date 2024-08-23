@@ -38,6 +38,10 @@
     margin: 0;
 }
 
+.aside-section .activity-suggestion button:hover {
+    background-color: #1c4158;
+}
+
 .aside-section .activity-suggestion a {
     color: #fff;
     text-decoration: none;

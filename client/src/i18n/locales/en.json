@@ -192,6 +192,7 @@
       "adminEmail": "Administrator Email",
       "billing": "Account",
       "pay": "Last payment",
+      "expirationDate": "Expiration Date",
       "ok": "Everything went well",
       "failed": "An error occurred",
       "renew": "Renew subscription"
@@ -325,6 +326,7 @@
       "title1": "Pending",
       "title2": "Processed",
       "column1": "Product",
+      "quantity": "Quantity",
       "column2": "User",
       "column3": "Loan Date",
       "column4": "Return Date",

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useCallback } from "react";
-import { useAuth } from "../hooks/useAuth.js"
 import { usePageVisibility } from "../hooks/usePageVisibility.js";
 
 import { ROUTES } from '../config/apiRoutes.js';
@@ -32,37 +31,35 @@ export function UsersProvider ({ children }) {
         }
     }, [])
 
-    const prueba = true
     useEffect(() => {
-        if (prueba) {
-            const es = new EventSource('http://localhost:5000/users')
 
+        if (!isVisible && eventSource) {
+            eventSource.close();
+            setEventSource(null);
+        } 
+        if (isVisible && !eventSource) {
+            const es = new EventSource('http://localhost:5000/users')
             es.onmessage = async (event) => {
                 const newMessage = JSON.parse(event.data)
-
+    
                 if(newMessage.message === 'first' && !firstFetch){
                     fetchUsers()
                     setFirstFecth(true)
                 } 
-
+    
                 if(newMessage.message === 'get'){
                     fetchUsers()
                 } 
             }
-
+    
             setEventSource(es)
             return () => {
                 if (es) {
                     es.close()
                 }
-                
             }
         }
-        
-        if (!isVisible && eventSource) {
-            eventSource.close();
-            setEventSource(null);
-        }  
+         
     }, [isVisible])
 
     return (

@@ -1,4 +1,4 @@
-const { db } = require('../../services/firebaseAdmin');
+const { db, fieldPath } = require('../../services/firebaseAdmin');
 
 //Function to upload users
 const updloadUserFirebase = async (colection, documentId, data)  => {
@@ -128,10 +128,11 @@ const deleteUserNotifications = async (email) => {
 //Function to add data to a collection
 const addDocument = async (collection, data) => {
     try {
-        const collectionRef = db.collection(collection)
+        const collectionRef = db.collection(collection);
        
-        await collectionRef.add(data)
-       
+        const docRef = await collectionRef.add(data);
+
+        return docRef.id;
       } 
       catch (error) {
         console.error(error)
@@ -141,17 +142,17 @@ const addDocument = async (collection, data) => {
 //Function to delete data from a collection
 const deleteDocument = async (collection, queryData) => {
     try {
-        const collectionRef = db.collection(collection)
+        const collectionRef = db.collection(collection);
         
         let query = collectionRef;
         for (const [key, value] of Object.entries(queryData)) {
-            query = query.where(key, '==', value)
+            query = query.where(key, '==', value);
         }
 
-        const snapshot = await query.get()
+        const snapshot = await query.get();
         
         if (snapshot.empty) {
-            return
+            return;
         }
 
         const batch = db.batch()
@@ -168,17 +169,6 @@ const deleteDocument = async (collection, queryData) => {
     }
 }
 
-//Function to add data to a collection
-const addDocumentWithID = async (collection, documentId, data) => {
-    try {
-        const collectionRef = db.collection(collection)
-        await collectionRef.doc(documentId).set(data)
-        
-    } 
-    catch (error) {
-        console.error(error)
-    }
-}
 
 //Function to delete data from a collection
 const deleteDocumentWithID = async (collection, documentId) => {
@@ -207,7 +197,6 @@ module.exports = {
     deleteUserNotifications,
     addDocument,
     deleteDocument,
-    addDocumentWithID,
     deleteDocumentWithID,
     
 }

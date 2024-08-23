@@ -50,9 +50,39 @@ const deleteDataByIdRedis = async (id) => {
     }
 };
 
+const getOrCacheData = async (listKey, getDataFunction, expireSeconds = 3600) =>{
+    try {
+        const items = await redisClient.lRange(listKey, 0, -1);
+    
+        if (items.length > 0) {
+            return items.map(item => JSON.parse(item));
+        } 
+        else {
+            const data = await getDataFunction(listKey);
+        
+            await redisClient.rPush(listKey, data.map(item => JSON.stringify(item)));
+            await redisClient.expire(listKey, expireSeconds);
+        
+            return data;
+        }
+      } 
+      catch (error) {
+        throw new Error(`Error al manejar los datos: ${error.message}`);
+      }
+    };
+
+const deleteCacheList = async(listKey) => {
+    try {
+        await redisClient.del(listKey);
+    } catch (error) {
+        console.error(`Error al eliminar la lista con clave "${listKey}":`, error);
+    }
+    }
 
 module.exports = {
     addDataRedis,
     getDataByIdRedis,
-    deleteDataByIdRedis
+    deleteDataByIdRedis,
+    getOrCacheData,
+    deleteCacheList
 };

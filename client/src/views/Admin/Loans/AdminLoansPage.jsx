@@ -108,6 +108,7 @@ function AdminLoansPage() {
                     <tr>
                         <th>{t('adminLoans.column1')}</th>
                         <th>{t('adminLoans.column2')}</th>
+                        <th>{t('adminLoans.quantity')}</th>
                         <th>{t('adminLoans.column3')}</th>
                         <th>{t('adminLoans.column4')}</th>
                     </tr>
@@ -120,6 +121,7 @@ function AdminLoansPage() {
                             <tr key={index}>
                                 <td>{loan.name}</td>
                                 <td>{loan.user}</td>
+                                <td>{loan.quantity}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{t(`adminLoans.${loan.returnDate}`)}</td>
                                 <td className='button'><button onClick={() => handleDecline(index)}>{t('adminLoans.decline')}</button></td>
@@ -138,6 +140,7 @@ function AdminLoansPage() {
                     <tr>
                         <th>{t('adminLoans.column1')}</th>
                         <th>{t('adminLoans.column2')}</th>
+                        <th>{t('adminLoans.quantity')}</th>
                         <th>{t('adminLoans.column3')}</th>
                         <th>{t('adminLoans.column4')}</th>
                     </tr>
@@ -150,6 +153,7 @@ function AdminLoansPage() {
                             <tr key={index}>
                                 <td>{loan.name}</td>
                                 <td>{loan.user}</td>
+                                <td>{loan.quantity}</td>
                                 <td>{loan.loanDate}</td>
                                 <td>{loan.returnDate}</td>
                                 <td className='button'><button onClick={() => handleConfirm(index)}>{t('adminLoans.accept')}</button></td>

@@ -1,23 +1,21 @@
-const { readJsonFile, writeJsonFile, deleteJsonEntry, updateJsonEntries } = require('../utils/databaseUtils');
-const { addDocumentWithID, deleteDocumentWithID } = require('../utils/firebase/firebasePostUtils');
+const { addDocument, deleteDocumentWithID } = require('../utils/firebase/firebasePostUtils');
+const { getCollectionData, getStockActivities } = require('../utils/firebase/firebaseGetUtils');
 const { modifyUserArray } = require('../utils/firebase/firebaseUpdateUtils');
-const { generateActivityId } = require('../utils/identifierUtils');
 const { getAdminsEmails } = require('../utils/firebase/firebaseGetUtils');
 const { adminActionEmail } = require('../utils/emailsUtils');
-
-const path = require('path');
-const activitiesPath = path.join(__dirname, '../data/activities.json');
-const pendingActivitiesPath = path.join(__dirname, '../data/pending-activites.json');
+const { getOrCacheData, deleteCacheList } = require('../services/redisService');
 
 // GET request handler
 exports.getActivities = async (req, res) => {
   try {
-    const activities = await readJsonFile(activitiesPath);
+    const activities = await getOrCacheData('activities', getCollectionData);
+
     res.json(activities)
 
   } 
   
   catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
@@ -25,7 +23,7 @@ exports.getActivities = async (req, res) => {
 // GET request handler
 exports.getStockActivities = async (req, res) => {
   try {
-    const activities = await readJsonFile(activitiesPath);
+    const activities = await getStockActivities();
     res.json(activities.slice(0, 11));
 
   } 
@@ -37,7 +35,7 @@ exports.getStockActivities = async (req, res) => {
 // GET request handler
 exports.getPendingActivities = async (req, res) => {
   try {
-    const activities = await readJsonFile(pendingActivitiesPath);
+    const activities = await getCollectionData('pending-activities');
     res.json(activities);
 
   } 
@@ -55,20 +53,15 @@ exports.addActivity = async (req, res) => {
     if (!activity || !drive) {
       return res.status(404).json({ error: 'Error in activity' })
     }
+    const { id, ...simpleActivity } = activity
 
-    const activities = await readJsonFile(activitiesPath)
-
-    const newActivity = { ...activity, users: [] }
-    newActivity.id = parseInt(generateActivityId(activities))
+    const newActivity = { ...simpleActivity, users: [] }
     newActivity.drive = drive
 
-    activities.push(newActivity)
+    await deleteDocumentWithID('pending-activities', id.toString())
+    await addDocument('activities', newActivity)
 
-    await deleteDocumentWithID('pending-activities', activity.id.toString())
-    await addDocumentWithID('activities', newActivity.id.toString(), newActivity)
-
-    await deleteJsonEntry(pendingActivitiesPath, activity)
-    await writeJsonFile(activitiesPath, activities)
+    await deleteCacheList('activities')
 
     res.status(201).json({ success: true, message: 'Activity Accepted' })
 
@@ -85,28 +78,8 @@ exports.updateUsersActivity = async (req, res) => {
     if (!email || !activityId || !action) {
       return res.status(404).json({ error: 'Error in params' })
     }
-
-    const filterFn = activity => activity.id === activityId
-    
-    const updateFn = (activity) => {
-
-      if (action === 'add') {
-        if (!activity.users.includes(email)) {
-          activity.users.push(email)
-        }
-        return activity
-      }
-      else if (action === 'delete') {
-        activity.users = activity.users.filter(emailItem => emailItem !== email)
-        return activity
-      }
-      else {
-        return activity
-      }
-    }
     
     await modifyUserArray(activityId.toString(), action, email)
-    await updateJsonEntries(activitiesPath, filterFn, updateFn)
 
     res.status(201).json({ success: true, message: 'Activity user Added' })
 
@@ -124,17 +97,7 @@ exports.addPendingActivity = async (req, res) => {
       return res.status(404).json({ error: 'Error product' })
     }
 
-    const activities = await readJsonFile(pendingActivitiesPath)
-    
-    const newActivity= {
-      "id": parseInt(generateActivityId(activities)),
-      ...activity
-    }
-
-    activities.push(newActivity)
-
-    await addDocumentWithID('pending-activities', newActivity.id.toString(), newActivity)
-    await writeJsonFile(pendingActivitiesPath, activities)
+    await addDocument('pending-activities', activity)
 
     const adminEmails = await getAdminsEmails()
     adminEmails.forEach(email => {
@@ -163,7 +126,6 @@ exports.deleteActivity = async (req, res) => {
     }
 
     await deleteDocumentWithID('pending-activities', activity.id.toString())
-    await deleteJsonEntry(pendingActivitiesPath, activity)
 
     res.status(201).json({ success: true, message: 'Activity removed' })
 

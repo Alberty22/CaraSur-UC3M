@@ -65,6 +65,7 @@ export function NotificationsProvider ({ children }) {
             
             if (!isVisible && eventSource) {
                 eventSource.close();
+                setFirstFecth(false)
                 setEventSource(null);
             }
         }

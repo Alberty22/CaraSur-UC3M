@@ -60,6 +60,12 @@
     border: none;
 }
 
+.equipment-page .shop > button:hover {
+    background-color: #1c4158;
+    scale: 1.1;
+    transition: 1ms;
+}
+
 .equipment-page .shop > .filter-button {
     left: 10px;
 }

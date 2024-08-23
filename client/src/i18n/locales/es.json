@@ -194,6 +194,7 @@
       "adminEmail": "Correo de administrador",
       "billing" : "Cuenta",
       "pay": "Último pago",
+      "expirationDate": "Fecha de expiración",
       "ok": "Todo ha salido correctamente",
       "failed": "Se ha producido un error",
       "renew": "Renovar suscripción"
@@ -329,6 +330,7 @@
       "title1": "Pendientes",
       "title2": "Tramitadas",
       "column1":"Producto",
+      "quantity": "Cantidad",
       "column2":"Usuario",
       "column3":"Fecha Préstamo",
       "column4":"Fecha Retorno",

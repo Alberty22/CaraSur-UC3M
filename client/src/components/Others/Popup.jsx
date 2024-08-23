@@ -8,7 +8,7 @@ const Popup = ({ children, className='popup'}) => {
     if (!isOpen) return null;
     return (
         <div className={className} ref={popupRef}>
-            <button onClick={handleClose} style={{ marginTop: '10px' }}>
+            <button className='close-button' onClick={handleClose} style={{ marginTop: '10px' }}>
                 <img src={cross_icon} alt="X"></img>
             </button>
             <div>

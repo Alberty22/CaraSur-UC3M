@@ -71,6 +71,14 @@
 
   }
 
+  .navigation .notifications:hover {
+    background-color: transparent;
+  }
+
+  .navigation .burger-menu:hover {
+    background-color: transparent;
+  }
+
   .navigation .notifications img {
     height: 100%;
     width: 100%;

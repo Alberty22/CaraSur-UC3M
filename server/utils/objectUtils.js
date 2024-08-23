@@ -13,10 +13,10 @@ const base64ToBuffer = (base64) => {
   }
 
 const uploadBase64Image = async (base64, filePath) => {
+    
     try {
         
         const buffer = base64ToBuffer(base64);
-
         const file = bucket.file(filePath);
 
         await file.save(buffer, { contentType: 'image/png' });

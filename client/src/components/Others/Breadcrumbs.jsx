@@ -10,13 +10,15 @@ export const Breadcrumbs = () => {
     const { lng } = useParams();
 
     const formatValue = (value) => {
-      const formattedValue = value.replace(/^\d+-/, '');
 
-      // Decodificar el URI y reemplazar guiones con espacios
-      const decodedValue = decodeURIComponent(formattedValue)
+      const formattedValue = value.split('-')
+      if (formattedValue.length > 1){
+        const decodedValue = decodeURIComponent(formattedValue[1])
         .replace(/-/g, ' ');
 
-      return decodedValue;
+        return decodedValue;
+      }
+      return value;
     };
 
     const breadcrumb = pathnames.map((value, index) => {

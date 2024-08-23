@@ -1,16 +1,11 @@
-const { readJsonFile, writeJsonFile, updateJsonEntries, deleteJsonEntry } = require('../utils/databaseUtils');
 const { addDocument, deleteDocument, addUserLoan, deleteUserLoan } = require('../utils/firebase/firebasePostUtils');
-const { getUserLoans, getAdminsEmails } = require('../utils/firebase/firebaseGetUtils')
+const { getUserLoans, getAdminsEmails, getCollectionData } = require('../utils/firebase/firebaseGetUtils')
 const { updateEquipment } = require('../utils/firebase/firebaseUpdateUtils');
 const { sendLoansToClient } = require('../controllers/sse/loansHandler');
 const { getActualDate } = require('../utils/datesUtils');
-const { updateEquipmentQuantity } = require('../utils/equipmentUtils');
 const { adminActionEmail, loanEmail } = require('../utils/emailsUtils');
+const { deleteCacheList } = require('../services/redisService');
 
-const path = require('path');
-const equipmentPath = path.join(__dirname, '../data/equipment.json');
-const pendingLoansPath = path.join(__dirname, '../data/pending-loans.json');
-const processedLoansPath = path.join(__dirname, '../data/processed-loans.json');
 
 // GET request handler to retrieve user loans
 exports.getUserLoans = async (req, res) => {
@@ -30,7 +25,7 @@ exports.getUserLoans = async (req, res) => {
 exports.getPendingLoans = async (req, res) => {
   
   try {
-    const loans = await readJsonFile(pendingLoansPath)
+    const loans = await getCollectionData('pending-loans');
     res.json(loans);
 
   } 
@@ -49,9 +44,6 @@ exports.postPendingLoans = async (req, res) => {
       return res.status(404).json({ error: 'Error in loan' })
     }
 
-    const loans = await readJsonFile(pendingLoansPath)
-    let equipment = await readJsonFile(equipmentPath)
-
     const ids = []
     const quantities = []
 
@@ -65,23 +57,14 @@ exports.postPendingLoans = async (req, res) => {
         "loanDate": getActualDate(),
         "returnDate": "pending"
       }
-      loans.push(newLoan)
       ids.push(loan.id)
-      quantities.push(loan.quantity)
+      quantities.push(loan.quantity);
 
-      await addDocument('pending-loans', newLoan)
-      await updateEquipment("equipment",  loan.id.toString(), 'available', loan.quantity, 'subtract')
+      await addDocument('pending-loans', newLoan);
+      await updateEquipment("equipment",  loan.id.toString(), 'available', loan.quantity, 'subtract');
       
     })
     
-    if(!equipment) {
-      return res.status(404).json({ error: 'Error in loan' })
-    }
-    
-    equipment = await updateEquipmentQuantity(equipment, ids, quantities, 'subtract')
-    await writeJsonFile(pendingLoansPath, loans)
-    await writeJsonFile(equipmentPath, equipment)
-
     const adminEmails = await getAdminsEmails()
     adminEmails.forEach(email => {
       adminActionEmail(email, 'Se ha solicitado un nuevo artículo, acepta el préstamo','http://localhost:5000/es/admin/loans').catch(error => {
@@ -89,7 +72,8 @@ exports.postPendingLoans = async (req, res) => {
         })
     })
   
-    
+    await deleteCacheList('equipment');
+
     res.status(201).json({ success: true, message: 'Loan send' })
 
   } 
@@ -108,14 +92,12 @@ exports.deletePendingLoans = async (req, res) => {
       return res.status(404).json({ error: 'Error in loan' })
     }
 
-    await deleteDocument('pending-loans', loan)
-    await deleteJsonEntry(pendingLoansPath, loan)
+    const { id, ...resumeLoan } = loan
+    await deleteDocument('pending-loans', resumeLoan)
 
-    const equipment = await readJsonFile(equipmentPath)
-    const newEquipment = await updateEquipmentQuantity(equipment, [loan.product], [loan.quantity], 'add')
     await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
-    await writeJsonFile(equipmentPath, newEquipment)
-
+    
+    await deleteCacheList('equipment');
     res.status(201).json({ success: true, message: 'Loan removed' })
 
   } 
@@ -129,7 +111,7 @@ exports.deletePendingLoans = async (req, res) => {
 exports.getProcessedLoans = async (req, res) => {
   
   try {
-    const loans = await readJsonFile(processedLoansPath)
+    const loans = await getCollectionData('processed-loans');
     res.json(loans);
 
   } 
@@ -141,35 +123,30 @@ exports.getProcessedLoans = async (req, res) => {
 // POST request handler to add processed loans
 exports.postProcessedLoans = async (req, res) => {
   try {
-    const loan = req.body
+    const loan = req.body;
 
     if (!loan) {
-      return res.status(404).json({ error: 'Error in loan' })
+      return res.status(404).json({ error: 'Error in loan' });
     }
 
-    //Update processed loans
-    const loans = await readJsonFile(processedLoansPath)
-
-    loans.push(loan)
-
-    await addDocument('processed-loans', loan)
-    await writeJsonFile(processedLoansPath, loans)
+    const { id, ...resumeLoan } = loan;
+    await addDocument('processed-loans', resumeLoan);
 
     // Delete loan from pending loans
-    const modifiedLoan = { ...loan }
-    modifiedLoan.returnDate = "pending"
+    const modifiedLoan = resumeLoan;
+    modifiedLoan.returnDate = "pending";
 
-    await deleteDocument('pending-loans', modifiedLoan)
-    await deleteJsonEntry(pendingLoansPath, modifiedLoan)
+    await deleteDocument('pending-loans', resumeLoan);
 
-    const { user:userEmail, ...userLoan} = loan
+    const { user:userEmail, ...userLoan} = loan;
 
-    await addUserLoan(userEmail, userLoan)
-    sendLoansToClient(loan.user, 'get')
+    await addUserLoan(userEmail, userLoan);
+    
+    sendLoansToClient(loan.user, 'get');
 
-    loanEmail(userEmail, userLoan.name)
+    loanEmail(userEmail, userLoan.name);
 
-    return res.status(201).json({ success: true, message: 'Loan processed' })
+    return res.status(201).json({ success: true, message: 'Loan processed' });
   }
   catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
@@ -186,19 +163,16 @@ exports.deleteProcessedLoans = async (req, res) => {
       return res.status(404).json({ error: 'Error in loan' })
     }
 
-    await deleteDocument('processed-loans', loan)
+    const { id, ...resumeLoan } = loan
+    
+    await deleteDocument('processed-loans', resumeLoan)
     await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
 
-    await deleteJsonEntry(processedLoansPath, loan)
-
-    const {id, user, ...deleteLoan } = loan
+    const {user, ...deleteLoan } = resumeLoan
     await deleteUserLoan(user, deleteLoan)
 
-    const equipment = await readJsonFile(equipmentPath)
-    const newEquipment = await updateEquipmentQuantity(equipment, [loan.product], [loan.quantity], 'add')
-    await writeJsonFile(equipmentPath, newEquipment)
-
-    sendLoansToClient(loan.user, 'get')
+    sendLoansToClient(loan.user, 'get');
+    await deleteCacheList('equipment');
     res.status(201).json({ success: true, message: 'Loan removed' })
 
   } 

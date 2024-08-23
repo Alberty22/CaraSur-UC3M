@@ -28,6 +28,12 @@ body {
   
 }
 
+button {
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1c4158;
+}
 
 #root {
   width: 100%;

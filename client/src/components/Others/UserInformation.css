@@ -63,6 +63,10 @@
     cursor: pointer;
 }
 
+.information-section button:hover {
+    background-color: transparent;
+}
+
 .information-section button img {
     width: 100%;
     height: 100%;

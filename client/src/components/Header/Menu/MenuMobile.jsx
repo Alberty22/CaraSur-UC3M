@@ -3,8 +3,6 @@ import notifications_on_icon from "../../../assets/images/icons/Notifications_on
 import menu_icon from "../../../assets/images/icons/Menu.webp"
 import { useAuth } from "../../../hooks/useAuth"
 import { useNotifications } from "../../../hooks/useNotifications"
-import { useRef } from "react"
-import { forwardRef } from 'react';
 import { LanguageSelector } from "../LanguageSelector"
 
 export const MenuMobile = ({ refList }) => {

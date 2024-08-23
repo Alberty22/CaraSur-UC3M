@@ -17,9 +17,6 @@ const renewRoutes = require('./routes/renewRoutes');
 
 const errorHandler = require('./middleware/errorHandler');
 
-
-const { setup } = require('./utils/serverSetup')
-
 const path = require('path');
 const app = express();
 const cors = require('cors');
@@ -45,7 +42,6 @@ app.use('/server/notifications', notificationsRoutes);
 app.use('/server/admin', adminRoutes);
 app.use('/server/renew', renewRoutes);
 
-setup()
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

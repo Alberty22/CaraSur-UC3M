@@ -94,6 +94,10 @@
     height: auto;
 }
 
+.admin-notificactions-page .submit-notification:hover{
+    background-color: #1c4158;
+}
+
 
 @media (max-width: 768px) {
 

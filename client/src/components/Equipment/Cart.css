@@ -28,6 +28,10 @@
     justify-self: flex-start;
 }
 
+.cart > div button:hover{
+  background-color: #1c4158;
+}
+
 .cart > div .clean-cart {
     margin-left: 30px;
 }

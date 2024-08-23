@@ -1,4 +1,4 @@
-const { db } = require('../../services/firebaseAdmin');
+const { db, fieldPath } = require('../../services/firebaseAdmin');
 
 const getUserNotifications = async (email) => {
     try {
@@ -189,6 +189,61 @@ const getAdminsEmails = async () => {
   }
 }
 
+const obtainData = async (coleccion) => {
+  const snapshot = await db.collection(coleccion).get()
+  const data = []
+  
+  snapshot.forEach(doc => {
+      data.push({ id: doc.id, ...doc.data() })
+  })
+
+  return data
+}
+
+const getCollectionData  = async (colection) => {
+  
+  try {
+      const data = await obtainData(colection)
+      const filteredData = data.filter(doc => doc.id !== 'empty')
+      return filteredData
+  }
+  catch (error) {
+      return 
+  }
+}
+
+const getStockActivities = async () =>{
+  try {
+    const collectionRef = db.collection('activities');
+    
+    const ids = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+
+    const snapshot = await collectionRef
+        .where(fieldPath, 'in', ids)
+        .get();
+
+    const documentsList = [];
+    
+    if (snapshot.empty) {
+        return;
+    }
+
+    snapshot.forEach(doc => {
+      documentsList.push({ id: doc.id, ...doc.data() });
+    });
+
+  return documentsList;
+
+} catch (error) {
+    console.error('Error obteniendo los documentos:', error);
+    return [];
+}
+}
+
+
+
+
+
 
   
 module.exports = { 
@@ -198,5 +253,7 @@ module.exports = {
     getRoleAndName,
     getUserLoans,
     getData,
-    getAdminsEmails
+    getAdminsEmails,
+    getCollectionData,
+    getStockActivities
 };

@@ -38,6 +38,12 @@
     border: none;
 }
 
+.filters-sidebar > div .close-sidebar:hover{
+    background-color: #1c4158;
+}
+
+
+
 .filters-sidebar > div button img{
     width: 100%;
     height: 100%;

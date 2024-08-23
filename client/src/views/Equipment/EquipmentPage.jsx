@@ -29,7 +29,6 @@ function EquipmentPage() {
         "condition": inventory ? [...new Set(inventory.map(item => item?.condition))] : [],
         "category": inventory ? [...new Set(inventory.map(item => item?.category))] : [],
     }
-
     const { openSidebars, handleOpenSidebar, handleCloseSidebar } = useSideBar()
 
     const { filterProducts, sortProducts } = useEquipmentFilters()
@@ -55,7 +54,7 @@ function EquipmentPage() {
                 
                     {openSidebars?.filtersSidebar &&
                         <FiltersSidebar invetory_unique={inventory_unique}>
-                            <button onClick={() => handleCloseSidebar('filtersSidebar')}>
+                            <button className='close-sidebar' onClick={() => handleCloseSidebar('filtersSidebar')}>
                                 <img src={swipe_icon} alt='cerrar' />
                             </button>
                         </FiltersSidebar>
@@ -76,7 +75,7 @@ function EquipmentPage() {
                 
                     {openSidebars?.cartSidebar &&
                         <CartSidebar refetch={refetch}>
-                            <button onClick={() => handleCloseSidebar('cartSidebar')}>
+                            <button className='close-sidebar' onClick={() => handleCloseSidebar('cartSidebar')}>
                                 <img src={swipe_icon} alt='cerrar' />
                             </button>
                         </CartSidebar>

@@ -150,6 +150,10 @@
     margin: 0;
   }
 
+  .form .show-pass:hover {
+    background-color: transparent;
+  }
+
   .form .show-pass img {
     width: 25px;
     height: 25px;
@@ -206,6 +210,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .form button:hover, .other-login button:hover{
+    background-color: #fff;
   }
 
   .form-new-activity button {
@@ -293,7 +301,7 @@
 
       bottom: 20px;
     }
-  
+
     .form  p {
       font-size: 0.3rem;
     }

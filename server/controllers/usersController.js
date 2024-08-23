@@ -1,11 +1,10 @@
 const { getUserDetails, getUsers, getRoleAndName } = require('../utils/firebase/firebaseGetUtils');
-const { updloadUserFirebase } = require('../utils/firebase/firebasePostUtils');
 const { updateUserFirebase } = require('../utils/firebase/firebaseUpdateUtils');
 const { sendUsersToAll } = require('./sse/usersHandler');
 const { notificationClients } = require('./sse/notificationsHandler');
 const { loansClients } = require('./sse/loansHandler');
-const { sendWelcomeEmail } = require('../utils/emailsUtils');
-const { createCheckout } = require('../services/paymentService')
+const { createCheckout } = require('../services/paymentService');
+const { getOrCacheData, deleteCacheList } = require('../services/redisService');
 
 const { auth } = require('../services/firebaseAdmin');
 
@@ -14,7 +13,7 @@ const { auth } = require('../services/firebaseAdmin');
 // GET request handler to retrieve all users
 exports.getUsers = async (req, res) => {
   try {
-    const simplifiedUsers = await getUsers()
+    const simplifiedUsers = await getOrCacheData('users', getUsers)
     res.status(201).json(simplifiedUsers)
   } 
   catch (error) {
@@ -67,7 +66,7 @@ exports.addUser = async (req, res) => {
     if(!url) {
       return res.status(404).json({ error: 'Error at checkout' })
     }
-    
+    await deleteCacheList('users')
     res.status(201).json({ success: true, message: url })
   } 
   catch (error) {

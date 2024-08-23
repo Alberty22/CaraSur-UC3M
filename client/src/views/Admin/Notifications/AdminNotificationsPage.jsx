@@ -140,7 +140,7 @@ function AdminNotificationsPage() {
 
                         <div className='send'>
                             
-                            <button onClick={handleSendClick}>{t('adminNotifications.send')}</button>
+                            <button className='submit-notification' onClick={handleSendClick}>{t('adminNotifications.send')}</button>
                         </div>
                     </section>
                 </div>

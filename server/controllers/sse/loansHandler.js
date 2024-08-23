@@ -11,7 +11,7 @@ function loansEventsHandler(req, res) {
     if (!clientId) {
         res.writeHead(400, { 'Content-Type': 'text/plain' })
         res.end('clientId is required')
-        return
+        return;
     }
 
     const newClient = {

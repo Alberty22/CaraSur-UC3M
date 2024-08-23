@@ -1,13 +1,18 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import { ROUTES } from '../config/apiRoutes.js';
 import { getCookie } from "../utils/cookies.js";
-import { useAuth } from "../hooks/useAuth.js"
+import { useAuth } from "../hooks/useAuth.js";
+import { usePageVisibility } from "../hooks/usePageVisibility.js";
 
 export const UserLoansContext = createContext()
 
 export function UserLoansProvider ({ children }) {
     const [loans, setLoans] = useState(undefined)
     const [firstFetch, setFirstFecth] =  useState(false)
+    const isVisible = usePageVisibility()
+    const [eventSource, setEventSource] = useState(null)
+
+
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -32,23 +37,32 @@ export function UserLoansProvider ({ children }) {
 
     useEffect(() => {
         if(isAuthenticated){
-            const eventSource = new EventSource(`http://localhost:5000/loans/${encodeURIComponent(getCookie('email'))}`)
 
-            eventSource.onmessage = async (event) => {
-                const newMessage = JSON.parse(event.data)
-
-                if(newMessage.message === 'first' && !firstFetch){
-                    fetchLoans()
-                    setFirstFecth(true)
-                } 
-
-                if(newMessage.message === 'get'){
-                    fetchLoans()
-                } 
+            if (isVisible && !eventSource) {
+                const es = new EventSource(`http://localhost:5000/loans/${encodeURIComponent(getCookie('email'))}`)
+                es.onmessage = async (event) => {
+                    const newMessage = JSON.parse(event.data)
+                    console.log(newMessage.message)
+                    if(newMessage.message === 'first' && !firstFetch){
+                        fetchLoans()
+                        setFirstFecth(true)
+                    } 
+    
+                    if(newMessage.message === 'get'){
+                        fetchLoans()
+                    } 
+                }
+                setEventSource(es)
+                return () => {
+                    es.close()
+                }
             }
-            return () => {
-                eventSource.close()
-            }
+
+            if (!isVisible && eventSource) {
+                eventSource.close();
+                setFirstFecth(false)
+                setEventSource(null);
+            } 
         }
     }, [isAuthenticated])
 
