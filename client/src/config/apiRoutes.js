@@ -1,5 +1,5 @@
 const URL = import.meta.env.VITE_SERVER_URL
-const API_BASE_URL = `http://${URL}/server`;
+const API_BASE_URL = `${URL}/server`;
 
 export const ROUTES = {
   USERS: `${API_BASE_URL}/users`, 
