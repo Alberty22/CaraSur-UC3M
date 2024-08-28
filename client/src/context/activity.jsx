@@ -27,5 +27,5 @@ export const ActivityProvider = ({ children }) => {
     <ActivityContext.Provider value={{ registeredActivities, toggleRegistration }}>
       {children}
     </ActivityContext.Provider>
-  );
-};
+  )
+}

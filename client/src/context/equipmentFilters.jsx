@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const EquipmentFiltersContext = createContext()
+export const EquipmentFiltersContext = createContext();
 
 export function EquipmentFiltersProvider ( { children }) {
 
@@ -10,7 +10,7 @@ export function EquipmentFiltersProvider ( { children }) {
         size: 'all',
         condition: 'all',
         category: 'all'
-    })
+    });
 
     return (
         <EquipmentFiltersContext.Provider value={{

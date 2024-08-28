@@ -9,27 +9,27 @@ function useCartReducer () {
     const addToCart = product => dispach({
         type: 'ADD_TO_CART',
         payload: product
-    })
+    });
 
     const removeFromCart = product => dispach({
         type: 'REMOVE_FROM_CART',
         payload: product
-    })
+    });
 
     const removeOneFromCart = product => dispach({
         type: 'REMOVE_ONE_FROM_CART',
         payload: product
-    })
+    });
 
     const clearCart = product => dispach({
         type: 'CLEAR_CART',
         payload: product
-    })
+    });
 
     return { state, addToCart, removeFromCart, removeOneFromCart, clearCart }
 }
 
-export const CartContext = createContext()
+export const CartContext = createContext();
 
 export function CartProvider ({ children }) {
     

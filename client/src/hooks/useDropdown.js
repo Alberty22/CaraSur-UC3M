@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect, useCallback } from "react";
+import { useContext, useRef, useEffect, useCallback } from "react";
 import { DropdownContext } from "../context/dropdown.jsx";
 
 export function useDropdown({ id, maxHeight, toggleRefs = [] }) {
@@ -27,7 +27,6 @@ export function useDropdown({ id, maxHeight, toggleRefs = [] }) {
                 return;
             }
 
-            // Check if click is inside any of the toggle references
             const clickedInsideToggleRef = toggleRefs.some(ref => ref.current && ref.current.contains(event.target));
             if (!clickedInsideToggleRef) {
                 closeDropdown();

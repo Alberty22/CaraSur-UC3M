@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import { EquipmentFiltersContext } from "../context/equipmentFilters.jsx"
+import { useContext } from "react";
+import { EquipmentFiltersContext } from "../context/equipmentFilters.jsx";
 
 export function useEquipmentFilters () {
     
-    const {filters, setFilters} = useContext(EquipmentFiltersContext)
+    const {filters, setFilters} = useContext(EquipmentFiltersContext);
 
     const filterProducts = (products) => {
         return products.filter(product => {
@@ -40,6 +40,6 @@ export function useEquipmentFilters () {
             return 0;
         });
     }
-    return { filters, filterProducts, sortProducts, setFilters }
+    return { filters, filterProducts, sortProducts, setFilters };
 }
   

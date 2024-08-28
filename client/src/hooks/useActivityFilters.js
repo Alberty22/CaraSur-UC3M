@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import { ActivityFiltersContext } from "../context/activityFilters"
+import { useContext } from "react";
+import { ActivityFiltersContext } from "../context/activityFilters";
 
 export function useActivityFilters () {
     
-    const {filters, setFilters} = useContext(ActivityFiltersContext)
+    const {filters, setFilters} = useContext(ActivityFiltersContext);
 
     const filterActivities = (activities) => {
         return activities.filter(activity => {
@@ -22,12 +22,12 @@ export function useActivityFilters () {
 
     const sortActivities = (activities) => {
         return activities.sort((a, b) => {
-            const dateA = new Date(a.date)
-            const dateB = new Date(b.date)
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
 
             return dateB - dateA;
         });
     }
-    return { filters, filterActivities, sortActivities, setFilters }
+    return { filters, filterActivities, sortActivities, setFilters };
 }
   

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const ActivityFiltersContext = createContext()
+export const ActivityFiltersContext = createContext();
 
 export function ActivityFiltersProvider ( { children }) {
 
@@ -9,7 +9,7 @@ export function ActivityFiltersProvider ( { children }) {
         search: '',
         date: '',
         difficulty: 'all'
-    })
+    });
 
     return (
         <ActivityFiltersContext.Provider value={{

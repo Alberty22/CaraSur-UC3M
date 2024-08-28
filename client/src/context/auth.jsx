@@ -3,7 +3,7 @@ import { checkCookies, checkRole, getCookie } from "../utils/cookies";
 import { useUsers } from '../hooks/useUsers.js';
 import { useEffect } from "react";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
 export function AuthProvider ({ children }) {
     const { users } =  useUsers();
@@ -17,7 +17,7 @@ export function AuthProvider ({ children }) {
             setIsAuthenticated(checkCookies());
             setIsAdmin(checkRole());
         }
-    }, [users])
+    }, [users]);
     
 
     return (

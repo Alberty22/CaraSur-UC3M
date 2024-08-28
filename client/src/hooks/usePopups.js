@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect, useCallback } from "react";
+import { useContext, useRef, useEffect, useCallback } from "react";
 import { PopupContext } from "../context/popup.jsx";
 
 export function usePopup() {
@@ -21,12 +21,10 @@ export function usePopup() {
         };
     }, [closePopup]);
 
-    // Función para abrir el popup
     const handleOpen = useCallback((content) => {
         openPopup(content);
     }, [openPopup]);
 
-    // Función para cerrar el popup
     const handleClose = useCallback(() => {
         closePopup();
     }, [closePopup]);

@@ -3,33 +3,33 @@ import { usePageVisibility } from "../hooks/usePageVisibility.js";
 
 import { ROUTES } from '../config/apiRoutes.js';
 
-export const UsersContext = createContext()
+export const UsersContext = createContext();
 
 export function UsersProvider ({ children }) {
-    const [users, setUsers] = useState([])
-    const [firstFetch, setFirstFecth] =  useState(false)
-    const isVisible = usePageVisibility()
-    const [eventSource, setEventSource] = useState(null)
+    const [users, setUsers] = useState([]);
+    const [firstFetch, setFirstFecth] =  useState(false);
+    const isVisible = usePageVisibility();
+    const [eventSource, setEventSource] = useState(null);
 
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const fetchUsers = useCallback(async () => {
         try {
-            const res = await fetch(ROUTES.USERS)
+            const res = await fetch(ROUTES.USERS);
             if (!res.ok) {
-                throw new Error('Network response was not ok')
+                throw new Error('Network response was not ok');
             }
-            const data = await res.json()
-            setUsers(data)
+            const data = await res.json();
+            setUsers(data);
         } 
         catch (error) {
-            setError(error)
+            setError(error);
         } 
         finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
 
@@ -38,29 +38,29 @@ export function UsersProvider ({ children }) {
             setEventSource(null);
         } 
         if (isVisible && !eventSource) {
-            const es = new EventSource('http://localhost:5000/users')
+            const es = new EventSource(`${import.meta.env.VITE_SERVER_URL}/users`);
             es.onmessage = async (event) => {
-                const newMessage = JSON.parse(event.data)
+                const newMessage = JSON.parse(event.data);
     
                 if(newMessage.message === 'first' && !firstFetch){
-                    fetchUsers()
-                    setFirstFecth(true)
+                    fetchUsers();
+                    setFirstFecth(true);
                 } 
     
                 if(newMessage.message === 'get'){
-                    fetchUsers()
+                    fetchUsers();
                 } 
             }
     
             setEventSource(es)
             return () => {
                 if (es) {
-                    es.close()
+                    es.close();
                 }
             }
         }
          
-    }, [isVisible])
+    }, [isVisible]);
 
     return (
         <UsersContext.Provider value={{ users, setUsers }}>

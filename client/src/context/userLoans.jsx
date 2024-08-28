@@ -4,34 +4,34 @@ import { getCookie } from "../utils/cookies.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { usePageVisibility } from "../hooks/usePageVisibility.js";
 
-export const UserLoansContext = createContext()
+export const UserLoansContext = createContext();
 
 export function UserLoansProvider ({ children }) {
-    const [loans, setLoans] = useState(undefined)
-    const [firstFetch, setFirstFecth] =  useState(false)
-    const isVisible = usePageVisibility()
-    const [eventSource, setEventSource] = useState(null)
+    const [loans, setLoans] = useState(undefined);
+    const [firstFetch, setFirstFecth] =  useState(false);
+    const isVisible = usePageVisibility();
+    const [eventSource, setEventSource] = useState(null);
 
 
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
     const fetchLoans = useCallback(async () => {
         try {
-            const res = await fetch(`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`)
+            const res = await fetch(`${ROUTES.USER_LOANS}/${encodeURIComponent(getCookie('email'))}`);
             if (!res.ok) {
-                throw new Error('Network response was not ok')
+                throw new Error('Network response was not ok');
             }
-            const data = await res.json()
-            setLoans(data)
+            const data = await res.json();
+            setLoans(data);
         } 
         catch (error) {
-            setError(error)
+            setError(error);
         } 
         finally {
-            setLoading(false)
+            setLoading(false);
         }
     }, [])
 
@@ -39,31 +39,31 @@ export function UserLoansProvider ({ children }) {
         if(isAuthenticated){
 
             if (isVisible && !eventSource) {
-                const es = new EventSource(`http://localhost:5000/loans/${encodeURIComponent(getCookie('email'))}`)
+                const es = new EventSource(`${import.meta.env.VITE_SERVER_URL}/loans/${encodeURIComponent(getCookie('email'))}`);
                 es.onmessage = async (event) => {
-                    const newMessage = JSON.parse(event.data)
+                    const newMessage = JSON.parse(event.data);
                     if(newMessage.message === 'first' && !firstFetch){
-                        fetchLoans()
-                        setFirstFecth(true)
+                        fetchLoans();
+                        setFirstFecth(true);
                     } 
     
                     if(newMessage.message === 'get'){
-                        fetchLoans()
+                        fetchLoans();
                     } 
                 }
-                setEventSource(es)
+                setEventSource(es);
                 return () => {
-                    es.close()
+                    es.close();
                 }
             }
 
             if (!isVisible && eventSource) {
                 eventSource.close();
-                setFirstFecth(false)
+                setFirstFecth(false);
                 setEventSource(null);
             } 
         }
-    }, [isAuthenticated, isVisible])
+    }, [isAuthenticated, isVisible]);
 
     return (
         <UserLoansContext.Provider value={{ loans, setLoans }}>
