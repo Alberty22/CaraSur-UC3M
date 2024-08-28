@@ -5,7 +5,7 @@ const serviceAccount = require(process.env.FIREBASE_CREDENTIALS);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'tfg-web-carasur.appspot.com',
+  storageBucket: process.env.FIREBASE_BUCKET,
 
 })
 
