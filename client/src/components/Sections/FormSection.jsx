@@ -1,14 +1,14 @@
 import { Children } from 'react';
 import useMobileQuery from '../../hooks/useMobileQuery';
-import './FormSection.css'
+import './FormSection.css';
 import { useLocation } from 'react-router-dom';
 
 export const FormSection = ({ children, divideBy }) => {
 
-    const isMobile = useMobileQuery('(max-width: 1024px)')
+    const isMobile = useMobileQuery('(max-width: 1024px)');
     const location = useLocation();
 
-    const childrenArray = Children.toArray(children)
+    const childrenArray = Children.toArray(children);
     const [firstGroup, secondGroup] = childrenArray.reduce(
         ([group1, group2], child) => {
             if (divideBy(child.props.group)) {
@@ -19,7 +19,7 @@ export const FormSection = ({ children, divideBy }) => {
             }
           },
           [[], []]
-    )
+    );
 
     const route = location.pathname.split('/');
     return(

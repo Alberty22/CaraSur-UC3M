@@ -1,5 +1,5 @@
+import './Popup.css';
 import { usePopup } from "../../hooks/usePopups";
-import './Popup.css'
 import cross_icon from "../../assets/images/icons/Cross.webp"
 
 const Popup = ({ children, className='popup'}) => {

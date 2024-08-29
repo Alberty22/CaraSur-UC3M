@@ -363,7 +363,8 @@
       "id": "Invalid DNI/NIE format",
       "postal": "Invalid postal code format",
       "telephone": "Invalid phone number format",
-      "billing": "Invalid Spanish bank account format"
+      "billing": "Invalid Spanish bank account format",
+      "general": "This field is required"
     }
     
 }

@@ -1,5 +1,5 @@
-import './ProductDetails.css'
-import stock_icon from '../../assets/images/icons/Stock-product.webp'
+import './ProductDetails.css';
+import stock_icon from '../../assets/images/icons/Stock-product.webp';
 import { useTranslation } from 'react-i18next';
 
 export function ProductDetails({ product }) {

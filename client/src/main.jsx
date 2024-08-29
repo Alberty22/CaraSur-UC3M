@@ -10,19 +10,15 @@ import { UsersProvider } from './context/users.jsx';
 import './i18n/config'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <UsersProvider>
-      <AuthProvider>
-        <PopupProvider>
-          <DropdownProvider>
-            <App />
-          </DropdownProvider>
-        </PopupProvider>
-      </AuthProvider>
-      </UsersProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-  
-    
+  <BrowserRouter>
+  <UsersProvider>
+    <AuthProvider>
+      <PopupProvider>
+        <DropdownProvider>
+          <App />
+        </DropdownProvider>
+      </PopupProvider>
+    </AuthProvider>
+    </UsersProvider>
+  </BrowserRouter>
 )

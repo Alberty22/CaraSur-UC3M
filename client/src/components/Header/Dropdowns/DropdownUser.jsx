@@ -1,4 +1,4 @@
-import './DropdownUser.css'
+import './DropdownUser.css';
 import { Link, useLocation } from "react-router-dom";
 import { useDropdown } from '../../../hooks/useDropdown.js';
 import { useAuth } from '../../../hooks/useAuth.js';
@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 export const DropdownUser = forwardRef((props, ref) => {
 
-    const { logout, isAdmin } = useAuth()
+    const { logout, isAdmin } = useAuth();
     
     const { dropdownRef, handleClose } = useDropdown({ id:'user', maxHeight:'500', toggleRefs:[ref]});
 

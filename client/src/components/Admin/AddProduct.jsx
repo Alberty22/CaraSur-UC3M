@@ -1,4 +1,4 @@
-import './AddProduct.css'
+import './AddProduct.css';
 
 import { OkSection } from '../others/OkSection';
 import { FailedSection } from '../others/FailedSection';
@@ -10,12 +10,12 @@ import { useTranslation } from 'react-i18next';
 
 import { ROUTES } from '../../config/apiRoutes';
 import { sendData } from '../../utils/communications';
-import { toBase64, changeFileName } from '../../utils/photo';
+import { toBase64 } from '../../utils/photo';
 
 export function AddProduct() {
-  const { register, handleSubmit, reset, formState: { errors }, setValue, control, watch } = useForm({ mode: 'onChange' })
+  const { register, handleSubmit, reset, formState: { errors }, setValue, control, watch } = useForm({ mode: 'onChange' });
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const { handleOpen } = usePopup();
             
@@ -41,14 +41,14 @@ export function AddProduct() {
               : null,
       "available": data.available || null
     }
-    const res = await sendData(product, ROUTES.EQUIPMENT)
+    const res = await sendData(product, ROUTES.EQUIPMENT);
 
     if(res.code) {
-      handleOpen(<OkSection message={t('adminEquipment.addProduct.ok')} />)
-      reset()
+      handleOpen(<OkSection message={t('adminEquipment.addProduct.ok')} />);
+      reset();
     }
     else {
-      handleOpen(<FailedSection message={t('adminEquipment.addProduct.failed')} />)
+      handleOpen(<FailedSection message={t('adminEquipment.addProduct.failed')} />);
     }
     
    
@@ -66,7 +66,7 @@ export function AddProduct() {
               {...register('productName', { required: true })} 
               placeholder={t('adminEquipment.addProduct.name-placeholder')} 
             />
-            {errors.productName && <span>Este campo es requerido</span>}
+            {errors.productName && <span>{t('formErrors.general')}</span>}
         </div>
 
         <div>
@@ -76,7 +76,7 @@ export function AddProduct() {
               {...register('productDescription', { required: true })} 
               placeholder={t('adminEquipment.addProduct.desc-placeholder')} 
             />
-            {errors.productDescription && <span>Este campo es requerido</span>}
+            {errors.productDescription && <span>{t('formErrors.general')}</span>}
         </div>
 
         <div>
@@ -150,7 +150,7 @@ export function AddProduct() {
                   {...register('quantity', { required: true })} 
                   placeholder="00" 
                 />
-                {errors.quantity && <span>Este campo es requerido</span>}
+                {errors.quantity && <span>{t('formErrors.general')}</span>}
             </div>
 
             <div className='input-container'>
@@ -160,7 +160,7 @@ export function AddProduct() {
                   {...register('available', { required: true })} 
                   placeholder="00" 
                 />
-                {errors.available && <span>Este campo es requerido</span>}
+                {errors.available && <span>{t('formErrors.general')}</span>}
             </div>
         </div>
         
@@ -172,5 +172,5 @@ export function AddProduct() {
         </div>
         
     </form>
-  );
+  )
 }

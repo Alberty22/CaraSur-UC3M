@@ -1,11 +1,11 @@
-import './Activities.css'
+import './Activities.css';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export function Activities({ activities, admin=false, handleAprove, handleDecline}) {
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
 
 
     return (

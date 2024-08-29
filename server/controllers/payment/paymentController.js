@@ -28,12 +28,11 @@ exports.confirmCheckout = async (req, res) => {
     switch (event.type) {
         case 'checkout.session.completed':
             const checkoutSessionCompleted = event.data.object;
-            handleCheckoutSessionCompleted(checkoutSessionCompleted)
+            handleCheckoutSessionCompleted(checkoutSessionCompleted);
 
-            
             break;
         default:
-        console.log(`Unhandled event type ${event.type}`);
+            break;
     }
 
   res.send();
@@ -58,15 +57,15 @@ const handleCheckoutSessionCompleted = async (session) => {
                 password: password,
                 })
 
-            const status = await updloadUserFirebase("users", email, newUser)
+            const status = await updloadUserFirebase("users", email, newUser);
     
             if(!status) {
             return res.status(404).json({ error: 'Error uploading data' })
             }
 
-            sendUsersToAll('get')
+            sendUsersToAll('get');
 
-            sendWelcomeEmail(email)
+            sendWelcomeEmail(email);
     } 
     else if (metadata.type === 'renew') {
         const data = session.metadata.renew;
@@ -77,7 +76,7 @@ const handleCheckoutSessionCompleted = async (session) => {
         }
         
         const { email, pay, expirationDate } = JSON.parse(data);
-        await updatePayDate(email, {pay: pay, expirationDate: expirationDate})
+        await updatePayDate(email, {pay: pay, expirationDate: expirationDate});
       
     }
   }

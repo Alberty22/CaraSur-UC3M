@@ -9,10 +9,10 @@ admin.initializeApp({
 
 })
 
-const db = admin.firestore()
-const auth = admin.auth()
-const FieldValue = admin.firestore.FieldValue
-const bucket = admin.storage().bucket()
-const fieldPath = admin.firestore.FieldPath.documentId()
+const db = admin.firestore();
+const auth = admin.auth();
+const FieldValue = admin.firestore.FieldValue;
+const bucket = admin.storage().bucket();
+const fieldPath = admin.firestore.FieldPath.documentId();
 
-module.exports = { db, auth, FieldValue, bucket, fieldPath }
+module.exports = { db, auth, FieldValue, bucket, fieldPath };

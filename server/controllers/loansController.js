@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { addDocument, deleteDocument, addUserLoan, deleteUserLoan } = require('../utils/firebase/firebasePostUtils');
 const { getUserLoans, getAdminsEmails, getCollectionData } = require('../utils/firebase/firebaseGetUtils')
 const { updateEquipment } = require('../utils/firebase/firebaseUpdateUtils');
@@ -9,15 +11,15 @@ const { deleteCacheList } = require('../services/redisService');
 
 // GET request handler to retrieve user loans
 exports.getUserLoans = async (req, res) => {
-    const { email } = req.params
+    const { email } = req.params;
     try {
-      const loans = await getUserLoans(email)
+      const loans = await getUserLoans(email);
      
-      res.status(201).json(loans)
+      res.status(201).json(loans);
       
     } 
     catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 
@@ -26,11 +28,11 @@ exports.getPendingLoans = async (req, res) => {
   
   try {
     const loans = await getCollectionData('pending-loans');
-    res.json(loans);
+    res.status(201).json(loans);
 
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
@@ -38,14 +40,14 @@ exports.getPendingLoans = async (req, res) => {
 exports.postPendingLoans = async (req, res) => {
 
   try {
-    const { email, loansReq } = req.body
+    const { email, loansReq } = req.body;
 
     if (!email || !loansReq ) {
-      return res.status(404).json({ error: 'Error in loan' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
-    const ids = []
-    const quantities = []
+    const ids = [];
+    const quantities = [];
 
     loansReq.forEach(async (loan) => {
       const newLoan = {
@@ -56,8 +58,8 @@ exports.postPendingLoans = async (req, res) => {
         "image": loan.photo,
         "loanDate": getActualDate(),
         "returnDate": "pending"
-      }
-      ids.push(loan.id)
+      };
+      ids.push(loan.id);
       quantities.push(loan.quantity);
 
       await addDocument('pending-loans', newLoan);
@@ -67,18 +69,18 @@ exports.postPendingLoans = async (req, res) => {
     
     const adminEmails = await getAdminsEmails()
     adminEmails.forEach(email => {
-      adminActionEmail(email, 'Se ha solicitado un nuevo artículo, acepta el préstamo','http://localhost:5000/es/admin/loans').catch(error => {
+      adminActionEmail(email, 'Se ha solicitado un nuevo artículo, acepta el préstamo',`${process.env.DOMAIN}/es/admin/loans`).catch(error => {
           console.error(`Failed to send email to ${email}:`, error);
         })
     })
   
     await deleteCacheList('equipment');
 
-    res.status(201).json({ success: true, message: 'Loan send' })
+    res.status(201).json({ success: true, message: 'Loan send' });
 
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
@@ -86,23 +88,23 @@ exports.postPendingLoans = async (req, res) => {
 exports.deletePendingLoans = async (req, res) => {
   try {
     
-    const loan = req.body
+    const loan = req.body;
 
     if (!loan) {
-      return res.status(404).json({ error: 'Error in loan' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
     const { id, ...resumeLoan } = loan
-    await deleteDocument('pending-loans', resumeLoan)
+    await deleteDocument('pending-loans', resumeLoan);
 
-    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
+    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add');
     
     await deleteCacheList('equipment');
-    res.status(201).json({ success: true, message: 'Loan removed' })
+    res.status(201).json({ success: true, message: 'Loan removed' });
 
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
@@ -112,11 +114,11 @@ exports.getProcessedLoans = async (req, res) => {
   
   try {
     const loans = await getCollectionData('processed-loans');
-    res.json(loans);
+    res.status(201).json(loans);
 
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
@@ -126,7 +128,7 @@ exports.postProcessedLoans = async (req, res) => {
     const loan = req.body;
 
     if (!loan) {
-      return res.status(404).json({ error: 'Error in loan' });
+      return res.status(404).json({ error: 'Error in params' });
     }
 
     const { id, ...resumeLoan } = loan;
@@ -157,26 +159,26 @@ exports.postProcessedLoans = async (req, res) => {
 exports.deleteProcessedLoans = async (req, res) => {
   try {
     
-    const loan = req.body
+    const loan = req.body;
 
     if (!loan) {
-      return res.status(404).json({ error: 'Error in loan' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
-    const { id, ...resumeLoan } = loan
+    const { id, ...resumeLoan } = loan;
     
-    await deleteDocument('processed-loans', resumeLoan)
-    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add')
+    await deleteDocument('processed-loans', resumeLoan);
+    await updateEquipment("equipment",  loan.product.toString(), 'available', loan.quantity, 'add');
 
-    const {user, ...deleteLoan } = resumeLoan
-    await deleteUserLoan(user, deleteLoan)
+    const {user, ...deleteLoan } = resumeLoan;
+    await deleteUserLoan(user, deleteLoan);
 
     sendLoansToClient(loan.user, 'get');
     await deleteCacheList('equipment');
-    res.status(201).json({ success: true, message: 'Loan removed' })
+    res.status(201).json({ success: true, message: 'Loan removed' });
 
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

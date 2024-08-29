@@ -1,13 +1,13 @@
-import './AsideSection.css'
-import { Calendar } from './Calendar.jsx'
-import { Link, useLocation, useParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import './AsideSection.css';
+import { Calendar } from './Calendar.jsx';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function AsideSection({ markedDates }) {
-    const location = useLocation()
+    const location = useLocation();
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
     
     return(
         <section className='aside-section'>

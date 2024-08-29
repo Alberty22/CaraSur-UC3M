@@ -1,4 +1,4 @@
-import './Calendar.css'
+import './Calendar.css';
 import { useState } from 'react';
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameDay, isSameMonth, addMonths, subMonths } from 'date-fns';
 import { useTranslation } from 'react-i18next';

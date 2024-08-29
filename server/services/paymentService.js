@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const priceId = 'price_1Pnq4jRqf3jpQcoe8uoTSSDR';
+const priceId = process.env.STRIPE_PRODUCT;
 const { addDataRedis } = require('./redisService');
 const { v4: uuidv4 } = require('uuid');
 
@@ -23,8 +23,8 @@ const createCheckout = async(userData) => {
                     quantity: 1,
                 }
             ],
-            success_url: 'http://localhost:5000/es/#success',
-            cancel_url: 'http://localhost:5000/es/#failed',
+            success_url: `${process.env.DOMAIN}/es/#success`,
+            cancel_url: `${process.env.DOMAIN}/es/#failed`,
             metadata: { session_id: sessionId, type:'signup' }
         });
         return session.url;
@@ -44,8 +44,8 @@ const renewCheckout = async(data) => {
                     quantity: 1,
                 }
             ],
-            success_url: 'http://localhost:5000/es/profile/#success',
-            cancel_url: 'http://localhost:5000/es/profile/#failed',
+            success_url: `${process.env.DOMAIN}/es/profile/#success`,
+            cancel_url: `${process.env.DOMAIN}/es/profile/#failed`,
             metadata: {renew: JSON.stringify(data), type:'renew'}
         });
         return session.url;

@@ -1,19 +1,19 @@
-import './FiltersBar.css'
-import search_icon from '../../assets/images/icons/Search.webp'
-import { useId } from 'react'
-import { useActivityFilters } from '../../hooks/useActivityFilters'
-import { useState } from 'react'
-import { Searchbar } from '../others/Searchbar'
-import { useTranslation } from 'react-i18next'
+import './FiltersBar.css';
+
+import { useId } from 'react';
+import { useActivityFilters } from '../../hooks/useActivityFilters';
+import { useState } from 'react';
+import { Searchbar } from '../others/Searchbar';
+import { useTranslation } from 'react-i18next';
 
 
 export function FiltersBar() {
 
-    const { setFilters } = useActivityFilters()
+    const { setFilters } = useActivityFilters();
     const [searchQuery, setSearchQuery] = useState('');
 
-    const difficultyFilterId = useId()
-    const dateFilterId = useId()
+    const difficultyFilterId = useId();
+    const dateFilterId = useId();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -21,7 +21,7 @@ export function FiltersBar() {
             ...prevState,
             [name]: value
         }));
-    };
+    }
 
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
@@ -30,17 +30,17 @@ export function FiltersBar() {
         setFilters(prevState => ({
             ...prevState,
             search: newSearch
-        }));
-    };
+        }))
+    }
 
     const handleSearchClick = () => {
         setFilters(prevState => ({
             ...prevState,
             search: searchQuery
-        }));
+        }))
     }
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     return (
         <div className='filters-bar'>

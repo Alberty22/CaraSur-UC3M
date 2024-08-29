@@ -1,5 +1,5 @@
-import './CartSidebar.css'
-import { Cart } from './Cart.jsx'
+import './CartSidebar.css';
+import { Cart } from './Cart.jsx';
 
 export function CartSidebar({ children, refetch }) {
 

@@ -1,37 +1,37 @@
-import { useDropzone } from 'react-dropzone'
-import { useState, useEffect, useCallback } from 'react'
-import { Controller } from 'react-hook-form'
+import { useDropzone } from 'react-dropzone';
+import { useState, useEffect, useCallback } from 'react';
+import { Controller } from 'react-hook-form';
 
 export function ImageInput({ inputKey, placeholder, control, setValue, error, errors, watch }) {
-    const [fileName, setFileName] = useState('')
+    const [fileName, setFileName] = useState('');
 
-    const watchedValue = watch(inputKey)
+    const watchedValue = watch(inputKey);
 
     useEffect(() => {
         if (watchedValue) {
             setFileName(watchedValue.name);
         } else {
-            setFileName('')
+            setFileName('');
         }
     }, [watchedValue])
 
     const onDrop = useCallback((acceptedFiles) => {
         if (!acceptedFiles || acceptedFiles.length === 0) {
-            return
+            return;
         }
 
         const file = acceptedFiles[0]
         if (file && file.type && file.type.startsWith('image/')) {
-            setValue(inputKey, file)
-            setFileName(file.name)
+            setValue(inputKey, file);
+            setFileName(file.name);
         }
-    }, [setValue, inputKey])
+    }, [setValue, inputKey]);
 
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
         accept: {"image/*" : ['.jpeg', '.jpg', '.png']},
         multiple: false
-    })
+    });
     
     return (
         <>

@@ -1,11 +1,14 @@
 import './Menu.css';
-import notifications_off_icon from "../../../assets/images/icons/Notifications_off.webp"
-import notifications_on_icon from "../../../assets/images/icons/Notifications_on.webp"
-import user_icon from "../../../assets/images/icons/User_white.webp"
-import { useNotifications } from "../../../hooks/useNotifications"
+
+import { useNotifications } from "../../../hooks/useNotifications";
+
+import notifications_off_icon from "../../../assets/images/icons/Notifications_off.webp";
+import notifications_on_icon from "../../../assets/images/icons/Notifications_on.webp";
+import user_icon from "../../../assets/images/icons/User_white.webp";
+
 
 export const MenuAuthenticated = ({ refList }) => {
-    const { notifications } = useNotifications()
+    const { notifications } = useNotifications();
 
     const refNotifications = refList.notifications;
     const refUser = refList.user;

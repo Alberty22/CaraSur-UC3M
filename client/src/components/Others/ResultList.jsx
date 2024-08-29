@@ -1,16 +1,16 @@
-import './ResultList.css'
+import './ResultList.css';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const ResultItem = ({ result, onButtonClick, role})  => {
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
     
-    const [userAdd, setUserAdd] = useState(false)
+    const [userAdd, setUserAdd] = useState(false);
 
     useEffect(() => {
-        setUserAdd(role === 'admin' ? true : false)
-    }, [role])
+        setUserAdd(role === 'admin' ? true : false);
+    }, [role]);
     
     return (
       <div className='result-item'>

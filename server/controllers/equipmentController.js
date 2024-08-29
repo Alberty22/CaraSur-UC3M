@@ -1,29 +1,31 @@
+require('dotenv').config();
+
 const { addDocument } = require('../utils/firebase/firebasePostUtils');
 const { updateDocumentWithID } = require('../utils/firebase/firebaseUpdateUtils');
 const { getCollectionData } = require('../utils/firebase/firebaseGetUtils');
 const { uploadBase64Image } = require('../utils/objectUtils');
 const { getOrCacheData, deleteCacheList } = require('../services/redisService');
 
-
 // GET request handler to retrieve equipment
 exports.getEquipment = async (req, res) => {
   
     try {
       const equipment = await getOrCacheData('equipment', getCollectionData);
-      res.json(equipment);
+      res.status(201).json(equipment);
   
     } 
     catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 
+// POST request handler to add new products
 exports.postEquipment = async (req, res) => {
-  const product = req.body
+  const product = req.body;
   try {
 
     if (!product) {
-      return res.status(404).json({ error: 'Error product' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
     const newProduct = {
@@ -40,20 +42,20 @@ exports.postEquipment = async (req, res) => {
       "available": parseInt(product.available) || null
     }
 
-    const id = await addDocument('equipment', newProduct)
+    const id = await addDocument('equipment', newProduct);
 
     if (product.photo) {
       const filePath = `equipment/${id}.png`;
       try {
-        const photoURL = await uploadBase64Image(product.photo.base64, filePath)
-        newProduct.photo = photoURL
+        const photoURL = await uploadBase64Image(product.photo.base64, filePath);
+        newProduct.photo = photoURL;
       } 
       catch (error) {
         console.error(error)
-        newProduct.photo = "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=e557dcc8-3ee0-410c-8542-357ae3d543a0"
+        newProduct.photo = process.env.STOCK_PHOTO;
       }
     } else {
-      newProduct.photo = "https://firebasestorage.googleapis.com/v0/b/tfg-carasur.appspot.com/o/equipment%2FStock-product.webp?alt=media&token=e557dcc8-3ee0-410c-8542-357ae3d543a0"
+      newProduct.photo = process.env.STOCK_PHOTO;
     }
 
     await updateDocumentWithID('equipment', id, {"id": id, "photo": newProduct.photo})

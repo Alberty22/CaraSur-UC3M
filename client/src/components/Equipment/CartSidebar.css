@@ -27,7 +27,7 @@
     width: 40px;
     height: 60px;
     background-color: #235371;
-    top:calc(calc( 100vh / 2) - 60px);
+    top:calc(50% - 60px);
     left: -20px;
     margin: auto;
     border-radius: 15px;

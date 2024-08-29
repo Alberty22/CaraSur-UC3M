@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import hide_icon from '../../assets/images/icons/View_hide.webp'
-import show_icon from '../../assets/images/icons/View_show.webp'
+import hide_icon from '../../assets/images/icons/View_hide.webp';
+import show_icon from '../../assets/images/icons/View_show.webp';
 
 export function PasswordInput({inputKey, placeholder, error, errors, register, isLogin=false, getValues}) {
 
 
     const [showPassword, setShowPassword] = useState(false);
-    const [passIcon, setPassIcon] = useState(show_icon)
+    const [passIcon, setPassIcon] = useState(show_icon);
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const handleClick = () => {
-        setPassIcon(showPassword ? show_icon : hide_icon)
-        setShowPassword(!showPassword)
+        setPassIcon(showPassword ? show_icon : hide_icon);
+        setShowPassword(!showPassword);
         
     }
 

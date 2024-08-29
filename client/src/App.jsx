@@ -53,8 +53,7 @@ function App() {
         <Routes>
           <Route path='/:lng' element={<HomePage />} />
           <Route path='/:lng/login' element={<LoginPage />} />
-          <Route path='/:lng/singup' element={<SignupPage />} />
-          <Route path='/:lng/singup/next-step' element={<SignupPage />} />
+          <Route path='/:lng/signup' element={<SignupPage />} />
           <Route path='/:lng/activities' element={<ProtectedRoute><ActivityFiltersProvider>
                                               <ActivitiesPage />
                                             </ActivityFiltersProvider></ProtectedRoute>} />

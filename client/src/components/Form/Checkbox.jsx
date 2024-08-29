@@ -1,8 +1,5 @@
-import { useTranslation } from "react-i18next"
 
 export function Checkbox({ inputKey1, inputKey2, register, placeholder1, placeholder2, errors, error}) {
-
-    const { t } = useTranslation()
 
     return (
         <div key={inputKey1} style={{display:'flex', flexDirection:'column', marginTop: '15px' }}>

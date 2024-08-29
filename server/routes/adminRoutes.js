@@ -8,6 +8,7 @@ router.get('/', adminController.getAdmin);
 // PUT request to update information
 router.put('/', adminController.updateAdmin);
 
-router.post('/', adminController.postAdminRole)
+// POST request to add admin role
+router.post('/', adminController.postAdminRole);
 
 module.exports = router;

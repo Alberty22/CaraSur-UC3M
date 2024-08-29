@@ -4,10 +4,10 @@ const { sendNotificationToAll, sendNotificationToClient } = require('./sse/notif
 
 // GET request handler to retrieve notifications
 exports.getUserNotifications = async (req, res) => {
-    const { email } = req.params
+    const { email } = req.params;
     try {
-      const notifications = await getUserNotifications(email)
-      res.json(notifications)
+      const notifications = await getUserNotifications(email);
+      res.status(201).json(notifications);
     } 
     catch (error) {
       res.status(500).json({ error: 'Internal Server Error' })
@@ -16,11 +16,11 @@ exports.getUserNotifications = async (req, res) => {
 
 // POST request handler to send notifications
 exports.postNotifications = async (req, res) => {
-  const { emails, message } = req.body
+  const { emails, message } = req.body;
   
   try {
     if (!emails || !message) {
-      return res.status(404).json({ error: 'Error in params' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
     const promises = emails.map(email => addUserNotifications(email.email, message));
@@ -31,33 +31,33 @@ exports.postNotifications = async (req, res) => {
     }
     
     if(emails.some(item => item.email === 'all')){
-      sendNotificationToAll('get')
+      sendNotificationToAll('get');
     }
     else {
       emails.forEach(item => sendNotificationToClient(item.email, 'get'));
     }
     
-    return res.status(201).json({ success: true, message: 'Notifications send' })
+    return res.status(201).json({ success: true, message: 'Notifications send' });
   }
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
 // PUT request handler to delete notifications
 exports.deleteNotifications = async (req, res) => {
   try {
-    const { email } = req.params
+    const { email } = req.params;
 
     if (!email ) {
-      return res.status(404).json({ error: 'Error in params' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
-    await deleteUserNotifications(email)
+    await deleteUserNotifications(email);
     
-    return res.status(201).json({ success: true, message: 'Notifications cleared' });
+    return res.status(201).json({ success: true, message: 'Notifications removed' });
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

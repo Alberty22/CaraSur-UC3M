@@ -1,24 +1,24 @@
-import './Products.css'
-import addToCart_icon from "../../assets/images/icons/Add-toCart.webp"
-import { useCart } from '../../hooks/useCart'
-import { usePopup } from '../../hooks/usePopups'
-import { ProductDetails } from './ProductDetails'
-import stock_icon from '../../assets/images/icons/Stock-product.webp'
-import { useTranslation } from 'react-i18next'
+import './Products.css';
+import addToCart_icon from "../../assets/images/icons/Add-toCart.webp";
+import { useCart } from '../../hooks/useCart';
+import { usePopup } from '../../hooks/usePopups';
+import { ProductDetails } from './ProductDetails';
+import stock_icon from '../../assets/images/icons/Stock-product.webp';
+import { useTranslation } from 'react-i18next';
 
 export function Products ({ products }) {
-    const { addToCart, cart } = useCart()
+    const { addToCart, cart } = useCart();
 
     const { t } = useTranslation();
 
     const checkProductInCart = product => {
-        return cart.some(item=> item.id === product.id)
+        return cart.some(item=> item.id === product.id);
     }
 
     const { handleOpen } = usePopup();
 
     const handleClick = (product) => {
-        handleOpen(<ProductDetails product={product} />)
+        handleOpen(<ProductDetails product={product} />);
     }
 
 

@@ -13,7 +13,7 @@ const equipmentRoutes = require('./routes/equipmentRoutes');
 const loansRoutes = require('./routes/loansRoutes');
 const notificationsRoutes = require('./routes/notificationsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const renewRoutes = require('./routes/renewRoutes');
+const renewRoutes = require('./routes/payment/renewRoutes');
 
 const errorHandler = require('./middleware/errorHandler');
 

@@ -2,23 +2,23 @@ import './Carousel.css';
 import { Link } from 'react-router-dom';
 
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState, useRef } from 'react';
-import { useFetch } from '../../hooks/useFetch.js'
+import { useFetch } from '../../hooks/useFetch.js';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 import { ROUTES } from '../../config/apiRoutes.js';
 
 export function Carousel() {
   const contentRef = useRef(null);
 
-  const { data } = useFetch({ url: ROUTES.ACTIVITIES_STOCK })
-  const activities = data ? data : []
+  const { data } = useFetch({ url: ROUTES.ACTIVITIES_STOCK });
+  const activities = data ? data : [];
  
   const navigate = useNavigate();
 
-  const { t } = useTranslation()
-  const { lng } = useParams()
-
+  const { t } = useTranslation();
+  const { lng } = useParams();
+  
   const scrollLeft = () => {
     if (contentRef.current) {
       contentRef.current.scrollBy({ left: -contentRef.current.offsetWidth , behavior: 'smooth' });

@@ -7,10 +7,10 @@ export function SelectInput({inputKey, inputType, placeholder, error, errors, op
 
     const [selectedValue, setSelectedValue] = useState("");
 
-    const watchedValue = watch(inputKey)
+    const watchedValue = watch(inputKey);
 
     useEffect(() => {
-        setSelectedValue(watchedValue || "")
+        setSelectedValue(watchedValue || "");
     }, [watchedValue]);
 
     return (

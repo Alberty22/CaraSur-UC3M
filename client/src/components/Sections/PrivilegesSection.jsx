@@ -1,12 +1,14 @@
-import './PrivilegesSection.css'
-import check_icon from '../../assets/images/icons/Check.webp'
+import './PrivilegesSection.css';
+
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import check_icon from '../../assets/images/icons/Check.webp';
 
 export function PrivilegesSection() {
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
 
     return (
         <section className="privileges-section">
@@ -23,7 +25,7 @@ export function PrivilegesSection() {
                     <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege4')}</li>
                     <li><img src={check_icon} alt='Checked Icon'/>{t('home.privilegesSection.privilege5')}</li>
                 </ul>
-                <Link to={`/${lng}/singup`}>
+                <Link to={`/${lng}/signup`}>
                     <button className="join-button">{t('home.privilegesSection.partner')}</button>
                 </Link>
             </div>

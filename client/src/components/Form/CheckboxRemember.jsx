@@ -1,8 +1,8 @@
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 
 export function CheckboxRemember({ inputKey, register, placeholder}) {
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     return (
         <div className="login-extra" key={inputKey}>

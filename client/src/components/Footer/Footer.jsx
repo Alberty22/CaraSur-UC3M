@@ -1,18 +1,18 @@
-import './Footer.css'
-import carasur_logo from '../../assets/images/logos/carasur.webp'
-import instagram_logo from '../../assets/images/logos/instagram.webp'
-import x_logo from '../../assets/images/logos/x.webp'
-import facebook_logo from '../../assets/images/logos/facebook.webp'
-import youtube_logo from '../../assets/images/logos/youtube.webp'
-import mountains from '../../assets/images/visuals/mountains.png'
-import useMobileQuery from '../../hooks/useMobileQuery'
-import { Link, useLocation } from 'react-router-dom'
-import { useAuth } from '../../hooks/useAuth'
-import { useTranslation } from 'react-i18next'
+import './Footer.css';
+import carasur_logo from '../../assets/images/logos/carasur.webp';
+import instagram_logo from '../../assets/images/logos/instagram.webp';
+import x_logo from '../../assets/images/logos/x.webp';
+import facebook_logo from '../../assets/images/logos/facebook.webp';
+import youtube_logo from '../../assets/images/logos/youtube.webp';
+import mountains from '../../assets/images/visuals/mountains.png';
+import useMobileQuery from '../../hooks/useMobileQuery';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { useTranslation } from 'react-i18next';
 
 export function Footer () {    
-    const isMobile = useMobileQuery('(max-width: 1024px)')
-    const { isAuthenticated } = useAuth()
+    const isMobile = useMobileQuery('(max-width: 1024px)');
+    const { isAuthenticated } = useAuth();
 
     const { t } = useTranslation();
     const location = useLocation();

@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const loansController = require('../controllers/loansController');
 
-
-
 // GET request for pending loans
 router.get('/pending', loansController.getPendingLoans);
 

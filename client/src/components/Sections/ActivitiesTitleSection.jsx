@@ -1,4 +1,4 @@
-import './ActivitiesTitleSection.css'
+import './ActivitiesTitleSection.css';
 import { useTranslation } from 'react-i18next';
 
 const ActivityTitle = ({ color, text }) => {

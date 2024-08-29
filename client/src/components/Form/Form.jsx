@@ -1,4 +1,4 @@
-import './Form.css'
+import './Form.css';
 
 import { Inputs } from './Inputs';
 
@@ -10,19 +10,19 @@ import { useState } from "react";
 
 export const Form = ({ inputs, onSubmit, type, className='form', optionalInputs=[], isLogin=false }) => {
 
-    const [optional, setOptional] = useState(false)
+    const [optional, setOptional] = useState(false);
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
-    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues, reset } = useForm()
+    const { register, handleSubmit, formState: { errors }, setValue, control, watch, getValues, reset } = useForm();
 
     const handleClick = () => {
-        setOptional(!optional)
+        setOptional(!optional);
     }
 
     const handleFormSubmit = (data) => {
-        onSubmit(data)
-        reset()
+        onSubmit(data);
+        reset();
       }
 
     return(

@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 export function Inputs({inputs , register, errors , setValue, getValues, control, watch, isLogin=false, className='form'}) {
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
 
     const options = {
         "uc3m-student": [
@@ -52,7 +52,7 @@ export function Inputs({inputs , register, errors , setValue, getValues, control
             {"value": "2", "text": "2"},
             {"value": "3", "text": "3"}
         ]
-    }
+    };
 
     return(
         inputs.map((input) => {

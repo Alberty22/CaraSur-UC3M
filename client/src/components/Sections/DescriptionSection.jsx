@@ -1,5 +1,5 @@
-import secondary_visual from '../../assets/images/visuals/secondary.jpg'
-import './DescriptionSection.css'
+import secondary_visual from '../../assets/images/visuals/secondary.jpg';
+import './DescriptionSection.css';
 import { useTranslation } from 'react-i18next';
 
 export function DescriptionSection() {

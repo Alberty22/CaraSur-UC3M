@@ -16,12 +16,12 @@ const sendEmail = async ({ to, subject, text, html }) => {
     subject,                       
     text,                          
     html,                         
-  }
+  };
 
   try {
-    const info = await transporter.sendMail(mailOptions)
+    const info = await transporter.sendMail(mailOptions);
   } catch (error) {
-    throw new Error(`Unable to send the email: ${error.message || error}`)
+    throw new Error(`Unable to send the email: ${error.message || error}`);
   }
 }
 

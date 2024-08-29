@@ -3,10 +3,10 @@ const router = express.Router();
 const notificationsController = require('../controllers/notificationsController');
 
 // GET request for notifications
-router.get('/:email', notificationsController.getUserNotifications)
+router.get('/:email', notificationsController.getUserNotifications);
 
-router.delete('/:email', notificationsController.deleteNotifications)
+router.delete('/:email', notificationsController.deleteNotifications);
 
-router.post('/', notificationsController.postNotifications)
+router.post('/', notificationsController.postNotifications);
 
-module.exports = router
+module.exports = router;

@@ -1,5 +1,5 @@
-import failed_icon from '../../assets/images/icons/failed.webp'
-import './FailedSection.css'
+import failed_icon from '../../assets/images/icons/failed.webp';
+import './FailedSection.css';
 
 export function FailedSection ({ message, className='black' }) {
     return (

@@ -1,29 +1,28 @@
-import './FiltersSidebar.css'
-import { useId, useState } from 'react'
-import { useEquipmentFilters } from '../../hooks/useEquipmentFilters'
-import search_icon from '../../assets/images/icons/Search.webp'
-import { Searchbar } from '../others/Searchbar'
-import { useTranslation } from 'react-i18next'
+import './FiltersSidebar.css';
+import { useId, useState } from 'react';
+import { useEquipmentFilters } from '../../hooks/useEquipmentFilters';
+import { Searchbar } from '../others/Searchbar';
+import { useTranslation } from 'react-i18next';
 
 export function FiltersSidebar({ children, invetory_unique }) {
 
-    const { setFilters } = useEquipmentFilters()
+    const { setFilters } = useEquipmentFilters();
     const [searchQuery, setSearchQuery] = useState('');
 
-    const typeFilterId = useId()
-    const sizeFilterId = useId()
-    const conditionFilterId = useId()
-    const categoryFilterId = useId()
+    const typeFilterId = useId();
+    const sizeFilterId = useId();
+    const conditionFilterId = useId();
+    const categoryFilterId = useId();
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFilters(prevState => ({
             ...prevState,
             [name]: value
-        }));
-    };
+        }))
+    }
 
     const handleSearchChange = (event) => {
         const newSearch = event.target.value === undefined ? '' : event.target.value
@@ -32,14 +31,14 @@ export function FiltersSidebar({ children, invetory_unique }) {
         setFilters(prevState => ({
             ...prevState,
             search: newSearch
-        }));
-    };
+        }))
+    }
 
     const handleSearchClick = () => {
         setFilters(prevState => ({
             ...prevState,
             search: searchQuery
-        }));
+        }))
     }
 
     return (

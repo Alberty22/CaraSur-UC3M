@@ -1,4 +1,4 @@
-import './LoanItem.css'
+import './LoanItem.css';
 import { useTranslation } from 'react-i18next';
 
 export function LoanItem({ information }) {

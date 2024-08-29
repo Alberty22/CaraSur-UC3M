@@ -1,23 +1,25 @@
-import { useEffect, useState } from "react";
-import carasur_logo from "../../assets/images/logos/carasur.webp"
-import { Menu } from './Menu/Menu.jsx'
+import './Header.css';
 
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth.js";
-import './Header.css'
-import { DropdownMenu } from './Dropdowns/DropdownMenu.jsx'
+import { DropdownMenu } from './Dropdowns/DropdownMenu.jsx';
 import { DropdownNotifications } from "./Dropdowns/DropdownNotifications.jsx";
-import useMobileQuery from "../../hooks/useMobileQuery.js";
 import { DropdownUser } from "./Dropdowns/DropdownUser.jsx";
+import { Menu } from './Menu/Menu.jsx';
+
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/useAuth.js";
+import useMobileQuery from "../../hooks/useMobileQuery.js";
 import { useRef } from "react";
+
+import carasur_logo from "../../assets/images/logos/carasur.webp";
 
 export function Header() {
     
-    const [isMenu, setIsMenu] = useState(true)
+    const [isMenu, setIsMenu] = useState(true);
 
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
-    const isMobile = useMobileQuery('(max-width: 1024px)')
+    const isMobile = useMobileQuery('(max-width: 1024px)');
     
 
     const location = useLocation();
@@ -27,7 +29,7 @@ export function Header() {
     useEffect(() => {
         const route = location.pathname.split('/');
     
-        if (route[route.length - 1] === 'login' || route[route.length - 1] === 'singup') {
+        if (route[route.length - 1] === 'login' || route[route.length - 1] === 'signup') {
             setIsMenu(false)
         }
         else {

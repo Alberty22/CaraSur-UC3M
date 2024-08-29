@@ -31,18 +31,17 @@ function SignupPage() {
     const { t } = useTranslation()
     const { lng } = useParams()
 
-    const { isAuthenticated, login } = useAuth()
     const navigate = useNavigate()
     const { state } = useLocation()
 
-    const [stepSingup, setStepSingup] = useState(false)
+    const [stepSignup, setStepSignup] = useState(false)
     const [formData, setFormData] = useState(null)
 
     const { popupContent, handleOpen } = usePopup();
 
     const onSubmit1 = (data) => {
         setFormData(data)
-        setStepSingup(true)
+        setStepSignup(true)
         
     };
 
@@ -93,7 +92,7 @@ function SignupPage() {
         }
         else {
             setFormData(false)
-            setStepSingup(false)
+            setStepSignup(false)
             handleOpen(<FailedSection message={t('signup.failed')} />)
         }
         
@@ -109,12 +108,12 @@ function SignupPage() {
                     {isMobile && <p>{t('signup.login1')}<Link to={`/${lng}/login`} className="register-link">{t('signup.login2')}</Link></p>}
                 </div>
                 
-                { !stepSingup
+                { !stepSignup
                     ? <Form inputs={inputSignup1} onSubmit={onSubmit1} type={t('signup.action')} group='right' />
                     : <Form inputs={inputSignup2.required} optionalInputs={inputSignup2.optional} onSubmit={onSubmit2} type={t('signup.action')} group='right' />
                 }
                 
-                { !stepSingup &&
+                { !stepSignup &&
                 <>
                 {/* <div className='separator' group='right'>
                     <span>{t('signup.separator')}</span>

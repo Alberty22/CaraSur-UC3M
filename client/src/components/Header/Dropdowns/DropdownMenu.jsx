@@ -1,5 +1,6 @@
-import './DropdownMenu.css'
+import './DropdownMenu.css';
 import { Link } from "react-router-dom";
+
 import { useAuth } from "../../../hooks/useAuth.js";
 import { useDropdown } from '../../../hooks/useDropdown.js';
 import { forwardRef } from 'react';
@@ -8,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 export const DropdownMenu = forwardRef((props, ref) => {
     
-    const { isAuthenticated, isAdmin, logout } = useAuth()
+    const { isAuthenticated, isAdmin, logout } = useAuth();
     
 
     const { dropdownRef, handleClose } = useDropdown({ id:'menu', maxHeight:'600', toggleRefs:[ref]});

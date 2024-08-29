@@ -1,4 +1,5 @@
-import './Separator.css'
+import './Separator.css';
+
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../hooks/useAuth';
 import { getCookie } from '../../utils/cookies';
@@ -7,7 +8,7 @@ export function Separator() {
 
     const { t } = useTranslation();
 
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
     return(
         <section className='separator-section'>

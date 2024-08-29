@@ -1,17 +1,19 @@
-import carasur_logo from '../../assets/images/logos/carasur.webp'; 
-import primary_visual from '../../assets/images/visuals/primary.jpg'
-import './PrimarySection.css'
+import './PrimarySection.css';
+
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import carasur_logo from '../../assets/images/logos/carasur.webp'; 
+import primary_visual from '../../assets/images/visuals/primary.jpg';
+
 export function PrimarySection() {
 
-    const { isAuthenticated } = useAuth()
+    const { isAuthenticated } = useAuth();
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
 
     return(
         <section className='primary-section' style={{ backgroundImage: `url(${primary_visual})` }}>

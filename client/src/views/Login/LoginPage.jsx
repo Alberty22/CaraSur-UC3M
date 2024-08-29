@@ -23,7 +23,7 @@ import mountain_path from '../../assets/images/visuals/mountain-path.png';
 
 function LoginPage() {
 
-    const { isAuthenticated, login } = useAuth()
+    const { login } = useAuth()
     const navigate = useNavigate()
     const { state } = useLocation()
 
@@ -60,8 +60,6 @@ function LoginPage() {
     
     }
 
-    
-
     return (
         <>
         <div className='background-img'></div>
@@ -69,7 +67,7 @@ function LoginPage() {
             <FormSection divideBy={(group) => group === 'left'}>
                 <div className='title' group='left'>
                     <h2>{t('login.title')}</h2>
-                    {isMobile && <p>{t('login.signup1')} <Link to={`/${lng}/singup`} className="register-link">{t('login.signup2')}</Link></p>}
+                    {isMobile && <p>{t('login.signup1')} <Link to={`/${lng}/signup`} className="register-link">{t('login.signup2')}</Link></p>}
                 </div>
 
                 <Form inputs={inputsLogin} onSubmit={onSubmit} type={t('login.action')} group='left' isLogin={true}/>
@@ -83,7 +81,7 @@ function LoginPage() {
                         {t('login.google')}
                     </button>
                 </div> */}
-                <p className='switch-form' group='right'>{t('login.signup1')} <Link to={`/${lng}/singup`} className="register-link">{t('login.signup2')}</Link></p>
+                <p className='switch-form' group='right'>{t('login.signup1')} <Link to={`/${lng}/signup`} className="register-link">{t('login.signup2')}</Link></p>
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='right'/>
             </FormSection>  
         </main>

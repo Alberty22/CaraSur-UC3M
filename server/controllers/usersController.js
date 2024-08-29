@@ -8,25 +8,23 @@ const { getOrCacheData, deleteCacheList } = require('../services/redisService');
 
 const { auth } = require('../services/firebaseAdmin');
 
-
-
 // GET request handler to retrieve all users
 exports.getUsers = async (req, res) => {
   try {
-    const simplifiedUsers = await getOrCacheData('users', getUsers)
-    res.status(201).json(simplifiedUsers)
+    const simplifiedUsers = await getOrCacheData('users', getUsers);
+    res.status(201).json(simplifiedUsers);
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
 // GET request handler to retrieve user details based on email
 exports.getUserDetails = async (req, res) => {
-  const { email } = req.params
+  const { email } = req.params;
   try {
 
-    const data = await getUserDetails(email)
+    const data = await getUserDetails(email);
     const details = data.reduce((acc, item) => {
       const key = Object.keys(item)[0];
       acc[key] = item[key];
@@ -34,25 +32,25 @@ exports.getUserDetails = async (req, res) => {
     }, {})
 
     if(details) {
-      res.json({
+      res.status(201).json({
         "accountDetails": {email: email, password: '*******'},
         ...details
       })
     }
     else {
-      res.json({})
+      res.status(201).json({});
     }
     
   }
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
 // POST request handler to add a new user
 exports.addUser = async (req, res) => {
   try {
-    const user = req.body
+    const user = req.body;
 
     const newUser = {
       email: user.email,
@@ -60,67 +58,66 @@ exports.addUser = async (req, res) => {
       details: user.details,
       notifications: {"1": {"id": "1","text": "Bienvenido a club CaraSur"}},
       loans:  {}
-    }
+    };
 
-    const url = await createCheckout({email: user.email, password: user.password, newUser:newUser})
+    const url = await createCheckout({email: user.email, password: user.password, newUser:newUser});
     if(!url) {
-      return res.status(404).json({ error: 'Error at checkout' })
+      return res.status(404).json({ error: 'Error at checkout' });
     }
-    await deleteCacheList('users')
-    res.status(201).json({ success: true, message: url })
+    await deleteCacheList('users');
+    res.status(201).json({ success: true, message: url });
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
+// POST request handler to authenticate an user
 exports.loginUser = async (req, res) => {
-  const { email, token} = req.body
+  const { email, token} = req.body;
   try {
-    const decodedToken = await auth.verifyIdToken(token)
-    const uid = decodedToken.uid
+    const decodedToken = await auth.verifyIdToken(token);
+    const uid = decodedToken.uid;
 
-    
-    const { role, name } = await getRoleAndName(email)
-    res.status(201).json({ success: true, message: { role: role, name:name }})
+    const { role, name } = await getRoleAndName(email);
+    res.status(201).json({ success: true, message: { role: role, name:name }});
   } 
   catch (error) {
     console.error("Error verifying token:", error);
-    res.status(401).json({ error: 'Invalid token' });
+    res.status(500).json({ error: 'Invalid token' });
   }
 }
-
 
 // PUT request handler to update user information
 exports.updateUser = async (req, res) => {
   try {
-    const { email, accountDetails, userDetails, userOptionalDetails, preferences, idPhoto } = req.body
+    const { email, accountDetails, userDetails, userOptionalDetails, preferences, idPhoto } = req.body;
 
     if ((!accountDetails && !userDetails && !userOptionalDetails && !preferences && !idPhoto) || !email) {
-      return res.status(404).json({ error: 'Error in params' })
+      return res.status(404).json({ error: 'Error in params' });
     }
 
-    await updateUserFirebase("users", email, req.body)
+    await updateUserFirebase("users", email, req.body);
 
     if(accountDetails) {
       notificationClients.forEach((client, index) => {
         if (client.id === email) {
-          notificationClients[index].id = accountDetails.email
+          notificationClients[index].id = accountDetails.email;
         }
       })
       loansClients.forEach((client, index) => {
         if (client.id === email) {
-          loansClients[index].id = accountDetails.email
+          loansClients[index].id = accountDetails.email;
         }
       })
       
     }
-    sendUsersToAll('get')
+    sendUsersToAll('get');
 
-    res.status(201).json({ success: true, message: 'User updated successfully' })
+    res.status(201).json({ success: true, message: 'User updated succesfully' });
       
   } 
   catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

@@ -1,4 +1,4 @@
-import './Cart.css'
+import './Cart.css';
 
 import { useCart } from "../../hooks/useCart";
 import { OkSection } from "../others/OkSection";

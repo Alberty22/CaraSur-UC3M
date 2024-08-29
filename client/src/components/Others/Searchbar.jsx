@@ -1,5 +1,5 @@
-import './Searchbar.css'
-import search_icon from '../../assets/images/icons/Search.webp'
+import './Searchbar.css';
+import search_icon from '../../assets/images/icons/Search.webp';
 
 export function Searchbar({ handleSearchChange, handleSearchClick, searchQuery, placeholder, className='search-bar'}) {
     return (

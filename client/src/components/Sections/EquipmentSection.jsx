@@ -1,11 +1,11 @@
-import './EquipmentSection.css'
-import { Link, useParams  } from 'react-router-dom'
+import './EquipmentSection.css';
+import { Link, useParams  } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 export function EquipmentSection() {
 
     const { t } = useTranslation();
-    const { lng } = useParams()
+    const { lng } = useParams();
 
     return(
         <section className='equipment-section'>

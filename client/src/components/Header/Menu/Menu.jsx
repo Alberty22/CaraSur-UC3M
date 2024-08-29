@@ -1,11 +1,14 @@
-import './Menu.css'
-import useMobileQuery from "../../../hooks/useMobileQuery";
+import './Menu.css';
+
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { MenuMobile } from "./MenuMobile";
 import { MenuAuthenticated } from "./MenuAuthenticated";
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from '../LanguageSelector';
+
+import useMobileQuery from "../../../hooks/useMobileQuery";
+
 
 export const Menu = ({ isMenu, refList }) => {
 
@@ -14,8 +17,8 @@ export const Menu = ({ isMenu, refList }) => {
     const pathSegments = location.pathname.split('/');
     const lng = pathSegments[1];
 
-    const isMobile = useMobileQuery('(max-width: 1024px)')
-    const { isAuthenticated } = useAuth()
+    const isMobile = useMobileQuery('(max-width: 1024px)');
+    const { isAuthenticated } = useAuth();
     
     return(
       <nav className='navigation' style={isAuthenticated && isMobile ? { justifyContent: 'space-between' } : {}}>

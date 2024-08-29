@@ -1,9 +1,9 @@
-import './UserInformation.css'
+import './UserInformation.css';
 
 import { usePopup } from '../../hooks/usePopups';
 import { useTranslation } from 'react-i18next';
 
-import edit_icon from '../../assets/images/icons/Edit.webp'
+import edit_icon from '../../assets/images/icons/Edit.webp';
 
 export const UserInformation = ({ information, sectionTitle, popupContent, editable = true }) => {
     

@@ -8,7 +8,4 @@ router.get('/', equipmentController.getEquipment);
 // POST request to add products
 router.post('/', equipmentController.postEquipment);
 
-// GET request to update equipment
-router.put('/', () => {});
-
 module.exports = router;

@@ -1,13 +1,14 @@
-import notifications_off_icon from "../../../assets/images/icons/Notifications_off.webp"
-import notifications_on_icon from "../../../assets/images/icons/Notifications_on.webp"
-import menu_icon from "../../../assets/images/icons/Menu.webp"
-import { useAuth } from "../../../hooks/useAuth"
-import { useNotifications } from "../../../hooks/useNotifications"
-import { LanguageSelector } from "../LanguageSelector"
+import { useAuth } from "../../../hooks/useAuth";
+import { useNotifications } from "../../../hooks/useNotifications";
+import { LanguageSelector } from "../LanguageSelector";
+
+import notifications_off_icon from "../../../assets/images/icons/Notifications_off.webp";
+import notifications_on_icon from "../../../assets/images/icons/Notifications_on.webp";
+import menu_icon from "../../../assets/images/icons/Menu.webp";
 
 export const MenuMobile = ({ refList }) => {
-    const { isAuthenticated } = useAuth()
-    const { notifications } = useNotifications()
+    const { isAuthenticated } = useAuth();
+    const { notifications } = useNotifications();
 
     const refNotifications = refList.notifications;
     const refMenu = refList.menu;

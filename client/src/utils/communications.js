@@ -4,10 +4,10 @@ export const requestData = async (url) => {
     if (!res.ok) {
         throw new Error('Network response was not ok');
     }
-    const data = await res.json()
-    return data
+    const data = await res.json();
+    return data;
   } catch (error) {
-    return
+    return;
   }
 
 }
@@ -19,15 +19,15 @@ export const deleteData = async (url) => {
     })
 
     if (!res.ok) {
-      throw new Error('Network response was not ok')
+      throw new Error('Network response was not ok');
     }
     
-    const result = await res.json()
-    return {code:result.success, result:result.message}
+    const result = await res.json();
+    return {code:result.success, result:result.message};
   } 
   catch (error) {
-    console.error('Error during DELETE request:', error)
-    return {code:false, result:error}
+    console.error('Error during DELETE request:', error);
+    return {code:false, result:error};
   }
 }
 
@@ -43,15 +43,15 @@ export const sendData = async (data, url) => {
 
     if (!res.ok) {
       const errorResponse = await res.json();
-      throw new Error(errorResponse.error || 'Error in response')
+      throw new Error(errorResponse.error || 'Error in response');
     }
 
-    const result = await res.json()
-    return {code:result.success, result:result.message}
+    const result = await res.json();
+    return {code:result.success, result:result.message};
 
   } catch (error) {
-    console.error('Error sending data:', error)
-    return {code:false, result:error}
+    console.error('Error sending data:', error);
+    return {code:false, result:error};
   }
 }
 
@@ -67,14 +67,14 @@ export const updateData = async (data, url) => {
 
       if (!res.ok) {
           const errorResponse = await res.json();
-          throw new Error(errorResponse.error || 'Error in response')
+          throw new Error(errorResponse.error || 'Error in response');
       }
 
-      const result = await res.json()
-      return { code: result.success, result: result.message }
+      const result = await res.json();
+      return { code: result.success, result: result.message };
 
   } catch (error) {
-      console.error('Error updating data:', error)
-      return { code: false, result: error.message || error }
+      console.error('Error updating data:', error);
+      return { code: false, result: error.message || error };
   }
 }
