@@ -8,10 +8,9 @@ import { FailedSection } from '../../components/others/FailedSection.jsx';
 import inputSignup1 from '../../assets/others/inputs-signup1.json'
 import inputSignup2 from '../../assets/others/inputs-signup2.json'
 
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../../hooks/useAuth.js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePopup } from '../../hooks/usePopups.js';
 import useMobileQuery from '../../hooks/useMobileQuery.js';
 
@@ -21,7 +20,6 @@ import { sendData } from '../../utils/communications.js';
 import { ROUTES } from '../../config/apiRoutes.js';
 import { getActualDate, newRenewDate } from '../../utils/date.js';
 
-import google_logo from '../../assets/images/logos/google.webp'
 import mountain_path from '../../assets/images/visuals/mountain-path.png'
 
 function SignupPage() {
@@ -30,9 +28,6 @@ function SignupPage() {
 
     const { t } = useTranslation()
     const { lng } = useParams()
-
-    const navigate = useNavigate()
-    const { state } = useLocation()
 
     const [stepSignup, setStepSignup] = useState(false)
     const [formData, setFormData] = useState(null)
@@ -113,19 +108,6 @@ function SignupPage() {
                     : <Form inputs={inputSignup2.required} optionalInputs={inputSignup2.optional} onSubmit={onSubmit2} type={t('signup.action')} group='right' />
                 }
                 
-                { !stepSignup &&
-                <>
-                {/* <div className='separator' group='right'>
-                    <span>{t('signup.separator')}</span>
-                </div>
-                <div className='other-login' group='right'>
-                    <button>
-                        <img src={google_logo} alt='Google logo'></img>
-                        {t('signup.google')}
-                    </button>
-                </div> */}
-                </>
-                }
                 <p className='switch-form' group='left'>{t('signup.login1')} <Link to={`/${lng}/login`} className="register-link">{t('signup.login2')}</Link></p>
                 <img className='mountain-path' src={mountain_path} alt="Mountain" group='left'/>
             </FormSection>  
